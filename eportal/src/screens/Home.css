@@ -1,123 +1,115 @@
+
+*{
+  margin-top: -6px;
+  
+  
+}
+.HOME{
+  background-image: url(../Assets/scourt.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat center center fixed;
+  margin: 0px;
+  padding: 0;
+  height: 44rem;
+  width: 100%;
+
+}
+
+.pagecolor{
+  background-color: black;
+}
+
 #headline{
-    font-size: 100px;
-   
-    text-align: center;
-    color: #E2DBD3;
-    font-weight: 400;
-    word-wrap: break-word;
+  font-size: 90px;
+  text-align: center;
+  color: #E2DBD3;
+  font-weight: 400;
+  word-wrap: break-word;
 }
-.font{
-  font-family: 'Audiowide', sans-serif;
-}
-#fon{
-  font-family: 'Audiowide', sans-serif;
+
+
+#nyaya{
+  margin-top: 110px;
+  margin-bottom: 34px;
 }
 #case{
-    font-size: 50px;
-    font-family: 'Audiowide', sans-serif;
-
-   
+  font-size: 50px;
+  font-family: 'Audiowide', sans-serif;
 }
-#nyaya{
-    margin-bottom: 0px;
-    
-    
 
-}
-body, html {
-    
-    height: 100%;
-    background-image:url("../Assets/scourt.jpeg");
-    background-repeat: no-repeat;
-  
-    border-width: 10px;
-    border-style: solid;
-    border-color: #38303b;
-    background-size: cover;
-    margin: 0px;
-  }
-#tabs {
-    display: flex;
-    position: relative;
-    height: 100px;
-    width: 100%;
-    
-    
-}  
-#tabs ul{
-    display: flex; 
-}  
-#tabs ul li{
-
-    list-style-type: none;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-left: 150px;
-
-
-    
-}
-#tabs ul li a{
-    color: #38303b;
-    display: block; 
-    padding: 18px 22px;
-    border-radius: 20px;
-    text-decoration: none;
-}
 .buttons{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
-}
-.buttons #first{
-    margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+  
 }
 
+.drop{
+  display: flex;
+  justify-content: flex-end;
+  padding: 34px;
+  height: 34px;
+  
+;
+}
 
-.dropbtn {
-margin-left: 1200px;
-    background-color:#38303b;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
+#first{
+  width: 11rem;
+}
+
+.box1{
   
-  .dropup {
-    
-    position: relative;
-    display: inline-block;
-  }
+  background-color: grey;
+  width: 32rem;
+  margin: 34px;
+  padding: 34px;
+  height: 12rem;
+}
+.box2{
+  background-color: grey;
+  width: 32rem;
+  margin: 34px;
+  padding: 34px;
+  height: 12rem;
+}
+.box1 p{
+  margin-left: 40px;
+  font-size: 2.5rem;
+
+}
+.box2 p{
+  margin-left: 40px;
+  font-size: 2.5rem;
+
+}
+
+.boxbutton{
+  text-align: end;
+}
+.maincontainer{
+  display: flex;
   
-  .dropup-content {
-    margin-left: 1200px;
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    bottom: 40px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    overflow-y: auto; 
-    max-height: 300px; 
-    z-index: 1;
-  }
-  
-  .dropup-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropup-content a:hover {background-color: #ccc}
-  
-  .dropup:hover .dropup-content {
-    display: block;
-  }
-  
-  .dropup:hover .dropbtn {
-    background-color: grey;
-  }
+}
+
+.vision{
+  margin-top: 34px;
+  margin-right: 21px;
+  padding: 34px;
+  background-color: black;
+  color: white;
+  height: 12rem;
+}
+.vision p{
+  font-size: 1.3rem;
+  color: white;
+
+}
+.aboutpage{
+  padding: 34px;
+  width: 100%;
+  color: white;
+}
+.aboutpage p{
+  font-size: 1.8rem;
+}

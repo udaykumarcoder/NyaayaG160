@@ -1,0 +1,22 @@
+*{
+    margin-top: 0;
+
+
+}
+.navbar{
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: -21px;
+
+}
+.navbar ul{
+    text-align: center;
+}
+.navbar ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin: 32px 60px;
+    
+}

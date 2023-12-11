@@ -1,0 +1,28 @@
+
+.fcontainer{
+    background-color: #e8dfc5;
+
+}
+.fmainblock{
+    display: flex;
+}
+.fheading{
+    padding: 40px;
+    margin-top: 0;
+    padding-bottom: 80px;
+
+}
+.fblock2{
+    word-spacing: 13px;
+    font-family: 'Audiowide', sans-serif; 
+
+}
+.fpara{
+    padding: 50px;
+}
+.fblock2{
+   margin-left: 12rem;
+   margin-top: -21px;
+   padding: 50px;
+   font-size: 1rem;
+}

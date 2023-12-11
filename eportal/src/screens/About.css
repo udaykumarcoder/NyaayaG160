@@ -1,0 +1,11 @@
+.about2{
+    background-color: black;
+  }
+  .aboutpage{
+      padding: 34px;
+      width: 100%;
+      color: white;
+    }
+    .aboutpage p{
+      font-size: 1.8rem;
+    }

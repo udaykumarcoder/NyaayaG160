@@ -1,31 +1,22 @@
-
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './screens/Home';
+import Services from './screens/Services';
+import About from './screens/About';
 import LoginPage from './screens/LoginPage';
-import{
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from 'react-router-dom';
-
 
 function App() {
   return (
-    // <>
-    //   <Home/>
-    // </>
     <Router>
-      <div>
-        <Routes>
-          <Route exact path='/' element={<Home/>}/>
-    
-       
-          <Route exact path='/login' element={<LoginPage/>}/>
-          
-        </Routes>
-      </div>
+      <Routes>
+      <Route path="/" element={<Home />} />
+        <Route path="#services" element={<Services />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="#about" element={<About />} />
+      </Routes>
     </Router>
   );
 }
 
 export default App;
+
+

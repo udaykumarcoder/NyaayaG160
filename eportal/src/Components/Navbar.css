@@ -20,3 +20,8 @@
     margin: 32px 60px;
     
 }
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none; /* Remove underline */
+  }

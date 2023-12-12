@@ -1,0 +1,40 @@
+.contact{
+  background-color: rgb(44, 36, 36);
+  color: white;
+}
+
+hr{
+    width: 95%;
+  }
+  .content1{
+    padding-top: 30px;
+    padding-left: 100px;
+  }
+   #c1{
+    display: flex;
+    position: absolute;
+    padding-left: 1040px;
+   }
+  .c2{
+    display: flex;
+    position :absolute;
+    margin-top: -10px;
+    padding-left: 1000px;
+    text-align: right;
+  }
+  .nav{
+    padding-left: 750px;
+    margin-top: 30px;
+    font-size: 15px;
+  
+  }
+  .nav ul{
+    
+    padding-right: 100px;
+  }
+  .nav ul li{
+    list-style-type: none;
+    display: inline;
+    margin: 0px 20px;
+    
+  }

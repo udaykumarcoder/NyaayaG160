@@ -1,112 +1,4 @@
-/* 
 
-.pagecolor{
-  background-color: black;
-}
-
-#headline{
-  font-size: 90px;
-  text-align: center;
-  color: #E2DBD3;
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
-
-#nyaya{
-  margin-top: 110px;
-  margin-bottom: 34px;
-}
-#case{
-  font-size: 50px;
-  font-family: 'Audiowide', sans-serif;
-}
-
-.buttons{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  
-}
-
-.drop{
-  display: flex;
-  justify-content: flex-end;
-  padding: 34px;
-  height: 34px;
-
-}
-
-#first{
-  width: 11rem;
-}
-
-/* .box1{
-  
-  background-color: grey;
-  width: 32rem;
-  margin: 34px;
-  padding: 34px;
-  height: 12rem;
-  display: flex;
-}
-.box2{
-  background-color: grey;
-  width: 32rem;
-  margin: 34px;
-  padding: 34px;
-  height: 12rem;
-}
-.box1 p{
-  margin-left: 40px;
-  font-size: 2.5rem;
-
-}
-.box2 p{
-  margin-left: 40px;
-  font-size: 2.5rem;
-
-} */
-/* 
-.boxbutton1{
-  text-align: end;
-  margin-top: 10em;
-  font-size: 1em;
-
-}
-.boxbutton2{
-  text-align: end;
-  margin-top: -4em;
-  font-size: 1em;
-
-}
-.maincontainer{
-  display: flex;
-  
-}
-
-.vision{
-  margin-top: 34px;
-  margin-right: 21px;
-  padding: 34px;
-  background-color: black;
-  color: white;
-  height: 12rem;
-}
-.vision p{
-  font-size: 1.3rem;
-  color: white;
-
-}
-.aboutpage{
-  padding: 34px;
-  width: 100%;
-  color: white;
-}
-.aboutpage p{
-  font-size: 1.8rem;
-} */ 
 
 *{
   
@@ -125,6 +17,7 @@
   padding: 0;
   height: 100%;
   width: 98%;
+  overflow: hidden;
 
 }
 

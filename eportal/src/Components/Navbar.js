@@ -9,9 +9,9 @@ const Navbar = () => {
         <ul>
             <li><Link smooth to='#home'>Home</Link></li>
             <li><Link smooth to='#about'>About</Link></li>
-            <li><Link smooth to='#services'>Services</Link></li>
             <li><Link smooth to='#faq'>FAQ's</Link></li>
-           <li>Contact</li>
+            <li><Link smooth to='#contacts'>Contact</Link></li>
+
         </ul>
     </section>
     

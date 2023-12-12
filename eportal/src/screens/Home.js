@@ -2,9 +2,9 @@ import React from 'react'
 import Navbar from '../Components/Navbar';
 import {Link} from 'react-router-dom';
 import './Home.css';
-import Services from './Services';
 import About from './About';
 import Faq from './Faq';
+import Contact from './Contact';
 
 
 
@@ -54,9 +54,10 @@ const Home = () => {
           </select>
         </section>
       </div>
-      <Services/>
+      
       <About/>
       <Faq/>
+      <Contact/>
       
 
     

@@ -1,6 +1,7 @@
 
 .fcontainer{
     background-color: #e8dfc5;
+    width: 100vw;
 
 }
 .fmainblock{
@@ -22,7 +23,6 @@
 }
 .fblock2{
    margin-left: 12rem;
-   margin-top: -21px;
    padding: 50px;
    font-size: 1rem;
 }

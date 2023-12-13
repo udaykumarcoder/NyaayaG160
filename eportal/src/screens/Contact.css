@@ -1,10 +1,10 @@
-.contact{
+/* .contact{
   background-color: rgb(44, 36, 36);
   color: white;
   
 }
 
-hr{
+/* hr{
     width: 95%;
   }
   .content1{
@@ -39,3 +39,22 @@ hr{
     margin: 0px 20px;
     
   }
+  .tt{
+    width: 100vw;
+
+  } */
+
+.contact {
+
+  display: flex;
+}
+
+.contactblock1 {
+
+  background-color: yellow;
+  width: 50%;
+}
+
+.contactblock2 p{
+  text-align: end;
+}

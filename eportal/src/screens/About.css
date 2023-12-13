@@ -1,68 +1,82 @@
-.about{
+.about {
   background-color: black;
+  width: 100vw;
+  font-family: 'Audiowide', sans-serif;
 }
 
-.maincontainer{
-    display: flex;
-    
-  }
-.box1{
+.maincontainer {
+  display: flex;
+  align-items: center;
   
-    background-color: grey;
-    /* width: 32rem; */
-    margin: 34px;
-    padding: 34px;
-    /* height: 12rem; */
-  }
-.box2{
-    background-color: grey;
-    /* width: 32rem; */
-    margin: 34px;
-    padding: 34px;
-    /* height: 12rem; */
-  }
-.box1 p{
-    margin-left: 40px;
-    /* font-size: 2.4rem; */
-  
-  }
-.box2 p{
-    margin-left: 40px;
-    /* font-size: 2.4rem; */
-  
-  }
-  
-  .boxbutton {
-    text-align: end;
-    flex-direction: column;
-    display: flex;
-    position: absolute;
-    margin-left: 26rem;
-    margin-top: -5rem;
+
+}
+.container1{
+  width: 50%;
+}
+.container2{
+  width: 50%;
 }
 
+.box1 {
+
+  background-color: grey;
+  margin: 34px;
+  padding: 34px;
+  height: 150px;
+  text-align: center;
+  font-size: 1.8rem;
+
+}
+
+.box2 {
+  background-color: grey;
+  margin: 34px;
+  padding: 34px;
+  height: 150px;
+  text-align: center;
+  font-size: 1.8rem;
+
+
+}
+
+
+
+.boxbutton {
+  text-align: end;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  margin-left: 26rem;
+  margin-top: -5rem;
+}
+
+
+.vision {
+  margin-right: 21px;
+  padding: 37px;
+  color: white;
+}
+
+.vision p {
+  font-size: 17px;
+  color: white;
+
+}
+
+.about2 {
+  background-color: black;
+  width: 100vw;
+  font-family: 'Audiowide', sans-serif;
   
-.vision{
-    margin-top: 34px;
-    margin-right: 21px;
-    padding: 34px;
-    background-color: black;
-    color: white;
-    /* height: 12rem; */
-  }
-.vision p{
-    font-size: 1.3rem;
-    color: white;
-  
-  }
-.about2{
-    background-color: black;
-  }
-  .aboutpage{
-      padding: 6px;
-      width: 100%;
-      color: white;
-    }
-    .aboutpage p{
-      font-size: 1.8rem;
-    }
+}
+
+.aboutpage {
+  width: 100%;
+  color: white;
+  padding: 34px;
+
+}
+
+.aboutpage p {
+  font-size: 1.2rem;
+}

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import './Home.css';
 import About from './About';
 import Faq from './Faq';
-// import Contact from './Contact';
+import Contact from './Contact';
 
 
 
@@ -57,7 +57,7 @@ const Home = () => {
       
       <About/>
       <Faq/>
-      {/* <Contact/> */}
+      <Contact/>
       
 
     

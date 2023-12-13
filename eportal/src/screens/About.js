@@ -9,21 +9,21 @@ const About = () => {
         <div className="container1">     
         <div className="box1">
           <p>Seek efficient resolution <br /> for managing multiple cases</p>
-          <div className="boxbutton">
+          
           <button>
             SignUp
             <span className='icon'><i class="fa-solid fa-arrow-right"></i></span>
           </button>
-          </div>
+          
         </div>
         <div className="box2">
           <p>Access your case data <br />and track your case <br />status</p>
-          <div className="boxbutton">
+          
           <button>
             Login
             <span className='icon'><i class="fa-solid fa-arrow-right"></i></span>
           </button>
-          </div>
+        
         </div>
         </div>
         <div className="container2">

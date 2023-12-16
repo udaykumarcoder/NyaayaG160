@@ -1,0 +1,53 @@
+
+.navbar2{
+    background-color: #E8DFC5;
+
+}
+.logo{
+    display: flex;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Audiowide', sans-serif;
+
+
+}
+.logoimg{
+    height:100px;
+    width: 100px;
+    background-color: white;
+    
+}
+.navbar2 ul{
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+.navbar2 ul li {
+    list-style-type: none;
+    margin: 44px;
+}
+.navbar2 ul li a{
+    text-decoration: none;
+    color: black;
+}
+.options{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.radiogrp{
+    display: flex;
+    align-items: center;
+    padding-right: 7.5rem;
+}
+.options1{
+    margin-right: 13rem;
+}
+.options2{
+    margin-right: 15rem;
+}
+.options3{
+    margin-right: 20px;
+}

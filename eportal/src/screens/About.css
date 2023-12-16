@@ -6,61 +6,10 @@
 
 .maincontainer {
   display: flex;
-  align-items: center;
-  
 
 }
-.container1{
-  width: 50%;
-}
-.container2{
-  width: 50%;
-}
-
-.box1 {
-
-  background-color: grey;
-  margin: 34px;
-  padding: 34px;
-  height: 150px;
-  text-align: center;
-  font-size: 1.8rem;
-
-}
-
-.box2 {
-  background-color: grey;
-  margin: 34px;
-  padding: 34px;
-  height: 150px;
-  text-align: center;
-  font-size: 1.8rem;
-
-
-}
-
-
-
-.boxbutton {
-  text-align: end;
-  flex-direction: column;
-  display: flex;
-  position: absolute;
-  margin-left: 26rem;
-  margin-top: -5rem;
-}
-
-
-.vision {
-  margin-right: 21px;
-  padding: 37px;
+.vision{
   color: white;
-}
-
-.vision p {
-  font-size: 17px;
-  color: white;
-
 }
 
 .about2 {

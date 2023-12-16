@@ -1,28 +1,58 @@
 
 .fcontainer{
     background-color: #e8dfc5;
-    width: 100vw;
+    height: 800px;
+    width: 100%;
 
 }
 .fmainblock{
     display: flex;
 }
 .fheading{
+    font-size: 70px;
     padding: 40px;
-    margin-top: 0;
-    padding-bottom: 80px;
+    margin-top: 40px;
+    font-family: 'Audiowide', sans-serif; 
+     
 
 }
 .fblock2{
     word-spacing: 13px;
+    margin-top: 3rem;
     font-family: 'Audiowide', sans-serif; 
 
 }
 .fpara{
+    margin-top: 5.3rem;
+    word-spacing: 7px;
     padding: 50px;
+    font-size: 25px;
+    width: 500px;
 }
-.fblock2{
-   margin-left: 12rem;
-   padding: 50px;
-   font-size: 1rem;
+
+.bigbox{
+   
+     word-spacing: 7px;
+     padding: 50px;
+     font-size: 25px;
+     width: 600px;
+     margin-top: 13rem;
+    position: absolute; 
+    margin-left: 34rem;
+
+}
+.hr{
+    width: 90%;
+    height: 3px;
+    color: solid black;
+    background-color: black;
+    border: none;
+}
+.labels{
+    padding-top: 17px;
+    padding-left: 100px;
+}
+.font{
+    font-size: 25px;
+    font-family: 'Audiowide', sans-serif; 
 }

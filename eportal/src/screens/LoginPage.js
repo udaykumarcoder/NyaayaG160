@@ -1,5 +1,7 @@
 import React from 'react';
+//import {HashLink as Link} from 'react-router-hash-link';
 import './LoginPage.css';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
@@ -7,7 +9,7 @@ const LoginPage = () => {
     <div class="container">
     <div class="transparent-box">
       
-        <h1 class="c">LOGIN</h1>
+        <h1 id="font" >LOGIN</h1>
         <h2 class="a">Login as:</h2>
         <table>
             <tr>
@@ -18,75 +20,80 @@ const LoginPage = () => {
         </table>
         <table>
         <tr>
-            <td class="a">
+            <td class="f">
                 <label for="State"><h2>Select State:</h2></label>
                 <div class="dropdown">
-                    <button>Select State/Union territory</button>
+                    <button style={{ height:'35px' , width:'200px' ,textAlign:'left'}}>Select State/Union territory</button>
                     <div class="dropdown-content">
-                      <a href="#">Andhra Pradesh</a>
-                      <a href="#">Arunachal Pradesh</a>
-                      <a href="#">Assam</a>
-                      <a href="#">Bihar</a>
-                      <a href="#">Chhattisgarh</a>
-                      <a href="#">Goa</a>
-                      <a href="#">Gujarat</a>
-                      <a href="#">Haryana</a>
-                      <a href="#">Himachal Pradesh</a>
-                      <a href="#">Jharkhand</a>
-                      <a href="#">Karnataka</a>
-                      <a href="#">Kerala</a>
-                      <a href="#">Madhya Pradesh</a>
-                      <a href="#">Manipur</a>
-                      <a href="#">Meghalaya</a>
-                      <a href="#">Mizoram</a>
-                      <a href="#">Nagaland</a>
-                      <a href="#">Odisha</a>
-                      <a href="#">Punjab</a>
-                      <a href="#">Rajasthan</a>
-                      <a href="#">Sikkim</a>
-                      <a href="#">Tamil Nadu</a>
-                      <a href="#">Telangana</a>
-                      <a href="#">Tripura</a>
-                      <a href="#">Uttarakhand</a>
-                      <a href="#">Uttar Pradesh</a>
-                      <a href="#">West Bengal</a>
-                      <a href="#">Andaman and Nicobar Islands</a>
-                      <a href="#">Chandigarh</a>
-                      <a href="#">Dadra and Nagar Haveli and Daman and Diu</a>
-                      <a href="#">Govt of NCT of Delhi</a>
-                      <a href="#">Jammu and Kashmir</a>
-                      <a href="#">Ladakh</a>
-                      <a href="#">Lakshadweep</a>
-                      <a href="#">Puducherry</a>
+                      <button >Andhra Pradesh</button>
+                      <button >Arunachal Pradesh</button>
+                      <button>Assam</button>
+                      <button >Bihar</button>
+                      <button >Chhattisgarh</button>
+                      <button >Goa</button>
+                      <button>Gujarat</button>
+                      <button >Haryana</button>
+                      <button>Himachal Pradesh</button>
+                      <button>Jharkhand</button>
+                      <button>Karnataka</button>
+                      <button>Kerala</button>
+                      <button>Madhya Pradesh</button>
+                      <button>Manipur</button>
+                      <button>Meghalaya</button>
+                      <button>Mizoram</button>
+                      <button >Nagaland</button>
+                      <button >Odisha</button>
+                      <button>Punjab</button>
+                      <button>Rajasthan</button>
+                      <button>Sikkim</button>
+                      <button>Tamil Nadu</button>
+                      <button >Telangana</button>
+                      <button>Tripura</button>
+                      <button>Uttarakhand</button>
+                      <button>Uttar Pradesh</button>
+                      <button>West Bengal</button>
+                      <button>Andaman and Nicobar Islands</button>
+                      <button>Chandigarh</button>
+                      <button>Dadra and Nagar Haveli and Daman and Diu</button>
+                      <button>Govt of NCT of Delhi</button>
+                      <button>Jammu and Kashmir</button>
+                      <button>Ladakh</button>
+                      <button>Lakshadweep</button>
+                      <button>Puducherry</button>
+                     
                     </div>
                   </div>
             </td>
             <td class="b">
-                <label for="Username"><h2>Username:</h2></label>
-                <h2><input type="number" name="Username" placeholder="Barcode/Email/Phone no."/></h2>
+                <label for="Username"><h2 className='i'>Username:</h2></label>
+                <h2><input  className='o' type="email" name="Username" placeholder="Email"/></h2>
             </td>
         </tr>
         <tr>
-            <td class="a">
+            <td class="f">
                 <label for="Password"><h2>Password:</h2></label>
-                <h2><input type="password" name="Password" placeholder="Enter password"/></h2>
+                <h2><input className='n' type="password" name="Password" placeholder="Enter password"/></h2>
             </td>
             <td class="b">
             
                 <label for="Otp"><h2>OTP Authentication:</h2></label>
                 <div className='omg'>
-                <button>Send OTP</button>
-                <h2><input class="m" type="number" name="Otp" placeholder="Enter OTP" /></h2>
+                <button style={{height:'40px', width:'100px' }}>Send OTP</button>
+                <h2 className='m'><input className='p' type="number" name="Otp" placeholder="Enter OTP" /></h2>
                 </div>
-                
             </td>
-        </tr>
+            </tr>
         </table>
+        <div className='x'>
+       <button ><b>LOGIN</b></button>
+       </div>
+       <Link id="back" to='/#home'><button className='backbtn'> Back </button></Link>
         <div class="c">
-        <h3 >Don't have an account?</h3>
+        <h4 >Don't have an account?</h4>
         <button class="btn">SIGN UP</button>
         </div>
     </div>
+   
     </div>
       
     </div>

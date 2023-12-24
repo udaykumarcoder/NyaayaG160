@@ -1,21 +1,40 @@
+* {
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.maincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Add space between the flex items */
+}
+
+.card, .vision {
+  flex: 1 0 calc(50% - 20px); /* Subtract the total padding and margin from the width */
+  max-width: calc(50% - 20px); /* Subtract the total padding and margin from the width */
+  margin: 10px; /* Add some margin around the items */
+}
+.card{
+  background-color: grey;
+}
+
+.vision {
+  color: white;
+  word-wrap: break-word; 
+}
+
 .about {
   background-color: black;
   width: 100vw;
   font-family: 'Audiowide', sans-serif;
 }
 
-.maincontainer {
-  display: flex;
 
-}
-.vision{
-  color: white;
-}
 
 .about2 {
   background-color: black;
   width: 100vw;
   font-family: 'Audiowide', sans-serif;
+  margin-top: -11px;
   
 }
 

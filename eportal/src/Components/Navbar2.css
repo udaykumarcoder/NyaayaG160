@@ -1,6 +1,20 @@
-
+*{
+    margin: 0;
+}
+.logonyaya{
+    font-size: 34px;
+}
+.logoheading{
+    margin-left: 0px;
+}
+.logosubheading{
+    font-size: 18px;
+    margin-top: -19px;
+    margin-left: 4px;
+}
 .navbar2{
     background-color: #E8DFC5;
+
 
 }
 .logo{
@@ -14,8 +28,9 @@
 
 }
 .logoimg{
-    height:100px;
-    width: 100px;
+    height:60px;
+    width: 60px;
+    margin-top: 10px;
     background-color: white;
     
 }
@@ -32,6 +47,14 @@
     text-decoration: none;
     color: black;
 }
+.registrationform{
+    padding: 8px;
+    margin-left: 167px;
+    font-size: 25px;
+    margin-top: -29px;
+    font-family: 'Audiowide', sans-serif;
+
+}
 .options{
     display: flex;
     justify-content: space-evenly;
@@ -39,8 +62,8 @@
 }
 .radiogrp{
     display: flex;
-    align-items: center;
     padding-right: 7.5rem;
+    justify-content: flex-start;
 }
 .options1{
     margin-right: 13rem;

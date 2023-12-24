@@ -12,7 +12,7 @@ import Contact from './Contact';
 const Home = () => {
   return (
     <>
-
+      
       <div className='HOME w-full' >
         <Navbar />
         <section>
@@ -62,10 +62,6 @@ const Home = () => {
       <Faq/>
       <Contact/>
       
-
-    
-
-
 
     </>
   )

@@ -9,7 +9,7 @@ const About = () => {
       
       <section className="about" id='about'>
 
-        <div className="maincontainer" style={{ padding: '10px', margin: '10px' }}>
+        <div className="maincontainer" style={{ padding: '10px'}}>
 
           <div class="card w-100 " style={{ padding: '10px', margin: '10px' }}>
             <div class="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
@@ -30,7 +30,7 @@ const About = () => {
               <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i class="fa-solid fa-arrow-right"></i></span></button>  </Link>
             </div>
           </div>
-          <div className="vision " style={{ padding: '10px', margin: '10px' }}>
+          <div className="vision " style={{ padding: '10px'}}>
             <h2>MISSION</h2>
             <p>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
           </div>

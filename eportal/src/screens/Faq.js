@@ -5,7 +5,7 @@ import './Faq.css';
 const Faq = () => {
   return (
     <>
-    <div className="fcontainer" id='faq'>
+    <div className="fcontainer w-full" id='faq'>
       <div className="fmainblock">
       <div className="fblock1">
       <div className="fheading">

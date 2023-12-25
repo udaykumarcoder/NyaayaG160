@@ -7,7 +7,7 @@ import LitigantForm from './LitigantForm';
 import AdministratorForm from './AdministratorForm';
 
 const Navbar2 = () => {
-  const[selectedOption,setSelectedOption]=useState(null)
+  const[selectedOption,setSelectedOption]=useState('advocate')
 
   const renderForm=()=>{
     switch(selectedOption){
@@ -52,6 +52,7 @@ const Navbar2 = () => {
                 id="option1"
                 name="radio-group"
                 onChange={() => setSelectedOption('advocate')}
+                checked={selectedOption==='advocate'}
               />
               <label htmlFor="option1">Advocate</label><br />
             </div>
@@ -61,6 +62,7 @@ const Navbar2 = () => {
                 id="option2"
                 name="radio-group"
                 onChange={() => setSelectedOption('litigant')}
+                checked={selectedOption==='litigant'}
               />
               <label htmlFor="option2">Litigant</label><br />
             </div>
@@ -70,6 +72,7 @@ const Navbar2 = () => {
                 id="option3"
                 name="radio-group"
                 onChange={() => setSelectedOption('administrator')}
+                checked={selectedOption==='administrator'}
               />
               <label htmlFor="option3">Court Administrator</label><br />
             </div>

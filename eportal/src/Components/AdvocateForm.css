@@ -13,6 +13,8 @@
     border: 2px solid black;
     width: 25rem;
     background-color: #eaece1;
+    text-align: center;
+    align-items: center;
 }
 
 .tracking{
@@ -35,6 +37,15 @@
     margin-bottom: 3rem;
     font-family: 'Audiowide', sans-serif;
 }
+.contactContainer{
+    padding: 50px;
+}
+.popbuttons{
+    margin-top: 4rem;
+}
+.contactButtons{
+    margin-top: 4rem;
+}
 .form-group {
     margin-bottom: 20px; 
     text-align: left;
@@ -51,6 +62,7 @@
 }
 .inputs input{
     background-color: grey;
+    /* dob  */
     
 }
 .inputs select{
@@ -59,12 +71,59 @@
 }
 .advbuttons{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
 }
+
 .form-check{
     margin-top: 1.2rem;
 }
 .inputs{
     margin-top: 23px;
 }
+.otpInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.otpInput button{
+    height: 2rem;
+    width: 7rem;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+.otpInput input{
+    height: 3rem;
+    width: 12rem;
+    
+}
+
+.saveNext{
+    border-radius: 9px;
+    color: white;
+    background-color: grey;
+    font-weight:600;
+}
+.verifyBtn{
+    
+    color: white;
+    background-color: grey;
+    font-weight:600;
+}
+.back{
+    border-radius: 5px;
+    width: 5rem;
+    color: white;
+    background-color: grey;
+    font-weight:600;
+}
+.savebtn{
+    width: 6rem;
+    align-items: center;
+    border-radius: 5px;
+    color: white;
+    background-color: grey;
+}
+

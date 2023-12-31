@@ -26,8 +26,8 @@ const Navbar2 = () => {
       <section className='navbar2 w-full'>
         <div className="container">
           <div className="logo">
-            <div className="logoimg">
-            </div>
+            {/* <div className="logoimg">
+            </div> */}
 
             <div className="logoheading">
               <p className='logonyaya'>NYAAYA</p>

@@ -126,13 +126,13 @@ const AdvocateForm = () => {
                   <label for="name" class="col-sm-9 col-form-label">Bar Registration Number:</label>
                   <div class="inputs col-sm-9 barverify">
                     <input type="name" class="form-control" id="inputPassword" placeholder="State Code/Bar Code/Bar Year" />
-                    <button>VERIFY</button>
+                    <button className='verifyBtn'>VERIFY</button>
                   </div>
                 </div>
 
               </form>
               <div>
-                <button onClick={handleNext}>Save and Next</button>
+                <button className='saveNext' onClick={handleNext}>Save & Next</button>
               </div>
             </div>
 
@@ -273,9 +273,9 @@ const AdvocateForm = () => {
                   </div>
                 </div>
               </form>
-              <div className='advbuttons'>
-                <button onClick={handleBack}>Back</button>
-                <button onClick={handleNext}>Save and Next</button>
+              <div className='popbuttons advbuttons'>
+                <button className='back' onClick={handleBack}>Back</button>
+                <button className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
 
@@ -311,13 +311,12 @@ const AdvocateForm = () => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
-
-
             </div>
 
             <div className="right-box">
               <p className='bar'>CONTACT DETAILS</p>
               <form>
+                <div className="contactContainer">
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">Phone:</label>
                   <div class="inputs col-sm-7">
@@ -330,10 +329,11 @@ const AdvocateForm = () => {
                     <input type="email" class="form-control" id="inputPassword" placeholder="Enter Your Email ID" required />
                   </div>
                 </div>
+                </div>
               </form>
-              <div className='advbuttons'>
-                <button onClick={handleBack}>Back</button>
-                <button onClick={handleNext}>Save and Next</button>
+              <div className='contactButtons advbuttons'>
+                <button className='back' onClick={handleBack}>Back</button>
+                <button className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
 
@@ -388,10 +388,17 @@ const AdvocateForm = () => {
                     <input type="confirmpassword" class="form-control" id="inputPassword" placeholder="Re-Enter Password" required />
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
+                  <div class="otpInput inputs col-sm-12">
+                    <button>Send OTP</button>
+                    <input type="text" class="form-control" id="inputOtp" placeholder="Enter OTP" required />
+                  </div>
+                </div>
               </form>
               <div className='advbuttons'>
-                <button onClick={handleBack}>Back</button>
-                <button>Save and Submit</button>
+                <button className='back' onClick={handleBack}>Back</button>
+                <button className='save'>Save</button>
               </div>
             </div>
 

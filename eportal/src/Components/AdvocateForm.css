@@ -9,7 +9,7 @@ so if u want to change any thing change there */
 
 }
 
-.advleftbox{
+.left-box{
     border-radius: 15px;
     border: 2px solid black;
     width: 25rem;
@@ -129,16 +129,16 @@ so if u want to change any thing change there */
     background-color: grey;
 }
 
-/* CSS for Big Laptop */
-@media screen and (min-width: 1200px) {
-    .container {
+/* CSS for 17-inch Laptop */
+@media screen and (min-width: 1367px) {
+    .right-box {
         width: 60rem;
     }
 }
 
-/* CSS for Small Laptop */
-@media screen and (max-width: 1199px) {
-    .container {
+/* CSS for 14-inch Laptop */
+@media screen and (max-width: 1366px) {
+    .right-box {
         width: 42rem;
     }
 }

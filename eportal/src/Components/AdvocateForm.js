@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import './AdvocateForm.css';
+import DateInput from './Date';
 
 const AdvocateForm = () => {
   const [step, setStep] = useState(1);
+ 
 
   const handleNext = () => {
+    
     setStep(step + 1);
+    
   };
   const handleBack = () => {
     setStep(step - 1);
   };
+
+  
 
   const renderStep = () => {
     switch (step) {
@@ -49,7 +55,7 @@ const AdvocateForm = () => {
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">Name:</label>
                   <div class="inputs col-sm-7">
-                    <input type="name" class="form-control" id="inputPassword" placeholder="Enter Your Name" required />
+                    <input type="text" class="form-control" id="inputPassword" placeholder="Enter Your Name" required />
                   </div>
                 </div>
 
@@ -111,8 +117,8 @@ const AdvocateForm = () => {
                 </div>
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">DOB:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="name" class="form-control" id="inputPassword" placeholder="Still pending" />
+                  <div class="inputs col-sm-3 mt-1">
+                    <DateInput />
                   </div>
                 </div>
 
@@ -267,7 +273,7 @@ const AdvocateForm = () => {
                   </div>
                 </div>
               </form>
-              <div className='buttons'>
+              <div className='advbuttons'>
                 <button onClick={handleBack}>Back</button>
                 <button onClick={handleNext}>Save and Next</button>
               </div>
@@ -325,7 +331,7 @@ const AdvocateForm = () => {
                   </div>
                 </div>
               </form>
-              <div className='buttons'>
+              <div className='advbuttons'>
                 <button onClick={handleBack}>Back</button>
                 <button onClick={handleNext}>Save and Next</button>
               </div>
@@ -333,8 +339,8 @@ const AdvocateForm = () => {
 
           </div>
         );
-        
-        case 4:
+
+      case 4:
         return (
           <div className="step">
             <div className="left-box">
@@ -353,7 +359,7 @@ const AdvocateForm = () => {
               </div>
               <div className="tracking">
                 <div className='track3'>
-                  <input type="radio" id='t3' checked/>
+                  <input type="radio" id='t3' checked />
                 </div>
                 <label htmlFor="t3">Contact Details</label>
               </div>
@@ -368,7 +374,7 @@ const AdvocateForm = () => {
             </div>
 
             <div className="right-box">
-              <p className='bar'>CREATE PASSWORD <br/>& OTP VERIFICATION</p>
+              <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
               <form>
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">Password:</label>
@@ -383,7 +389,7 @@ const AdvocateForm = () => {
                   </div>
                 </div>
               </form>
-              <div className='buttons'>
+              <div className='advbuttons'>
                 <button onClick={handleBack}>Back</button>
                 <button>Save and Submit</button>
               </div>
@@ -392,7 +398,7 @@ const AdvocateForm = () => {
           </div>
         );
 
-      
+
 
       default:
         return null;
@@ -407,3 +413,5 @@ const AdvocateForm = () => {
 }
 
 export default AdvocateForm;
+
+

@@ -1,5 +1,19 @@
 
-  
+.phoneNote{
+    color: red;
+    background-color: #E8DFC5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 23px;
+}
+
+.phoneNote p{
+    text-align: center;
+    text-decoration: underline;
+
+}
 .step{
     display: flex;
     padding: 3rem;

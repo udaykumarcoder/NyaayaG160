@@ -22,7 +22,7 @@
 
 }
 
-.left-box{
+.adminLeftbox{
     border-radius: 15px;
     border: 2px solid black;
     width: 25rem;
@@ -35,7 +35,7 @@
     padding: 3.5rem;
     justify-content: center;
 }
-.right-box{
+.adminRightbox{
     padding: 3rem;
     height: 40rem;
     width: 60rem;
@@ -86,14 +86,17 @@
 
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {
-    .right-box {
+    .adminRightbox {
         width: 60rem;
     }
 }
 
 /* CSS for 14-inch Laptop */
 @media screen and (max-width: 1366px) {
-    .right-box {
-        width: 42rem;
+    .adminRightbox {
+        width: 45rem;
     }
-}
+    .adminLeftbox{
+        width: 22rem;
+    }
+} 

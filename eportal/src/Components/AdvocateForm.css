@@ -9,7 +9,7 @@ so if u want to change any thing change there */
 
 }
 
-.left-box{
+.advocLeftbox{
     border-radius: 15px;
     border: 2px solid black;
     width: 25rem;
@@ -24,7 +24,7 @@ so if u want to change any thing change there */
     padding: 3.5rem;
     justify-content: center;
 }
-.right-box{
+.advocRightbox{
     padding: 3rem;
     height: 40rem;
     width: 60rem;
@@ -131,14 +131,17 @@ so if u want to change any thing change there */
 
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {
-    .right-box {
+    .advocRightbox {
         width: 60rem;
     }
 }
 
 /* CSS for 14-inch Laptop */
 @media screen and (max-width: 1366px) {
-    .right-box {
-        width: 42rem;
+    .advocRightbox {
+        width: 45rem;
     }
-}
+    .advocLeftbox{
+        width: 22rem;
+    }
+} 

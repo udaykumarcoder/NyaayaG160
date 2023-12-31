@@ -22,7 +22,7 @@ const LitigantForm = () => {
             <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
           </div>
           <div className="step">
-            <div className="left-box">
+            <div className="litigantLeftbox">
               <div className="tracking">
                 <div className='track1'>
                   <input type="radio" id='t1' />
@@ -43,7 +43,7 @@ const LitigantForm = () => {
               </div>
             </div>
 
-            <div className="right-box">
+            <div className="litigantRightbox">
               <p className='bar'>PERSONAL DETAILS</p>
               <form>
                 <div class="form-group row">
@@ -133,7 +133,7 @@ const LitigantForm = () => {
             <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
           </div>
           <div className="step">
-            <div className="left-box">
+            <div className="litigantLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -157,7 +157,7 @@ const LitigantForm = () => {
 
             </div>
 
-            <div className="right-box">
+            <div className="litigantRightbox">
               <p className='bar'>CONTACT DETAILS</p>
               <form>
                 <div class="form-group row">
@@ -190,7 +190,7 @@ const LitigantForm = () => {
             <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
           </div>
           <div className="step">
-            <div className="left-box">
+            <div className="litigantLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -214,7 +214,7 @@ const LitigantForm = () => {
 
             </div>
 
-            <div className="right-box">
+            <div className="litigantRightbox">
               <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
               <form>
                 <div class="form-group row">

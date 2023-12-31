@@ -20,7 +20,7 @@ const AdministratorForm = () => {
           <>
           
           <div className="step">
-            <div className="left-box">
+            <div className="adminLeftbox">
               <div className="tracking">
                 <div className='track1'>
                   <input type="radio" id='t1' />
@@ -41,7 +41,7 @@ const AdministratorForm = () => {
               </div>
             </div>
 
-            <div className="right-box">
+            <div className="adminRightbox">
               <p className='bar'>PERSONAL DETAILS</p>
               <form>
                 <div class="form-group row">
@@ -129,7 +129,7 @@ const AdministratorForm = () => {
           <>
           
           <div className="step">
-            <div className="left-box">
+            <div className="adminLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -153,7 +153,7 @@ const AdministratorForm = () => {
 
             </div>
 
-            <div className="right-box">
+            <div className="adminRightbox">
               <p className='bar'>CONTACT DETAILS</p>
               <form>
                 <div class="form-group row">
@@ -184,7 +184,7 @@ const AdministratorForm = () => {
           <>
          
           <div className="step">
-            <div className="left-box">
+            <div className="adminLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -208,7 +208,7 @@ const AdministratorForm = () => {
 
             </div>
 
-            <div className="right-box">
+            <div className="adminRightbox">
               <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
               <form>
                 <div class="form-group row">

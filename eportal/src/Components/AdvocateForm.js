@@ -22,7 +22,7 @@ const AdvocateForm = () => {
       case 1:
         return (
           <div className="step">
-            <div className="left-box">
+            <div className="advocLeftbox">
               <div className="tracking">
                 <div className='track1'>
                   <input type="radio" id='t1' />
@@ -49,7 +49,7 @@ const AdvocateForm = () => {
               </div>
             </div>
 
-            <div className="right-box">
+            <div className="advocRightbox">
               <p className='bar'>BAR REGISTRATION</p>
               <form>
                 <div class="form-group row">
@@ -143,7 +143,7 @@ const AdvocateForm = () => {
       case 2:
         return (
           <div className="step">
-            <div className="left-box">
+            <div className="advocLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -170,7 +170,7 @@ const AdvocateForm = () => {
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
             </div>
-            <div className="right-box">
+            <div className="advocRightbox">
               <p className='bar'>PLACE OF PRACTICE</p>
               <form>
                 <div className="form-group row">
@@ -285,7 +285,7 @@ const AdvocateForm = () => {
       case 3:
         return (
           <div className="step">
-            <div className="left-box">
+            <div className="advocLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -313,7 +313,7 @@ const AdvocateForm = () => {
               </div>
             </div>
 
-            <div className="right-box">
+            <div className="advocRightbox">
               <p className='bar'>CONTACT DETAILS</p>
               <form>
                 <div className="contactContainer">
@@ -343,7 +343,7 @@ const AdvocateForm = () => {
       case 4:
         return (
           <div className="step">
-            <div className="left-box">
+            <div className="advocLeftbox">
 
               <div className="tracking">
                 <div className='track1'>
@@ -373,7 +373,7 @@ const AdvocateForm = () => {
 
             </div>
 
-            <div className="right-box">
+            <div className="advocRightbox">
               <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
               <form>
                 <div class="form-group row">

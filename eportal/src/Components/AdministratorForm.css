@@ -83,3 +83,17 @@
 .inputs{
     margin-top: 23px;
 }
+
+/* CSS for Big Laptop */
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 60rem;
+    }
+}
+
+/* CSS for Small Laptop */
+@media screen and (max-width: 1199px) {
+    .container {
+        width: 42rem;
+    }
+}

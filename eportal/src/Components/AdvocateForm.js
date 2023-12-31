@@ -22,7 +22,7 @@ const AdvocateForm = () => {
       case 1:
         return (
           <div className="step">
-            <div className="left-box">
+            <div className="advleftbox">
               <div className="tracking">
                 <div className='track1'>
                   <input type="radio" id='t1' />

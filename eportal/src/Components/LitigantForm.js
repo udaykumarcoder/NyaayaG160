@@ -117,7 +117,7 @@ const LitigantForm = () => {
                 </div>
               </form>
               <div>
-                <button onClick={handleNext}>Save and Next</button>
+                <button className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
           </div>
@@ -160,6 +160,7 @@ const LitigantForm = () => {
             <div className="litigantRightbox">
               <p className='bar'>CONTACT DETAILS</p>
               <form>
+              <div className="contactContainer">
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">Phone:</label>
                   <div class="inputs col-sm-7">
@@ -172,10 +173,11 @@ const LitigantForm = () => {
                     <input type="email" class="form-control" id="inputPassword" placeholder="Enter Your Email ID" required />
                   </div>
                 </div>
+                </div>
               </form>
               <div className='advbuttons'>
-                <button onClick={handleBack}>Back</button>
-                <button onClick={handleNext}>Save and Next</button>
+                <button className='back' onClick={handleBack}>Back</button>
+                <button className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
 
@@ -229,9 +231,16 @@ const LitigantForm = () => {
                     <input type="confirmpassword" class="form-control" id="inputPassword" placeholder="Re-Enter Password" required />
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
+                  <div class="otpInput inputs col-sm-12">
+                    <button>Send OTP</button>
+                    <input type="text" class="form-control" id="inputOtp" placeholder="Enter OTP" required />
+                  </div>
+                </div>
               </form>
               <div className='advbuttons'>
-                <button onClick={handleBack}>Back</button>
+                <button className='back' onClick={handleBack}>Back</button>
                 <button>Save and Submit</button>
               </div>
             </div>

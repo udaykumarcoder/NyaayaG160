@@ -233,7 +233,7 @@ const AdvocateForm = () => {
                   <label htmlFor="state" className="col-sm-3 col-form-label">Select District:</label>
                   <div className="inputs col-sm-7">
                     <select id="state" name="state" className="custom-select" style={{ height: '35px', width: '100%', textAlign: 'left' }}>
-                      <option value="" >Pending to make dynamic</option>
+                      <option value="" >Select District</option>
                       <option value="AndhraPradesh">Andhra Pradesh</option>
                       <option value="ArunachalPradesh">Arunachal Pradesh</option>
                       <option value="Assam">Assam</option>

@@ -11,10 +11,10 @@ const About = () => {
 
         <div className="maincontainer" style={{ padding: '10px'}}>
 
-          <div class="card w-100 " style={{ padding: '10px', margin: '10px' }}>
-            <div class="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
-              <p class="card-text">Seek efficient resolution for managing multiple cases</p>
-              <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i class="fa-solid fa-arrow-right"></i></span></button>  </Link>
+          <div className="card w-100 " style={{ padding: '10px', margin: '10px' }}>
+            <div className="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
+              <p className="card-text">Seek efficient resolution for managing multiple cases</p>
+              <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
             </div>
           </div>
           <div className="vision " style={{ padding: '10px', margin: '10px' }}>
@@ -24,10 +24,10 @@ const About = () => {
         </div>
         <div className="maincontainer" style={{ padding: '10px', margin: '10px' }}>
 
-          <div class="card w-100 " style={{ padding: '10px', margin: '10px' }}>
-            <div class="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
-              <p class="card-text">Access your case data and track your case status</p>
-              <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i class="fa-solid fa-arrow-right"></i></span></button>  </Link>
+          <div className="card w-100 " style={{ padding: '10px', margin: '10px' }}>
+            <div className="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
+              <p className="card-text">Access your case data and track your case status</p>
+              <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
             </div>
           </div>
           <div className="vision " style={{ padding: '10px'}}>

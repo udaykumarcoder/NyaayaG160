@@ -65,11 +65,11 @@
     flex-grow: 1;
 }
 .inputs input{
-    background-color: grey;
+    background-color: white;
     
 }
 .inputs select{
-    background-color: grey;
+    background-color: white;
     
 }
 .advbuttons{

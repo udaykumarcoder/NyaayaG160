@@ -25,19 +25,19 @@ const LitigantForm = () => {
             <div className="litigantLeftbox">
               <div className="tracking">
                 <div className='track1'>
-                  <input type="radio" id='t1' />
+                  <input type="radio" id='t1' disabled />
                 </div>
                 <label htmlFor="t1">Personal Details</label>
               </div>
               <div className="tracking">
                 <div className='track3'>
-                  <input type="radio" id='t3' />
+                  <input type="radio" id='t3' disabled />
                 </div>
                 <label htmlFor="t3">Contact Details</label>
               </div>
               <div className="tracking">
                 <div className='track4'>
-                  <input type="radio" id='t4' />
+                  <input type="radio" id='t4' disabled/>
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
@@ -46,10 +46,10 @@ const LitigantForm = () => {
             <div className="litigantRightbox">
               <p className='bar'>PERSONAL DETAILS</p>
               <form>
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Name:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="name" class="form-control" id="inputPassword" placeholder="Enter Your Name" required />
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">Name:</label>
+                  <div className="inputs col-sm-7">
+                    <input type="name" className="form-control" id="inputPassword" placeholder="Enter Your Name" required />
                   </div>
                 </div>
 
@@ -97,9 +97,9 @@ const LitigantForm = () => {
                   </div>
                 </div>
 
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Gender:</label>
-                  <div class="inputs col-sm-7">
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">Gender:</label>
+                  <div className="inputs col-sm-7">
                     <select name="" id="" style={{ height: '35px', width: '100%' }}>
                       <option value="default">Select Gender</option>
                       <option value="male">Male</option>
@@ -109,9 +109,9 @@ const LitigantForm = () => {
 
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">DOB:</label>
-                  <div class="inputs col-sm-3 mt-1 mb-3">
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">DOB:</label>
+                  <div className="inputs col-sm-3 mt-1 mb-3">
                     <DateInput />
                   </div>
                 </div>
@@ -143,13 +143,13 @@ const LitigantForm = () => {
               </div>
               <div className="tracking">
                 <div className='track3'>
-                  <input type="radio" id='t3' />
+                  <input type="radio" id='t3' disabled />
                 </div>
                 <label htmlFor="t3">Contact Details</label>
               </div>
               <div className="tracking">
                 <div className='track4'>
-                  <input type="radio" id='t4' />
+                  <input type="radio" id='t4' disabled/>
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
@@ -161,16 +161,16 @@ const LitigantForm = () => {
               <p className='bar'>CONTACT DETAILS</p>
               <form>
               <div className="contactContainer">
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Phone:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="number" class="form-control" id="inputPassword" placeholder="Enter Your Phone Number" required />
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">Phone:</label>
+                  <div className="inputs col-sm-7">
+                    <input type="number" className="form-control" id="inputPassword" placeholder="Enter Your Phone Number" required />
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Email ID:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="email" class="form-control" id="inputPassword" placeholder="Enter Your Email ID" required />
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">Email ID:</label>
+                  <div className="inputs col-sm-7">
+                    <input type="email" className="form-control" id="inputPassword" placeholder="Enter Your Email ID" required />
                   </div>
                 </div>
                 </div>
@@ -208,7 +208,7 @@ const LitigantForm = () => {
               </div>
               <div className="tracking">
                 <div className='track4'>
-                  <input type="radio" id='t4' />
+                  <input type="radio" id='t4' disabled/>
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
@@ -219,23 +219,23 @@ const LitigantForm = () => {
             <div className="litigantRightbox">
               <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
               <form>
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Password:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Enter Your Password" required />
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">Password:</label>
+                  <div className="inputs col-sm-7">
+                    <input type="password" className="form-control" id="inputPassword" placeholder="Enter Your Password" required />
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Confirm Password:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="confirmpassword" class="form-control" id="inputPassword" placeholder="Re-Enter Password" required />
+                <div className="form-group row">
+                  <label for="name" className="col-sm-3 col-form-label">Confirm Password:</label>
+                  <div className="inputs col-sm-7">
+                    <input type="confirmpassword" className="form-control" id="inputPassword" placeholder="Re-Enter Password" required />
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
-                  <div class="otpInput inputs col-sm-12">
+                <div className="form-group row">
+                  <label for="name" className="col-sm-7 col-form-label">OTP Authentication:</label>
+                  <div className="otpInput inputs col-sm-12">
                     <button>Send OTP</button>
-                    <input type="text" class="form-control" id="inputOtp" placeholder="Enter OTP" required />
+                    <input type="text" className="form-control" id="inputOtp" placeholder="Enter OTP" required />
                   </div>
                 </div>
               </form>

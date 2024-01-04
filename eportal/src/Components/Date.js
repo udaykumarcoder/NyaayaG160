@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 
-function DateInput() {
-    const [date, setDate] = useState(new Date().toISOString().substr(0, 10)); // Set initial state to today's date
+function DateInput({ value, onChange }) {
+    const [date, setDate] = useState("dd-mm-yyyy");
 
     const handleDateChange = (event) => {
-        setDate(event.target.value); // Update the state when the input value changes
+        const newDate = event.target.value;
+        setDate(newDate);
+        onChange(newDate); // Invoke the onChange prop with the updated date
     };
 
     return (
         <div className="inputs col-sm-7">
-            <input 
-                type="date" 
-                id="start" 
-                name="trip-start" 
-                value={date} 
-                min="1900-01-01" 
-                max="2024-12-31" 
-                onChange={handleDateChange} // Handle the input change
+            <input
+                type="date"
+                id="dob"
+                name="dob"
+                value={date}
+                min="1900-01-01"
+                max="2024-12-31"
+                onChange={handleDateChange}
             />
         </div>
     );

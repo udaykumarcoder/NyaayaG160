@@ -4,9 +4,7 @@
   background-color: #0c1707;
   color: #e8dfc5;
 }
-hr{
-width: 95%;
-}
+
 .content1{
 padding-top: 30px;
 padding-left: 50px;
@@ -14,17 +12,15 @@ padding-left: 50px;
 #c1{
 display: flex;
 position: absolute;
-/* padding-left: 1040px; */
+
 }
 .c2{
 display: flex;
-position :absolute;
 margin-top: -10px;
-/* padding-left: 1000px; */
-text-align: right;
+
 }
 .nav{
-/* padding-left: 750px; */
+
 margin-top: 30px;
 font-size: 15px;
 

@@ -10,7 +10,7 @@ const Faq = () => {
   };
 
   return (
-    <div className="fcontainer w-full" id='faq' style={{ height: height }}>
+    <div className="fcontainer w-full" id='faq'>
       <div className="fmainblock">
         <div className="fblock1">
           <div className="fheading">

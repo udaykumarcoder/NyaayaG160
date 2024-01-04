@@ -12,7 +12,7 @@
 }
 
 .card {
-  
+  display: flex;
   width: 45vw;
   margin: 10px;
   border-radius: 1px;
@@ -26,7 +26,7 @@
 .card-body {
   
   padding: 10px;
-  margin: 10px;
+  margin-left: 10px;
 }
 .card-text{
   font-size: 1.5rem;
@@ -34,20 +34,22 @@
 .vision {
   margin: 10px;
   padding: 10px;
-  width: 45vw;
   color: white;
   word-wrap: break-word;
 }
 .box1{
   background-color: #e2dbd3;
   height: 12em;
-  width: 34em;
+  width: 32em;
   margin-top: 4rem;
+  margin-left: 45px;
 }
 .box2{
   background-color: #B09067;
   height: 12em;
-  width: 34em;
+  width: 32em;
+  margin-left: 45px;
+
 
 }
 
@@ -59,9 +61,7 @@
 .abtheadings{
   color: #B09067;
 }
-.abtboxcontent{
-  font-size: 1.2em;
-}
+
 
 .abtbuttons{
   display: flex;
@@ -83,6 +83,29 @@
   padding: 34px;
 }
 
-.aboutpage p {
-  font-size: 1.2rem;
+
+/* CSS for 17-inch Laptop */
+@media screen and (min-width: 1367px) {
+  .vision {
+    width: 55vw;
+  }
+  .abtboxcontent{
+    font-size: 1.6rem;
+  }
+  .aboutpage p {
+    font-size: 1.5rem;
+  }
+}
+
+/* CSS for 14-inch Laptop */
+@media screen and (max-width: 1366px) {
+  .vision{
+    width: 45vw;
+  }
+  .abtboxcontent{
+    font-size: 1.2rem;
+  }
+  .aboutpage p {
+    font-size: 1.3rem;
+  }
 }

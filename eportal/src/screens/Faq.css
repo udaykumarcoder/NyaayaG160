@@ -1,67 +1,62 @@
-.fcontainer {
+.fcontainer{
     background-color: #e8dfc5;
     height: 800px;
-    width: 100vw;
+    width: 100%;
 
 }
-
-.fmainblock {
+.fmainblock{
     display: flex;
 }
-
-.fheading {
-    font-size: 70px;
+.fheading{
+    font-size: 30px;
     padding: 40px;
-    margin-top: 40px;
-    font-family: 'Audiowide', sans-serif;
-
+    margin-top: 30px;
+    padding-bottom: 80px;
+    font-family: 'Audiowide', sans-serif; 
+     
 
 }
-
-.fblock2 {
+.fblock2{
     word-spacing: 13px;
-    margin-top: 3rem;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Audiowide', sans-serif; 
 
 }
-
-.fpara {
-    margin-top: 5.5rem;
-    word-spacing: 7px;
+.fpara{
+    margin-top: 60px;
     padding: 50px;
     font-size: 25px;
-    width: 500px;
 }
-
-.bigbox {
-
-    word-spacing: 7px;
-    padding: 50px;
-    width: 600px;
-    margin-top: 8rem;
+.fblock2{
+   margin-left: 3rem;
+   margin-top: -12px;
+   padding: 50px;
+   font-size: 20px;
+   padding-left: 10px;
+}
+.bigbox{
+    width: 800px;
+    height: 500px;
+    
     position: absolute;
+    margin-top: 13rem;
     margin-left: 34rem;
-
 }
-
-.hr {
-    width: 25rem;
+.hr{
+    width: 90%;
     height: 3px;
+    color: solid black;
     background-color: black;
     border: none;
 }
-
-.labels {
- 
+.labels{
+    padding-top: 17px;
     padding-left: 100px;
-    font-size: 0.5rem;
 }
-
-.font {
-    font-size: 1.5rem;
-    font-family: 'Audiowide', sans-serif;
+.font{
+    font-size: 30px;
+    font-family: 'Audiowide', sans-serif; 
 }
-
-.lpara{
-    font-size: 1.5rem;
+#faq
+{
+    overflow-x:hidden;
 }

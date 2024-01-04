@@ -12,12 +12,14 @@ padding-left: 50px;
 #c1{
 display: flex;
 position: absolute;
-
+/* padding-left: 1040px; */
 }
 .c2{
 display: flex;
+position :absolute;
 margin-top: -10px;
-
+/* padding-left: 1000px; */
+text-align: right;
 }
 .nav{
 
@@ -25,10 +27,7 @@ margin-top: 30px;
 font-size: 15px;
 
 }
-.nav ul{
 
-padding-right: 100px;
-}
 .nav ul li{
 list-style-type: none;
 display: inline;
@@ -38,4 +37,47 @@ margin: 0px 20px;
 #tags{
 color:  #e8dfc5;
 text-decoration: none;
+}
+
+
+/* CSS for 17-inch Laptop */
+@media screen and (min-width: 1367px) {
+  .content2{
+  
+    padding-left: 15rem;
+    
+    }
+  .c1{
+  
+    padding-left: 15rem;
+  
+  }
+  .c2{
+  display: flex;
+  margin-top: 20px;
+  padding-left: 15rem;
+  
+  
+  }
+}
+
+/* CSS for 14-inch Laptop */
+@media screen and (max-width: 1366px) {
+  .content2{
+  
+    padding-left: 1rem;
+    
+    }
+  .c1{
+  padding-left: 0;
+    /* padding-left: 15rem; */
+  
+  }
+  .c2{
+  display: flex;
+  margin-top: 20px;
+  /* padding-left: 15rem; */
+  
+  
+  }
 }

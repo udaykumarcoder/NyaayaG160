@@ -23,7 +23,7 @@ text-align: right;
 }
 .nav{
 
-margin-top: 30px;
+margin-top: 50px;
 font-size: 15px;
 
 }
@@ -65,12 +65,12 @@ text-decoration: none;
 @media screen and (max-width: 1366px) {
   .content2{
   
-    padding-left: 1rem;
+  padding-left: 1rem;
     
     }
   .c1{
   padding-left: 0;
-    /* padding-left: 15rem; */
+    
   
   }
   .c2{

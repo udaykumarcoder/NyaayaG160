@@ -20,7 +20,8 @@ const Contact = () => {
       </section>
       </td>
       <td>
-      <b className="c2">Quick Links</b>
+      <div className="c2"><b >Quick Links</b></div>
+      
       <section className="content2">
       <div className="nav">
       <ul>
@@ -35,7 +36,7 @@ const Contact = () => {
       <b id="c1">Social</b>
       <br/>
       <br/>
-      <p id="c1">hello</p>
+      {/* <p id="c1">hello</p> */}
       </section>
       </td>
       </tr>

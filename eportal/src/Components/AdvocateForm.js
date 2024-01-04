@@ -18,14 +18,14 @@ const AdvocateForm = () => {
  
 
   const handleInputChange = (field, value) => {
-    // console.log(`Updating ${field} to:`, value);
+    console.log(`Updating ${field} to:`, value);
   
     setFormData({
       ...formData,
       [field]: value,
     });
   
-    // console.log("formData after updating:", formData);
+    console.log("formData after updating:", formData);
   };
   
 
@@ -40,13 +40,7 @@ const AdvocateForm = () => {
       
     
     }
-    if (formData.popstate && formData.lang){
-      setStep(step+1);
-    }
-    else{
-      alert('Please fill in all details before proceeding.');
-
-    }
+    
 
   };
   const handleBack = () => {
@@ -178,15 +172,9 @@ const AdvocateForm = () => {
                   </div>
                 </div>
                 <div className="form-group row">
-                  <label htmlFor="name" className="col-sm-3 col-form-label">DOB:</label>
-                  <div className="inputs col-sm-3 mt-1">
-                    <DateInput
-                      id="dob"
-                      name="dob"
-                      value={formData.dob}
-                      onChange={(date) => handleInputChange('dob', date)}
-                    />
-                  </div>
+                <label htmlFor="dob" className="col-sm-3 col-form-label">DOB:</label>
+                  <input type="date"  id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft:'10px',backgroundColor:'grey' }} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)}/>
+                  <br></br>
                 </div>
 
                 <div className="form-group row">

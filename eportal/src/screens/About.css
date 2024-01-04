@@ -1,25 +1,54 @@
 * {
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  box-sizing: border-box;
+  /* Include padding and border in element's total width and height */
 }
 
 .maincontainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Add space between the flex items */
+  justify-content: space-between;
+  padding: 10px;
+  /* Add space between the flex items */
 }
 
-.card, .vision {
-  flex: 1 0 calc(50% - 20px); /* Subtract the total padding and margin from the width */
-  max-width: calc(50% - 20px); /* Subtract the total padding and margin from the width */
-  margin: 10px; /* Add some margin around the items */
-}
-.card{
-  background-color: grey;
+.card {
+  display: flex;
+  width: 45vw;
+  margin: 10px;
+  border-radius: 1px;
 }
 
+.card {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.card-body {
+  
+  padding: 10px;
+  margin: 10px;
+}
+.card-text{
+  font-size: 1.5rem;
+}
 .vision {
+  margin: 10px;
+  padding: 10px;
+  width: 45vw;
   color: white;
-  word-wrap: break-word; 
+  word-wrap: break-word;
+}
+.box1{
+  background-color: #e2dbd3;
+  height: 12em;
+  width: 34em;
+  margin-top: 4rem;
+}
+.box2{
+  background-color: #B09067;
+  height: 12em;
+  width: 34em;
+
 }
 
 .about {
@@ -27,7 +56,18 @@
   width: 100vw;
   font-family: 'Audiowide', sans-serif;
 }
+.abtheadings{
+  color: #B09067;
+}
+.abtboxcontent{
+  font-size: 1.2em;
+}
 
+.abtbuttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
 
 .about2 {
@@ -35,14 +75,12 @@
   width: 100vw;
   font-family: 'Audiowide', sans-serif;
   margin-top: -11px;
-  
 }
 
 .aboutpage {
   width: 100%;
   color: white;
   padding: 34px;
-
 }
 
 .aboutpage p {

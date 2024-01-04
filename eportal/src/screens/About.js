@@ -9,36 +9,36 @@ const About = () => {
       
       <section className="about" id='about'>
 
-        <div className="maincontainer" style={{ padding: '10px'}}>
+        <div className="maincontainer">
 
-          <div className="card w-100 " style={{ padding: '10px', margin: '10px' }}>
-            <div className="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
+          <div className="card box1" >
+            <div className="card-body" >
               <p className="card-text">Seek efficient resolution for managing multiple cases</p>
-              <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
+              <div className="abtbuttons">
+              <Link to="/signup"><button className=' btn btn-primary btn-sm '>Signup<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
+              </div>
             </div>
           </div>
-          <div className="vision " style={{ padding: '10px', margin: '10px' }}>
-            <h2>VISION</h2>
-            <p>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
+          <div className="vision" >
+            <h2 className='abtheadings'>VISION</h2>
+            <p className='abtboxcontent'>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
           </div>
         </div>
-        <div className="maincontainer" style={{ padding: '10px', margin: '10px' }}>
+        <div className="maincontainer">
 
-          <div className="card w-100 " style={{ padding: '10px', margin: '10px' }}>
-            <div className="card-body fs-4" style={{ padding: '10px', margin: '10px' }}>
+          <div className="card box2" >
+            <div className="card-body fs-2" >
               <p className="card-text">Access your case data and track your case status</p>
-              <Link to="/signup"><button className='btn btn-primary btn-sm ' style={{ padding: '10px', margin: '10px' }}>Signup<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
+              <div className="abtbuttons">
+              <Link to="/login"><button className='btn btn-primary btn-sm'>Login<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
+            </div>
             </div>
           </div>
-          <div className="vision " style={{ padding: '10px'}}>
-            <h2>MISSION</h2>
-            <p>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
+          <div className="vision ">
+            <h2 className='abtheadings'>MISSION</h2>
+            <p className='abtboxcontent'>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
           </div>
         </div>
-
-
-
-
 
       </section>
       <section className="about2" >

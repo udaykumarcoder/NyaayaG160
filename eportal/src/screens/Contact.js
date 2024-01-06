@@ -7,6 +7,7 @@ const Contact = () => {
     <>
     <div className="contact" id='contacts'>
       <table>
+      <tbody>
       <tr>
       <td >
       <section className="content1">
@@ -40,12 +41,14 @@ const Contact = () => {
       </section>
       </td>
       </tr>
+      </tbody>
       </table>
       <br/>
       <hr/>
       <h4 style={{textAlign:"center"}}>©️2023 Nyaaya,All Rights Reserved</h4>
 
       </div>
+      
       
     </>
   )

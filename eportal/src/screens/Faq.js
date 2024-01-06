@@ -4,7 +4,7 @@ import './Faq.css';
 const Faq = () => {
   return (
     <>
-    <div className="fcontainer w-full" id='faq' >
+    <div className="fcontainer" id='faq'>
       <div className="fmainblock">
       <div className="fblock1">
       <div className="fheading">
@@ -23,7 +23,7 @@ const Faq = () => {
 
       </div>
       <div className='bigbox'>
-      
+      <br/>
         <hr className='hr'/>
         <details className='labels'>
         <summary className='font'>Advocate registration</summary>

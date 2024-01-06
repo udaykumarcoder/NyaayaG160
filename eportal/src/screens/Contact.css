@@ -3,6 +3,7 @@
   width: 100vw;
   background-color: #0c1707;
   color: #e8dfc5;
+  box-sizing: border-box;
 }
 
 .content1{
@@ -12,7 +13,6 @@ padding-left: 50px;
 #c1{
 display: flex;
 position: absolute;
-/* padding-left: 1040px; */
 }
 .c2{
 display: flex;

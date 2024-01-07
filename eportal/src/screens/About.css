@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  
+
 }
 
 .maincontainer {
@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
-  
+
 }
 
 .card {
@@ -23,8 +23,9 @@
   padding: 10px;
   margin: 10px;
 }
+
 .card-body {
-  
+
   padding: 10px;
   margin-left: 10px;
 }
@@ -42,12 +43,13 @@
   width: 100vw;
   font-family: 'Audiowide', sans-serif;
 }
-.abtheadings{
+
+.abtheadings {
   color: #B09067;
 }
 
 
-.abtbuttons{
+.abtbuttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -73,59 +75,69 @@
   .vision {
     width: 59vw;
   }
-  .abtboxcontent{
+
+  .abtboxcontent {
     font-size: 1.6rem;
   }
+
   .aboutpage p {
     font-size: 1.9rem;
   }
-  .card-text{
+
+  .card-text {
     font-size: 1.7rem;
   }
-  .box1{
+
+  .box1 {
     background-color: #e2dbd3;
     height: 12.5em;
     width: 34em;
     margin-top: 4rem;
     margin-left: 45px;
   }
-  .box2{
+
+  .box2 {
     background-color: #B09067;
     height: 12.5em;
     width: 34em;
     margin-left: 45px;
-  
-  
+
+
   }
 }
 
 /* CSS for 14-inch Laptop */
 @media screen and (max-width: 1366px) {
-  .vision{
+  .vision {
     width: 45vw;
   }
-  .abtboxcontent{
+
+  .abtboxcontent {
     font-size: 1.2rem;
   }
+
   .aboutpage p {
     font-size: 1.3rem;
   }
-  .card-text{
+
+  .card-text {
     font-size: 1.5rem;
   }
-  .box1{
+
+  .box1 {
     background-color: #e2dbd3;
     height: 12em;
     width: 32em;
     margin-top: 4rem;
     margin-left: 45px;
   }
-  .box2{
+
+  .box2 {
     background-color: #B09067;
     height: 12em;
     width: 32em;
     margin-left: 45px;
-  
-  
+
+
   }
 }

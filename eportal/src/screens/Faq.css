@@ -1,5 +1,3 @@
-
-
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {
     .fcontainer {
@@ -8,30 +6,30 @@
         width: 100vw;
         padding: 10px;
         padding-left: 60px;
-    
+
     }
-    
+
     .fmainblock {
         display: flex;
     }
-    
+
     .fheading {
         font-size: 30px;
         padding: 40px;
         margin-top: 30px;
         padding-bottom: 80px;
         font-family: 'Audiowide', sans-serif;
-    
-    
+
+
     }
-    
+
     .fpara {
         margin-top: 60px;
         padding: 50px;
         font-size: 2rem;
-        margin-right:6rem;
+        margin-right: 6rem;
     }
-    
+
     .fblock2 {
         word-spacing: 13px;
         font-family: 'Audiowide', sans-serif;
@@ -40,8 +38,8 @@
         font-size: 20px;
         padding-left: 10px;
     }
-    
-    
+
+
     .hr {
         height: 3px;
         width: 40rem;
@@ -49,7 +47,7 @@
         background-color: black;
         border: none;
     }
-    
+
     .bigbox {
         margin-left: 54rem;
         overflow: auto;
@@ -58,22 +56,22 @@
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
     }
-   
-    
+
+
     .bigbox::-webkit-scrollbar {
         width: 0;
     }
-    
+
     .labels {
         padding-top: 17px;
-        
+
     }
-    
+
     .Font2 {
         font-size: 2.8rem;
         font-family: 'Audiowide', sans-serif;
     }
-    
+
     .bigbox {
         margin-top: 13rem;
     }
@@ -85,29 +83,29 @@
         background-color: #e8dfc5;
         height: 800px;
         width: 100vw;
-    
+
     }
-    
+
     .fmainblock {
         display: flex;
     }
-    
+
     .fheading {
         font-size: 30px;
         padding: 40px;
         margin-top: 30px;
         padding-bottom: 80px;
         font-family: 'Audiowide', sans-serif;
-    
-    
+
+
     }
-    
+
     .fpara {
         margin-top: 60px;
         padding: 50px;
         font-size: 25px;
     }
-    
+
     .fblock2 {
         word-spacing: 13px;
         font-family: 'Audiowide', sans-serif;
@@ -116,8 +114,8 @@
         font-size: 20px;
         padding-left: 10px;
     }
-    
-    
+
+
     .hr {
         height: 3px;
         width: 32rem;
@@ -125,7 +123,7 @@
         background-color: black;
         border: none;
     }
-    
+
     .bigbox {
         margin-left: 34rem;
         overflow: auto;
@@ -134,21 +132,21 @@
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
     }
-    
+
     .bigbox::-webkit-scrollbar {
         width: 0;
     }
-    
+
     .labels {
         padding-top: 17px;
-        
+
     }
-    
+
     .Font2 {
         font-size: 2rem;
         font-family: 'Audiowide', sans-serif;
     }
-    
+
     .bigbox {
         margin-top: 15rem;
     }

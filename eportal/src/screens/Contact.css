@@ -1,4 +1,4 @@
-.contact{
+.contact {
   height: 320px;
   width: 100vw;
   background-color: #0c1707;
@@ -9,80 +9,90 @@
 
 
 
-.nav ul li{
-list-style-type: none;
-display: inline;
-margin: 0px 20px;
+.nav ul li {
+  list-style-type: none;
+  display: inline;
+  margin: 0px 20px;
 
 }
-#tags{
-color:  #e8dfc5;
-text-decoration: none;
+
+#tags {
+  color: #e8dfc5;
+  text-decoration: none;
 }
 
 
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {
-  .content2{
-  
+  .content2 {
+
     padding-left: 15rem;
-    
-    }
-    .content1{
-      padding-top: 30px;
-      padding-left: 50px;
-      font-size: 1.3rem;
-      }
-  .c1{
-  
+
+  }
+
+  .content1 {
+    padding-top: 30px;
+    padding-left: 50px;
+    font-size: 1.3rem;
+  }
+
+  .c1 {
+
     padding-left: 15rem;
-  
+
   }
-  .c2{
-  display: flex;
-  margin-top: 20px;
-  padding-left: 15rem;
-  font-size: 1.3rem;
-  
-  
+
+  .c2 {
+    display: flex;
+    margin-top: 20px;
+    padding-left: 15rem;
+    font-size: 1.3rem;
+
+
   }
-  .contactRight{
+
+  .contactRight {
     margin-left: 5rem;
   }
-  .nav{
+
+  .nav {
 
     margin-top: 21px;
     font-size: 1.3rem;
-    
-    }
+
+  }
 }
 
 /* CSS for 14-inch Laptop */
 @media screen and (max-width: 1366px) {
-  .content2{
-  
-  padding-left: 1rem;
-  margin-right: 1.5rem;
-    
-    }
-  .c1{
-  padding-left: 0;
-    
+  .content2 {
+
+    padding-left: 1rem;
+    margin-right: 1.5rem;
+
   }
-  .c2{
-  display: flex;
-  margin-top: 20px;
- 
+
+  .c1 {
+    padding-left: 0;
+
   }
-  .nav{
+
+  .c2 {
+    display: flex;
+    margin-top: 20px;
+
+  }
+
+  .nav {
 
     margin-top: 21px;
     font-size: 1.2rem;
-    
-    }
-    .content1{
-      padding-top: 30px;
-      padding-left: 50px;
-      font-size: 1.1rem;
-      }
+
+  }
+
+  .content1 {
+    padding-top: 30px;
+    padding-left: 50px;
+    font-size: 1.1rem;
+  }
 }

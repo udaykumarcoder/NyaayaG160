@@ -26,7 +26,7 @@ const Faq = () => {
       <br/>
         <hr className='hr'/>
         <details className='labels'>
-        <summary className='font'>Advocate registration</summary>
+        <summary className='Font2'>Advocate registration</summary>
         Let us answer some of the <br/>
         most common questions <br/>
         you might have upfront.
@@ -34,7 +34,7 @@ const Faq = () => {
         <br/>
         <hr className='hr'/>
         <details className='labels'>
-        <summary className='font'>Litigant registration</summary>
+        <summary className='Font2'>Litigant registration</summary>
         1.I am an Advocate,how should I register myself on Nyaaya? <br/>
         To register on eFiling, fill up the online registration form. Click on the ‘New userRegister here’ link in the log-in screen to access the registration form.<br/>
         Facility for verification by Bar Council is also provided in the form. If there is no change in data fetched from Bar Council records, verification process is completed instantly.<br/>
@@ -44,7 +44,7 @@ const Faq = () => {
         <br/>
         <hr className='hr'/>
         <details className='labels'>
-        <summary className='font'>Case Filing</summary>
+        <summary className='Font2'>Case Filing</summary>
         Let us answer some of the <br/>
         most common questions <br/>
         you might have upfront.
@@ -52,7 +52,7 @@ const Faq = () => {
         <br/>
         <hr className='hr'/>
         <details className='labels'>
-        <summary className='font'>Case Appeal</summary>
+        <summary className='Font2'>Case Appeal</summary>
         Let us answer some of the <br/>
         most common questions <br/>
         you might have upfront.

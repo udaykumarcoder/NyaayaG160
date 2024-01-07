@@ -22,6 +22,7 @@ const Contact = () => {
       </section>
       </td>
       <td>
+        <div className='contactRight'>
       <div className="c2"><b >Quick Links</b></div>
       
       <section className="content2">
@@ -40,6 +41,7 @@ const Contact = () => {
       <br/>
       {/* <p id="c1">hello</p> */}
       </section>
+      </div>
       </td>
       </tr>
       </tbody>

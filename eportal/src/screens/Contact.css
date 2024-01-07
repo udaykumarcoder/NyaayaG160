@@ -1,21 +1,13 @@
 .contact{
-  height: 280px;
+  height: 320px;
   width: 100vw;
   background-color: #0c1707;
   color: #e8dfc5;
   box-sizing: border-box;
 }
 
-.content1{
-padding-top: 30px;
-padding-left: 50px;
-}
-.nav{
 
-margin-top: 50px;
-font-size: 15px;
 
-}
 
 .nav ul li{
 list-style-type: none;
@@ -36,6 +28,11 @@ text-decoration: none;
     padding-left: 15rem;
     
     }
+    .content1{
+      padding-top: 30px;
+      padding-left: 50px;
+      font-size: 1.3rem;
+      }
   .c1{
   
     padding-left: 15rem;
@@ -45,9 +42,19 @@ text-decoration: none;
   display: flex;
   margin-top: 20px;
   padding-left: 15rem;
+  font-size: 1.3rem;
   
   
   }
+  .contactRight{
+    margin-left: 5rem;
+  }
+  .nav{
+
+    margin-top: 21px;
+    font-size: 1.3rem;
+    
+    }
 }
 
 /* CSS for 14-inch Laptop */
@@ -60,13 +67,16 @@ text-decoration: none;
   .c1{
   padding-left: 0;
     
-  
   }
   .c2{
   display: flex;
   margin-top: 20px;
  
-  
-  
   }
+  .nav{
+
+    margin-top: 21px;
+    font-size: 1.5rem;
+    
+    }
 }

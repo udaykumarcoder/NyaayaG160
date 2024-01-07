@@ -1,6 +1,5 @@
 .HOME {
   background-image: url(../Assets/scourt.jpeg);
-  border-width: 10px;
   border-style: solid;
   border-color: #38303b;
   background-size: cover;
@@ -45,6 +44,10 @@
 
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {
+  .HOME {
+    
+    border-width: 19px;
+  }
   #nyaya {
     margin-top: 100px;
     font-size: 10rem;
@@ -68,7 +71,7 @@
 
   .drop select {
     margin-top: 1.4rem;
-    margin-right: 7rem;
+    margin-right: 4rem;
     width: 17rem;
     height: 3rem;
     font-size: 1.5rem;
@@ -85,6 +88,10 @@
 
 /* CSS for 14-inch Laptop */
 @media screen and (max-width: 1366px) {
+  .HOME {
+    
+    border-width: 10px;
+  }
   #first button {
     margin-right: 3rem;
     width: 7rem;

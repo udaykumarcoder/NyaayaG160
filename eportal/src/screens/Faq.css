@@ -1,70 +1,82 @@
-.fcontainer{
+.fcontainer {
     background-color: #e8dfc5;
     height: 800px;
-    width: 101%;
+    width: 100vw;
 
 }
-.fmainblock{
+
+.fmainblock {
     display: flex;
 }
-.fheading{
+
+.fheading {
     font-size: 30px;
     padding: 40px;
     margin-top: 30px;
     padding-bottom: 80px;
-    font-family: 'Audiowide', sans-serif; 
-     
+    font-family: 'Audiowide', sans-serif;
+
 
 }
-.fblock2{
-    word-spacing: 13px;
-    font-family: 'Audiowide', sans-serif; 
 
-}
-.fpara{
+.fpara {
     margin-top: 60px;
     padding: 50px;
     font-size: 25px;
 }
-.fblock2{
-   /* margin-left: 3rem; */
-   margin-top: -12px;
-   padding: 50px;
-   font-size: 20px;
-   padding-left: 10px;
+
+.fblock2 {
+    word-spacing: 13px;
+    font-family: 'Audiowide', sans-serif;
+    margin-top: -12px;
+    padding: 50px;
+    font-size: 20px;
+    padding-left: 10px;
 }
-.bigbox{
-    /* width: 800px; */
-    height: 500px;
-    position: absolute;
-    margin-top: 13rem;
-    /* margin-left: 34rem; */
-}
-.hr{
-    width: 9rem;
+
+
+.hr {
     height: 3px;
+    width: 32rem;
     color: solid black;
     background-color: black;
     border: none;
 }
-.bigbox{
-    width: 800px;
-    overflow: auto;
-    max-height:480px ;
-    position: absolute;
-    margin-top: 13rem;
+
+.bigbox {
     margin-left: 34rem;
+    overflow: auto;
+    max-height: 480px;
+    position: absolute;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
+
 .bigbox::-webkit-scrollbar {
     width: 0;
-  }
-.labels{
-    padding-top: 17px;
-    padding-left: 100px;
 }
-.font{
+
+.labels {
+    padding-top: 17px;
+    
+}
+
+.Font2 {
     font-size: 40px;
-    font-family: 'Audiowide', sans-serif; 
+    font-family: 'Audiowide', sans-serif;
+}
+
+
+/* CSS for 17-inch Laptop */
+@media screen and (min-width: 1367px) {
+    .bigbox {
+        margin-top: 13rem;
+    }
+}
+
+/* CSS for 14-inch Laptop */
+@media screen and (max-width: 1366px) {
+    .bigbox {
+        margin-top: 15rem;
+    }
 }

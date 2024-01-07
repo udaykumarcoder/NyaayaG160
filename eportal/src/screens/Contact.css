@@ -10,16 +10,6 @@
 padding-top: 30px;
 padding-left: 50px;
 }
-#c1{
-display: flex;
-position: absolute;
-}
-.c2{
-display: flex;
-position :absolute;
-margin-top: -10px;
-text-align: right;
-}
 .nav{
 
 margin-top: 50px;
@@ -75,7 +65,7 @@ text-decoration: none;
   .c2{
   display: flex;
   margin-top: 20px;
-  padding-left: 15rem;
+ 
   
   
   }

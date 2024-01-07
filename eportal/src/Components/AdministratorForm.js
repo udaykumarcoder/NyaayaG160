@@ -54,6 +54,7 @@ const AdministratorForm = () => {
                     <input type="name" className="form-control" id="inputPassword" placeholder="Enter Your Name" required />
                   </div>
                 </div>
+                
 
                 <div className="form-group row">
                   <label htmlFor="state" className="col-sm-3 col-form-label">Select State:</label>
@@ -100,6 +101,7 @@ const AdministratorForm = () => {
                 </div>
                 </div>
                 </div>
+                <br/>
 
                 <div className="form-group row">
                   <label for="name" className="col-sm-3 col-form-label">Gender:</label>
@@ -113,11 +115,12 @@ const AdministratorForm = () => {
 
                   </div>
                 </div>
+                <br/>
                 <div className="form-group row">
                   <label for="name" className="col-sm-3 col-form-label">DOB:</label>
                   
                   <input type="date"  id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft:'10px',backgroundColor:'grey' }}required/>
-                  <br></br>
+                  <br/>
                 
                 </div>
               </form>

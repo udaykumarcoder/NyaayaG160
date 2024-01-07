@@ -167,6 +167,15 @@ so if u want to change any thing change there */
 @media screen and (min-width: 1367px) {
     .advocRightbox {
         width: 60rem;
+        height: 45rem;
+        font-size: 1.3rem;
+        margin-right: 100px;
+    
+    }
+    .advocLeftbox{
+        width: 29rem;
+        font-size: 1.3rem;
+        margin-left: 100px;
     }
 }
 

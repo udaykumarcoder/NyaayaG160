@@ -16,7 +16,7 @@ const Home = () => {
       <div className='HOME w-full' >
         <Navbar />
         <section>
-          <div id="headline" className="font">
+          <div id="headline" >
             <h1 id="nyaya" >NYAAYA</h1>
             <h2 id="case">CASE MANAGEMENT</h2>
           </div>

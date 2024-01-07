@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  /* Include padding and border in element's total width and height */
+  
 }
 
 .maincontainer {
@@ -8,12 +8,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
-  /* Add space between the flex items */
+  
 }
 
 .card {
   display: flex;
-  width: 45vw;
+  width: 49vw;
   margin: 10px;
   border-radius: 1px;
 }
@@ -28,30 +28,14 @@
   padding: 10px;
   margin-left: 10px;
 }
-.card-text{
-  font-size: 1.5rem;
-}
+
 .vision {
   margin: 10px;
   padding: 10px;
   color: white;
   word-wrap: break-word;
 }
-.box1{
-  background-color: #e2dbd3;
-  height: 12em;
-  width: 32em;
-  margin-top: 4rem;
-  margin-left: 45px;
-}
-.box2{
-  background-color: #B09067;
-  height: 12em;
-  width: 32em;
-  margin-left: 45px;
 
-
-}
 
 .about {
   background-color: black;
@@ -87,13 +71,31 @@
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {
   .vision {
-    width: 55vw;
+    width: 59vw;
   }
   .abtboxcontent{
     font-size: 1.6rem;
   }
   .aboutpage p {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
+  }
+  .card-text{
+    font-size: 1.7rem;
+  }
+  .box1{
+    background-color: #e2dbd3;
+    height: 12.5em;
+    width: 34em;
+    margin-top: 4rem;
+    margin-left: 45px;
+  }
+  .box2{
+    background-color: #B09067;
+    height: 12.5em;
+    width: 34em;
+    margin-left: 45px;
+  
+  
   }
 }
 
@@ -107,5 +109,23 @@
   }
   .aboutpage p {
     font-size: 1.3rem;
+  }
+  .card-text{
+    font-size: 1.5rem;
+  }
+  .box1{
+    background-color: #e2dbd3;
+    height: 12em;
+    width: 32em;
+    margin-top: 4rem;
+    margin-left: 45px;
+  }
+  .box2{
+    background-color: #B09067;
+    height: 12em;
+    width: 32em;
+    margin-left: 45px;
+  
+  
   }
 }

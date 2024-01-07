@@ -15,7 +15,7 @@ const About = () => {
             <div className="card-body" >
               <p className="card-text">Seek efficient resolution for managing multiple cases</p>
               <div className="abtbuttons">
-              <Link to="/signup"><button className=' btn btn-primary btn-sm '>Signup<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
+              <Link to="/signup"><button className=' btn btn-primary btn-sm '>Signup➤</button>  </Link>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@ const About = () => {
             <div className="card-body fs-2" >
               <p className="card-text">Access your case data and track your case status</p>
               <div className="abtbuttons">
-              <Link to="/login"><button className='btn btn-primary btn-sm'>Login<span className='icon'><i className="fa-solid fa-arrow-right"></i></span></button>  </Link>
+              <Link to="/login"><button className='btn btn-primary btn-sm'>Login➤</button>  </Link>
             </div>
             </div>
           </div>

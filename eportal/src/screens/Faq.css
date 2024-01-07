@@ -1,6 +1,7 @@
 .fcontainer{
     background-color: #e8dfc5;
     height: 800px;
+    width: 101%;
 
 }
 .fmainblock{
@@ -35,7 +36,6 @@
 .bigbox{
     /* width: 800px; */
     height: 500px;
-    
     position: absolute;
     margin-top: 13rem;
     /* margin-left: 34rem; */

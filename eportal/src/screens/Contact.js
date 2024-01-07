@@ -3,7 +3,6 @@ import {HashLink as Link} from 'react-router-hash-link';
 import "./Contact.css";
 
 
-
 const Contact = () => {
   return (
     <>

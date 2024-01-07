@@ -47,13 +47,15 @@ const Navbar2 = () => {
           <p>Register As :</p>
         <div className='radiogrp'>
         <div className="options1">
-              <input
+              <Link to="/signup/advocate"> <input
                 type="radio"
                 id="option1"
                 name="radio-group"
                 onChange={() => setSelectedOption('advocate')}
                 checked={selectedOption==='advocate'}
-              />
+
+                
+              /></Link>
               <label htmlFor="option1">Advocate</label><br />
             </div>
             <div className="options2">

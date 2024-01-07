@@ -1,7 +1,7 @@
 import React from 'react'
 import {HashLink as Link} from 'react-router-hash-link';
 import "./Contact.css";
-import LoginSignup from './logindemo';
+
 
 
 const Contact = () => {

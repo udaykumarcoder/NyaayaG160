@@ -1,5 +1,11 @@
+
 *{
     margin: 0 ;
+}
+
+.navbar2{
+    background-color: #E8DFC5;
+    
 
 }
 .logonyaya{
@@ -13,11 +19,7 @@
     margin-top: -19px;
     margin-left: 4px;
 }
-.navbar2{
-    background-color: #E8DFC5;
 
-
-}
 .logo{
     display: flex;
 }
@@ -74,4 +76,12 @@
 }
 .options3{
     margin-right: 20px;
+}
+
+@media screen and (min-width:1367px) {
+    .navbar2{
+        background-color: #E8DFC5;
+        font-size: 1.5rem !important;
+        
+    }
 }

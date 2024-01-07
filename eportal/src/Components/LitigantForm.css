@@ -88,44 +88,22 @@ so if u want to change any thing change there */
 @media screen and (min-width: 1367px) {
     .litigantRightbox {
         width: 60rem;
+        height: 45rem;
+        font-size: 1.3rem;
+        margin-right: 100px;
+    
+    }
+    .litigantLeftbox{
+        padding-top: 70px;
+        text-align: center;
+        align-items: center;
+        width: 29rem;
+        font-size: 1.3rem;
+        margin-left: 100px;
     }
 }
 
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 240%;
-    max-height: 250px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    overflow-y: auto;
-  }
- 
-  .dropdown-content button {
-    width: 100%;
-    text-align: left;
-    padding: 8px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  .dropdown-content button:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-
+/* CSS for 14-inch Laptop */
 @media screen and (max-width: 1366px) {
     .litigantRightbox {
         width: 45rem;
@@ -133,4 +111,4 @@ so if u want to change any thing change there */
     .litigantLeftbox{
         width: 22rem;
     }
-}  
+}

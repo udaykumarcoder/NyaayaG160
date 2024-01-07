@@ -41,7 +41,7 @@ const Navbar2 = () => {
           </ul>
         </div>
         <div className="registrationform">
-        <p><span className='icon'><i class="fa-solid fa-arrow-right"></i></span>REGISTRATION FORM</p>
+        <p><span className='icon'><i className="fa-solid fa-arrow-right"></i></span>REGISTRATION FORM</p>
         </div>
         <div className="options">
           <p>Register As :</p>

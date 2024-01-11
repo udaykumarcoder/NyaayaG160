@@ -9,6 +9,14 @@ const AdvocateLogin = () => {
     const [password, setPassword] = useState('');
     const [otp]= useState('');
     const navigate=useNavigate();
+   
+    const handleSendOTP = async (event) => {
+      event.preventDefault();
+      // Add logic to send OTP if needed
+      console.log('Sending OTP to:', email);
+
+    };  
+
     const handleLogin = async (event) => {
       event.preventDefault();
       console.log('Login values:', email, password, otp);
@@ -105,7 +113,8 @@ const AdvocateLogin = () => {
           </td>
           <td>
             <div className="omg">
-              <button style={{ height: '33px', width: '100px' }}>Send OTP</button>
+            <button type="button" style={{ height: '33px', width: '100px' }} onClick={handleSendOTP}>Send OTP</button>
+
               <h6 className="m">
                 
                 <input

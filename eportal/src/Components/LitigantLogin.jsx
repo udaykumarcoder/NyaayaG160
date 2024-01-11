@@ -8,10 +8,18 @@ const LitigantLogin = () => {
     const [password, setPassword] = useState('');
     const [otp]= useState('');
     const navigate=useNavigate();
+    const handleSendOTP = async (event) => {
+      event.preventDefault();
+      // Add logic to send OTP if needed
+      console.log('Sending OTP to:', email);
+
+    };  
+
+ 
+
     const handleLogin = async (event) => {
       event.preventDefault();
       console.log('Login values:', email, password, otp);
-  
       try {
         const response = await fetch('http://localhost:3001/login/litigant', {
           method: 'POST',
@@ -38,9 +46,8 @@ const LitigantLogin = () => {
         console.error('Error during login:', error);
         
       }
-    };
-  
 
+  }; 
   return (
     <div>
         <div class="body">
@@ -74,6 +81,7 @@ const LitigantLogin = () => {
               <h4>Password:</h4>
             </label>
           </td>
+         
           <td>
             <h5>
               <input className="o" type="password" name="Password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -88,7 +96,11 @@ const LitigantLogin = () => {
           </td>
           <td>
             <div className="omg">
-              <button style={{ height: '33px', width: '100px' }}>Send OTP</button>
+              {/* <button style={{ height: '33px', width: '100px' }}>Send OTP</button> */}
+              <button type="button" style={{ height: '33px', width: '100px' }} onClick={handleSendOTP}>Send OTP</button>
+
+             
+
               <h6 className="m">
                 <input className="p" type="number" name="Otp" placeholder="Enter OTP" />
               </h6>

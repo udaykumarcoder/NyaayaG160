@@ -7,6 +7,13 @@ const AdministratorLogin = () => {
     const [password, setPassword] = useState('');
     const [otp]= useState('');
     const navigate=useNavigate();
+
+    const handleSendOTP = async (event) => {
+      event.preventDefault();
+      // Add logic to send OTP if needed
+      console.log('Sending OTP to:', email);
+
+    };  
     const handleLogin = async (event) => {
       event.preventDefault();
       console.log('Login values:', email, password, otp);
@@ -68,7 +75,8 @@ const AdministratorLogin = () => {
             <td class="b">
                 <label className='y' for="Otp"><h4>OTP Authentication:</h4></label></td>
                 <td> <div className='omg'>
-                <button  style={{height:'33px', width:'100px' }}>Send OTP</button>
+                <button type="button" style={{ height: '33px', width: '100px' }} onClick={handleSendOTP}>Send OTP</button>
+
                 <h6 className='m'><input className='p' type="number" name="Otp" placeholder="Enter OTP" /></h6>
                 </div> 
             </td>

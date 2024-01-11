@@ -25,7 +25,7 @@ const AdministratorLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-         navigate('/loginsuccess');
+         navigate('/adminstratoraccount');
           
         } else {
          

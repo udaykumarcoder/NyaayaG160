@@ -26,7 +26,7 @@ const LitigantLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-         navigate('/loginsuccess');
+         navigate('/litigantaccount');
           
         } else {
          

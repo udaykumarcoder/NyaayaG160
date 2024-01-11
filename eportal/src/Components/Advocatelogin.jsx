@@ -27,7 +27,7 @@ const AdvocateLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-         navigate('/loginsuccess');
+         navigate('/advocateaccount');
           
         } else {
          

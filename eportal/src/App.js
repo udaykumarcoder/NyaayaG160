@@ -1,16 +1,19 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AdministratorForm from './Components/AdministratorForm';
 import AdministratorLogin from './Components/AdministratorLogin';
+import Administratoraccount from './Components/Adminstratoraccount';
 import AdvocateForm from './Components/AdvocateForm';
+import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
 import LitigantForm from './Components/LitigantForm';
 import LitigantLogin from './Components/LitigantLogin';
-import Loginsuccesss from './Components/Loginsuccesss';
+import Litigantaccount from './Components/Litigantaccount';
+import LoginPage from './Components/LoginPage';
 import About from './screens/About';
 import Contact from './screens/Contact';
 import Home from './screens/Home';
-import LoginPage from './Components/LoginPage';
 import Signup from './screens/Signup';
+
 
 function App() {
   return (
@@ -27,7 +30,9 @@ function App() {
         <Route path="/login/advocate" element={<AdvocateLogin/>}/>
         <Route path="/login/litigant" element={<LitigantLogin/>}/>
         <Route path="/login/administrator" element={<AdministratorLogin/>}/>
-        <Route path="/loginsuccess" element={<Loginsuccesss/>}/>
+        <Route path="/Advocateaccount" element={<Advocateaccount/>}/>
+        <Route path="/Litigantaccount" element={<Litigantaccount/>}/>
+        <Route path="/Adminstratoraccount" element={<Administratoraccount/>}/>
         
        
       </Routes>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Loginsuccesss = () => {
+const Administratoraccount= () => {
   return (
     <div>
-      <h1>Login successfull!</h1>
+      <h1>Welcome Adminstrator 👨🏼‍💼</h1>
       <Link  to="/login">
         <button className="backbtn">
           <h6> Back</h6>{' '}
@@ -14,4 +14,4 @@ const Loginsuccesss = () => {
   );
 };
 
-export default Loginsuccesss;
+export default Administratoraccount;

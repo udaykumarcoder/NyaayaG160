@@ -9,7 +9,7 @@ import Loginsuccesss from './Components/Loginsuccesss';
 import About from './screens/About';
 import Contact from './screens/Contact';
 import Home from './screens/Home';
-import LoginPage from './screens/LoginPage';
+import LoginPage from './Components/LoginPage';
 import Signup from './screens/Signup';
 
 function App() {

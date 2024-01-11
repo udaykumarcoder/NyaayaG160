@@ -1,12 +1,5 @@
-
 *{
-    margin: 0 ;
-}
-
-.navbar2{
-    background-color: #E8DFC5;
-    
-
+    margin: 0;
 }
 .logonyaya{
     font-size: 34px;
@@ -19,7 +12,11 @@
     margin-top: -19px;
     margin-left: 4px;
 }
+.navbar2{
+    background-color: #E8DFC5;
 
+
+}
 .logo{
     display: flex;
 }
@@ -30,13 +27,13 @@
 
 
 }
-/* .logoimg{
+.logoimg{
     height:60px;
     width: 60px;
     margin-top: 10px;
     background-color: white;
     
-} */
+}
 .navbar2 ul{
     display: flex;
     align-items: center;
@@ -76,12 +73,4 @@
 }
 .options3{
     margin-right: 20px;
-}
-
-@media screen and (min-width:1367px) {
-    .navbar2{
-        background-color: #E8DFC5;
-        font-size: 1.5rem !important;
-        
-    }
 }

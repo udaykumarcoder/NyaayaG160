@@ -88,18 +88,6 @@ so if u want to change any thing change there */
 @media screen and (min-width: 1367px) {
     .litigantRightbox {
         width: 60rem;
-        height: 45rem;
-        font-size: 1.3rem;
-        margin-right: 100px;
-    
-    }
-    .litigantLeftbox{
-        padding-top: 70px;
-        text-align: center;
-        align-items: center;
-        width: 29rem;
-        font-size: 1.3rem;
-        margin-left: 100px;
     }
 }
 
@@ -111,4 +99,4 @@ so if u want to change any thing change there */
     .litigantLeftbox{
         width: 22rem;
     }
-}
+}  

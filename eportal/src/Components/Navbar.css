@@ -1,44 +1,26 @@
 *{
-    margin-top: 0;
-
-
+    margin-top: 0px;
 }
-
-  
 .navbar{
+    
     background-color: transparent;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-left: -21px;
-
+    font-size: 20px;
 }
 .navbar ul{
     text-align: center;
 }
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none; /* Remove underline */
-  }
-/* 17 inch laptop */
-@media screen and (min-width:1367px) {
-    .navbar ul li{
-        list-style-type: none;
-        display: inline-block;
-        margin: 50px 120px;
-        font-size: 1.5rem;
-        
-    }
+.navbar ul li{
+    list-style-type: none;
+    text-decoration: none;
+    display: inline-block;
+    margin: 32px 60px;
+    
     
 }
-/* 14 inch laptop */
-@media screen and (max-width:1366px){
-    .navbar ul li{
-        list-style-type: none;
-        display: inline-block;
-        margin: 32px 70px;
-        font-size: 1rem;
-        
-    }
+#tag{
+    color: #E2DBD3;
+    text-decoration: none;
 }

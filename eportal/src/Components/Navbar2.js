@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 
-import './Navbar2.css';
+import AdministratorForm from './AdministratorForm';
 import AdvocateForm from './AdvocateForm';
 import LitigantForm from './LitigantForm';
-import AdministratorForm from './AdministratorForm';
+import './Navbar2.css';
 
 const Navbar2 = () => {
   const[selectedOption,setSelectedOption]=useState('advocate')
@@ -26,8 +26,8 @@ const Navbar2 = () => {
       <section className='navbar2 w-full'>
         <div className="container">
           <div className="logo">
-            {/* <div className="logoimg">
-            </div> */}
+            <div className="logoimg">
+            </div>
 
             <div className="logoheading">
               <p className='logonyaya'>NYAAYA</p>
@@ -47,18 +47,19 @@ const Navbar2 = () => {
           <p>Register As :</p>
         <div className='radiogrp'>
         <div className="options1">
-              <Link to="/signup/advocate"> <input
+              <Link to="/signup/advocate">
+                <input 
                 type="radio"
                 id="option1"
                 name="radio-group"
                 onChange={() => setSelectedOption('advocate')}
                 checked={selectedOption==='advocate'}
-
-                
-              /></Link>
+              />
+              </Link>
               <label htmlFor="option1">Advocate</label><br />
             </div>
             <div className="options2">
+            <Link to="/signup/litigant">
               <input
                 type="radio"
                 id="option2"
@@ -66,9 +67,14 @@ const Navbar2 = () => {
                 onChange={() => setSelectedOption('litigant')}
                 checked={selectedOption==='litigant'}
               />
+              </Link>
               <label htmlFor="option2">Litigant</label><br />
             </div>
             <div className="options3">
+            <Link to="/signup/administrator">
+             
+      
+             
               <input
                 type="radio"
                 id="option3"
@@ -76,6 +82,7 @@ const Navbar2 = () => {
                 onChange={() => setSelectedOption('administrator')}
                 checked={selectedOption==='administrator'}
               />
+              </Link>
               <label htmlFor="option3">Court Administrator</label><br />
             </div>
         </div>
@@ -91,3 +98,10 @@ const Navbar2 = () => {
 }
 
 export default Navbar2;
+
+
+
+
+
+
+

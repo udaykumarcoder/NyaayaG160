@@ -1,17 +1,12 @@
-import React from 'react';
-import Navbar2 from '../Components/Navbar2';
-
+import React from 'react'
+import Navbar2 from '../Components/Navbar2'
 
 const Signup = () => {
   return (
-    <>
-      <div className="signup">
-        <Navbar2 />
+    <div>
+      <Navbar2/>
+    </div>
+  )
+}
 
-       
-      </div>
-    </>
-  );
-};
-
-export default Signup;
+export default Signup

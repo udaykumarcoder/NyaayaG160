@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './AdvocateForm.css';
 
+
+
+const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
+const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/advocate`;
+
+
 const AdvocateForm = () => {
+  
+  console.log('AdvocateForm component rendered');
+  
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -17,58 +27,98 @@ const AdvocateForm = () => {
     confirmPassword: '',
     otp: '',
   });
- 
-  
-  const handleNext = () => {
-   
-      setStep(step + 1);
-    };
-  
-   
-  const handleBack = () => {
-    setStep(step - 1);
-  };
-  const handleInputChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
-  
-  
-  // const handleInputChange = (field, value) => {
-  //   console.log(`Updating ${field} to:`, value);
-  
-  //   setFormData({
-  //     ...formData,
-  //     [field]: value,
-  //   });
-  
-  //   console.log("formData after updating:", formData);
-  // };
-  
 
-  // const handleNext = () => {
+  const handleNext = (event) => {
+    event.preventDefault();
+    setStep(step + 1);
+  };
+   
+const handleBack = () => {
+ setStep(step - 1);
+};
+const handleInputChange = (field, value) => {
+  setFormData({ ...formData, [field]: value });
+};
 
-  //   // Check if all required fields in step 1 are filled
-  //   if (formData.name && formData.state && formData.gender && formData.barRegistrationNumber && formData.dob) {
-  //     setStep(step + 1);
-  //   } else {
-  //     // Optionally, provide feedback to the user that all details are required.
-  //     alert('Please fill in all details before proceeding.');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formData);
+    try {
+      // Submit form data to the server
+      const response = await fetch(SUBMIT_FORM_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify(formData),
+      });
+  
+    const data = await response.json();
+    console.log(data.formData);
+    console.log('Form submitted successfully:', data);
+
+    if (data.status === 'error' && data.message) {
       
+      alert(data.message);
+    }if (data.status === 'ok') {
+      
+      alert('Submitted successfully');
+      
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
+};
     
-  //   }
 
   
+  const handleform = (event)=>
+  {
+    event.preventDefault();
+   
+  }
+ 
+  const verifyEntry = (event) => {
+
+    event.preventDefault(); 
+    const enteredText = formData.barRegistrationNumber.trim();
+
+  
+  const expectedValues = Array.from(['245322733162','245322733177','245322733145','245322733149','245322733087','245322758101']).map(value => value.trim());
+  
+  if (expectedValues.includes(enteredText)) {
+    alert('Verified');
+  } else {
+    alert('Not Verified');
+  }
+  
+  };
+
   const renderStep = () => {
     switch (step) {
       case 1:
         return (
+          <form onSubmit={handleform}>
+
+          
           <div className="step">
+          
             <div className="advocLeftbox">
+              <div>
+            <Link to ="/signup">
+                  <button className='back'>
+                    🔙
+                  </button>
+                </Link>
+                </div>
               <div className="tracking">
                 <div className='track1'>
                   <input type="radio" id='t1' />
                 </div>
+                
                 <label htmlFor="t1">Bar Registration</label>
+                
               </div>
               <div className="tracking">
                 <div className='track2'>
@@ -91,10 +141,18 @@ const AdvocateForm = () => {
             </div>
 
             <div className="advocRightbox">
+            
+            
               <p className='bar'>BAR REGISTRATION</p>
+              
+              
               <form>
+              
                 <div className="form-group row">
+                
+                 
                   <label htmlFor="name" className="col-sm-3 col-form-label">Name:</label>
+                  
                   <div className="inputs col-sm-7">
                     <input type="text" className="form-control" id="inputPassword" placeholder="Enter Your Name"  value={formData.name}
             onChange={(e) => handleInputChange('name', e.target.value)}/>
@@ -166,22 +224,35 @@ const AdvocateForm = () => {
 
                 <div className="form-group row">
                   <label htmlFor="barRegistrationNumber" className="col-sm-9 col-form-label">Bar Registration Number:</label>
+                  
                   <div className="inputs col-sm-9 barverify">
                     <input type="text" className="form-control" id="barRegistrationNumber" placeholder="State Code/Bar Code/Bar Year" value={formData.barRegistrationNumber} onChange={(e) => handleInputChange('barRegistrationNumber', e.target.value)}  />
-                    <button className='verifyBtn'>VERIFY</button>
+                    {/* <button className='verifyBtn'>VERIFY</button> */}
+                    <button  type="button" className='verifyBtn' onClick={verifyEntry}>VERIFY</button>
+                    
                   </div>
                 </div>
 
               </form>
               <div>
-                <button className='saveNext' onClick={handleNext}>Save & Next</button>
+                
+                <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
+                
+                
               </div>
+              
             </div>
+            
+          
           </div>
+          
+          
+          </form>
         );
 
       case 2:
         return (
+        <form onSubmit={handleform}>
           <div className="step">
             <div className="advocLeftbox">
 
@@ -284,15 +355,18 @@ const AdvocateForm = () => {
               </form>
               <div className='popbuttons advbuttons'>
                 <button className='back' onClick={handleBack}>Back</button>
-                <button className='saveNext' onClick={handleNext}>Save and Next</button>
+                {/* <button className='saveNext' onClick={handleNext}>Save and Next</button> */}
+                <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
 
           </div>
+          </form>
         );
 
       case 3:
         return (
+          <form onSubmit={handleform} >
           <div className="step">
             <div className="advocLeftbox">
 
@@ -332,25 +406,29 @@ const AdvocateForm = () => {
                     <input type="number" className="form-control" id="inputPassword" placeholder="Enter Your Phone Number"   value={formData.phone} onChange={(e) => handleInputChange('phone', e.target.value)} />
                   </div>
                 </div>
-                <div className="form-group row">
-                  <label for="name" className="col-sm-3 col-form-label">Email ID:</label>
+                <div  className="form-group row">
+                  <label  for="name" className="col-sm-3 col-form-label" >Email ID:</label>
+                  
                   <div className="inputs col-sm-7">
-                   <input type="email" className="form-control" id="inputPassword" placeholder="Enter Your Email ID"  value={formData.email} onChange={(e) => handleInputChange('email', e.target.value)}/>
+                   <input type="email" className="form-control" id="inputPassword"   placeholder="Enter Your Email ID"  value={formData.email} onChange={(e) => handleInputChange('email', e.target.value)}/>
                   </div>
                 </div>
                 </div>
               </form>
               <div className='contactButtons advbuttons'>
                 <button className='back' onClick={handleBack}>Back</button>
-                <button className='saveNext' onClick={handleNext}>Save and Next</button>
+                {/* <button className='saveNext' onClick={handleNext}>Save and Next</button> */}
+                <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
 
           </div>
+          </form>
         );
 
       case 4:
         return (
+          <form onSubmit={handleSubmit}>
           <div className="step">
             <div className="advocLeftbox">
 
@@ -407,12 +485,18 @@ const AdvocateForm = () => {
                 </div>
               </form>
               <div className='advbuttons'>
-                <button className='back' onClick={handleBack}>Back</button>
-                <button className='save'>Save</button>
+              <button className='back' onClick={handleBack}>Back</button>
+               <button type="submit" className='submit2'>Submit</button>
+               <Link to="/login">
+                 <button  >
+                  login
+                 </button>
+               </Link>
               </div>
             </div>
 
           </div>
+          </form>
         );
 
 
@@ -425,9 +509,12 @@ const AdvocateForm = () => {
   return (
     <div>
       {renderStep()}
+      
      
     </div>
   );
 }
 
 export default AdvocateForm;
+
+

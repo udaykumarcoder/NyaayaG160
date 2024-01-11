@@ -1,5 +1,6 @@
-import React from 'react'
-import {HashLink as Link} from 'react-router-hash-link';
+
+import React from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import './Navbar.css';
 const Navbar = () => {
@@ -7,10 +8,10 @@ const Navbar = () => {
     <>
     <section className='navbar'>
         <ul>
-            <li><Link smooth to='#home'>Home</Link></li>
-            <li><Link smooth to='#about'>About</Link></li>
-            <li><Link smooth to='#faq'>FAQ's</Link></li>
-            <li><Link smooth to='#contacts'>Contact</Link></li>
+            <li><Link id='tag' smooth to='#home'>Home</Link></li>
+            <li><Link id='tag' smooth to='#about'>About</Link></li>
+            <li><Link id='tag' smooth to='#faq'>FAQ's</Link></li>
+            <li><Link id='tag' smooth to='#contacts'>Contact</Link></li>
 
         </ul>
     </section>
@@ -19,4 +20,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar

@@ -1,0 +1,48 @@
+.Litigantprofile {
+  height: 300px;
+  width: 350px;
+  
+}
+.profileImg{
+  background-color: white;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  padding: 100px;
+  margin-left: 55px;
+  
+}
+.lsidebarName{
+  font-family: 'Audiowide', sans-serif;
+  color: white;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  margin-top: -53px;
+}
+
+.sidebar {
+  margin-top: 15px;
+  padding-top: 34px;
+  background-color: #0c1707;
+  height: 50rem;
+  width: 350px;
+
+
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-left: 10px;
+  color: #EAECE1;
+
+
+}
+
+.sidebar li {
+
+  margin-bottom: 45px;
+}
+
+.logout {
+  margin-left: 100px;
+}

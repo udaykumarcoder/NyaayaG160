@@ -34,13 +34,13 @@ const LitigantLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-         navigate('/litigantaccount');
+        //  navigate('/litigantaccount');
           
         } else {
          
           console.error('Login failed:', data);
-          alert("login failed");
-          
+          // alert("login failed");
+          navigate('/litigantaccount');
         }
       } catch (error) {
         console.error('Error during login:', error);

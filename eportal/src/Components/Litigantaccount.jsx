@@ -1,15 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React,{useState} from 'react';
+import Navbar4 from './Navbar4';
+import Litigantsidebar from './Litigantsidebar';
+import Litigantcontent from './Litigantcontent';
+import './sidebar.css'
+import './LitigantAccount.css'
+const Litigantaccount = () => { const [selectedSection, setSelectedSection] = useState('');
 
-const Litigantaccount = () => {
+const handleSidebarItemClick = (section) => {
+  setSelectedSection(section);
+};
   return (
     <div>
-      <h1>Welcome Litigant 🙍🏻‍♂️</h1>
-      <Link  to="/login">
-        <button className="backbtn">
-          <h6> Back</h6>{' '}
-        </button>
-      </Link>
+    
+      <Navbar4 />
+      <div className='Laccountbox'>
+
+      <Litigantsidebar handleSidebarItemClick={handleSidebarItemClick} />
+      <Litigantcontent selectedSection={selectedSection}/>
+      </div>
     </div>
   );
 };

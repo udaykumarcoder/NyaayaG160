@@ -1,15 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React ,{useState} from 'react';
+import Navbar4 from './Navbar4';
+import Administratorsidebar from './Administratorsidebar';
+import AdministratorContent from './AdministratorContent';
+import './LitigantAccount.css'
+const Administratoraccount= () => {const [selectedSection, setSelectedSection] = useState('');
 
-const Administratoraccount= () => {
+const handleSidebarItemClick = (section) => {
+  setSelectedSection(section);
+};
   return (
     <div>
-      <h1>Welcome Adminstrator 👨🏼‍💼</h1>
-      <Link  to="/login">
-        <button className="backbtn">
-          <h6> Back</h6>{' '}
-        </button>
-      </Link>
+   <Navbar4 />
+      <div className='Laccountbox'>
+
+      <Administratorsidebar handleSidebarItemClick={handleSidebarItemClick} />
+      <AdministratorContent selectedSection={selectedSection}/>
+      </div>
     </div>
   );
 };

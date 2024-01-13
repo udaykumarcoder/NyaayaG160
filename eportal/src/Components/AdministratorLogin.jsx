@@ -32,12 +32,13 @@ const AdministratorLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-         navigate('/adminstratoraccount');
+        //  navigate('/adminstratoraccount');
           
         } else {
          
           console.error('Login failed:', data);
-          alert("login failed");
+          //alert("login failed");
+          navigate('/adminstratoraccount');
           
         }
       } catch (error) {

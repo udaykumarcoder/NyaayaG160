@@ -7,7 +7,7 @@ import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
 import LitigantForm from './Components/LitigantForm';
 import LitigantLogin from './Components/LitigantLogin';
-import Litigantaccount from './Components/Litigantaccount';
+import Litigantaccount from './Components/Litigant/Litigantaccount';
 import LoginPage from './Components/LoginPage';
 import About from './screens/About';
 import Contact from './screens/Contact';
@@ -40,4 +40,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;

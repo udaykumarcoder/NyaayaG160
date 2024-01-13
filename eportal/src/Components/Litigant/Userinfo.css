@@ -1,0 +1,46 @@
+.userInfo{
+
+    width: 100%;
+    margin-top: 0.95rem;
+
+}
+
+.whiteBox{
+    background-color: bisque;
+    height: 12rem;
+    width: 100%;
+}
+.profile{
+    background-color: white;
+    margin-left: 100px;
+    height: 150px;
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 9rem;
+
+}
+.Lprofile{
+    margin-left: 16rem;
+    display: flex;
+
+}
+.litigantName{
+    font-family: 'Audiowide', sans-serif;
+
+}
+
+.Lbutton{
+    margin-left: 12rem;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+}
+.litigantDetails{
+    padding: 3rem;
+    padding-left: 7rem;
+}
+.Lpassword{
+    display: flex;
+    justify-content: space-between  ;
+}

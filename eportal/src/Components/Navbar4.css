@@ -1,4 +1,4 @@
-body{
+ body{
     background-color: #e8dfc5;
   
   }
@@ -46,11 +46,18 @@ body{
     margin: 0;
 }
 
+
+.navbar4{
+    background-color: #E8DFC5;
+
+
+}
+
 .container{
     display: flex;
     justify-content: space-between;
     font-family: 'Audiowide', sans-serif;
-height: 60px;
+    height: 60px;
 
 }
 
@@ -63,7 +70,8 @@ height: 60px;
 .navbar4 ul li {
     list-style-type: none;
     margin: 44px;
-   
+    
+
 }
 .navbar4 ul li a{
     text-decoration: none;

@@ -1,6 +1,6 @@
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import "./Updatedetails.css";
+
 const Updatedetails = () => {
   const [details, setDetails] = useState([]);
 
@@ -9,39 +9,53 @@ const Updatedetails = () => {
     form.style.display = form.style.display === "none" ? "block" : "none";
   };
 
-  const submitForm = () => {
-    const titleInput = document.getElementById("title");
-    const dateInput = document.getElementById("date");
-    const descriptionInput = document.getElementById("description");
-  
+  const submitForm = async () => {
+    const titleInput = document.getElementById('title');
+    const dateInput = document.getElementById('date');
+    const descriptionInput = document.getElementById('description');
+
     const title = titleInput.value;
     const date = dateInput.value;
     const description = descriptionInput.value;
-  
+
     if (title && date && description) {
-      const detail = {
-        title: title,
-        date: date,
-        description: description,
-      };
-      setDetails((prevDetails) => [...prevDetails, detail]);
-  
-      // Clear form fields
-      titleInput.value = "";
-      dateInput.value = "";
-      descriptionInput.value = "";
+      try {
+        await fetch('http://localhost:3001/details', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ title, date, description }),
+        });
+
+        const detail = {
+          title,
+          date,
+          description,
+        };
+
+        setDetails((prevDetails) => [...prevDetails, detail]);
+
+        titleInput.value = '';
+        dateInput.value = '';
+        descriptionInput.value = '';
+      } catch (error) {
+        console.error('Error storing details:', error);
+        alert('Failed to store details. Please try again.');
+      }
     } else {
-      alert("Please provide all details.");
+      alert('Please provide all details.');
     }
   };
-  
 
   return (
     <section>
       <div>
         <h2 className='title'>Update Case Details</h2>
         <br/>
-        <button className='updatebtn' onClick={toggleForm}>Update</button>
+        <button className='updatebtn' onClick={toggleForm}>Update</button> {/* eslint-disable-next-line */}
+
+
         <br/>
         
       </div>

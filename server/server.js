@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const cors=require('cors');
 const app = express();
 const PORT = 3001;
@@ -7,6 +8,9 @@ const mongoose=require('mongoose');
 const UserData=require('./models/data1');
 const UserData2=require('./models/data2');
 const UserData3=require('./models/data3');
+
+const Detail = require('./models/Detail'); 
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,45 +25,53 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   console.error('MongoDB connection error:', err);
 });
 
+const hashPassword = async (password) => {
+  const hashedPassword = await bcrypt.hash(password, 10);
+  return hashedPassword;
+};
+
+
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
-  console.log(req.body);
   try {
+    const { password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
+    }
+
+    const hashedPassword = await hashPassword(password);
 
     await UserData.create({
-    name: req.body.name, 
-    state:req.body.state,
-    gender: req.body.gender,
-    dob: req.body.dob,
-    barRegistrationNumber: req.body.barRegistrationNumber,
-    courtType: req.body.courtType,
-    courtName:req.body.courtName,
-    phone: req.body.phone,
-    email: req.body.email,
-    password: req.body.password,
-    confirmPassword: req.body.confirmPassword,
-    otp: req.body.otp,
-
+      name: req.body.name,
+      state: req.body.state,
+      gender: req.body.gender,
+      dob: req.body.dob,
+      barRegistrationNumber: req.body.barRegistrationNumber,
+      courtType: req.body.courtType,
+      courtName: req.body.courtName,
+      phone: req.body.phone,
+      email: req.body.email,
+      password: hashedPassword,
+      confirmPassword: hashedPassword,
+      otp: req.body.otp,
     });
+
     res.json({ status: 'ok' });
 
   } catch (err) {
-    if(err.code=== 11000)
-    {
-     if(err.keyPattern.email){
-      res.status(400).json({status: 'error',message: " Email already exists" });}
-
-    else {
-      
+    if (err.code === 11000) {
+      if (err.keyPattern.email) {
+        res.status(400).json({ status: 'error', message: " Email already exists" });
+      } else {
+        res.status(500).json({ status: 'error', error: err.message });
+      }
+    } else {
       res.status(500).json({ status: 'error', error: err.message });
-  }}
-    
-    else{
-    res.status(500).json({ status: 'error', error: err.message });}
-  
-    
+    }
   }
 });
+
 ///////// Advocate login
 app.post('/login/advocate', async (req, res) => {
   console.log(req.body);
@@ -195,7 +207,35 @@ app.post('/login/administrator', async (req, res) => {
 });
 
 
+
+app.post('/details', async (req, res) => {
+  try {
+    const { title, date, description } = req.body;
+
+    if (!title || !date || !description) {
+      return res.status(400).json({ error: 'Please provide all details.' });
+    }
+
+    // Assuming you have a Detail model defined
+    const detail = new Detail({
+      title,
+      date,
+      description,
+    });
+
+    // Save the detail to the database
+    const savedDetail = await detail.save();
+
+    res.status(201).json({ message: 'Details stored successfully.', detail: savedDetail });
+  } catch (error) {
+    console.error('Error saving detail:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-

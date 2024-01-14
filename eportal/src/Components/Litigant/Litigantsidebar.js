@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Litigantsidebar.css"
-const Litigantsidebar = () => {
+const Litigantsidebar = ({ switchComponent }) => {
   return (
     <section>
         <div className="sidebar">
@@ -19,9 +19,10 @@ const Litigantsidebar = () => {
 
           </div>
         <ul>
-          <li><h3> 👤&nbsp;User Info</h3></li>
-          <li><h3>📍&nbsp;Case Tracking</h3></li>
-          <li><h3>📃&nbsp;Case Documents</h3></li>
+          
+        <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
+        <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>  
+        <li><h3><button onClick={()=>switchComponent(2)}>📃&nbsp;Case Documents</button></h3></li>
           <li><h3>📝&nbsp;Case Appeal</h3></li>
           
         </ul>
@@ -32,3 +33,25 @@ const Litigantsidebar = () => {
 }
 
 export default Litigantsidebar
+
+// // Litigantsidebar.js
+// import React from 'react';
+// import "./Litigantsidebar.css";
+
+// const Litigantsidebar = ({ switchComponent }) => {
+//   return (
+//     <section>
+//       <div className="sidebar">
+//         {/* ... your existing code ... */}
+//         <ul>
+//           <li><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></li>
+//           <li><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></li>
+          
+//         </ul>
+//         <button className="logout"><b>⇤ Log Out</b></button>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Litigantsidebar;

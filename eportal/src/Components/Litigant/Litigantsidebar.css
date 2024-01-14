@@ -29,6 +29,10 @@
 
 
 }
+dl, ol, ul {
+  margin-top: -253px;
+  margin-bottom: 1rem;
+}
 
 .sidebar ul {
   list-style: none;

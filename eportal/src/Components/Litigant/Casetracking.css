@@ -1,0 +1,24 @@
+.caseTracking{
+    font-family: 'Audiowide', sans-serif;
+    background-color: #e8dfc5;
+    margin: 1rem auto;
+    width: 100%;
+    padding: 0.7rem;
+    
+}
+.ctHeadline {
+    background-color: black; 
+    color: white; 
+    height: 2.4rem;
+    border-radius: 5px;
+    
+  }
+.ctHeadline p{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+.caseBox{
+    background-color: #B09067;
+    height: 20rem;
+    border: 1px solid black;
+}

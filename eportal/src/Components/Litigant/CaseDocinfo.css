@@ -1,0 +1,42 @@
+.caseInfo{
+    background-color: #e8dfc5;
+    margin: 1rem auto;
+    width: 100%;
+    padding: 0.7rem;
+    
+}
+.casedocInput input{
+    width: 100%;
+}
+.caseFile{
+    background-color: #C1B192;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 4px;
+}
+.casedocTitle {
+    width: 70%;
+}
+.casedocTitle p{
+    word-wrap: break-word;
+    margin-top: 0.8rem;
+}
+
+.casedocTitle h6{
+    word-wrap: break-word;
+    margin-top: 0.8rem;
+    font-size: 1.2rem;
+}
+.casedocDate p{
+    margin-top: 1.2rem;
+}
+.casedocDate button{
+    border-radius: 0.5rem;
+    margin-left: 1.4rem;
+    width: 4rem;
+    border: black;
+background-color: #0c1707;
+
+color: white;
+}

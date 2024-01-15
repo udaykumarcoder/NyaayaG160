@@ -148,6 +148,22 @@ app.post('/login/litigant', async (req, res) => {
     res.status(500).json({ status: 'error', error: err.message });
   }
 });
+
+
+// udayaddedcode
+app.get('/details', async (req, res) => {
+  try {
+    // Assuming you have a Detail model defined
+    const details = await Detail.find();
+
+    res.status(200).json(details);
+  } catch (error) {
+    console.error('Error fetching details:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 ///// Administrator signup
 app.post('/signup/administrator', async (req, res) => {
   console.log(req.body);

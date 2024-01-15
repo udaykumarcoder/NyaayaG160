@@ -19,6 +19,28 @@
 }
 .caseBox{
     background-color: #B09067;
-    height: 20rem;
+    height: 70rem;
     border: 1px solid black;
+}
+.trackStatus{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem;
+
+}
+.trackIcons{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.9rem;
+    margin-right: 4rem;
+    margin-left: 4rem;
+}
+.trackContent p{
+    font-size: 1rem;
+    word-wrap: break-word;
+}
+.arrow{
+    font-size: 2rem;
 }

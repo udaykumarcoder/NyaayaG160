@@ -1,5 +1,6 @@
 import React from 'react'
 import './Casetracking.css';
+import CSTcomponent from './CSTcomponent';
 
 const Casetracking = () => {
   return (
@@ -9,7 +10,13 @@ const Casetracking = () => {
                 <div className="ctHeadline">
             <p>🛤️CASE TRACKING</p>
             <div className="caseStatus">
-              
+              <CSTcomponent/>
+              <CSTcomponent/>
+              <CSTcomponent/>
+              <CSTcomponent/>
+              <CSTcomponent/>
+              <CSTcomponent/>
+
             </div>
           </div>
           </div>

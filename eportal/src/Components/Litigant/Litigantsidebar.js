@@ -1,4 +1,5 @@
 import React from 'react'
+import { HashLink as Link } from 'react-router-hash-link';
 import "./Litigantsidebar.css"
 const Litigantsidebar = ({ switchComponent }) => {
   return (
@@ -26,7 +27,7 @@ const Litigantsidebar = ({ switchComponent }) => {
           <li><h3>📝&nbsp;Case Appeal</h3></li>
           
         </ul>
-        <button className="logout"><b>⇤Log Out</b></button>
+        <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>
       </div>
     </section>
   )

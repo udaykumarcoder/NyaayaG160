@@ -1,21 +1,17 @@
-
 import React, { useState } from 'react';
-import './CaseDocuments.css';
-import CaseDocinfo from './CaseDocinfo';
+import AdvCaseDocinfo from './AdvCaseDocinfo';
 
-const CaseDocuments = () => {
-  const [showOtherComponent, setShowOtherComponent] = useState(false);
-  const [cnrNumber, setCnrNumber] = useState('');
-  const [uniqueCode, setUniqueCode] = useState('');
-
-  const handleOpenButtonClick = () => {
-    setShowOtherComponent(true);
-  };
-
-  if (showOtherComponent) {
-    return <CaseDocinfo/>;
-  }
-
+const AdvCaseDocuments = () => {
+    const [showOtherComponent, setShowOtherComponent] = useState(false);
+  // const [cnrNumber, setCnrNumber] = useState('');
+  // const [uniqueCode, setUniqueCode] = useState('');
+    const handleOpenButtonClick = () => {
+        setShowOtherComponent(true);
+      };
+    
+      if (showOtherComponent) {
+        return <AdvCaseDocinfo/>;
+      }
   return (
     <>
       <div className="caseDocbox">
@@ -27,8 +23,7 @@ const CaseDocuments = () => {
             <input
               type="text"
               placeholder="Enter CNR Number"
-              value={cnrNumber}
-              onChange={(e) => setCnrNumber(e.target.value)}
+             
             />
           </div>
           <div className="uniqueCode">
@@ -36,8 +31,7 @@ const CaseDocuments = () => {
             <input
               type="text"
               placeholder="Enter Unique Code"
-              value={uniqueCode}
-              onChange={(e) => setUniqueCode(e.target.value)}
+             
             />
           </div>
           <br />
@@ -47,7 +41,7 @@ const CaseDocuments = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CaseDocuments;
+export default AdvCaseDocuments

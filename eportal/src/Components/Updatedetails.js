@@ -10,32 +10,35 @@ const Updatedetails = () => {
   };
 
   const submitForm = async () => {
+    const cnrInput = document.getElementById('cnr');
     const titleInput = document.getElementById('title');
     const dateInput = document.getElementById('date');
     const descriptionInput = document.getElementById('description');
-
+     
+    const cnr = cnrInput.value;
     const title = titleInput.value;
     const date = dateInput.value;
     const description = descriptionInput.value;
 
-    if (title && date && description) {
+    if (cnr && title && date && description) {
       try {
         await fetch('http://localhost:3001/details', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ title, date, description }),
+          body: JSON.stringify({ cnr,title, date, description }),
         });
 
         const detail = {
+          cnr,
           title,
           date,
           description,
         };
 
         setDetails((prevDetails) => [...prevDetails, detail]);
-
+        cnrInput.value='';
         titleInput.value = '';
         dateInput.value = '';
         descriptionInput.value = '';
@@ -65,6 +68,9 @@ const Updatedetails = () => {
             <tbody>
               <tr>
                 <td>
+                <label className="data" ><b>CNR Number:&nbsp;&nbsp;</b></label>
+                  <input type="number" id="cnr" name="cnr" required/>
+
                   <label className="data" htmlFor="title"><b>Enter Title:&nbsp;&nbsp;</b></label>
                   <input type="text" id="title" name="title" required/>
 

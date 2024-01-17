@@ -43,7 +43,7 @@
 
 
 /* CSS for 17-inch Laptop */
-@media screen and (min-width: 1367px) {
+ @media screen and (min-width: 1367px) {
   .HOME {
     height: 55rem;
     border-width: 19px;
@@ -84,10 +84,10 @@
     font-size: 1.2rem;
 
   }
-}
+} 
 
 /* CSS for 14-inch Laptop */
-@media screen and (max-width: 1366px) {
+ @media screen and (max-width: 1366px) {
   .HOME {
     
     border-width: 10px;
@@ -124,4 +124,4 @@
     word-wrap: break-word;
     margin-top: 0;
   }
-}
+} 

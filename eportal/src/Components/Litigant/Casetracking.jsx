@@ -1,6 +1,6 @@
-import React from 'react'
-import './Casetracking.css';
+import React from 'react';
 import CSTcomponent from './CSTcomponent';
+import './Casetracking.css';
 
 const Casetracking = () => {
   return (
@@ -11,11 +11,7 @@ const Casetracking = () => {
             <p>🛤️CASE TRACKING</p>
             <div className="caseStatus">
               <CSTcomponent/>
-              <CSTcomponent/>
-              <CSTcomponent/>
-              <CSTcomponent/>
-              <CSTcomponent/>
-              <CSTcomponent/>
+               
 
             </div>
           </div>

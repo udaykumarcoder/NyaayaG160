@@ -5,9 +5,10 @@ import Administratoraccount from './Components/Adminstratoraccount';
 import AdvocateForm from './Components/AdvocateForm';
 import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
+import Casetracking from './Components/Litigant/Casetracking';
+import Litigantaccount from './Components/Litigant/Litigantaccount';
 import LitigantForm from './Components/LitigantForm';
 import LitigantLogin from './Components/LitigantLogin';
-import Litigantaccount from './Components/Litigant/Litigantaccount';
 import LoginPage from './Components/LoginPage';
 import About from './screens/About';
 import Contact from './screens/Contact';
@@ -33,6 +34,8 @@ function App() {
         <Route path="/Advocateaccount" element={<Advocateaccount/>}/>
         <Route path="/Litigantaccount" element={<Litigantaccount/>}/>
         <Route path="/Adminstratoraccount" element={<Administratoraccount/>}/>
+        <Route path="/casetracking" element={<Casetracking/>}/>
+        
         
        
       </Routes>

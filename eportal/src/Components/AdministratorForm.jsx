@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './AdministratorForm.css';
+
 
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/administrator`;
@@ -21,6 +22,8 @@ const AdministratorForm= () => {
     confirmPassword: '',
     otp: '',
   });
+
+  const navigate=useNavigate();
 
   const handleNext = (event) => {
     setStep(step + 1);
@@ -56,9 +59,16 @@ const AdministratorForm= () => {
     if (data.status === 'error' && data.message) {
       
       alert(data.message);
-    }if (data.status === 'ok') {
+    }
+    if (data.status === 'error' ){
+      alert("Enter all fields");}
+  
+    if (data.status === 'ok') {
       
       alert('Submitted successfully');
+      navigate('/login/administrator');
+
+        
       
     }
   } catch (error) {
@@ -74,6 +84,7 @@ const AdministratorForm= () => {
     event.preventDefault();
     // setStep(step + 1);
   } 
+
 
 
 
@@ -294,7 +305,7 @@ const renderStep = () => {
               <div class="form-group row">
                 <label for="name" class="col-sm-3 col-form-label">Confirm Password:</label>
                 <div class="inputs col-sm-7">
-                  <input type="confirmpassword" class="form-control" id="inputPassword" placeholder="Re-Enter Password" value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)}  required />
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Re-Enter Password" value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)}  required />
                 </div>
               </div>
               <div class="form-group row">
@@ -307,12 +318,12 @@ const renderStep = () => {
             </form>
             <div className='advbuttons'>
               <button className='back' onClick={handleBack}>Back</button>
-              <button type="submit">Save and Submit</button>
-              <Link to="/login">
+              <button type="submit" className='saveNext' >Save and Submit</button>
+              {/* <Link to="/login">
                 <button>
                   login
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
 

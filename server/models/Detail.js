@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const detailSchema = new mongoose.Schema({
+  cnr: String,
   title: String,
   date: String,
   description: String,

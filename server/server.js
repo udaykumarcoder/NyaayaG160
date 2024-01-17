@@ -1,6 +1,9 @@
 const express = require('express');
+
+
+
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+
 const cors=require('cors');
 const app = express();
 const PORT = 3001;
@@ -12,9 +15,13 @@ const UserData3=require('./models/data3');
 const Detail = require('./models/Detail'); 
 
 
+
+
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
+
 
 mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   useNewUrlParser: true,
@@ -25,10 +32,9 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   console.error('MongoDB connection error:', err);
 });
 
-const hashPassword = async (password) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  return hashedPassword;
-};
+
+
+
 
 
 //// Advocate signup
@@ -40,7 +46,7 @@ app.post('/signup/advocate', async (req, res) => {
       return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
     }
 
-    const hashedPassword = await hashPassword(password);
+    
 
     await UserData.create({
       name: req.body.name,
@@ -52,8 +58,8 @@ app.post('/signup/advocate', async (req, res) => {
       courtName: req.body.courtName,
       phone: req.body.phone,
       email: req.body.email,
-      password: hashedPassword,
-      confirmPassword: hashedPassword,
+      password: req.body.password,
+      confirmPassword: req.body.confirmPassword,
       otp: req.body.otp,
     });
 
@@ -97,6 +103,11 @@ app.post('/login/advocate', async (req, res) => {
 app.post('/signup/litigant', async (req, res) => {
   console.log(req.body);
   try {
+    const { password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
+    }
 
     await UserData2.create({
     name: req.body.name, 
@@ -168,7 +179,11 @@ app.get('/details', async (req, res) => {
 app.post('/signup/administrator', async (req, res) => {
   console.log(req.body);
   try {
+    const { password, confirmPassword } = req.body;
 
+    if (password !== confirmPassword) {
+      return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
+    }
 
     await UserData3.create({
     name: req.body.name, 
@@ -226,14 +241,15 @@ app.post('/login/administrator', async (req, res) => {
 
 app.post('/details', async (req, res) => {
   try {
-    const { title, date, description } = req.body;
+    const { cnr,title, date, description } = req.body;
 
-    if (!title || !date || !description) {
+    if (!cnr || !title || !date || !description) {
       return res.status(400).json({ error: 'Please provide all details.' });
     }
 
     // Assuming you have a Detail model defined
     const detail = new Detail({
+      cnr,
       title,
       date,
       description,
@@ -248,6 +264,82 @@ app.post('/details', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+app.get('/api/user', async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const user = await UserData3.findOne({ email });
+
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+
+app.get('/api/user1', async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const user = await UserData2.findOne({ email });
+
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+////
+
+
+
+
+
+app.get('/api/cd', async (req, res) => {
+  const { cnr } = req.query;
+
+  try {
+    const users = await Detail.find({ cnr });
+
+    if (users && users.length > 0) {
+      res.json(users);
+    } else {
+      res.status(404).json({ status: 'error', message: 'No users found for the given CNR' });
+    }
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+
+
+app.post('/api/checkCNR', async (req, res) => {
+  console.log(req.body);
+  console.log('Received login request:', req.body);
+  try {
+    const { cnr} = req.body;
+    const user = await Detail.findOne({ cnr });
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+    
+    res.json({ status: 'ok', user });
+
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+
+
+
+
 
 
 

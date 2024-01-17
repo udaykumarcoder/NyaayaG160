@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './LitigantForm.css';
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/litigant`;
@@ -19,7 +19,7 @@ const LitigantForm = () => {
     confirmPassword: '',
     otp: '',
   });
- 
+ const navigate=useNavigate();
 
   const handleNext = (event) => {
     setStep(step + 1);
@@ -56,10 +56,15 @@ const LitigantForm = () => {
 
       if (data.status === 'error' && data.message) {
         
-        alert(data.message);
-      }if (data.status === 'ok') {
+        alert(data.message);}
+      
+        if (data.status === 'error' ){
+          alert("Enter all fields");}
+      
+      if (data.status === 'ok') {
         
         alert('Submitted successfully');
+        navigate("/login/litigant");
         
       }
     } catch (error) {
@@ -303,12 +308,8 @@ const LitigantForm = () => {
               </form>
               <div className='advbuttons'>
                 <button className='back' onClick={handleBack}>Back</button>
-                <button type="submit" >Save and Submit</button>
-                <Link to="/login">
-                  <button>
-                    login
-                  </button>
-                </Link>
+                <button type="submit" className='saveNext' >Save and Submit</button>
+               
               </div>
             </div>
 

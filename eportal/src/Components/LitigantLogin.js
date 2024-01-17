@@ -34,13 +34,14 @@ const LitigantLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-        //  navigate('/litigantaccount');
+           
+           navigate('/litigantaccount', { state: { email } });
           
         } else {
          
           console.error('Login failed:', data);
-          // alert("login failed");
-          navigate('/litigantaccount');
+           alert("login failed");
+          
         }
       } catch (error) {
         console.error('Error during login:', error);
@@ -96,7 +97,7 @@ const LitigantLogin = () => {
           </td>
           <td>
             <div className="omg">
-              {/* <button style={{ height: '33px', width: '100px' }}>Send OTP</button> */}
+              
               <button type="button" style={{ height: '33px', width: '100px' }} onClick={handleSendOTP}>Send OTP</button>
 
              

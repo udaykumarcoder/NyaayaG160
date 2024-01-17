@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+
 const AdministratorLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [otp]= useState('');
     const navigate=useNavigate();
+    
+
+    
 
     const handleSendOTP = async (event) => {
       event.preventDefault();
@@ -32,13 +36,14 @@ const AdministratorLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-        //  navigate('/adminstratoraccount');
+         
+          navigate('/adminstratoraccount', { state: { email } });
           
         } else {
          
           console.error('Login failed:', data);
-          //alert("login failed");
-          navigate('/adminstratoraccount');
+          alert("login failed");
+         
           
         }
       } catch (error) {

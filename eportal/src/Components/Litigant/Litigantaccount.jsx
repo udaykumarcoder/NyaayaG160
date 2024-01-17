@@ -1,14 +1,13 @@
-
 import React, { useState } from 'react';
 import Navbar4 from '../Navbar4';
-import Litigantsidebar from './Litigantsidebar';
-import './Litigantaccount.css';
-import Userinfo from './Userinfo';
-import Casetracking from './Casetracking';
 import CaseDocuments from './CaseDocuments';
+import CaseTrackbox from './CaseTrackbox';
+import './Litigantaccount.css';
+import Litigantsidebar from './Litigantsidebar';
+import Userinfo from './Userinfo';
 
 const Litigantaccount = () => {
-  const components = [Userinfo, Casetracking,CaseDocuments];
+  const components = [Userinfo, CaseTrackbox,CaseDocuments];
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
 
   const switchComponent = (index) => {
@@ -29,4 +28,3 @@ const Litigantaccount = () => {
 };
 
 export default Litigantaccount;
-

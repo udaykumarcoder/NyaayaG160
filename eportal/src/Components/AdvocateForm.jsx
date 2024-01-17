@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './AdvocateForm.css';
 
 
@@ -27,6 +27,8 @@ const AdvocateForm = () => {
     confirmPassword: '',
     otp: '',
   });
+
+  const navigate = useNavigate();
 
   const handleNext = (event) => {
     event.preventDefault();
@@ -57,17 +59,24 @@ const handleInputChange = (field, value) => {
     const data = await response.json();
     console.log(data.formData);
     console.log('Form submitted successfully:', data);
-
+    
     if (data.status === 'error' && data.message) {
       
-      alert(data.message);
-    }if (data.status === 'ok') {
+      alert(data.message);}
+
+      if (data.status === 'error' ){
+        alert("Enter all fields");}
+    
+      
+    if (data.status === 'ok') {
       
       alert('Submitted successfully');
+      navigate("/login/advocate");
       
     }
   } catch (error) {
     console.error('Error submitting form:', error);
+    
   }
 };
     
@@ -91,6 +100,9 @@ const handleInputChange = (field, value) => {
     alert('Verified');
   } else {
     alert('Not Verified');
+    
+   
+
   }
   
   };
@@ -417,7 +429,7 @@ const handleInputChange = (field, value) => {
               </form>
               <div className='contactButtons advbuttons'>
                 <button className='back' onClick={handleBack}>Back</button>
-                {/* <button className='saveNext' onClick={handleNext}>Save and Next</button> */}
+                
                 <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
               </div>
             </div>
@@ -473,7 +485,7 @@ const handleInputChange = (field, value) => {
                 <div className="form-group row">
                   <label htmlForfor="name" className="col-sm-3 col-form-label">Confirm Password:</label>
                   <div className="inputs col-sm-7">
-                    <input type="confirmpassword" className="form-control" id="inputPassword" placeholder="Re-Enter Password"  value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)}required />
+                    <input type="password" className="form-control" id="inputPassword" placeholder="Re-Enter Password"  value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)}required />
                   </div>
                 </div>
                 <div className="form-group row">
@@ -486,12 +498,8 @@ const handleInputChange = (field, value) => {
               </form>
               <div className='advbuttons'>
               <button className='back' onClick={handleBack}>Back</button>
-               <button type="submit" className='submit2'>Submit</button>
-               <Link to="/login">
-                 <button  >
-                  login
-                 </button>
-               </Link>
+               <button type="submit" className='saveNext'>Submit</button>
+               
               </div>
             </div>
 

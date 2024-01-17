@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
-import {Link} from 'react-router-dom';
-import './Home.css';
 import About from './About';
-import Faq from './Faq';
 import Contact from './Contact';
+import Faq from './Faq';
+import './Home.css';
 
 
 

@@ -1,22 +1,15 @@
 const express = require('express');
-
-
-
 const bodyParser = require('body-parser');
-
 const cors=require('cors');
+const multer = require('multer');
 const app = express();
 const PORT = 3001;
 const mongoose=require('mongoose');
 const UserData=require('./models/data1');
 const UserData2=require('./models/data2');
 const UserData3=require('./models/data3');
-
+const File = require('./models/file');
 const Detail = require('./models/Detail'); 
-
-
-
-
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -31,11 +24,6 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
 }).catch((err) => {
   console.error('MongoDB connection error:', err);
 });
-
-
-
-
-
 
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
@@ -160,19 +148,6 @@ app.post('/login/litigant', async (req, res) => {
   }
 });
 
-
-// udayaddedcode
-app.get('/details', async (req, res) => {
-  try {
-    // Assuming you have a Detail model defined
-    const details = await Detail.find();
-
-    res.status(200).json(details);
-  } catch (error) {
-    console.error('Error fetching details:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 
 ///// Administrator signup
@@ -337,12 +312,64 @@ app.post('/api/checkCNR', async (req, res) => {
   }
 });
 
+////docs
+const db= mongoose.connection;
 
+// Set up Multer for file uploads
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
+// API endpoint for file uploads
+app.post('/upload', upload.array('fileUpload'), async (req, res) => {
+  try {
+    const currentDate = new Date().toLocaleDateString();
+    const fileName = req.body.fileName;
 
+    // Iterate through uploaded files and save to database
+    for (let i = 0; i < req.files.length; i++) {
+      const file = new File({
+        date: currentDate,
+        name: fileName,
+        filename: req.files[i].originalname,
+        content: req.files[i].buffer.toString("base64"),
+        fileType: req.files[i].mimetype.split('/')[0],
+      });
+      await file.save();
+    }
 
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
+// API endpoint for retrieving files
+app.get('/files', async (req, res) => {
+  try {
+    const files = await File.find();
+    res.json(files);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+// Add a new API endpoint for fetching file content
+app.get('/files/:filename', async (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const file = await File.findOne({ filename });
 
+    if (file && file.content) {
+      res.send(file.content.toString());
+    } else {
+      res.status(404).send('File not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

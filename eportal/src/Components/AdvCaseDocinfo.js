@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from 'react'
-import Filetable from '../Filetable';
-import "./CaseDocinfo.css";
-const CaseDocinfo = () => {
-   
+import Filetable from './Filetable';
+import "./Litigant/CaseDocinfo.css";
+
+const AdvCaseDocinfo = () => {
 
     const [files, setFiles] = useState([]);
     useEffect(() => {
@@ -48,7 +48,7 @@ const CaseDocinfo = () => {
       alert('Error fetching file content');
     }
   };
-  return (
+return (
     <section>
     <div>
         <h2 className='doctitle'>Case Documents</h2>
@@ -61,7 +61,7 @@ const CaseDocinfo = () => {
         <Filetable files={files} onViewFile={viewFile} />
       </div>
       </section>
-  )
-}
+  );
+};
 
-export default CaseDocinfo
+export default AdvCaseDocinfo

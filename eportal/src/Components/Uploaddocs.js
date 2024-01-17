@@ -1,38 +1,97 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Uploaddocs.css";
+import Filetable from './Filetable';
 
 const Uploaddocs = () => {
+  const [formVisible, setFormVisible] = useState(false);
   const [files, setFiles] = useState([]);
 
+  useEffect(() => {
+
+    const fetchFiles = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/files');
+        const filesData = await response.json();
+        setFiles(filesData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchFiles();
+  }, []);
+
   const toggleForm = () => {
-    const form = document.getElementById("uploadForm");
-    form.style.display = form.style.display === "none" ? "block" : "none";
+    setFormVisible(!formVisible);
   };
 
-  const submitForm = () => {
+  const submitForm = async () => {
+    
     const fileName = document.getElementById("fileName").value;
     const fileUpload = document.getElementById("fileUpload");
-
+  
     if (fileName && fileUpload.files.length > 0) {
-      const currentDate = new Date().toLocaleDateString();
-
-      // Loop through each selected file
+      const formData = new FormData();
+      formData.append('fileName', fileName);
+  
       for (let i = 0; i < fileUpload.files.length; i++) {
-        const file = {
-          date: currentDate,
-          name: fileName,
-          content: null,
-          filename: fileUpload.files[i].name,
-        };
-        setFiles((prevFiles) => [...prevFiles, file]);
+        formData.append('fileUpload', fileUpload.files[i]);
       }
-
-      // Clear form fields
+  
+      try {
+        const response = await fetch('http://localhost:3001/upload', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          
+          const filesResponse = await fetch('http://localhost:3001/files');
+          const filesData = await filesResponse.json();
+          setFiles(filesData);
+        } else {
+          alert('Upload failed');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Upload failed');
+      }
+  
+  
       document.getElementById("fileName").value = "";
       fileUpload.value = "";
     } else {
       alert("Please provide a file name and choose at least one file.");
+    }
+  };
+  const viewFile = async(filename) => {
+    try {
+      const response = await fetch(`http://localhost:3001/files/${encodeURIComponent(filename)}`);
+      if (response.ok) {
+        const fileContentBase64 = await response.text();
+        
+        // Decode Base64 content
+        const decodedContent = atob(fileContentBase64);
+        console.log('Decoded Content:', decodedContent);
+        const newTab = window.open();
+        newTab.document.write(`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>${filename}</title>
+          </head>
+          <body>
+            <pre>${decodedContent}</pre>
+          </body>
+        </html>
+      `);
+      } else {
+        console.error('Error fetching file content:', response.status);
+        alert('Error fetching file content');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error fetching file content');
     }
   };
 
@@ -40,21 +99,27 @@ const Uploaddocs = () => {
     <section>
       <div>
         <h2 className='title'>Upload Case Documents</h2>
-        <br/>
+        <br />
         <button className='uploadbtn' onClick={toggleForm}>Upload</button>
-        <br/>
-        <br/>
+        <br />
+        <br />
       </div>
-      <div>
-        <form id="uploadForm" style={{display:"none"}} action="/upload" method="post" encType="multipart/form-data">
-          <table>
+
+      {formVisible && (
+        <div>
+          <form id="uploadForm" action="/upload" method="post" encType="multipart/form-data">
+          
+            <table>
             <tbody>
               <tr>
                 <td>
+                <label className="data" htmlFor="fileName"><b>CNR Number:&nbsp;&nbsp;</b></label>
+                  <input type="number" id="cnr" name="cnr" required/>
                   <label className="data" htmlFor="fileName"><b>File Name:&nbsp;&nbsp;</b></label>
                   <input type="text" id="fileName" name="fileName" required/>
+                  <br/>
                   <label  className="data" htmlFor="fileUpload"><b>Choose File:&nbsp;&nbsp;</b></label>
-                  <input  type="file" id="fileUpload" name="fileUpload" accept=".txt, .pdf, .doc"/>
+                  <input  type="file" id="fileUpload" name="fileUpload" accept=".txt, .pdf, .doc , image/, video/ "/>
                   <button className='uploadbtn' type="button" onClick={submitForm}>Submit</button>
                   <br/>
                   <br/>
@@ -62,37 +127,15 @@ const Uploaddocs = () => {
               </tr>
             </tbody>
           </table>
-        </form>
-      </div>
-      <div>
-        <table id="fileTable">
-          <thead>
-            <tr>
-              <th className='fields'>S.No.</th>
-              <th className='fields'>Date</th>
-              <th className='fields'>File Name</th>
-              <th className='fields'>View File</th>
-            </tr>
-          </thead>
-          <tbody>
-            {files.map((file, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{file.date}</td>
-                <td>{file.name}</td>
-                <td>
-                  <a href={`/viewFile?filename=${encodeURIComponent(file.filename)}`} target="_blank" rel="noopener noreferrer">View File</a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div id="fileViewer" style={{display: "none"}}>
-          <h2>File Viewer</h2>
-          <p id="fileContent"></p>
+          </form>
         </div>
+      )}
+
+      <div>
+        
+        <Filetable files={files} onViewFile={viewFile} />
       </div>
+      
     </section>
   );
 }

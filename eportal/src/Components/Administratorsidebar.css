@@ -19,30 +19,29 @@
     margin-bottom: 50px;
     margin-top: -53px;
   }
-  
-  .sidebar {
+
+  .sidebar{
     margin-top: 15px;
-    padding-top: 34px;
     background-color: #0c1707;
-    height: 50rem;
+    height: 627px;
     width: 350px;
   
-  
   }
-  
-  .sidebar ul {
+  .sidebar ul{
     list-style: none;
-    margin-left: 10px;
-    color: #EAECE1;
+    padding-top: 250px;
+    margin-left:10px;
+  color: #EAECE1;
   
-  
+   
   }
-  
-  .sidebar li {
+  .sidebar li{
     cursor: pointer;
     margin-bottom: 45px;
   }
-  
-  .logout {
+  .logout{
     margin-left: 100px;
+  }
+  ul li :active{
+    background-color: white;
   }

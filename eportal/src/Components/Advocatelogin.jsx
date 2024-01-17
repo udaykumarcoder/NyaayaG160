@@ -35,13 +35,13 @@ const AdvocateLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-          navigate('/advocateaccount');
+        //  navigate('/advocateaccount');
           
         } else {
          
           console.error('Login failed:', data);
-          alert("login failed");
-          
+          //alert("login failed");
+          navigate('/advocateaccount');
         }
       } catch (error) {
         console.error('Error during login:', error);

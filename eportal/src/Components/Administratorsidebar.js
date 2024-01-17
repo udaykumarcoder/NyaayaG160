@@ -3,9 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import "./Administratorsidebar.css";
 
-
-
-import "./sidebar.css";
 const Administratorsidebar = ({ handleSidebarItemClick ,selectedSection}) => {
 
   const location = useLocation();

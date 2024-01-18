@@ -8,7 +8,7 @@ const Faq = () => {
       <div className="fmainblock">
       <div className="fblock1">
       <div className="fheading">
-      <h3> ➡️FAQ'S</h3>
+      <h3> ➤FAQ'S</h3>
       </div>
       <div className="fpara">
         <p>How does it work and where to start?<br/> We've collected answers to most of the

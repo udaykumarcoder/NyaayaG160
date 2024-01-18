@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       
-      <div className='HOME w-full' >
+      <div  className='HOME w-full' >
         <Navbar />
         <section>
           <div id="headline" >
@@ -24,8 +24,8 @@ const Home = () => {
         <section>
           <div className="buttons" >
 
-          <Link to="/login" className="font" id="first"> <button className='btn btn-primary btn-sm text-decoration-none'>LOGIN</button> </Link>
-          <Link to="/signup" className='font' id='first'><button className='btn btn-primary btn-sm text-decoration-none'>Signup</button>  </Link>
+          <Link to="/login" className="font" id="first"> <button >LOGIN</button> </Link>
+          <Link to="/signup" className='font' id='first'><button >Signup</button>  </Link>
           </div>
         </section>
         <section className="drop">

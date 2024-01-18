@@ -46,7 +46,7 @@
  @media screen and (min-width: 1367px) {
   .HOME {
     height: 55rem;
-    border-width: 19px;
+    border-width: 30px;
   }
   #nyaya {
     margin-top: 100px;
@@ -90,7 +90,7 @@
  @media screen and (max-width: 1366px) {
   .HOME {
     
-    border-width: 10px;
+    border-width: 30px;
   }
   #first button {
     margin-right: 3rem;

@@ -3,6 +3,7 @@ import {HashLink as Link} from 'react-router-hash-link';
 import "./Contact.css";
 
 
+
 const Contact = () => {
   return (
     <>
@@ -18,7 +19,8 @@ const Contact = () => {
         ✉️ help.nyaaya@gmail.com
         <br/>
         <br/>
-        🏠 Neil Gogte Institute of Technology,Uppal,Kachawanisingaram Village,Hyderabad,Telangana,500039
+        🏠 Neil Gogte Institute of Technology,Uppal, <br />Kachawanisingaram Village,Hyderabad,Telangana,500039
+
       </section>
       </td>
       <td>
@@ -26,20 +28,15 @@ const Contact = () => {
       <div className="c2"><b >Quick Links</b></div>
       
       <section className="content2">
-      <div className="nav">
-      <ul>
-      <li><Link id='tags' to='#home'>Home</Link></li>
-            <li><Link id='tags'smooth to='#about'>About</Link></li>
-            <li><Link id='tags'smooth to='#contacts'>Services</Link></li>
-            <li><Link id='tags'smooth to='#faq'>FAQ's</Link></li>
-            
-       
-        </ul>
+      <div className="bottomnav">
+      
+      <Link  smooth to='#about'>About &nbsp;&nbsp;&nbsp;</Link>
+      <Link  smooth to='#faq'>FAQ's</Link>
       </div>
+      <br />
       <b id="c1">Social</b>
       <br/>
       <br/>
-      {/* <p id="c1">hello</p> */}
       </section>
       </div>
       </td>

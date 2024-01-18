@@ -15,7 +15,7 @@ const About = () => {
             <div className="card-body" >
               <p className="card-text">Seek efficient resolution for managing multiple cases</p>
               <div className="abtbuttons">
-              <Link to="/signup"><button className=' btn btn-primary btn-sm '>Signup➤</button>  </Link>
+              <Link to="/signup"><button>Signup➤</button>  </Link>
               </div>
             </div>
           </div>
@@ -27,10 +27,10 @@ const About = () => {
         <div className="maincontainer">
 
           <div className="card box2" >
-            <div className="card-body fs-2" >
+            <div className="card-body " >
               <p className="card-text">Access your case data and track your case status</p>
               <div className="abtbuttons">
-              <Link to="/login"><button className='btn btn-primary btn-sm'>Login➤</button>  </Link>
+              <Link to="/login"><button >Login➤</button>  </Link>
             </div>
             </div>
           </div>
@@ -43,12 +43,12 @@ const About = () => {
       </section>
       <section className="about2" >
         <div className="aboutpage">
-          <h2>About</h2>
+          <h2 className='abtheadings'>About</h2>
           <p>At NYAAYA, we understand the complexities and challenges that come with case management.<br />
             Whether you're an individual seeking efficient resolution for a personal matter or a proffessional <br />managing multiple cases , our e-portal is designed to streamline the entire process.  </p>
         </div>
         <div className="aboutpage">
-          <h2>Why Nyaaya</h2>
+          <h2 className='abtheadings'>Why Nyaaya</h2>
           <p>We believe that powerful tools should also be simple to use, NYAAYA boastsan intuitive interface that <br />
             allows you to effortlessly manage and track your cases , giving you more time to focus on what <br />
             matters most.</p>

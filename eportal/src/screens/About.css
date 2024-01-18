@@ -28,6 +28,7 @@
 
   padding: 10px;
   margin-left: 10px;
+  font-family: 'Audiowide', sans-serif;
 }
 
 .vision {
@@ -35,13 +36,13 @@
   padding: 10px;
   color: white;
   word-wrap: break-word;
+
 }
 
 
 .about {
   background-color: black;
   width: 100vw;
-  font-family: 'Audiowide', sans-serif;
 }
 
 .abtheadings {
@@ -59,7 +60,6 @@
 .about2 {
   background-color: black;
   width: 100vw;
-  font-family: 'Audiowide', sans-serif;
   margin-top: -11px;
 }
 
@@ -113,15 +113,15 @@
   }
 
   .abtboxcontent {
-    font-size: 1.2rem;
-  }
-
-  .aboutpage p {
     font-size: 1.3rem;
   }
 
-  .card-text {
+  .aboutpage p {
     font-size: 1.5rem;
+  }
+
+  .card-text {
+    font-size: 1.8rem;
   }
 
   .box1 {
@@ -140,4 +140,5 @@
 
 
   }
+ 
 }

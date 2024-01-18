@@ -53,11 +53,15 @@
     margin-left: 5rem;
   }
 
-  .nav {
-
+  .bottomnav {
     margin-top: 21px;
-    font-size: 1.3rem;
-
+    font-size: 1rem;
+    display: flex;
+   flex-direction: row;
+  }
+  .bottomnav a{
+    text-decoration: none;
+    color: #e8dfc5;;
   }
 }
 
@@ -80,13 +84,21 @@
     margin-top: 20px;
 
   }
-
-  .nav {
-
-    margin-top: 21px;
-    font-size: 1.2rem;
-
+  .contactRight {
+    margin-left: 40rem;
   }
+
+  .bottomnav {
+    margin-top: 21px;
+    font-size: 1rem;
+    display: flex;
+   flex-direction: row;
+  }
+  .bottomnav a{
+    text-decoration: none;
+    color: #e8dfc5;;
+  }
+ 
 
   .content1 {
     padding-top: 30px;

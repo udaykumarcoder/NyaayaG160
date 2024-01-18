@@ -27,8 +27,8 @@ const Advocatesidebar = ({switchComponent}) => {
         <ul>
           
         <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
-        {/* <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>   */}
         <li><h3><button onClick={()=>switchComponent(1)}>📃&nbsp;Case Documents</button></h3></li>
+        <li><h3><button onClick={() => switchComponent(2)} >📜&nbsp;Case Filing</button></h3></li>
           
           
         </ul>

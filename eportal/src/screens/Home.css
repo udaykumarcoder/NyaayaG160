@@ -45,8 +45,8 @@
 /* CSS for 17-inch Laptop */
  @media screen and (min-width: 1367px) {
   .HOME {
-    height: 55rem;
-    border-width: 19px;
+  
+    border-width: 30px;
   }
   #nyaya {
     margin-top: 100px;

@@ -59,7 +59,8 @@ const Administratorsidebar = ({ handleSidebarItemClick ,selectedSection}) => {
           onClick={() => handleSidebarItemClick('Upload Documents')}><h3> 📤 &nbsp;Upload Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;   Documents</h3></li>
       <li className={selectedSection === 'Update Case Details' ? 'active' : ''} 
           onClick={() => handleSidebarItemClick('Update Case Details')}><h3>🔁&nbsp; Update Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;  Details</h3></li>
-     
+           
+
       
     </ul>
     <Link smooth to='/#home'><button class="logout"><b>⇤Log Out</b></button></Link>

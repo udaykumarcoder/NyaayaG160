@@ -322,6 +322,7 @@ const upload = multer({ storage: storage });
 // API endpoint for file uploads
 app.post('/upload', upload.array('fileUpload'), async (req, res) => {
   try {
+    const cnr= req.body.cnr;
     const currentDate = new Date().toLocaleDateString();
     const fileName = req.body.fileName;
 

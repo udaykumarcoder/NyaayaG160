@@ -14,6 +14,7 @@ import About from './screens/About';
 import Contact from './screens/Contact';
 import Home from './screens/Home';
 import Signup from './screens/Signup';
+import CaseFiling from './Components/CaseFiling';
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
         <Route path="/Litigantaccount" element={<Litigantaccount/>}/>
         <Route path="/Adminstratoraccount" element={<Administratoraccount/>}/>
         <Route path="/casetracking" element={<Casetracking/>}/>
-        
+        <Route path="/casefiling" element={<CaseFiling/>}/>
         
        
       </Routes>

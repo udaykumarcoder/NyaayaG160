@@ -1,7 +1,9 @@
+
+// import './Userinfo.css';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const UserInfo = () => {
+const AdvuserInfo = () => {
   const location = useLocation();
   const emailFromLogin = location?.state?.email || '';
   const [userData, setUserData] = useState(null);
@@ -10,7 +12,7 @@ const UserInfo = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/user?email=${emailFromLogin}`);
+        const response = await fetch(`http://localhost:3001/api/user2?email=${emailFromLogin}`);
 
         if (!response.ok) {
           if (response.status === 404) {
@@ -34,23 +36,27 @@ const UserInfo = () => {
     fetchUserData();
   }, [emailFromLogin]);
 
+
+  
+
+
 return (
   <div className="userInfo">
-   
-    {error && <p>{error}</p>}
+  {error && <p>{error}</p>}
     {userData && (
+    
       <>
-       
+        {/* Render user data here */}
         <div className="whiteBox">
           <div className="profile">
-         
+            {/* You can customize this section based on your UI design */}
           </div>
         </div>
 
         <div className='Lprofile'>
           <div className='litigantName'>
             <h4>{userData.name}</h4>
-            <p>Administrator</p>
+            <p>Advocate</p>
           </div>
           <div className='Lbutton'>
             <button>✒Edit Profile</button>
@@ -60,7 +66,7 @@ return (
         <div className="litigantDetails">
           <h5><b>EMAIL ID</b></h5>
           <br />
-          <p>{userData.email || emailFromLogin}</p>
+          <p>{userData.email}</p>
           <hr />
           <br />
           <h5><b>CONTACT</b></h5>
@@ -78,11 +84,12 @@ return (
         </div>
       </>
     )}
+ 
   </div>
 );
 };
 
 
 
-export default UserInfo;
+export default AdvuserInfo;
 

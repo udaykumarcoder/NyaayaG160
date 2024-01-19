@@ -3,7 +3,8 @@ import AdvCaseDocinfo from './AdvCaseDocinfo';
 
 const AdvCaseDocuments = () => {
     const [showOtherComponent, setShowOtherComponent] = useState(false);
- 
+  // const [cnrNumber, setCnrNumber] = useState('');
+  // const [uniqueCode, setUniqueCode] = useState('');
     const handleOpenButtonClick = () => {
         setShowOtherComponent(true);
       };

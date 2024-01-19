@@ -8,18 +8,18 @@ const Faq = () => {
       <div className="fmainblock">
       <div className="fblock1">
       <div className="fheading">
-      <h3> ➡️FAQ'S</h3>
+      <h3> ➤FAQ'S</h3>
       </div>
       <div className="fpara">
-        <p>How does it work and where to start?<br/> We've collected answers to most of the
-        <br/>basic questions in order to 
-        be as <br/>open and transparent 
+        <p>How does it work and where to start? We've collected answers to most of the
+        basic questions<br/> in order to 
+        be as open and transparent 
         as possible.</p>
       </div>
       </div>
       <div className="fblock2">
-        <h1>Let us answer some of the most <br/> common questions 
-        you might <br/>have upfront.</h1>
+        <h1>Let us answer some of the most  common questions 
+        you might have upfront.</h1>
 
       </div>
       <div className='bigbox'>

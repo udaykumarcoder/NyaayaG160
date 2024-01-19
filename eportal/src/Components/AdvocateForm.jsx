@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './AdvocateForm.css';
-
-
+import Navbar4 from '../Components/Navbar4';
 
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/advocate`;
@@ -111,18 +110,16 @@ const handleInputChange = (field, value) => {
     switch (step) {
       case 1:
         return (
+          
+         
           <form onSubmit={handleform}>
-
+          <Navbar4/>
           
           <div className="step">
           
             <div className="advocLeftbox">
               <div>
-            <Link to ="/signup">
-                  <button className='back'>
-                    🔙
-                  </button>
-                </Link>
+           
                 </div>
               <div className="tracking">
                 <div className='track1'>
@@ -150,6 +147,11 @@ const handleInputChange = (field, value) => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
+              <Link to ="/signup">
+                  <button className='back'>
+                    🔙
+                  </button>
+                </Link>
             </div>
 
             <div className="advocRightbox">
@@ -239,7 +241,7 @@ const handleInputChange = (field, value) => {
                   
                   <div className="inputs col-sm-9 barverify">
                     <input type="text" className="form-control" id="barRegistrationNumber" placeholder="State Code/Bar Code/Bar Year" value={formData.barRegistrationNumber} onChange={(e) => handleInputChange('barRegistrationNumber', e.target.value)}  />
-                    {/* <button className='verifyBtn'>VERIFY</button> */}
+                  
                     <button  type="button" className='verifyBtn' onClick={verifyEntry}>VERIFY</button>
                     
                   </div>

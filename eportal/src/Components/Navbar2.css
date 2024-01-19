@@ -1,57 +1,22 @@
-*{
-    margin: 0;
-}
-.logonyaya{
-    font-size: 34px;
-}
-.logoheading{
-    margin-left: 0px;
-}
-.logosubheading{
-    font-size: 18px;
-    margin-top: 22rem;
-    margin-left: 4px;
-}
+
 .navbar2{
-    background-color: #E8DFC5;
-
-
-}
-.logo{
-    display: flex;
-}
-.container{
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Audiowide', sans-serif;
-
-
-}
-.logoimg{
-    height:60px;
-    width: 60px;
-    margin-top: 10px;
-    background-color: white;
     
+    background-color: transparent;
+   
+    font-size: 20px;
+     margin-top: 13rem;
+     margin-bottom: 0;
+   
 }
-.navbar2 ul{
-    display: flex;
-    align-items: center;
-    margin-right: 12px;
+.regheads{
+    margin-top: -150px;
 }
-.navbar2 ul li {
-    list-style-type: none;
-    margin: 44px;
-}
-.navbar2 ul li a{
-    text-decoration: none;
-    color: black;
-}
+
 .registrationform{
-    padding: 8px;
-    margin-left: 167px;
+    
+    margin-left: 50px;
     font-size: 25px;
-    margin-top: -29px;
+   margin-top: 40px;
     font-family: 'Audiowide', sans-serif;
 
 }

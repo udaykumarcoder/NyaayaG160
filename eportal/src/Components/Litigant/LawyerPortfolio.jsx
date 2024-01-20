@@ -1,7 +1,9 @@
 // LawyerPortfolio.js
-import React from 'react';
+import React ,{useState, useEffect} from 'react';
 import LawyerCard from './LawyerCard';
 import './LawyerPortfolio.css';
+import Search from './Search';
+
 
 const lawyersData = [
   { name: ' Advocate Nihal', specialization: 'Criminal Defense',description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatibus consequuntur tenetur praesentium, aut voluptatum similique distinctio voluptatem dolore, mollitia ea nihil maxime pariatur, sapiente nam officiis quam hic aliquid!", imageUrl: 'https://th.bing.com/th/id/OIP.usYnwXgh7l4OZf2TED0vFAHaE8?rs=1&pid=ImgDetMain' },
@@ -11,12 +13,27 @@ const lawyersData = [
 ];
 
 const LawyerPortfolio = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredLawyers , setFilteredLawyers] = useState(lawyersData);
+
+  useEffect(() => {
+    const filtered = lawyersData.filter(lawyer =>
+      lawyer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      lawyer.specialization.toLowerCase().includes(searchQuery.toLowerCase()) 
+      );
+      setFilteredLawyers(filtered);
+  }, [searchQuery]);
+
   return (
     <div className="chooselawyer">
       <div className="lawyerCards">
     <div className="lawyer-portfolio">
-      <input id='searchbar' type="search" placeholder='🔍    Searching for Advocates....'  />
-      {lawyersData.map((lawyer, index) => (
+      <input id='searchbar' type="search" placeholder='🔍    Searching for Advocates....' 
+      value = {searchQuery} 
+      onChange = {(e) => setSearchQuery(e.target.value)}
+      />
+
+      {filteredLawyers.map((lawyer, index) => (
         <LawyerCard key={index} {...lawyer} />
       ))}
     </div>

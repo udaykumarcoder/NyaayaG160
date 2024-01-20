@@ -66,6 +66,9 @@ app.post('/signup/advocate', async (req, res) => {
   }
 });
 
+
+
+
 ///////// Advocate login
 app.post('/login/advocate', async (req, res) => {
   console.log(req.body);

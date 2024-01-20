@@ -1,0 +1,80 @@
+.chooselawyer {
+  margin-top: 15px;
+  margin-left: 6px;
+  padding: 34px;
+  background-color:  #E8DFC5;
+  width: 100%;
+}
+
+
+
+.lawyer-portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #E8DFC5;
+
+}
+.lawyerCard {
+  border: 1px solid #ccc;
+  background-color: #C1B192;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column; /* Stack the items vertically on small screens */
+  width: 100%;
+}
+#searchbar{
+  margin: 10px;
+  width: 100%;
+  border: black;
+  background-color: white;
+}
+.cardName{
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+}
+.cardSpecialization{
+    font-size: 25px;
+}
+.lawyerCard .image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.lawyerCard .image-container p {
+  align-self: center;
+  
+}
+.lawyerCard img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 34px;
+  margin-right: 34px;
+}
+
+.lawyerCard .content {
+  margin-left: 20px;
+  font-family: 'Outfit', sans-serif;
+
+}
+
+.lawyerCard .image-container p {
+  margin-top: 10px;
+}
+
+
+
+/* Add these styles for larger screens */
+@media (min-width: 768px) {
+  .lawyerCard {
+    flex-direction: row; /* Align items horizontally on larger screens */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .lawyerCard .image-container {
+    margin-left: auto; /* Move image container to the right */
+  }
+}

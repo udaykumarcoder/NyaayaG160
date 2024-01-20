@@ -113,7 +113,15 @@ const LitigantLogin = () => {
         <button>
           <b>LOGIN</b>
         </button>
+        
+        <button
+        type="button"
+        onClick={() => navigate('/passwordreset2')}
+      >
+        Forgot Password?
+      </button>
       </div>
+      
       <Link id="back" to="/#home">
         <button className="backbtn">
           <h6> Back</h6>{' '}

@@ -7,7 +7,7 @@ import Litigantsidebar from './Litigantsidebar';
 import Userinfo from './Userinfo';
 
 const Litigantaccount = () => {
-  const components = [Userinfo, CaseTrackbox,CaseDocuments];
+  const components = [Userinfo, CaseTrackbox,CaseDocuments,];
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
 
   const switchComponent = (index) => {

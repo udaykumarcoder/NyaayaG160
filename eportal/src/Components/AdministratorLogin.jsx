@@ -90,7 +90,15 @@ const AdministratorLogin = () => {
         </table>
         <div className='x'>
        <button ><b>LOGIN</b></button>
+
+       <button
+        type="button"
+        onClick={() => navigate('/passwordreset3')}
+      >
+        Forgot Password?
+      </button>
        </div>
+      
        <Link id="back" to='/#home'><button className='backbtn'><h6> Back</h6> </button></Link>
         <div class="c">
         <h5 >Don't have an account?</h5>

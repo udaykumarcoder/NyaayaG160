@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   state: { type: String, required: true },
   gender: { type: String, required: true },
   dob: { type: String, required: true },
-  barRegistrationNumber: { type: String, required: true},
+  barRegistrationNumber: { type: String, required: true, unique: true},
   courtType: { type: String, required: true },
   courtName: { type: String, required: true },
   phone: { type: String, required: true },

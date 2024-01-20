@@ -10,6 +10,9 @@ import Litigantaccount from './Components/Litigant/Litigantaccount';
 import LitigantForm from './Components/LitigantForm';
 import LitigantLogin from './Components/LitigantLogin';
 import LoginPage from './Components/LoginPage';
+import PasswordReset from './Components/PasswordReset';
+import PasswordReset2 from './Components/PasswordReset2';
+import PasswordReset3 from './Components/PasswordReset3';
 import About from './screens/About';
 import Contact from './screens/Contact';
 import Home from './screens/Home';
@@ -35,9 +38,9 @@ function App() {
         <Route path="/Litigantaccount" element={<Litigantaccount/>}/>
         <Route path="/Adminstratoraccount" element={<Administratoraccount/>}/>
         <Route path="/casetracking" element={<Casetracking/>}/>
-        
-        
-       
+        <Route path="/passwordreset" element={<PasswordReset/>}/>
+        <Route path="/passwordreset2" element={<PasswordReset2/>}/>
+        <Route path="/passwordreset3" element={<PasswordReset3/>}/>
       </Routes>
     </Router>
   );

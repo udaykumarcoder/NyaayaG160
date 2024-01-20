@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
-import "./Litigantsidebar.css";
+import "./Advocatesidebar.css";
+import "./sidebar.css";
 
+const Advocatesidebar = ({switchComponent}) => {
 
-const Litigantsidebar = ({ switchComponent }) => {
   const location = useLocation();
   const emailFromLogin = location?.state?.email || '';
   const [userData, setUserData] = useState(null);
@@ -13,7 +14,7 @@ const Litigantsidebar = ({ switchComponent }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/user1?email=${emailFromLogin}`);
+        const response = await fetch(`http://localhost:3001/api/user2?email=${emailFromLogin}`);
 
         if (!response.ok) {
           if (response.status === 404) {
@@ -36,11 +37,11 @@ const Litigantsidebar = ({ switchComponent }) => {
 
     fetchUserData();
   }, [emailFromLogin]);
-
   return (
     <section>
       {error && <p>{error}</p>}
     {userData && (
+      
         <div className="sidebar">
         
           <div className="Litigantprofile">
@@ -52,7 +53,7 @@ const Litigantsidebar = ({ switchComponent }) => {
           <h3>
           {userData.name}
           </h3>
-          <p>Litigant</p>
+          <p>Advocate</p>
           </div>
           
           <div>
@@ -61,20 +62,20 @@ const Litigantsidebar = ({ switchComponent }) => {
         <ul>
           
         <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
-        <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>  
-        <li><h3><button onClick={()=>switchComponent(2)}>📃&nbsp;Case Documents</button></h3></li>
-        
-          <li><h3>📝&nbsp;Case Appeal</h3></li>
+        {/* <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>   */}
+        <li><h3><button onClick={()=>switchComponent(1)}>📃&nbsp;Case Documents</button></h3></li>
+          
           
         </ul>
         <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>
     
       </div>
+    
     )}
-   
     </section>
-  );
-};
+  )
+}
 
-export default Litigantsidebar
 
+
+export default Advocatesidebar

@@ -28,8 +28,8 @@
 
 // export default CaseDocuments
 import React, { useState } from 'react';
-import './CaseDocuments.css';
 import CaseDocinfo from './CaseDocinfo';
+import './CaseDocuments.css';
 
 const CaseDocuments = () => {
   const [showOtherComponent, setShowOtherComponent] = useState(false);

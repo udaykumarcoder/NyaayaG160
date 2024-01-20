@@ -1,22 +1,20 @@
 const express = require('express');
-
-
-
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+
 
 const cors=require('cors');
+const multer = require('multer');
 const app = express();
 const PORT = 3001;
 const mongoose=require('mongoose');
 const UserData=require('./models/data1');
 const UserData2=require('./models/data2');
 const UserData3=require('./models/data3');
-
+const File = require('./models/file');
 const Detail = require('./models/Detail'); 
-
-
-
-
+const UserDatabar = require('./models/barnumbers');
+const router = express.Router();
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -32,11 +30,6 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   console.error('MongoDB connection error:', err);
 });
 
-
-
-
-
-
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
   try {
@@ -45,6 +38,15 @@ app.post('/signup/advocate', async (req, res) => {
     if (password !== confirmPassword) {
       return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
     }
+    
+    
+    const isBarNumberExists = await UserData.exists({ barRegistrationNumber: req.body.barRegistrationNumber });
+
+if (isBarNumberExists) {
+  return res.status(400).json({ status: 'error', message: 'Bar Registration Number already exists' });
+}
+    
+
 
     
 
@@ -66,17 +68,21 @@ app.post('/signup/advocate', async (req, res) => {
     res.json({ status: 'ok' });
 
   } catch (err) {
-    if (err.code === 11000) {
-      if (err.keyPattern.email) {
-        res.status(400).json({ status: 'error', message: " Email already exists" });
-      } else {
-        res.status(500).json({ status: 'error', error: err.message });
-      }
-    } else {
+    if(err.code=== 11000)
+    {
+     if(err.keyPattern.email){
+      res.status(400).json({status: 'error',message: " Email already exists" });}
+      
+
+    else {
+      
       res.status(500).json({ status: 'error', error: err.message });
-    }
-  }
+   }}
+   else{
+    res.status(500).json({ status: 'error', error: err.message });}
+   }
 });
+
 
 ///////// Advocate login
 app.post('/login/advocate', async (req, res) => {
@@ -108,6 +114,7 @@ app.post('/signup/litigant', async (req, res) => {
     if (password !== confirmPassword) {
       return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
     }
+    
 
     await UserData2.create({
     name: req.body.name, 
@@ -119,10 +126,29 @@ app.post('/signup/litigant', async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     confirmPassword: req.body.confirmPassword,
-    otp: req.body.otp,
+ 
 
     });
-    res.json({ status: 'ok' });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
+        pass: 'anga bway cibv frvy', // Replace with your Gmail password or app password
+      },
+    });
+
+    const mailOptions = {
+      from: 'vinnupersonals162@gmail.com',
+      to: req.body.email,
+      subject: 'Registration Successful',
+      html:'<p>Thank you for registering!</p>',
+      html:req.body.name,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    
+    res.json({ status: 'ok', message: 'Form submitted successfully'});
   } catch (err) {
     if(err.code=== 11000)
     {
@@ -138,6 +164,8 @@ app.post('/signup/litigant', async (req, res) => {
     res.status(500).json({ status: 'error', error: err.message });}
    }
 });
+
+
 //// Litigant login
 
 app.post('/login/litigant', async (req, res) => {
@@ -160,19 +188,6 @@ app.post('/login/litigant', async (req, res) => {
   }
 });
 
-
-// udayaddedcode
-app.get('/details', async (req, res) => {
-  try {
-    // Assuming you have a Detail model defined
-    const details = await Detail.find();
-
-    res.status(200).json(details);
-  } catch (error) {
-    console.error('Error fetching details:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 
 ///// Administrator signup
@@ -265,6 +280,7 @@ app.post('/details', async (req, res) => {
   }
 });
 
+/// Admin user info
 app.get('/api/user', async (req, res) => {
   const { email } = req.query;
 
@@ -281,6 +297,7 @@ app.get('/api/user', async (req, res) => {
   }
 });
 
+/// litigant user info
 app.get('/api/user1', async (req, res) => {
   const { email } = req.query;
 
@@ -297,11 +314,26 @@ app.get('/api/user1', async (req, res) => {
   }
 });
 ////
+app.get('/api/user2', async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const user = await UserData.findOne({ email });
+
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
 
 
 
 
-
+// case details
 app.get('/api/cd', async (req, res) => {
   const { cnr } = req.query;
 
@@ -318,7 +350,7 @@ app.get('/api/cd', async (req, res) => {
   }
 });
 
-
+// case tracking by crn
 app.post('/api/checkCNR', async (req, res) => {
   console.log(req.body);
   console.log('Received login request:', req.body);
@@ -337,8 +369,196 @@ app.post('/api/checkCNR', async (req, res) => {
   }
 });
 
+////docs
+const db= mongoose.connection;
+
+// Set up Multer for file uploads
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+// API endpoint for file uploads
+app.post('/upload', upload.array('fileUpload'), async (req, res) => {
+  try {
+    const currentDate = new Date().toLocaleDateString();
+    const fileName = req.body.fileName;
+
+    // Iterate through uploaded files and save to database
+    for (let i = 0; i < req.files.length; i++) {
+      const file = new File({
+        date: currentDate,
+        name: fileName,
+        filename: req.files[i].originalname,
+        content: req.files[i].buffer.toString("base64"),
+        fileType: req.files[i].mimetype.split('/')[0],
+      });
+      await file.save();
+    }
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// API endpoint for retrieving files
+app.get('/files', async (req, res) => {
+  try {
+    const files = await File.find();
+    res.json(files);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+// Add a new API endpoint for fetching file content
+app.get('/files/:filename', async (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const file = await File.findOne({ filename });
+
+    if (file && file.content) {
+      res.send(file.content.toString());
+    } else {
+      res.status(404).send('File not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+/// Advocate password reset
+app.post('/resetpassword-Advocate', async (req, res) => {
+  const { email, dob, phone, newPassword } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+    // Check user details in MongoDB
+    const user = await UserData.findOne({ email, dob, phone });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+
+    // Update the password
+    user.password = newPassword;
+    user.confirmPassword=newPassword;
+    await user.save();
+
+    res.json({ message: 'Password reset successful.' });
+  } catch (error) {
+    console.error('Error during password reset:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
+///// Litigant password reset
+app.post('/resetpassword-Litigant', async (req, res) => {
+  const { email, dob, phone, newPassword } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+    // Check user details in MongoDB
+    const user = await UserData2.findOne({ email, dob, phone });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+
+    // Update the password
+    user.password = newPassword;
+    user.confirmPassword=newPassword;
+    await user.save();
+
+    res.json({ message: 'Password reset successful.' });
+  } catch (error) {
+    console.error('Error during password reset:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
+///// Adminstrator  password reset
+app.post('/resetpassword-Adminstrator', async (req, res) => {
+  const { email, dob, phone, newPassword } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+    // Check user details in MongoDB
+    const user = await UserData3.findOne({ email, dob, phone });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+
+    // Update the password
+    user.password = newPassword;
+    user.confirmPassword=newPassword;
+    await user.save();
+
+    res.json({ message: 'Password reset successful.' });
+  } catch (error) {
+    console.error('Error during password reset:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
+/////////////
 
 
+app.post('/verify', async (req, res) => {
+  console.log(req.body);
+  console.log('Received login request:', req.body);
+  try {
+    const { barRegistrationNumber } = req.body; // Adjust property name here
+    const user = await UserDatabar.findOne({ barnumber: barRegistrationNumber });
+   
+
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+    if (barRegistrationNumber !== user.barnumber) {
+      return res.status(401).json({ status: 'error', message: 'Invalid password' });
+    }
+    res.json({ status: 'ok', user });
+
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+/////
+
+
+
+// async function main() {
+
+
+
+//   let transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com", 
+//     port: 465, 
+//     secure: true, 
+//     auth: {
+//       user: "vinnupersonals162@gmail.com", 
+//       pass: "anga bway cibv frvy", 
+      
+//     },
+//   });
+  
+  
+//   let info = await transporter.sendMail({
+//     from: 'vinnupersonals162@gmail.com',
+//     to: "meghanagoli05@gmail.com",
+//     subject: "Testing, testing, 123",
+//     html: `
+//     <h1>Hello Meghana</h1>
+//     <p>Isn't NodeMailer useful?</p>
+//     `,
+//   });
+
+//   console.log(info.messageId); 
+// }
+
+// main()
+// .catch(err => console.log(err));
 
 
 
@@ -347,3 +567,4 @@ app.post('/api/checkCNR', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+

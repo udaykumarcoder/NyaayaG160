@@ -60,8 +60,7 @@ const AdministratorForm= () => {
       
       alert(data.message);
     }
-    if (data.status === 'error' ){
-      alert("Enter all fields");}
+    
   
     if (data.status === 'ok') {
       
@@ -82,7 +81,7 @@ const AdministratorForm= () => {
   const handleform = (event)=>
   {
     event.preventDefault();
-    // setStep(step + 1);
+   
   } 
 
 

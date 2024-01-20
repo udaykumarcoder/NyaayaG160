@@ -27,6 +27,7 @@ const AdvocateForm = () => {
     confirmPassword: '',
     otp: '',
   });
+  const [barnumber, setBarnumber] = useState('');
 
   const navigate = useNavigate();
 
@@ -42,71 +43,75 @@ const handleInputChange = (field, value) => {
   setFormData({ ...formData, [field]: value });
 };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formData);
-    try {
-      // Submit form data to the server
-      const response = await fetch(SUBMIT_FORM_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
 
-        body: JSON.stringify(formData),
-      });
-  
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  console.log(formData);
+
+  try {
+    // Check if the barRegistrationNumber exists in the database
+    const response = await fetch('http://localhost:3001/verify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ barRegistrationNumber: formData.barRegistrationNumber }),
+    });
+
     const data = await response.json();
-    console.log(data.formData);
-    console.log('Form submitted successfully:', data);
-    
-    if (data.status === 'error' && data.message) {
-      
-      alert(data.message);}
 
-      if (data.status === 'error' ){
-        alert("Enter all fields");}
-    
-      
-    if (data.status === 'ok') {
-      
-      alert('Submitted successfully');
-      navigate("/login/advocate");
-      
+    if (response.ok && data.status === 'ok') {
+      console.log('verified:', data);
+      // Continue with form submission
+      try {
+        // Submit form data to the server
+        const submitResponse = await fetch(SUBMIT_FORM_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const submitData = await submitResponse.json();
+        console.log(submitData.formData);
+        console.log('Form submitted successfully:', submitData);
+
+      //  if(submitData.status === 'error')
+       {
+        if (submitData.error === 'barRegistrationNumber is not defined') {
+          alert('Bar Registration Number already exists');
+        } 
+       }
+        if (submitData.status === 'error' && submitData.message) {
+         
+          alert(submitData.message);
+          
+          
+        }
+
+        if (submitData.status === 'ok') {
+          alert('Submitted successfully');
+          navigate("/login/advocate");
+        }
+      } catch (submitError) {
+        console.error('Error submitting form:', submitError);
+        
+      }
+    } else {
+      console.error('not verified:', data);
+      alert(' Bar registration number :not verified ');
     }
   } catch (error) {
-    console.error('Error submitting form:', error);
-    
+    console.error('Error during verification:', error);
   }
 };
-    
-
-  
-  const handleform = (event)=>
+ const handleform = (event)=>
   {
     event.preventDefault();
    
   }
  
-  const verifyEntry = (event) => {
-
-    event.preventDefault(); 
-    const enteredText = formData.barRegistrationNumber.trim();
-
-  
-  const expectedValues = Array.from(['245322733162','245322733177','245322733145','245322733149','245322733087','245322758101']).map(value => value.trim());
-  
-  if (expectedValues.includes(enteredText)) {
-    alert('Verified');
-  } else {
-    alert('Not Verified');
-    
-   
-
-  }
-  
-  };
-
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -233,25 +238,32 @@ const handleInputChange = (field, value) => {
                   <input type="date"  id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft:'10px',backgroundColor:'grey' }} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)}/>
                   <br></br>
                 </div>
-
+               
                 <div className="form-group row">
-                  <label htmlFor="barRegistrationNumber" className="col-sm-9 col-form-label">Bar Registration Number:</label>
-                  
-                  <div className="inputs col-sm-9 barverify">
-                    <input type="text" className="form-control" id="barRegistrationNumber" placeholder="State Code/Bar Code/Bar Year" value={formData.barRegistrationNumber} onChange={(e) => handleInputChange('barRegistrationNumber', e.target.value)}  />
-                    {/* <button className='verifyBtn'>VERIFY</button> */}
-                    <button  type="button" className='verifyBtn' onClick={verifyEntry}>VERIFY</button>
-                    
-                  </div>
-                </div>
+              <label htmlFor="barRegistrationNumber" className="col-sm-9 col-form-label">Bar Registration Number:</label>
+              <div className="inputs col-sm-9 barverify">
+                <input
+                  className="form-control"
+                  id="barRegistrationNumber"
+                  name="barnumber"
+                  placeholder="State Code/Bar Code/Bar Year"
+                  value={barnumber}
+                  onChange={(e) => {
+                    setBarnumber(e.target.value);
+                    handleInputChange('barRegistrationNumber', e.target.value);
+                  }}
+                />
 
-              </form>
-              <div>
-                
-                <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
-                
-                
               </div>
+            </div>
+            <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
+              </form>
+              
+                
+               
+                
+                
+              
               
             </div>
             

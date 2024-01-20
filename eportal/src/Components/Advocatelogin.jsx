@@ -35,13 +35,13 @@ const AdvocateLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-        //  navigate('/advocateaccount');
+          navigate('/advocateaccount', { state: { email } });
           
         } else {
          
           console.error('Login failed:', data);
-          //alert("login failed");
-          navigate('/advocateaccount');
+          alert("login failed");
+          
         }
       } catch (error) {
         console.error('Error during login:', error);
@@ -134,6 +134,13 @@ const AdvocateLogin = () => {
         
             <b>LOGIN</b>
         </button>
+
+        <button
+        type="button"
+        onClick={() => navigate('/passwordreset')}
+      >
+        Forgot Password?
+      </button>
       </div>
       <Link id="back" to="/#home">
         <button className="backbtn">
@@ -157,3 +164,5 @@ const AdvocateLogin = () => {
 };
 
 export default AdvocateLogin;
+
+

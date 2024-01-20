@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import './LitigantForm.css';
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/litigant`;
+const VERIFY_OTP_URL = `${API_BASE_URL}/verify-otp`; 
 
 const LitigantForm = () => {
   console.log('litigiantForm component rendered');
@@ -34,6 +36,10 @@ const LitigantForm = () => {
   const handleInputChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
   };
+
+  
+
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,12 +77,14 @@ const LitigantForm = () => {
       console.error('Error submitting form:', error);
     }
   };
+  
   const handleform = (event)=>
   {
     event.preventDefault();
     
     
   } 
+  
 
   const renderStep = () => {
     switch (step) {
@@ -300,10 +308,21 @@ const LitigantForm = () => {
                 </div>
                 <div class="form-group row">
                   <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
-                  <div class="otpInput inputs col-sm-12">
-                    <button>Send OTP</button>
-                    <input type="text" class="form-control" id="inputOtp" placeholder="Enter OTP" value={formData.otp} onChange={(e) => handleInputChange('otp', e.target.value)} required />
-                  </div>
+                  <div className="otpInput inputs col-sm-12">
+                {/* <button type="button" onClick={handleSendOTP}> */}
+                <button  type="button">
+                  Send OTP
+                </button>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputOtp"
+                  placeholder="Enter OTP"
+                  value={formData.otp}
+                  onChange={(e) => handleInputChange('otp', e.target.value)}
+                  required
+                />
+              </div>
                 </div>
               </form>
               <div className='advbuttons'>

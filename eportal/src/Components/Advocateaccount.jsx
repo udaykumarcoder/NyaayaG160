@@ -1,15 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React ,{useState} from 'react';
+import Navbar4 from './Navbar4';
+import Advocatesidebar from './Advocatesidebar';
+import AdvuserInfo from './AdvuserInfo';
+import AdvCaseDocuments from './AdvCaseDocuments';
+
 
 const Advocateaccount = () => {
+  const components = [AdvuserInfo,AdvCaseDocuments];
+  const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
+
+  const switchComponent = (index) => {
+    setCurrentComponentIndex(index);
+  };
+  const CurrentComponent = components[currentComponentIndex];
+
   return (
     <div>
-      <h1>Welcome Advocate 👨🏻‍⚖️</h1>
-      <Link  to="/login">
-        <button className="backbtn">
-          <h6> Back</h6>{' '}
-        </button>
-      </Link>
+      <Navbar4/>
+      <div className='Laccountbox'>
+        <Advocatesidebar switchComponent={switchComponent} />
+        <CurrentComponent />
+      </div>
     </div>
   );
 };

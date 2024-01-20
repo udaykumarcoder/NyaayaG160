@@ -5,7 +5,6 @@ import AdministratorForm from './AdministratorForm';
 import AdvocateForm from './AdvocateForm';
 import LitigantForm from './LitigantForm';
 import './Navbar2.css';
-import Navbar4 from './Navbar4';
 
 const Navbar2 = () => {
   const[selectedOption,setSelectedOption]=useState('advocate')
@@ -26,7 +25,6 @@ const Navbar2 = () => {
     <>
       <section className='navbar2'>
          <div className='regheads'>
-         <Navbar4/>
           
         </div> 
         

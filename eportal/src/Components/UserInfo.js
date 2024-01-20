@@ -36,14 +36,14 @@ const UserInfo = () => {
 
 return (
   <div className="userInfo">
-    {/* Your UI components */}
+   
     {error && <p>{error}</p>}
     {userData && (
       <>
-        {/* Render user data here */}
+       
         <div className="whiteBox">
           <div className="profile">
-            {/* You can customize this section based on your UI design */}
+         
           </div>
         </div>
 

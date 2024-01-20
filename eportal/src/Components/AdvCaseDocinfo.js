@@ -1,9 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import Filetable from './Filetable';
 import "./Litigant/CaseDocinfo.css";
-
 const AdvCaseDocinfo = () => {
-
     const [files, setFiles] = useState([]);
     useEffect(() => {
         const fetchFiles = async () => {

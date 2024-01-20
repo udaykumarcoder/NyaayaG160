@@ -13,7 +13,6 @@ const CaseDocinfo = () => {
             setFiles(filesData);
           } catch (error) {
             console.error(error);
-            // Handle error fetching files
           }
         };
         fetchFiles();

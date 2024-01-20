@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+import Navbar4 from '../Components/Navbar4';
 import { useNavigate } from 'react-router-dom';
 import './LitigantForm.css';
+
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/litigant`;
 
@@ -83,6 +86,7 @@ const LitigantForm = () => {
       case 1:
         return (
           <form onSubmit={handleform}>
+          <Navbar4/>
           <div className="phoneNote">
             <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
           </div>
@@ -106,6 +110,11 @@ const LitigantForm = () => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
+              <Link to ="/signup">
+                  <button  className='back' style={{marginLeft:"150px", marginTop:"50px"}}>
+                    🔙
+                  </button>
+                </Link>
             </div>
 
             <div className="litigantRightbox">
@@ -219,7 +228,7 @@ const LitigantForm = () => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
-
+ 
 
             </div>
 
@@ -279,7 +288,7 @@ const LitigantForm = () => {
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
 
-
+              
             </div>
 
             <div className="litigantRightbox">

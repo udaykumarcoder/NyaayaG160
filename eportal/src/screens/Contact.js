@@ -1,10 +1,11 @@
 import React from 'react'
-import {HashLink as Link} from 'react-router-hash-link';
+
 import "./Contact.css";
 
 
 
 const Contact = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <>
     <div className="contact" id='contacts'>
@@ -24,28 +25,16 @@ const Contact = () => {
       </section>
       </td>
       <td>
-        <div className='contactRight'>
-      <div className="c2"><b >Quick Links</b></div>
+        
       
-      <section className="content2">
-      <div className="bottomnav">
       
-      <Link  smooth to='#about'>About &nbsp;&nbsp;&nbsp;</Link>
-      <Link  smooth to='#faq'>FAQ's</Link>
-      </div>
-      <br />
-      <b id="c1">Social</b>
-      <br/>
-      <br/>
-      </section>
-      </div>
       </td>
       </tr>
       </tbody>
       </table>
       <br/>
       <hr/>
-      <h4 style={{textAlign:"center"}}>©️2023 Nyaaya,All Rights Reserved</h4>
+      <h4 style={{textAlign:"center"}}>©️{currentYear} Nyaaya,All Rights Reserved</h4>
 
       </div>
       

@@ -35,7 +35,7 @@ const AdvocateLogin = () => {
         if (response.ok) {
           
           console.log('Login successful:', data);
-          navigate('/advocateaccount');
+          navigate('/advocateaccount', { state: { email } });
           
         } else {
          
@@ -73,7 +73,6 @@ const AdvocateLogin = () => {
           </td>
           <td>
             <h5>
-              {/* <input className="o" type="email" name="Username" placeholder="Email" /> */}
               <input
                       className="o"
                       type="email"

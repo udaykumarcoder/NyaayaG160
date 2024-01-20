@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+import Navbar4 from '../Components/Navbar4';
 import { useNavigate } from 'react-router-dom';
 import './AdministratorForm.css';
 
 
-const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
+const API_BASE_URL = 'http://localhost:3001'; 
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/administrator`;
 
 
@@ -93,9 +95,7 @@ const renderStep = () => {
     case 1:
       return (
         <form onSubmit={handleform}>
-        {/* <div className="phoneNote">
-          <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
-        </div> */}
+       <Navbar4/>
         <div className="step">
           <div className="litigantLeftbox">
             <div className="tracking">
@@ -116,6 +116,11 @@ const renderStep = () => {
               </div>
               <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
             </div>
+            <Link to ="/signup">
+                  <button  className='back' style={{marginLeft:"150px", marginTop:"50px"}}>
+                    🔙
+                  </button>
+                </Link>
           </div>
 
           <div className="litigantRightbox">
@@ -205,9 +210,7 @@ const renderStep = () => {
     case 2:
       return (
         <form onSubmit={handleform}>
-        {/* <div className="phoneNote">
-          <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
-        </div> */}
+        
         <div className="step">
           <div className="litigantLeftbox">
 
@@ -264,9 +267,7 @@ const renderStep = () => {
     case 3:
       return (
         <form onSubmit={handleSubmit}>
-        {/* <div className="phoneNote">
-          <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
-        </div> */}
+       
         <div className="step">
           <div className="litigantLeftbox">
 
@@ -319,11 +320,7 @@ const renderStep = () => {
             <div className='advbuttons'>
               <button className='back' onClick={handleBack}>Back</button>
               <button type="submit" className='saveNext' >Save and Submit</button>
-              {/* <Link to="/login">
-                <button>
-                  login
-                </button>
-              </Link> */}
+              
             </div>
           </div>
 

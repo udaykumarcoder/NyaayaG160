@@ -25,8 +25,28 @@ const LitigantForm = () => {
     otp: '',
   });
  const navigate=useNavigate();
+ const [phoneNumberError, setPhoneNumberError] = useState('');
+ 
+ const validatePhoneNumber = () => {
+  const phoneNumberRegex = /^\d{10}$/;
 
+  if (!phoneNumberRegex.test(formData.phone)) {
+    setPhoneNumberError('Please enter a valid 10-digit phone number.');
+  } else {
+    setPhoneNumberError('');
+  }
+};
+
+
+ 
   const handleNext = (event) => {
+    validatePhoneNumber();
+
+    if (phoneNumberError) {
+      event.preventDefault();
+      return;
+    }
+  
     setStep(step + 1);
     event.preventDefault();
 
@@ -277,12 +297,23 @@ const LitigantForm = () => {
               <p className='bar'>CONTACT DETAILS</p>
               <form>
               <div className="contactContainer">
-                <div class="form-group row">
-                  <label for="name" class="col-sm-3 col-form-label">Phone:</label>
-                  <div class="inputs col-sm-7">
-                    <input type="number" class="form-control" id="inputPassword" placeholder="Enter Your Phone Number" value={formData.phone} onChange={(e) => handleInputChange('phone', e.target.value)} required />
+                 <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Phone:</label>
+                    <div class="inputs col-sm-7">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputPassword"
+                        placeholder="Enter Your Phone Number"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        onBlur={validatePhoneNumber}
+                        required
+                      />
+                      {phoneNumberError && <p style={{ color: 'red' }}>{phoneNumberError}</p>}
+                    </div>
                   </div>
-                </div>
+
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">Email ID:</label>
                   <div class="inputs col-sm-7">

@@ -28,12 +28,42 @@ const AdvocateForm = () => {
   });
   const [barnumber, setBarnumber] = useState('');
   const [error, setError] = useState('');
+  const [error2, setError2] = useState('');
 
   const navigate = useNavigate();
+  const clearError = () => {
+    setError('');
+  };
 
-  const handleNext = (event) => {
+  
+  const handleNext = async (event) => {
     event.preventDefault();
-    setStep(step + 1);
+    // Check if the barRegistrationNumber exists in the database
+    try {
+      const response = await fetch('http://localhost:3001/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ barRegistrationNumber: formData.barRegistrationNumber }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok && data.status === 'ok') {
+        console.log('verified:', data);
+        clearError();
+        setError2('verified');
+        setStep(step + 1);
+      } else {
+        console.error('not verified:', data);
+        alert('Bar registration number: Not verified');
+        setError('Not Verified');
+      }
+    } catch (error) {
+      console.error('Error during verification:', error);
+    }
+    
   };
    
 const handleBack = () => {
@@ -298,6 +328,7 @@ const handleSubmit = async (event) => {
                 />
               </div>
               <div>
+              {error2 && <p style={{ color: 'green' }}>{error2}</p>}
               {error && <p style={{ color: 'red' }}>{error}</p>}
               </div>
              

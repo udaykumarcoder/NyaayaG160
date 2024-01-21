@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
-import "./Litigantsidebar.css";
+import "./Administratorsidebar.css";
 
+const Administratorsidebar = ({ handleSidebarItemClick ,selectedSection}) => {
 
-const Litigantsidebar = ({ switchComponent }) => {
   const location = useLocation();
   const emailFromLogin = location?.state?.email || '';
   const [userData, setUserData] = useState(null);
@@ -13,7 +13,7 @@ const Litigantsidebar = ({ switchComponent }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/user1?email=${emailFromLogin}`);
+        const response = await fetch(`http://localhost:3001/api/user?email=${emailFromLogin}`);
 
         if (!response.ok) {
           if (response.status === 404) {
@@ -36,45 +36,41 @@ const Litigantsidebar = ({ switchComponent }) => {
 
     fetchUserData();
   }, [emailFromLogin]);
-
   return (
     <section>
       {error && <p>{error}</p>}
     {userData && (
-        <div className="sidebar">
-        
-          <div className="Litigantprofile">
-          
+    <div class="sidebar">
+ <div className="Adminprofile">
             <div className="profileImg">
             </div>
           </div>
-          <div className="lsidebarName">
+          <div className="adminsidebarName">
           <h3>
           {userData.name}
           </h3>
-          <p>Litigant</p>
+          <p>Administrator</p>
           </div>
-          
           <div>
-   
-          </div>
-        <ul>
-          
-        <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
-        <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>  
-        <li><h3><button onClick={()=>switchComponent(2)}>📃&nbsp;Case Documents</button></h3></li>
-        
-          <li><h3>📝&nbsp;Case Appeal</h3></li>
-          
-        </ul>
-        <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>
-    
-      </div>
+    <ul>
+      <li className={selectedSection === 'User Info' ? 'active' : ''} 
+          onClick={() => handleSidebarItemClick('User Info')}><h3> 👤&nbsp;User Info</h3></li>
+      <li className={selectedSection === 'Upload Documents' ? 'active' : ''} 
+          onClick={() => handleSidebarItemClick('Upload Documents')}><h3> 📤 &nbsp;Upload Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;   Documents</h3></li>
+      <li className={selectedSection === 'Update Case Details' ? 'active' : ''} 
+          onClick={() => handleSidebarItemClick('Update Case Details')}><h3>🔁&nbsp; Update Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;  Details</h3></li>
+           
+
+      
+    </ul>
+    <Link smooth to='/#home'><button class="logout"><b>⇤Log Out</b></button></Link>
+  </div>
+</div>
     )}
-   
-    </section>
-  );
-};
+</section>
+  )
+}
 
-export default Litigantsidebar
 
+
+export default Administratorsidebar

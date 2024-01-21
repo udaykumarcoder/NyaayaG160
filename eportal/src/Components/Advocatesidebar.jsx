@@ -1,9 +1,11 @@
+import React from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+import "./Advocatesidebar.css";
+import "./sidebar.css";
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import './Userinfo.css';
 
-
-const AdvuserInfo = () => {
+const Advocatesidebar = ({switchComponent}) => {
   const location = useLocation();
   const emailFromLogin = location?.state?.email || '';
   const [userData, setUserData] = useState(null);
@@ -36,58 +38,46 @@ const AdvuserInfo = () => {
     fetchUserData();
   }, [emailFromLogin]);
 
-  
 
-
-return (
-  <div className="userInfo">
-    {error && <p>{error}</p>}
+  return (
+    <section>
+      {error && <p>{error}</p>}
     {userData && (
     
-      <>
-        {/* Render user data here */}
-        <div className="whiteBox">
-          <div className="profile">
-            {/* You can customize this section based on your UI design */}
+        <div className="sidebar">
+        
+          <div className="Litigantprofile">
+          
+            <div className="profileImg">
+            </div>
           </div>
-        </div>
-
-        <div className='Lprofile'>
-          <div className='litigantName'>
-            <h4>{userData.name}</h4>
-            <p>Advocate</p>
+          <div className="lsidebarName">
+          <h3>
+          {userData.name}
+          </h3>
+          <p>Advocate</p>
           </div>
-          <div className='Lbutton'>
-            <button>✒Edit Profile</button>
+          
+          <div>
+   
           </div>
-        </div>
-
-        <div className="litigantDetails">
-          <h5><b>EMAIL ID</b></h5>
-          <br />
-          <p>{userData.email}</p>
-          <hr />
-          <br />
-          <h5><b>CONTACT</b></h5>
-          <br />
-          <p>{userData.phone}</p>
-          <hr />
-          <br />
-          <h5><b>PASSWORD</b></h5>
-          <br />
-          <div className="Lpassword">
-            <p>*******</p>
-            <p>🔑<button>Change Password</button></p>
-          </div>
-          <hr />
-        </div>
-      </>
+        <ul>
+          
+        <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
+        <li><h3><button onClick={()=>switchComponent(1)}>📃&nbsp;Case Documents</button></h3></li>
+        <li><h3><Link to="/casefiling"><button > 📜Case Filing</button></Link></h3></li> 
+          
+          
+        </ul>
+        <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>
+    
+      </div>
+    
     )}
- 
-  </div>
-);
-};
+    </section>
+  )
+}
 
 
 
-export default AdvuserInfo;
+export default Advocatesidebar

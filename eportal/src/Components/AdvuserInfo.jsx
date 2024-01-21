@@ -1,7 +1,7 @@
+
+// import './Userinfo.css';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import './Userinfo.css';
-
 
 const AdvuserInfo = () => {
   const location = useLocation();
@@ -36,12 +36,13 @@ const AdvuserInfo = () => {
     fetchUserData();
   }, [emailFromLogin]);
 
+
   
 
 
 return (
   <div className="userInfo">
-    {error && <p>{error}</p>}
+  {error && <p>{error}</p>}
     {userData && (
     
       <>
@@ -76,7 +77,7 @@ return (
           <h5><b>PASSWORD</b></h5>
           <br />
           <div className="Lpassword">
-            <p>*******</p>
+            <p>*********</p>
             <p>🔑<button>Change Password</button></p>
           </div>
           <hr />
@@ -91,3 +92,4 @@ return (
 
 
 export default AdvuserInfo;
+

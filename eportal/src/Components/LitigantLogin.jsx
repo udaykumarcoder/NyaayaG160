@@ -6,49 +6,89 @@ const LitigantLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [otp]= useState('');
+    const [otp, setOtp]= useState('');
     const navigate=useNavigate();
+    
     const handleSendOTP = async (event) => {
       event.preventDefault();
-      // Add logic to send OTP if needed
-      console.log('Sending OTP to:', email);
-
-    };  
-
- 
-
-    const handleLogin = async (event) => {
-      event.preventDefault();
-      console.log('Login values:', email, password, otp);
+    
       try {
-        const response = await fetch('http://localhost:3001/login/litigant', {
+        // Generate and send OTP to the user's email
+        const otpResponse = await fetch(`http://localhost:3001/send-otp`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email, password, otp }),
+          body: JSON.stringify({ email: email }),
         });
-  
-        const data = await response.json();
-  
-        if (response.ok) {
-          
-          console.log('Login successful:', data);
-           
-           navigate('/litigantaccount', { state: { email } });
-          
+    
+        const otpData = await otpResponse.json();
+    
+        if (otpResponse.ok && otpData.status === 'ok') {
+          alert('OTP sent successfully!');
         } else {
-         
-          console.error('Login failed:', data);
-           alert("login failed");
-          
+          alert('Failed to send OTP. Please try again.');
         }
       } catch (error) {
-        console.error('Error during login:', error);
-        
+        console.error('Error sending OTP:', error);
+        alert('An error occurred. Please try again.');
       }
+    };
+    
 
-  }; 
+    
+    const handleLogin = async (event) => {
+      event.preventDefault();
+      console.log('Login values:', email, password, otp);
+    
+      try {
+        // Verify the entered OTP
+        const otpVerificationResponse = await fetch(`http://localhost:3001/verify-otp`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), // Parse OTP as an integer
+        });
+    
+        const otpVerificationData = await otpVerificationResponse.json();
+    
+        if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
+          // Continue with login
+          try {
+            const loginResponse = await fetch(`http://localhost:3001/login/litigant`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email, password, otp }),
+            });
+    
+            const loginData = await loginResponse.json();
+    
+            if (loginResponse.ok) {
+              console.log('Login successful:', loginData);
+              navigate('/litigantaccount', { state: { email } });
+            } else {
+              console.error('Login failed:', loginData);
+              alert('Login failed. Please check your credentials.');
+            }
+          } catch (loginError) {
+            console.error('Error during login:', loginError);
+            alert('An error occurred during login. Please try again.');
+          }
+        } else {
+          console.error('OTP verification failed:', otpVerificationData);
+          alert('OTP verification failed. Please enter the correct OTP.');
+        }
+      } catch (error) {
+        console.error('Error during OTP verification:', error);
+        alert('An error occurred. Please try again.');
+      }
+    };
+ 
+
+    
   return (
     <div>
         <div class="body">
@@ -103,7 +143,14 @@ const LitigantLogin = () => {
              
 
               <h6 className="m">
-                <input className="p" type="number" name="Otp" placeholder="Enter OTP" />
+              <input
+                    className="p"
+                    type="number"
+                    name="Otp"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)} // Update the otp state
+                  />
               </h6>
             </div>
           </td>

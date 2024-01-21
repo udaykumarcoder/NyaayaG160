@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+import Navbar4 from '../Components/Navbar4';
 
 import './LitigantForm.css';
+
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/litigant`;
-const VERIFY_OTP_URL = `${API_BASE_URL}/verify-otp`; 
+
 
 const LitigantForm = () => {
   console.log('litigiantForm component rendered');
@@ -37,41 +40,74 @@ const LitigantForm = () => {
     setFormData({ ...formData, [field]: value });
   };
 
-  
-
-  
-
-  const handleSubmit = async (event) => {
+  const handleSendOTP = async (event) => {
     event.preventDefault();
-    console.log(formData);
+  
     try {
-      // Submit form data to the server
-      const response = await fetch(SUBMIT_FORM_URL, {
+      // Generate and send OTP to the user's email
+      const otpResponse = await fetch(`${API_BASE_URL}/send-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ email: formData.email }),
       });
-      console.log(formData);
-      
   
-      const data = await response.json();
-      console.log('Form submitted successfully:', data);
-
-      if (data.status === 'error' && data.message) {
+      const otpData = await otpResponse.json();
+  
+      if (otpResponse.ok && otpData.status === 'ok') {
+        alert('OTP sent successfully!');
+      } else {
+        alert('Failed to send OTP. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      alert('An error occurred. Please try again.');
+    }
+  };
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formData);
+  
+    try {
+      // Verify the OTP before submitting the form
+      const otpVerificationResponse = await fetch(`${API_BASE_URL}/verify-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: formData.email, otp: parseInt(formData.otp, 10) }),
+      });
+  
+      const otpVerificationData = await otpVerificationResponse.json();
+  
+      if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
+        // If OTP verification is successful, proceed to submit the form
+        const response = await fetch(SUBMIT_FORM_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        const data = await response.json();
+        console.log('Form submitted successfully:', data);
+  
+        if (data.status === 'error' && data.message) {
+          alert(data.message);
+        }
+  
         
-        alert(data.message);}
-      
-        if (data.status === 'error' ){
-          alert("Enter all fields");}
-      
-      if (data.status === 'ok') {
-        
-        alert('Submitted successfully');
-        navigate("/login/litigant");
-        
+  
+        if (data.status === 'ok') {
+          alert('Submitted successfully');
+          navigate('/login/litigant');
+        }
+      } else {
+        console.error('OTP verification failed:', otpVerificationData);
+        alert('OTP verification failed. Please enter the correct OTP.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -91,6 +127,7 @@ const LitigantForm = () => {
       case 1:
         return (
           <form onSubmit={handleform}>
+          <Navbar4/>
           <div className="phoneNote">
             <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
           </div>
@@ -114,6 +151,11 @@ const LitigantForm = () => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
+              <Link to ="/signup">
+                  <button  className='back' style={{marginLeft:"150px", marginTop:"50px"}}>
+                    🔙
+                  </button>
+                </Link>
             </div>
 
             <div className="litigantRightbox">
@@ -227,7 +269,7 @@ const LitigantForm = () => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
-
+ 
 
             </div>
 
@@ -287,7 +329,7 @@ const LitigantForm = () => {
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
 
-
+              
             </div>
 
             <div className="litigantRightbox">
@@ -303,25 +345,23 @@ const LitigantForm = () => {
                 <div class="form-group row">
                   <label for="name" class="col-sm-3 col-form-label">Confirm Password:</label>
                   <div class="inputs col-sm-7">
-                    <input type="confirmpassword" class="form-control" id="inputPassword" placeholder="Re-Enter Password" value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)}  required />
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Re-Enter Password" value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)}  required />
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
                   <div className="otpInput inputs col-sm-12">
-                {/* <button type="button" onClick={handleSendOTP}> */}
-                <button  type="button">
-                  Send OTP
-                </button>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputOtp"
-                  placeholder="Enter OTP"
-                  value={formData.otp}
-                  onChange={(e) => handleInputChange('otp', e.target.value)}
-                  required
-                />
+                
+                <button onClick={handleSendOTP}>Send OTP</button>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="inputOtp"
+                          placeholder="Enter OTP"
+                          value={formData.otp}
+                          onChange={(e) => handleInputChange('otp', e.target.value)}
+                          required
+                        />
               </div>
                 </div>
               </form>

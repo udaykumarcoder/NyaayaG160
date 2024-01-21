@@ -45,11 +45,6 @@ app.post('/signup/advocate', async (req, res) => {
 if (isBarNumberExists) {
   return res.status(400).json({ status: 'error', message: 'Bar Registration Number already exists' });
 }
-    
-
-
-    
-
     await UserData.create({
       name: req.body.name,
       state: req.body.state,
@@ -62,10 +57,31 @@ if (isBarNumberExists) {
       email: req.body.email,
       password: req.body.password,
       confirmPassword: req.body.confirmPassword,
-      otp: req.body.otp,
+     
     });
 
-    res.json({ status: 'ok' });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
+        pass: 'anga bway cibv frvy', // Replace with your Gmail  app password
+      },
+    });
+
+    const mailOptions = {
+      from: 'vinnupersonals162@gmail.com',
+      to: req.body.email,
+      subject: 'Registration Successful',
+      html:'<p>Thank you for registering!</p>',
+      html:'<p>welcome to Nyaaaya</p>,'
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    
+    res.json({ status: 'ok', message: 'Form submitted successfully'});
+
+    
 
   } catch (err) {
     if(err.code=== 11000)
@@ -209,10 +225,31 @@ app.post('/signup/administrator', async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     confirmPassword: req.body.confirmPassword,
-    otp: req.body.otp,
+   
 
     });
-    res.json({ status: 'ok' });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
+        pass: 'anga bway cibv frvy', // Replace with your Gmail password or app password
+      },
+    });
+
+    const mailOptions = {
+      from: 'vinnupersonals162@gmail.com',
+      to: req.body.email,
+      subject: 'Registration Successful',
+      html:'<p>Thank you for registering!</p>',
+      html:'<p>welcome to Nyaaaya</p>'
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    
+    res.json({ status: 'ok', message: 'Form submitted successfully'});
+
+   
   } catch (err) {
     if(err.code=== 11000)
     {
@@ -379,6 +416,7 @@ const upload = multer({ storage: storage });
 // API endpoint for file uploads
 app.post('/upload', upload.array('fileUpload'), async (req, res) => {
   try {
+    const cnr= req.body.cnr;
     const currentDate = new Date().toLocaleDateString();
     const fileName = req.body.fileName;
 
@@ -509,7 +547,6 @@ app.post('/verify', async (req, res) => {
   try {
     const { barRegistrationNumber } = req.body; // Adjust property name here
     const user = await UserDatabar.findOne({ barnumber: barRegistrationNumber });
-   
 
 
     if (!user) {
@@ -528,45 +565,57 @@ app.post('/verify', async (req, res) => {
 
 
 
-// async function main() {
 
 
+const otpStorage = {};
 
-//   let transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com", 
-//     port: 465, 
-//     secure: true, 
-//     auth: {
-//       user: "vinnupersonals162@gmail.com", 
-//       pass: "anga bway cibv frvy", 
-      
-//     },
-//   });
+// Function to generate a random numeric OTP
+const generateNumericOTP = () => Math.floor(100000 + Math.random() * 900000);
+
+app.post('/send-otp', (req, res) => {
+  const { email } = req.body;
+
+  const otp = generateNumericOTP();
+  otpStorage[email] = otp;
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
+      pass: 'anga bway cibv frvy', // Replace with your Gmail password or app password
+    },
+  });
   
-  
-//   let info = await transporter.sendMail({
-//     from: 'vinnupersonals162@gmail.com',
-//     to: "meghanagoli05@gmail.com",
-//     subject: "Testing, testing, 123",
-//     html: `
-//     <h1>Hello Meghana</h1>
-//     <p>Isn't NodeMailer useful?</p>
-//     `,
-//   });
 
-//   console.log(info.messageId); 
-// }
+  const mailOptions = {
+    from: 'vinnupersonals162@gmail.com',
+    to: email,
+    subject: 'OTP Verification',
+    text: `Your OTP for verification is: ${otp}`,
+  };
 
-// main()
-// .catch(err => console.log(err));
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+      res.status(500).json({ status: 'error', message: 'Failed to send OTP' });
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.json({ status: 'ok', message: 'OTP sent successfully' });
+    }
+  });
+});
 
+app.post('/verify-otp', (req, res) => {
+  const { email, otp } = req.body;
 
+  if (otpStorage[email] && otpStorage[email] === otp) {
+    res.json({ status: 'ok', message: 'OTP verification successful' });
+  } else {
+    res.status(400).json({ status: 'error', message: 'Invalid OTP' });
+  }
+});
 
 
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-///git config --global user.email "you@example.com"
- // git config --global user.name "Your Name"

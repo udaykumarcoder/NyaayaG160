@@ -1,3 +1,13 @@
+.sidebar {
+  margin-top: 15px;
+  padding-top: 34px;
+  background-color: #0c1707;
+  height: 55rem;
+  border-radius: 5px;
+
+
+}
+
 .Litigantprofile {
   height: 300px;
   width: 350px;
@@ -20,16 +30,7 @@
   margin-top: -53px;
 }
 
-.sidebar {
-  margin-top: 15px;
-  padding-top: 34px;
-  background-color: #0c1707;
-  height: 50rem;
-  width: 350px;
-  border-radius: 5px;
 
-
-}
 dl, ol, ul {
   margin-top: -253px;
   margin-bottom: 1rem;
@@ -51,3 +52,4 @@ dl, ol, ul {
 .logout {
   margin-left: 100px;
 }
+

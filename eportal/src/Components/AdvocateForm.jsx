@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar4 from '../Components/Navbar4';
 import './AdvocateForm.css';
-
-
 
 const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/advocate`;
@@ -28,6 +27,7 @@ const AdvocateForm = () => {
     otp: '',
   });
   const [barnumber, setBarnumber] = useState('');
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
@@ -42,70 +42,109 @@ const handleBack = () => {
 const handleInputChange = (field, value) => {
   setFormData({ ...formData, [field]: value });
 };
-
-
-const handleSubmit = async (event) => {
+const handleSendOTP = async (event) => {
   event.preventDefault();
-  console.log(formData);
 
   try {
-    // Check if the barRegistrationNumber exists in the database
-    const response = await fetch('http://localhost:3001/verify', {
+    // Generate and send OTP to the user's email
+    const otpResponse = await fetch(`${API_BASE_URL}/send-otp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ barRegistrationNumber: formData.barRegistrationNumber }),
+      body: JSON.stringify({ email: formData.email }),
     });
 
-    const data = await response.json();
+    const otpData = await otpResponse.json();
 
-    if (response.ok && data.status === 'ok') {
-      console.log('verified:', data);
+    if (otpResponse.ok && otpData.status === 'ok') {
+      alert('OTP sent successfully!');
+    } else {
+      alert('Failed to send OTP. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error sending OTP:', error);
+    alert('An error occurred. Please try again.');
+  }
+};
+
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    // Verify the entered OTP
+    const otpVerificationResponse = await fetch(`${API_BASE_URL}/verify-otp`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: formData.email, otp: parseInt(formData.otp, 10) }),
+    });
+
+    const otpVerificationData = await otpVerificationResponse.json();
+
+    if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
       // Continue with form submission
       try {
-        // Submit form data to the server
-        const submitResponse = await fetch(SUBMIT_FORM_URL, {
+        // Check if the barRegistrationNumber exists in the database
+        const response = await fetch('http://localhost:3001/verify', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ barRegistrationNumber: formData.barRegistrationNumber }),
         });
 
-        const submitData = await submitResponse.json();
-        console.log(submitData.formData);
-        console.log('Form submitted successfully:', submitData);
+        const data = await response.json();
 
-      //  if(submitData.status === 'error')
-       {
-        if (submitData.error === 'barRegistrationNumber is not defined') {
-          alert('Bar Registration Number already exists');
-        } 
-       }
-        if (submitData.status === 'error' && submitData.message) {
-         
-          alert(submitData.message);
-          
-          
-        }
+        if (response.ok && data.status === 'ok') {
+          console.log('verified:', data);
+          // Continue with form submission
+          try {
+            // Submit form data to the server
+            const submitResponse = await fetch(SUBMIT_FORM_URL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+            });
 
-        if (submitData.status === 'ok') {
-          alert('Submitted successfully');
-          navigate("/login/advocate");
+            const submitData = await submitResponse.json();
+            console.log(submitData.formData);
+            console.log('Form submitted successfully:', submitData);
+
+            if (submitData.status === 'error' && submitData.message) {
+              alert(submitData.message);
+            }
+
+            if (submitData.status === 'ok') {
+              alert('Submitted successfully');
+              navigate("/login/advocate");
+            }
+          } catch (submitError) {
+            console.error('Error submitting form:', submitError);
+          }
+        } else {
+          console.error('not verified:', data);
+          alert(' Bar registration number : Not verified ');
+          setError('Not Verified');
         }
-      } catch (submitError) {
-        console.error('Error submitting form:', submitError);
-        
+      } catch (error) {
+        console.error('Error during verification:', error);
       }
     } else {
-      console.error('not verified:', data);
-      alert(' Bar registration number :not verified ');
+      console.error('OTP verification failed:', otpVerificationData);
+      alert('OTP verification failed. Please enter the correct OTP.');
     }
   } catch (error) {
-    console.error('Error during verification:', error);
+    console.error('Error during OTP verification:', error);
+    alert('An error occurred. Please try again.');
   }
 };
+
  const handleform = (event)=>
   {
     event.preventDefault();
@@ -116,18 +155,16 @@ const handleSubmit = async (event) => {
     switch (step) {
       case 1:
         return (
+          
+         
           <form onSubmit={handleform}>
-
+          <Navbar4/>
           
           <div className="step">
           
             <div className="advocLeftbox">
               <div>
-            <Link to ="/signup">
-                  <button className='back'>
-                    🔙
-                  </button>
-                </Link>
+           
                 </div>
               <div className="tracking">
                 <div className='track1'>
@@ -155,6 +192,11 @@ const handleSubmit = async (event) => {
                 </div>
                 <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
               </div>
+              <Link to ="/signup">
+                  <button className='back'>
+                    🔙
+                  </button>
+                </Link>
             </div>
 
             <div className="advocRightbox">
@@ -252,19 +294,17 @@ const handleSubmit = async (event) => {
                     setBarnumber(e.target.value);
                     handleInputChange('barRegistrationNumber', e.target.value);
                   }}
+                 
                 />
-
               </div>
+              <div>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
+              </div>
+             
             </div>
             <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
               </form>
-              
-                
-               
-                
-                
-              
-              
+            
             </div>
             
           
@@ -502,10 +542,19 @@ const handleSubmit = async (event) => {
                 </div>
                 <div className="form-group row">
                   <label htmlFor="name" className="col-sm-7 col-form-label">OTP Authentication:</label>
+                  
                   <div className="otpInput inputs col-sm-12">
-                    <button>Send OTP</button>
-                    <input type="text" className="form-control" id="inputOtp" placeholder="Enter OTP" value={formData.otp} onChange={(e) => handleInputChange('otp', e.target.value)} required />
-                  </div>
+                        <button onClick={handleSendOTP}>Send OTP</button>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="inputOtp"
+                          placeholder="Enter OTP"
+                          value={formData.otp}
+                          onChange={(e) => handleInputChange('otp', e.target.value)}
+                          required
+                        />
+                      </div>
                 </div>
               </form>
               <div className='advbuttons'>

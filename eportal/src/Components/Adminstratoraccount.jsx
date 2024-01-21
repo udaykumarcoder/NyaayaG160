@@ -2,7 +2,7 @@ import React ,{useState} from 'react';
 import Navbar4 from './Navbar4';
 import Administratorsidebar from './Administratorsidebar';
 import AdministratorContent from './AdministratorContent';
-import './LitigantAccount.css'
+import './Litigant/Litigantaccount.css'
 const Administratoraccount= () => {const [selectedSection, setSelectedSection] = useState('');
 
 const handleSidebarItemClick = (section) => {

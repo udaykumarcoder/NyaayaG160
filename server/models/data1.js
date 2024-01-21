@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
   
-  otp: { type: String, required: true },
+  
 }, { collection: 'Advocate' });
 
 const UserData = mongoose.model('UserData', userSchema);

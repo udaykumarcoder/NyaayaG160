@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+import Navbar4 from '../Components/Navbar4';
 import './AdministratorForm.css';
 
 
-const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
+const API_BASE_URL = 'http://localhost:3001'; 
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/administrator`;
 
 
@@ -38,45 +40,80 @@ const AdministratorForm= () => {
   
   };
 
-  const handleSubmit = async (event) => {
+  const handleSendOTP = async (event) => {
     event.preventDefault();
-    console.log(formData);
+  
     try {
-      // Submit form data to the server
-      const response = await fetch(SUBMIT_FORM_URL, {
+      // Generate and send OTP to the user's email
+      const otpResponse = await fetch(`${API_BASE_URL}/send-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ email: formData.email }),
       });
-    
-    const data = await response.json();
-    console.log(data.formData);
-    console.log('Form submitted successfully:', data);
-
-    if (data.status === 'error' && data.message) {
-      
-      alert(data.message);
-    }
-    
   
-    if (data.status === 'ok') {
-      
-      alert('Submitted successfully');
-      navigate('/login/administrator');
-
-        
-      
-    }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-  }
+      const otpData = await otpResponse.json();
   
-      
-    
+      if (otpResponse.ok && otpData.status === 'ok') {
+        alert('OTP sent successfully!');
+      } else {
+        alert('Failed to send OTP. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formData);
+  
+    try {
+      // Verify the OTP before submitting the form
+      const otpVerificationResponse = await fetch(`${API_BASE_URL}/verify-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: formData.email, otp: parseInt(formData.otp, 10) }),
+      });
+  
+      const otpVerificationData = await otpVerificationResponse.json();
+  
+      if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
+        // If OTP verification is successful, proceed to submit the form
+        const response = await fetch(SUBMIT_FORM_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        const data = await response.json();
+        console.log('Form submitted successfully:', data);
+  
+        if (data.status === 'error' && data.message) {
+          alert(data.message);
+        }
+  
+        
+  
+        if (data.status === 'ok') {
+          alert('Submitted successfully');
+          navigate('/login/administrator');
+        }
+      } else {
+        console.error('OTP verification failed:', otpVerificationData);
+        alert('OTP verification failed. Please enter the correct OTP.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+  
   
   const handleform = (event)=>
   {
@@ -92,9 +129,7 @@ const renderStep = () => {
     case 1:
       return (
         <form onSubmit={handleform}>
-        {/* <div className="phoneNote">
-          <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
-        </div> */}
+       <Navbar4/>
         <div className="step">
           <div className="litigantLeftbox">
             <div className="tracking">
@@ -115,6 +150,11 @@ const renderStep = () => {
               </div>
               <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
             </div>
+            <Link to ="/signup">
+                  <button  className='back' style={{marginLeft:"150px", marginTop:"50px"}}>
+                    🔙
+                  </button>
+                </Link>
           </div>
 
           <div className="litigantRightbox">
@@ -204,9 +244,7 @@ const renderStep = () => {
     case 2:
       return (
         <form onSubmit={handleform}>
-        {/* <div className="phoneNote">
-          <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
-        </div> */}
+        
         <div className="step">
           <div className="litigantLeftbox">
 
@@ -263,9 +301,7 @@ const renderStep = () => {
     case 3:
       return (
         <form onSubmit={handleSubmit}>
-        {/* <div className="phoneNote">
-          <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
-        </div> */}
+       
         <div className="step">
           <div className="litigantLeftbox">
 
@@ -310,19 +346,23 @@ const renderStep = () => {
               <div class="form-group row">
                 <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
                 <div class="otpInput inputs col-sm-12">
-                  <button>Send OTP</button>
-                  <input type="text" class="form-control" id="inputOtp" placeholder="Enter OTP" value={formData.otp} onChange={(e) => handleInputChange('otp', e.target.value)} required />
-                </div>
+                <button onClick={handleSendOTP}>Send OTP</button>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="inputOtp"
+                          placeholder="Enter OTP"
+                          value={formData.otp}
+                          onChange={(e) => handleInputChange('otp', e.target.value)}
+                          required
+                        />
+                 </div>
               </div>
             </form>
             <div className='advbuttons'>
               <button className='back' onClick={handleBack}>Back</button>
               <button type="submit" className='saveNext' >Save and Submit</button>
-              {/* <Link to="/login">
-                <button>
-                  login
-                </button>
-              </Link> */}
+              
             </div>
           </div>
 

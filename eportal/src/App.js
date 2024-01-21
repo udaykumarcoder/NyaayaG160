@@ -5,6 +5,7 @@ import Administratoraccount from './Components/Adminstratoraccount';
 import AdvocateForm from './Components/AdvocateForm';
 import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
+import CaseFiling from './Components/CaseFiling';
 import Casetracking from './Components/Litigant/Casetracking';
 import Litigantaccount from './Components/Litigant/Litigantaccount';
 import LitigantForm from './Components/LitigantForm';
@@ -41,6 +42,9 @@ function App() {
         <Route path="/passwordreset" element={<PasswordReset/>}/>
         <Route path="/passwordreset2" element={<PasswordReset2/>}/>
         <Route path="/passwordreset3" element={<PasswordReset3/>}/>
+        <Route path="/casefiling" element={<CaseFiling/>}/>
+        
+       
       </Routes>
     </Router>
   );

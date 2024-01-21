@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String,required: true, unique: true  },
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
-  otp: { type: String, required: true },
+ 
 }, { collection: 'Adminstrator' });
 
 const UserData3 = mongoose.model('UserData3', userSchema);

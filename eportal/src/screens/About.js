@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import './About.css';
 import { Link } from 'react-router-dom';
+import './About.css';
 
 const About = () => {
   return (
@@ -36,7 +36,7 @@ const About = () => {
           </div>
           <div className="vision ">
             <h2 className='abtheadings'>MISSION</h2>
-            <p className='abtboxcontent'>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
+            <p className='abtboxcontent'>"We aim to revolutionize the Indian judicial system by establishing an online portal for efficient case management. Our mission is to enable seamless online case submission, facilitate digital judgment uploads, document storage, and allow smooth case transfers between courts."</p>
           </div>
         </div>
 

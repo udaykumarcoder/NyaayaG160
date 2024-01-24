@@ -1,13 +1,112 @@
-.formbox{
-    margin-left: 200px;
-    margin-top: 40px;
-    background-color: darkgray;
-    height: 500px;
-    width: 800px;
-}
-.filinglabels{
-    font-size: 20px;
-    padding-top: 30px;
-    padding-left: 30px;
-}
+/* Casefiling.css
 
+.tab-buttons {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  
+  .tab-buttons button {
+    padding: 10px 15px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer;
+  }
+  
+  .tab-buttons button.active {
+    background-color: grey; 
+    color: #fff; 
+  }
+  .sideheads{
+    margin-top: 30px;
+    padding-left: 40px;
+    background-color:  #66644C;
+    
+    color: #E8DFC6;
+    margin-bottom:20px ;
+    
+  }
+  .caseform{
+    margin-left: 40px;
+    margin-top: 30px;
+    width: 95%;
+    opacity: 70%;
+    background-color: #C1B192;
+    height: 500px;
+    color: black;
+  }
+  
+ .formfields{
+    padding-left: 100px;
+ } 
+ .leftside{
+    padding-left: 1000px;
+    margin-top: -180px;
+ }
+.centre{
+  padding-left: 400px;
+}
+.nexttabbtn{
+  margin-left: 83rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+} */
+
+/* Casefiling.css */
+
+.tab-buttons {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+  
+  .tab-buttons button {
+    padding: 10px 15px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer;
+  }
+  
+  .tab-buttons button.active {
+    background-color: rgba(12, 23, 7, 0.6); 
+    color: #fff; 
+  }
+  .sideheads{
+    margin-top: 30px;
+    padding-left: 40px;
+    background-color:  #66644C;
+    
+    color: #E8DFC6;
+    margin-bottom:20px ;
+    
+  }
+  .caseform{
+    margin-left: 40px;
+    margin-top: 10px;
+    width: 95%;
+    opacity: 70%;
+    background-color: #C1B192;
+    height: 500px;
+    color: black;
+  }
+  
+ .formfields{
+    padding-left: 100px;
+ } 
+ .leftside{
+    padding-left: 1000px;
+    margin-top: -180px;
+ }
+.centre{
+  padding-left: 400px;
+}
+.nexttabbtn{
+  border-radius: 5px;
+  background-color: rgba(12, 23, 7, 0.6); 
+  color: #fff;
+  margin-left: 83rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

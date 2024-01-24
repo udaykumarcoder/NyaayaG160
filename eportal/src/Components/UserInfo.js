@@ -1,3 +1,4 @@
+//Adminstrator user info
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 

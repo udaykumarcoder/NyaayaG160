@@ -5,7 +5,7 @@ import Navbar4 from '../Components/Navbar4';
 
 import './LitigantForm.css';
 
-const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
+const API_BASE_URL = 'http://localhost:3001'; 
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/litigant`;
 
 
@@ -64,7 +64,7 @@ const LitigantForm = () => {
     event.preventDefault();
   
     try {
-      // Generate and send OTP to the user's email
+      // sending otp
       const otpResponse = await fetch(`${API_BASE_URL}/send-otp`, {
         method: 'POST',
         headers: {
@@ -91,7 +91,7 @@ const LitigantForm = () => {
     console.log(formData);
   
     try {
-      // Verify the OTP before submitting the form
+      // verify otp
       const otpVerificationResponse = await fetch(`${API_BASE_URL}/verify-otp`, {
         method: 'POST',
         headers: {
@@ -103,7 +103,7 @@ const LitigantForm = () => {
       const otpVerificationData = await otpVerificationResponse.json();
   
       if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
-        // If OTP verification is successful, proceed to submit the form
+       
         const response = await fetch(SUBMIT_FORM_URL, {
           method: 'POST',
           headers: {

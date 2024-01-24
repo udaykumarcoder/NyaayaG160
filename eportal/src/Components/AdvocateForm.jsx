@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar4 from '../Components/Navbar4';
 import './AdvocateForm.css';
 
-const API_BASE_URL = 'http://localhost:3001'; // Update with your server URL
+const API_BASE_URL = 'http://localhost:3001'; 
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/advocate`;
 
 
@@ -18,13 +18,14 @@ const AdvocateForm = () => {
     gender: 'default',
     dob: '',
     barRegistrationNumber: '',
-    courtType: '',
-    courtName: '',
+  
     phone: '',
     email: '',
     password: '',
     confirmPassword: '',
     otp: '',
+    lawyertype: '',
+     experience: '',
   });
   const [barnumber, setBarnumber] = useState('');
   const [error, setError] = useState('');
@@ -34,11 +35,24 @@ const AdvocateForm = () => {
   const clearError = () => {
     setError('');
   };
-
+  
+  const clearError2 = () => {
+    setError2('');
+  };
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const validatePhoneNumber = () => {
+    const phoneNumberRegex = /^\d{10}$/;
+  
+    if (!phoneNumberRegex.test(formData.phone)) {
+      setPhoneNumberError('Please enter a valid 10-digit phone number.');
+    } else {
+      setPhoneNumberError('');
+    }
+  };
   
   const handleNext = async (event) => {
     event.preventDefault();
-    // Check if the barRegistrationNumber exists in the database
+    /// bar Registration Verfying
     try {
       const response = await fetch('http://localhost:3001/verify', {
         method: 'POST',
@@ -59,10 +73,20 @@ const AdvocateForm = () => {
         console.error('not verified:', data);
         alert('Bar registration number: Not verified');
         setError('Not Verified');
+        clearError2();
       }
     } catch (error) {
       console.error('Error during verification:', error);
     }
+    validatePhoneNumber();
+
+    if (phoneNumberError) {
+      event.preventDefault();
+      return;
+    }
+  
+    
+    event.preventDefault();
     
   };
    
@@ -76,7 +100,7 @@ const handleSendOTP = async (event) => {
   event.preventDefault();
 
   try {
-    // Generate and send OTP to the user's email
+    // sending otp 
     const otpResponse = await fetch(`${API_BASE_URL}/send-otp`, {
       method: 'POST',
       headers: {
@@ -104,7 +128,7 @@ const handleSubmit = async (event) => {
   event.preventDefault();
 
   try {
-    // Verify the entered OTP
+    // Verifying  OTP
     const otpVerificationResponse = await fetch(`${API_BASE_URL}/verify-otp`, {
       method: 'POST',
       headers: {
@@ -116,9 +140,8 @@ const handleSubmit = async (event) => {
     const otpVerificationData = await otpVerificationResponse.json();
 
     if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
-      // Continue with form submission
+      
       try {
-        // Check if the barRegistrationNumber exists in the database
         const response = await fetch('http://localhost:3001/verify', {
           method: 'POST',
           headers: {
@@ -131,9 +154,9 @@ const handleSubmit = async (event) => {
 
         if (response.ok && data.status === 'ok') {
           console.log('verified:', data);
-          // Continue with form submission
+         
           try {
-            // Submit form data to the server
+          
             const submitResponse = await fetch(SUBMIT_FORM_URL, {
               method: 'POST',
               headers: {
@@ -347,117 +370,72 @@ const handleSubmit = async (event) => {
 
       case 2:
         return (
-        <form onSubmit={handleform}>
-          <div className="step">
-            <div className="advocLeftbox">
-
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' checked />
-                </div>
-                <label htmlFor="t1">Bar Registration</label>
-              </div>
-              <div className="tracking">
-                <div className='track2'>
-                  <input type="radio" id='t2' />
-                </div>
-                <label htmlFor="t2">Place Of Practice</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
-            </div>
-            <div className="advocRightbox">
-              <p className='bar'>PLACE OF PRACTICE</p>
-              <form >
-          
-                <div className="form-group row">
-                  <label htmlFor="state" className="col-sm-3 col-form-label">Select State:</label>
-                  <div className="inputs col-sm-7">
-                    <select id="state" name="state" className="custom-select" style={{ height: '35px', width: '100%', textAlign: 'left' }} value={formData.state} onChange={(e) => handleInputChange('state', e.target.value)}>
-                      <option value="" >Select State/Union territory</option>
-                      <option value="AndhraPradesh">Andhra Pradesh</option>
-                      <option value="ArunachalPradesh">Arunachal Pradesh</option>
-                      <option value="Assam">Assam</option>
-                      <option value="Bihar">Bihar</option>
-                      <option value="Chhattisgarh">Chhattisgarh</option>
-                      <option value="Goa">Goa</option>
-                      <option value="Gujarat">Gujarat</option>
-                      <option value="Haryana">Haryana</option>
-                      <option value="HimachalPradesh">Himachal Pradesh</option>
-                      <option value="Jharkhand">Jharkhand</option>
-                      <option value="Karnataka">Karnataka</option>
-                      <option value="Kerala">Kerala</option>
-                      <option value="MadhyaPradesh">Madhya Pradesh</option>
-                      <option value="Manipur">Manipur</option>
-                      <option value="Meghalaya">Meghalaya</option>
-                      <option value="Mizoram">Mizoram</option>
-                      <option value="Nagaland">Nagaland</option>
-                      <option value="Odisha">Odisha</option>
-                      <option value="Punjab">Punjab</option>
-                      <option value="Rajasthan">Rajasthan</option>
-                      <option value="Sikkim">Sikkim</option>
-                      <option value="TamilNadu">Tamil Nadu</option>
-                      <option value="Telangana">Telangana</option>
-                      <option value="Tripura">Tripura</option>
-                      <option value="Uttarakhand">Uttarakhand</option>
-                      <option value="UttarPradesh">Uttar Pradesh</option>
-                      <option value="WestBengal">West Bengal</option>
-                      <option value="AndamanNicobarIslands">Andaman and Nicobar Islands</option>
-                      <option value="Chandigarh">Chandigarh</option>
-                      <option value="DadraNagarHaveliDamanDiu">Dadra and Nagar Haveli and Daman and Diu</option>
-                      <option value="Delhi">Govt of NCT of Delhi</option>
-                      <option value="JammuKashmir">Jammu and Kashmir</option>
-                      <option value="Ladakh">Ladakh</option>
-                      <option value="Lakshadweep">Lakshadweep</option>
-                      <option value="Puducherry">Puducherry</option>
-                    </select>
+          <form onSubmit={handleform}>
+            <div className="step">
+              <div className="advocLeftbox">
+  
+                <div className="tracking">
+                  <div className='track1'>
+                    <input type="radio" id='t1' checked />
                   </div>
+                  <label htmlFor="t1">Bar Registration</label>
                 </div>
-
-                <div className="form-group row">
-                  <label htmlFor="courtType" className="col-sm-3 col-form-label">Select a Court:</label>
-                  <div className="inputs col-sm-7">
-                    <div className="form-check">
-                      <input type="radio" id="whichcourt1" name="courtType" className="form-check-input court" checked={formData.courtType === 'DistrictCourt'}  onChange={() => handleInputChange('courtType', 'DistrictCourt')}/>
-                      <label htmlFor="whichcourt1" className="form-check-label ml-2 mb-2 ">District Court</label>
-                    </div>
-                    <div className="form-check">
-                      <input type="radio" id="whichcourt2" name="court" className="form-check-input court"   checked={formData.courtType === 'HighCourt'} onChange={() => handleInputChange('courtType', 'HighCourt')} />
-                      <label htmlFor="whichcourt2" className="form-check-label ml-2">High Court</label>
+                <div className="tracking">
+                  <div className='track2'>
+                    <input type="radio" id='t2' />
+                  </div>
+                  <label htmlFor="t2">Profile Details</label>
+                </div>
+                <div className="tracking">
+                  <div className='track3'>
+                    <input type="radio" id='t3' />
+                  </div>
+                  <label htmlFor="t3">Contact Details</label>
+                </div>
+                <div className="tracking">
+                  <div className='track4'>
+                    <input type="radio" id='t4' />
+                  </div>
+                  <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
+                </div>
+              </div>
+              <div className="advocRightbox">
+                <p className='bar'>Profile Details</p>
+                <form >
+            
+                  <div className="form-group row">
+                    <label htmlFor="lawyertype" className="col-sm-3 col-form-label">Type Of Lawyer:</label>
+                    <div className="inputs col-sm-7">
+                    <select id='lawyertype' className="custom-select" style={{ height: '35px', width: '100%', textAlign: 'left' }} value={formData.lawyertype} onChange={(e) => handleInputChange('lawyertype', e.target.value)}>
+                        <option value="" >Type of Lawyer</option>
+                        <option value="Civil">Civil</option>
+                        <option value="Criminal">Criminal</option>
+                        <option value="Both">Both</option>
+                      </select>
                     </div>
                   </div>
-                </div>
-                
-                <div className="form-group row">
-                  <label htmlFor="state" className="col-sm-3 col-form-label">Enter Court Name:</label>
-                  <div className="inputs col-sm-7">
-                  <input type="text" className="form-control" id="inputPassword" placeholder="Court Name" value={formData.courtName}
-            onChange={(e) => handleInputChange('courtName', e.target.value)}
-          />
-          </div>
-          
-                      </div>
-              </form>
-              <div className='popbuttons advbuttons'>
-                <button className='back' onClick={handleBack}>Back</button>
-                {/* <button className='saveNext' onClick={handleNext}>Save and Next</button> */}
-                <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
-              </div>
+  
+                  
+                  
+                  <div className="form-group row">
+                    <label htmlFor="experience" className="col-sm-3 col-form-label">Years Of Experince:</label>
+                    <div className="inputs col-sm-7">
+                    <input type="text" id='experience' className="form-control"  placeholder="experience" value={formData.experience}
+              onChange={(e) => handleInputChange('experience', e.target.value)}
+            />
             </div>
-
-          </div>
-          </form>
-        );
+            
+                </div>
+                </form>
+                <div className='popbuttons advbuttons'>
+                  <button className='back' onClick={handleBack}>Back</button>
+                  <button type= "submit" className='saveNext' onClick={handleNext}>Save and Next</button>
+                </div>
+              </div>
+  
+            </div>
+            </form>
+          );
 
       case 3:
         return (
@@ -495,12 +473,22 @@ const handleSubmit = async (event) => {
               <p className='bar'>CONTACT DETAILS</p>
               <form>
                 <div className="contactContainer">
-                <div className="form-group row">
-                  <label for="name" className="col-sm-3 col-form-label">Phone:</label>
-                  <div className="inputs col-sm-7">
-                    <input type="number" className="form-control" id="inputPassword" placeholder="Enter Your Phone Number"   value={formData.phone} onChange={(e) => handleInputChange('phone', e.target.value)} />
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Phone:</label>
+                    <div class="inputs col-sm-7">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputPassword"
+                        placeholder="Enter Your Phone Number"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        onBlur={validatePhoneNumber}
+                        required
+                      />
+                      {phoneNumberError && <p style={{ color: 'red' }}>{phoneNumberError}</p>}
+                    </div>
                   </div>
-                </div>
                 <div  className="form-group row">
                   <label  for="name" className="col-sm-3 col-form-label" >Email ID:</label>
                   

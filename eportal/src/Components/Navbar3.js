@@ -58,7 +58,7 @@ const Navbar3 = () => {
                         </div></h4></td>
             </tr>
         </table>
-        <table>
+        {/* <table>
         <tr>
             <td class="b">
                 <label for="Username"><h4 className='i'>Username:</h4></label></td>
@@ -79,14 +79,16 @@ const Navbar3 = () => {
                 </div> 
             </td>
             </tr>
-        </table>
-        <div className='x'>
+        </table> */}
+        {/* <div className='x'>
        <button ><b>LOGIN</b></button>
-       </div>
+       </div> */}
        <Link id="back" to='/#home'><button className='backbtn'><h6> Back</h6> </button></Link>
+       
         <div class="c">
         <h5 >Don't have an account?</h5>
         <Link to="/signup" ><button className='bn'><b>SIGN UP</b></button></Link>
+     
         </div>
         </form>
     </div>

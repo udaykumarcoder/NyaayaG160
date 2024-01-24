@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import Filetable from './Filetable';
 import "./Litigant/CaseDocinfo.css";
 const AdvCaseDocinfo = () => {
@@ -11,7 +11,7 @@ const AdvCaseDocinfo = () => {
             setFiles(filesData);
           } catch (error) {
             console.error(error);
-            // Handle error fetching files
+           
           }
         };
         fetchFiles();

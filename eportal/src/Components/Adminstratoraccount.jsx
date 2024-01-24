@@ -1,23 +1,28 @@
-import React ,{useState} from 'react';
-import Navbar4 from './Navbar4';
+import React, { useState } from 'react';
 import Administratorsidebar from './Administratorsidebar';
-import AdministratorContent from './AdministratorContent';
-import './Litigant/Litigantaccount.css'
-const Administratoraccount= () => {const [selectedSection, setSelectedSection] = useState('');
+import './Litigant/Litigantaccount.css';
+import Navbar4 from './Navbar4';
+import Updatedetails from './Updatedetails';
+import Uploaddocs from './Uploaddocs';
+import UserInfo from './UserInfo';
+const Administratoraccount= () => {
+  const components = [UserInfo, Uploaddocs,Updatedetails];
+  const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
 
-const handleSidebarItemClick = (section) => {
-  setSelectedSection(section);
-};
+  const switchComponent = (index) => {
+    setCurrentComponentIndex(index);
+  };
+
+  const CurrentComponent = components[currentComponentIndex];
+
   return (
     <div>
-   <Navbar4 />
+      <Navbar4 />
       <div className='Laccountbox'>
-
-      <Administratorsidebar handleSidebarItemClick={handleSidebarItemClick} />
-      <AdministratorContent selectedSection={selectedSection}/>
+        <Administratorsidebar switchComponent={switchComponent} />
+        <CurrentComponent />
       </div>
     </div>
   );
 };
-
 export default Administratoraccount;

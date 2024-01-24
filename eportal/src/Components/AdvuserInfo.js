@@ -43,12 +43,10 @@ return (
   <div className="userInfo">
     {error && <p>{error}</p>}
     {userData && (
-    
       <>
-        {/* Render user data here */}
         <div className="whiteBox">
           <div className="profile">
-            {/* You can customize this section based on your UI design */}
+          
           </div>
         </div>
 

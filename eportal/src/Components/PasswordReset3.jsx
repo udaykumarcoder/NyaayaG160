@@ -1,4 +1,4 @@
-// PasswordReset.js
+// Adminstrator PasswordReset
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,6 @@ const PasswordReset3 = () => {
   const handlePasswordReset = async (event) => {
     event.preventDefault();
     
-    // Add logic to check user details in MongoDB and reset password
     try {
         const response = await fetch('http://localhost:3001/resetpassword-Adminstrator', {
             method: 'POST',
@@ -27,14 +26,14 @@ const PasswordReset3 = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Password reset successful, you can redirect or show a success message
+       
         console.log('Password reset successful:', data);
        
       alert('password Changed  successfully');
       navigate("/login/litigant");
       
       } else {
-        // Password reset failed, handle the error (e.g., incorrect details)
+       
         console.error('Password reset failed:', data);
         alert("Password reset failed");
       }

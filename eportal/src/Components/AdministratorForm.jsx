@@ -17,7 +17,6 @@ const AdministratorForm= () => {
     state: 'Select State/Union Territory',
     gender: 'default',
     dob: '',
-    
     phone: '',
     email: '',
     password: '',
@@ -26,8 +25,25 @@ const AdministratorForm= () => {
   });
 
   const navigate=useNavigate();
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const validatePhoneNumber = () => {
+    const phoneNumberRegex = /^\d{10}$/;
+  
+    if (!phoneNumberRegex.test(formData.phone)) {
+      setPhoneNumberError('Please enter a valid 10-digit phone number.');
+    } else {
+      setPhoneNumberError('');
+    }
+  };
 
   const handleNext = (event) => {
+    validatePhoneNumber();
+
+    if (phoneNumberError) {
+      event.preventDefault();
+      return;
+    }
+  
     setStep(step + 1);
     event.preventDefault();
   };
@@ -44,7 +60,7 @@ const AdministratorForm= () => {
     event.preventDefault();
   
     try {
-      // Generate and send OTP to the user's email
+      /// sending otp
       const otpResponse = await fetch(`${API_BASE_URL}/send-otp`, {
         method: 'POST',
         headers: {
@@ -71,7 +87,7 @@ const AdministratorForm= () => {
     console.log(formData);
   
     try {
-      // Verify the OTP before submitting the form
+     /// verifing otp 
       const otpVerificationResponse = await fetch(`${API_BASE_URL}/verify-otp`, {
         method: 'POST',
         headers: {
@@ -83,7 +99,7 @@ const AdministratorForm= () => {
       const otpVerificationData = await otpVerificationResponse.json();
   
       if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
-        // If OTP verification is successful, proceed to submit the form
+      
         const response = await fetch(SUBMIT_FORM_URL, {
           method: 'POST',
           headers: {
@@ -120,9 +136,6 @@ const AdministratorForm= () => {
     event.preventDefault();
    
   } 
-
-
-
 
 const renderStep = () => {
   switch (step) {
@@ -274,12 +287,22 @@ const renderStep = () => {
             <p className='bar'>CONTACT DETAILS</p>
             <form>
             <div className="contactContainer">
-              <div class="form-group row">
-                <label for="name" class="col-sm-3 col-form-label">Phone:</label>
-                <div class="inputs col-sm-7">
-                  <input type="number" class="form-control" id="inputPassword" placeholder="Enter Your Phone Number" value={formData.phone} onChange={(e) => handleInputChange('phone', e.target.value)} required />
-                </div>
-              </div>
+            <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Phone:</label>
+                    <div class="inputs col-sm-7">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputPassword"
+                        placeholder="Enter Your Phone Number"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        onBlur={validatePhoneNumber}
+                        required
+                      />
+                      {phoneNumberError && <p style={{ color: 'red' }}>{phoneNumberError}</p>}
+                    </div>
+                  </div>
               <div class="form-group row">
                 <label for="name" class="col-sm-3 col-form-label">Email ID:</label>
                 <div class="inputs col-sm-7">

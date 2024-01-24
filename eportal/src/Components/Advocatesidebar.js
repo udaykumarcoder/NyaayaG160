@@ -5,7 +5,6 @@ import "./Advocatesidebar.css";
 import "./sidebar.css";
 
 const Advocatesidebar = ({switchComponent}) => {
-
   const location = useLocation();
   const emailFromLogin = location?.state?.email || '';
   const [userData, setUserData] = useState(null);
@@ -37,11 +36,13 @@ const Advocatesidebar = ({switchComponent}) => {
 
     fetchUserData();
   }, [emailFromLogin]);
+
+
   return (
     <section>
       {error && <p>{error}</p>}
     {userData && (
-      
+    
         <div className="sidebar">
         
           <div className="Litigantprofile">
@@ -61,10 +62,11 @@ const Advocatesidebar = ({switchComponent}) => {
           </div>
         <ul>
           
-        <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
-        {/* <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>   */}
-        <li><h3><button onClick={()=>switchComponent(1)}>📃&nbsp;Case Documents</button></h3></li>
-          
+       
+        <li><h3 onClick={() => switchComponent(0)}>👤 &nbsp; User Info</h3></li>
+        <li><h3 onClick={()=>switchComponent(1)}>📃&nbsp;Case Documents</h3></li>
+        <li><Link to="/casefiling" style={{ textDecoration:"none"}}><h3 style={{color:"white" }} > 📜Case Filing</h3></Link></li>
+
           
         </ul>
         <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>

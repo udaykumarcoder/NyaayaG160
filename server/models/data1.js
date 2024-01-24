@@ -6,8 +6,9 @@ const userSchema = new mongoose.Schema({
   gender: { type: String, required: true },
   dob: { type: String, required: true },
   barRegistrationNumber: { type: String, required: true, unique: true},
-  courtType: { type: String, required: true },
-  courtName: { type: String, required: true },
+  lawyertype:{ type: String, required: true },
+  experience:{ type: String, required: true },
+
   phone: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -21,7 +22,7 @@ const UserData = mongoose.model('UserData', userSchema);
 module.exports=UserData;
 
 
-
+//xiKPfREnG6IPzcSE
 
 
 

@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-
-
 const cors=require('cors');
 const multer = require('multer');
 const app = express();
@@ -14,13 +12,14 @@ const UserData3=require('./models/data3');
 const File = require('./models/file');
 const Detail = require('./models/Detail'); 
 const UserDatabar = require('./models/barnumbers');
-const router = express.Router();
+
+const Case= require('./models/caseMain');
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-
+// for mongo Compass
 mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -29,6 +28,17 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
 }).catch((err) => {
   console.error('MongoDB connection error:', err);
 });
+
+// for mongo Atlas { AWS cloud Service}
+
+// mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => {
+//   console.log('MongoDB connected');
+// }).catch((err) => {
+//   console.error('MongoDB connection error:', err);
+// });
 
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
@@ -51,8 +61,8 @@ if (isBarNumberExists) {
       gender: req.body.gender,
       dob: req.body.dob,
       barRegistrationNumber: req.body.barRegistrationNumber,
-      courtType: req.body.courtType,
-      courtName: req.body.courtName,
+      lawyertype:req.body.lawyertype,
+      experience:req.body.experience,
       phone: req.body.phone,
       email: req.body.email,
       password: req.body.password,
@@ -63,8 +73,8 @@ if (isBarNumberExists) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
-        pass: 'anga bway cibv frvy', // Replace with your Gmail  app password
+        user: 'vinnupersonals162@gmail.com', 
+        pass: 'anga bway cibv frvy', 
       },
     });
 
@@ -148,8 +158,8 @@ app.post('/signup/litigant', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
-        pass: 'anga bway cibv frvy', // Replace with your Gmail password or app password
+        user: 'vinnupersonals162@gmail.com', 
+        pass: 'anga bway cibv frvy', 
       },
     });
 
@@ -159,6 +169,7 @@ app.post('/signup/litigant', async (req, res) => {
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
       html:req.body.name,
+      
     };
 
     await transporter.sendMail(mailOptions);
@@ -241,7 +252,8 @@ app.post('/signup/administrator', async (req, res) => {
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
-      html:'<p>welcome to Nyaaaya</p>'
+      html:'<p>welcome to Nyaaaya</p>',
+      
     };
 
     await transporter.sendMail(mailOptions);
@@ -289,7 +301,7 @@ app.post('/login/administrator', async (req, res) => {
   }
 });
 
-
+/// updating  case details by adminstrator
 
 app.post('/details', async (req, res) => {
   try {
@@ -298,16 +310,12 @@ app.post('/details', async (req, res) => {
     if (!cnr || !title || !date || !description) {
       return res.status(400).json({ error: 'Please provide all details.' });
     }
-
-    // Assuming you have a Detail model defined
     const detail = new Detail({
       cnr,
       title,
       date,
       description,
     });
-
-    // Save the detail to the database
     const savedDetail = await detail.save();
 
     res.status(201).json({ message: 'Details stored successfully.', detail: savedDetail });
@@ -318,6 +326,7 @@ app.post('/details', async (req, res) => {
 });
 
 /// Admin user info
+
 app.get('/api/user', async (req, res) => {
   const { email } = req.query;
 
@@ -335,6 +344,7 @@ app.get('/api/user', async (req, res) => {
 });
 
 /// litigant user info
+
 app.get('/api/user1', async (req, res) => {
   const { email } = req.query;
 
@@ -350,7 +360,9 @@ app.get('/api/user1', async (req, res) => {
     res.status(500).json({ status: 'error', error: err.message });
   }
 });
-////
+
+////  advocate user info 
+
 app.get('/api/user2', async (req, res) => {
   const { email } = req.query;
 
@@ -367,10 +379,8 @@ app.get('/api/user2', async (req, res) => {
   }
 });
 
+// case details for given crn to tack 
 
-
-
-// case details
 app.get('/api/cd', async (req, res) => {
   const { cnr } = req.query;
 
@@ -387,7 +397,8 @@ app.get('/api/cd', async (req, res) => {
   }
 });
 
-// case tracking by crn
+// case tracking by crn 
+
 app.post('/api/checkCNR', async (req, res) => {
   console.log(req.body);
   console.log('Received login request:', req.body);
@@ -406,21 +417,22 @@ app.post('/api/checkCNR', async (req, res) => {
   }
 });
 
-////docs
+//// to upload docs
+
 const db= mongoose.connection;
 
-// Set up Multer for file uploads
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// API endpoint for file uploads
+
 app.post('/upload', upload.array('fileUpload'), async (req, res) => {
   try {
     const cnr= req.body.cnr;
     const currentDate = new Date().toLocaleDateString();
     const fileName = req.body.fileName;
 
-    // Iterate through uploaded files and save to database
+    
     for (let i = 0; i < req.files.length; i++) {
       const file = new File({
         date: currentDate,
@@ -439,7 +451,8 @@ app.post('/upload', upload.array('fileUpload'), async (req, res) => {
   }
 });
 
-// API endpoint for retrieving files
+/// uploading files 
+
 app.get('/files', async (req, res) => {
   try {
     const files = await File.find();
@@ -449,7 +462,7 @@ app.get('/files', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-// Add a new API endpoint for fetching file content
+
 app.get('/files/:filename', async (req, res) => {
   try {
     const filename = req.params.filename;
@@ -467,43 +480,38 @@ app.get('/files/:filename', async (req, res) => {
 });
 
 /// Advocate password reset
+
 app.post('/resetpassword-Advocate', async (req, res) => {
   const { email, dob, phone, newPassword } = req.body;
   console.log('Request Body:', req.body);
 
   try {
-    // Check user details in MongoDB
     const user = await UserData.findOne({ email, dob, phone });
-
     if (!user) {
       return res.status(404).json({ error: 'User not found or details are incorrect.' });
     }
-
-    // Update the password
     user.password = newPassword;
     user.confirmPassword=newPassword;
     await user.save();
-
     res.json({ message: 'Password reset successful.' });
   } catch (error) {
     console.error('Error during password reset:', error);
     res.status(500).json({ error: error.message || 'Internal server error.' });
   }
 });
+
 ///// Litigant password reset
+
 app.post('/resetpassword-Litigant', async (req, res) => {
   const { email, dob, phone, newPassword } = req.body;
   console.log('Request Body:', req.body);
 
   try {
-    // Check user details in MongoDB
     const user = await UserData2.findOne({ email, dob, phone });
 
     if (!user) {
       return res.status(404).json({ error: 'User not found or details are incorrect.' });
     }
-
-    // Update the password
     user.password = newPassword;
     user.confirmPassword=newPassword;
     await user.save();
@@ -514,20 +522,18 @@ app.post('/resetpassword-Litigant', async (req, res) => {
     res.status(500).json({ error: error.message || 'Internal server error.' });
   }
 });
+
 ///// Adminstrator  password reset
+
 app.post('/resetpassword-Adminstrator', async (req, res) => {
   const { email, dob, phone, newPassword } = req.body;
   console.log('Request Body:', req.body);
-
   try {
-    // Check user details in MongoDB
     const user = await UserData3.findOne({ email, dob, phone });
-
     if (!user) {
       return res.status(404).json({ error: 'User not found or details are incorrect.' });
     }
 
-    // Update the password
     user.password = newPassword;
     user.confirmPassword=newPassword;
     await user.save();
@@ -538,14 +544,15 @@ app.post('/resetpassword-Adminstrator', async (req, res) => {
     res.status(500).json({ error: error.message || 'Internal server error.' });
   }
 });
-/////////////
+
+//// To verify  Bar Registration Number for Advocate
 
 
 app.post('/verify', async (req, res) => {
   console.log(req.body);
-  console.log('Received login request:', req.body);
+  
   try {
-    const { barRegistrationNumber } = req.body; // Adjust property name here
+    const { barRegistrationNumber } = req.body; 
     const user = await UserDatabar.findOne({ barnumber: barRegistrationNumber });
 
 
@@ -561,17 +568,15 @@ app.post('/verify', async (req, res) => {
     res.status(500).json({ status: 'error', error: err.message });
   }
 });
-/////
 
-
-
-
+///// OTP ---- Code
 
 const otpStorage = {};
 
-// Function to generate a random numeric OTP
+//  generate a random numeric OTP
 const generateNumericOTP = () => Math.floor(100000 + Math.random() * 900000);
 
+// to send otp to Email
 app.post('/send-otp', (req, res) => {
   const { email } = req.body;
 
@@ -580,8 +585,8 @@ app.post('/send-otp', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
-      pass: 'anga bway cibv frvy', // Replace with your Gmail password or app password
+      user: 'vinnupersonals162@gmail.com', 
+      pass: 'anga bway cibv frvy', 
     },
   });
   
@@ -592,6 +597,8 @@ app.post('/send-otp', (req, res) => {
     subject: 'OTP Verification',
     text: `Your OTP for verification is: ${otp}`,
   };
+
+///  transporting otp to mail
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
@@ -604,6 +611,8 @@ app.post('/send-otp', (req, res) => {
   });
 });
 
+// to verify otp 
+
 app.post('/verify-otp', (req, res) => {
   const { email, otp } = req.body;
 
@@ -611,6 +620,85 @@ app.post('/verify-otp', (req, res) => {
     res.json({ status: 'ok', message: 'OTP verification successful' });
   } else {
     res.status(400).json({ status: 'error', message: 'Invalid OTP' });
+  }
+});
+
+
+//// case filing
+app.post('/api/casefiling', async (req, res) => {
+  console.log("hello vinnu",req.body);
+  try {
+    
+    await Case.create({
+    
+    state: req.body.state,
+    district: req.body.district,
+    establishment: req.body.establishment,
+    caseType: req.body.caseType,
+    reliefSought: req.body.reliefSought,
+    appellantRespondant: req.body.appellantRespondant,
+    mobileNo: req.body.mobileNo,
+
+    litigantType: req.body.litigantType,
+    accused: req.body.accused,
+    name: req.body.name,
+    Relation: req.body.Relation,
+    age: req.body.age,
+    dob: req.body.dob,
+    gender: req.body.gender,
+    caste: req.body.caste,
+    differentlyAble: req.body.differentlyAble,
+    email: req.body.email,
+    phone: req.body.phone,
+    occupation: req.body.occupation,
+    address: req.body.address,
+    pincode: req.body.pincode,
+    litigantState: req.body.litigantState,
+    litigantDistrict: req.body.litigantDistrict,
+    taluka: req.body.taluka,
+    village: req.body.village,
+
+    partyName: req.body.partyName,
+    heirType: req.body.heirType,
+    heirName: req.body.heirName,
+    name2: req.body.name2,
+    relation2: req.body.relation2,
+    heirDob: req.body.heirDob,
+    heirAge: req.body.heirAge,
+    heirGender: req.body.heirGender,
+    heirCaste: req.body.heirCaste,
+    heirDifferentlyAble: req.body.heirDifferentlyAble,
+    heirEmail: req.body.heirEmail,
+    heirPhone: req.body.heirPhone,
+    heirOccupation: req.body.heirOccupation,
+    heirAddress: req.body.heirAddress,
+    heirPincode: req.body.heirPincode,
+    heirState: req.body.heirState,
+    heirDistrict: req.body.heirDistrict,
+    heirTaluka: req.body.heirTaluka,
+    heirVillage: req.body.heirVillage,
+
+    factDate: req.body.factDate,
+    factTime: req.body.factTime,
+    fact: req.body.fact,
+
+    actionCause: req.body.actionCause,
+    reason: req.body.reason,
+    actionDate: req.body.actionDate,
+    disputeState: req.body.disputeState,
+    disputeDistrict: req.body.disputeDistrict,
+    disputeTaluka: req.body.disputeTaluka,
+    disputeVillage: req.body.disputeVillage,
+    act: req.body.act,
+    section: req.body.section
+    }
+    
+    );
+
+    res.status(200).json({ message: 'Case filed successfully' });
+  } catch (error) {
+    console.error('Error submitting case:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 

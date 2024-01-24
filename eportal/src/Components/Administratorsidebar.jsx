@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import "./Administratorsidebar.css";
 
-const Administratorsidebar = ({ handleSidebarItemClick ,selectedSection}) => {
+const Administratorsidebar = ({ switchComponent }) => {
 
   const location = useLocation();
   const emailFromLogin = location?.state?.email || '';
@@ -53,12 +53,12 @@ const Administratorsidebar = ({ handleSidebarItemClick ,selectedSection}) => {
           </div>
           <div>
     <ul>
-      <li className={selectedSection === 'User Info' ? 'active' : ''} 
-          onClick={() => handleSidebarItemClick('User Info')}><h3> 👤&nbsp;User Info</h3></li>
-      <li className={selectedSection === 'Upload Documents' ? 'active' : ''} 
-          onClick={() => handleSidebarItemClick('Upload Documents')}><h3> 📤 &nbsp;Upload Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;   Documents</h3></li>
-      <li className={selectedSection === 'Update Case Details' ? 'active' : ''} 
-          onClick={() => handleSidebarItemClick('Update Case Details')}><h3>🔁&nbsp; Update Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;  Details</h3></li>
+      <li
+          onClick={() => switchComponent(0)}><h3> 👤&nbsp;User Info</h3></li>
+      <li 
+          onClick={() =>switchComponent(1) }><h3> 📤 &nbsp;Upload Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;   Documents</h3></li>
+      <li  
+          onClick={() =>switchComponent(2)}><h3>🔁&nbsp; Update Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;  Details</h3></li>
            
 
       

@@ -13,7 +13,7 @@ const AdministratorLogin = () => {
       event.preventDefault();
     
       try {
-        // Generate and send OTP to the user's email
+        // sending  OTP 
         const otpResponse = await fetch(`http://localhost:3001/send-otp`, {
           method: 'POST',
           headers: {
@@ -42,19 +42,19 @@ const AdministratorLogin = () => {
       console.log('Login values:', email, password, otp);
     
       try {
-        // Verify the entered OTP
+        // Verifying OTP
         const otpVerificationResponse = await fetch(`http://localhost:3001/verify-otp`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), // Parse OTP as an integer
+          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), //converting otp into integer
         });
     
         const otpVerificationData = await otpVerificationResponse.json();
     
         if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
-          // Continue with login
+          
           try {
             const loginResponse = await fetch(`http://localhost:3001/login/administrator`, {
               method: 'POST',
@@ -86,11 +86,7 @@ const AdministratorLogin = () => {
         alert('An error occurred. Please try again.');
       }
     };
- 
-
-    
-
-    
+  
   return (
     <div>
        <div class="body">
@@ -129,7 +125,7 @@ const AdministratorLogin = () => {
                     name="Otp"
                     placeholder="Enter OTP"
                     value={otp}
-                    onChange={(e) => setOtp(e.target.value)} // Update the otp state
+                    onChange={(e) => setOtp(e.target.value)} 
                   />
                 </h6>
                 </div> 

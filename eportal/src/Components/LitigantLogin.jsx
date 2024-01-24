@@ -13,7 +13,7 @@ const LitigantLogin = () => {
       event.preventDefault();
     
       try {
-        // Generate and send OTP to the user's email
+        // sending otp
         const otpResponse = await fetch(`http://localhost:3001/send-otp`, {
           method: 'POST',
           headers: {
@@ -42,7 +42,7 @@ const LitigantLogin = () => {
       console.log('Login values:', email, password, otp);
     
       try {
-        // Verify the entered OTP
+        // Verify OTP
         const otpVerificationResponse = await fetch(`http://localhost:3001/verify-otp`, {
           method: 'POST',
           headers: {
@@ -54,7 +54,7 @@ const LitigantLogin = () => {
         const otpVerificationData = await otpVerificationResponse.json();
     
         if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
-          // Continue with login
+          
           try {
             const loginResponse = await fetch(`http://localhost:3001/login/litigant`, {
               method: 'POST',
@@ -149,7 +149,7 @@ const LitigantLogin = () => {
                     name="Otp"
                     placeholder="Enter OTP"
                     value={otp}
-                    onChange={(e) => setOtp(e.target.value)} // Update the otp state
+                    onChange={(e) => setOtp(e.target.value)} 
                   />
               </h6>
             </div>

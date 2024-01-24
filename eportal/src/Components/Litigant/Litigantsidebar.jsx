@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { HashLink as Link } from 'react-router-hash-link';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./Litigantsidebar.css";
 
 
 const Litigantsidebar = ({ switchComponent }) => {
   const location = useLocation();
-  const emailFromLogin = location?.state?.email || '';
+  const emailFromLogin = location?.state?.email || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -37,6 +37,16 @@ const Litigantsidebar = ({ switchComponent }) => {
     fetchUserData();
   }, [emailFromLogin]);
 
+  useEffect(() => {
+    // Storing  email in localStorage for further use 
+    localStorage.setItem('loggedInUserEmail', emailFromLogin);
+  }, [emailFromLogin]);
+  const handleLogout = () => {
+   
+    localStorage.removeItem('loggedInUserEmail');
+    
+    navigate('/login');
+  };
   return (
     <section>
       {error && <p>{error}</p>}
@@ -60,16 +70,16 @@ const Litigantsidebar = ({ switchComponent }) => {
           </div>
         <ul>
           
-        <li><h3><button onClick={() => switchComponent(0)}>👤 &nbsp; User Info</button></h3></li>
-        <li><h3><button onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</button></h3></li>  
-        <li><h3><button onClick={()=>switchComponent(2)}>📃&nbsp;Case Documents</button></h3></li>
-        <li><h3><button onClick={()=>switchComponent(3)}>📝&nbsp;Case Appeal</button></h3></li>
-        <li><h3><button onClick={()=>switchComponent(4)}>📃&nbsp;Choose a lawyer</button></h3></li>
+        <li><h3 onClick={() => switchComponent(0)}>👤 &nbsp; User Info</h3></li>
+        <li><h3 onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</h3></li>  
+        <li><h3 onClick={()=>switchComponent(2)}>📃&nbsp;Case Documents</h3></li>
+        <li><h3 onClick={()=>switchComponent(3)}>📝&nbsp;Case Appeal</h3></li>
+        <li><h3 onClick={()=>switchComponent(4)}>📃&nbsp;Choose a lawyer</h3></li>
 
           
         </ul>
-        <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>
-    
+        <button className="logout" onClick={handleLogout}><b>⇤Log Out</b></button>
+       
       </div>
     )}
    

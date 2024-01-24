@@ -56,7 +56,7 @@ const Updatedetails = () => {
       <div>
         <h2 className='title'>Update Case Details</h2>
         <br/>
-        <button className='updatebtn' onClick={toggleForm}>Update</button> {/* eslint-disable-next-line */}
+        <button className='updatebtn' onClick={toggleForm}>Update</button>
 
 
         <br/>

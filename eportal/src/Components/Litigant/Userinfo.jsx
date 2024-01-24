@@ -7,7 +7,7 @@ import './Userinfo.css';
 
 const UserInfo1 = () => {
   const location = useLocation();
-  const emailFromLogin = location?.state?.email || '';
+  const emailFromLogin = location?.state?.email  || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -38,16 +38,18 @@ const UserInfo1 = () => {
     fetchUserData();
   }, [emailFromLogin]);
 
+  useEffect(() => {
+    // Storing  email in localStorage
+    localStorage.setItem('loggedInUserEmail', emailFromLogin);
+  }, [emailFromLogin]);
+
 return (
   <div className="userInfo">
-    {/* Your UI components */}
     {error && <p>{error}</p>}
     {userData && (
       <>
-        {/* Render user data here */}
         <div className="whiteBox">
           <div className="profile">
-            {/* You can customize this section based on your UI design */}
           </div>
         </div>
 

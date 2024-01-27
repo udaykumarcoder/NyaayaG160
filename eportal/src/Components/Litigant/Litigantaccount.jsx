@@ -7,6 +7,8 @@ import LawyerPortfolio from './LawyerPortfolio';
 import './Litigantaccount.css';
 import Litigantsidebar from './Litigantsidebar';
 import Userinfo from './Userinfo';
+import Caseappeal from './Caseappeal';
+import LawyerPortfolio from './LawyerPortfolio';
 
 const Litigantaccount = () => {
   const components = [Userinfo, CaseTrackbox,CaseDocuments,Caseappeal,LawyerPortfolio];

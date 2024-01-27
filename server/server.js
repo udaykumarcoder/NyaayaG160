@@ -19,7 +19,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-// for mongo Compass
+// for mongo Compass {offline}
 mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -242,8 +242,8 @@ app.post('/signup/administrator', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnupersonals162@gmail.com', // Replace with your Gmail address
-        pass: 'anga bway cibv frvy', // Replace with your Gmail password or app password
+        user: 'vinnupersonals162@gmail.com', 
+        pass: 'anga bway cibv frvy', 
       },
     });
 
@@ -401,7 +401,7 @@ app.get('/api/cd', async (req, res) => {
 
 app.post('/api/checkCNR', async (req, res) => {
   console.log(req.body);
-  console.log('Received login request:', req.body);
+  
   try {
     const { cnr} = req.body;
     const user = await Detail.findOne({ cnr });
@@ -701,6 +701,8 @@ app.post('/api/casefiling', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+
 
 
 

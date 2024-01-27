@@ -14,7 +14,7 @@ const Casetracking = () => {
               <CSTcomponent/>
             </div>
             <Link to ="/litigantaccount">
-              <button>
+              <button className="back-btn">
                 Back
               </button>
             </Link>

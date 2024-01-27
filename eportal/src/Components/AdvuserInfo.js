@@ -5,7 +5,7 @@ import './Userinfo.css';
 
 const AdvuserInfo = () => {
   const location = useLocation();
-  const emailFromLogin = location?.state?.email || '';
+  const emailFromLogin = location?.state?.email  || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -36,7 +36,11 @@ const AdvuserInfo = () => {
     fetchUserData();
   }, [emailFromLogin]);
 
-  
+  useEffect(() => {
+    // Storing  email in localStorage
+    localStorage.setItem('loggedInUserEmail', emailFromLogin);
+  }, [emailFromLogin]);
+
 
 
 return (
@@ -63,7 +67,7 @@ return (
         <div className="litigantDetails">
           <h5><b>EMAIL ID</b></h5>
           <br />
-          <p>{userData.email}</p>
+          <p>{userData.email || emailFromLogin}</p>
           <hr />
           <br />
           <h5><b>CONTACT</b></h5>

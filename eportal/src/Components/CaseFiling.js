@@ -1,6 +1,5 @@
-
-
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './CaseFiling.css';
 
 const Casefiling = () => {
@@ -67,7 +66,7 @@ const Casefiling = () => {
     act: '',
     section: ''
   });
-
+  const navigate=useNavigate();
   const handleTabChange = (tabNumber) => {
     if (activeTab === 6 && tabNumber !== 6) {
       return;
@@ -95,8 +94,10 @@ const Casefiling = () => {
       if (response.ok) {
        
         alert('Your case has been filed successfully');
+        navigate('/caselegalform')
        
-        setActiveTab(6);
+        //  setActiveTab(6);
+       
         
       } else {
        
@@ -221,11 +222,18 @@ const caste = ["Select a Caste","OBC", "OC" ,"SC","ST"];
   <input type="" id="rs" name="rs"  value={formData.mobileNo}
   onChange={(e) => handleChange('mobileNo',e.target.value)}/>
   
-</form>
+</form>       
+
             <button className="nexttabbtn" onClick={handleNextTab}>
               Next➜
             </button>
+            <Link to ="/advocateaccount">
+          <button  className='back casefilingBack'  > 
+            back
+          </button>
+        </Link>
           </div>
+          
         );
       case 2:
         return (
@@ -688,9 +696,15 @@ onChange={(e) => handleChange('section',e.target.value)}
             </button>
           ))}
         </div>
+        
 
         <div className="tab-content">{renderTabContent()}</div>
       </div>
+      {/* <Link to ="/advocateaccount">
+          <button  > 
+            back
+          </button>
+        </Link> */}
     </section>
    );
   };

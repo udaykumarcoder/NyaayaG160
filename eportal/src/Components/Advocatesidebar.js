@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import "./Advocatesidebar.css";
 import "./sidebar.css";
 
 const Advocatesidebar = ({switchComponent}) => {
   const location = useLocation();
-  const emailFromLogin = location?.state?.email || '';
+  const emailFromLogin = location?.state?.email || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate= useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -37,6 +38,17 @@ const Advocatesidebar = ({switchComponent}) => {
     fetchUserData();
   }, [emailFromLogin]);
 
+  useEffect(() => {
+    // Storing  email in localStorage
+    localStorage.setItem('loggedInUserEmail', emailFromLogin);
+  }, [emailFromLogin]);
+
+  const handleLogout = () => {
+   
+    localStorage.removeItem('loggedInUserEmail');
+    
+    navigate('/login');
+  };
 
   return (
     <section>
@@ -69,7 +81,8 @@ const Advocatesidebar = ({switchComponent}) => {
 
           
         </ul>
-        <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link>
+        {/* <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link> */}
+        <button className="logout" onClick={handleLogout}><b>⇤Log Out</b></button>
     
       </div>
     

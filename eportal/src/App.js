@@ -19,7 +19,7 @@ import About from './screens/About';
 import Contact from './screens/Contact';
 import Home from './screens/Home';
 import Signup from './screens/Signup';
-
+import CaseDocinfo from './Components/Litigant/CaseDocinfo';
 
 function App() {
   return (
@@ -44,8 +44,8 @@ function App() {
         <Route path="/passwordreset2" element={<PasswordReset2/>}/>
         <Route path="/passwordreset3" element={<PasswordReset3/>}/>
         <Route path="/casefiling" element={<CaseFiling/>}/>
-        <Route path ="/advcasedocinfo" element={<AdvCaseDocinfo/>}/>
-       
+        <Route path ="/advocatecasedocuments" element={<AdvCaseDocinfo/>}/>
+        <Route path ="/litigantcasedocuments" element={<CaseDocinfo/>}/>
         
        
       </Routes>

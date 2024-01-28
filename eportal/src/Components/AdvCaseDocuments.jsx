@@ -1,12 +1,11 @@
-// import React, { useState } from 'react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AdvCaseDocuments = () => {
-    //const [showOtherComponent, setShowOtherComponent] = useState(false);
+    
     const navigate = useNavigate();
     const [cnr, setCnr] = useState('');
-    const [error, setError] = useState('');
+    const [ error,setError] = useState('');
     
     const handleOpenButtonClick = async () => {
 
@@ -26,7 +25,7 @@ const AdvCaseDocuments = () => {
                 
                 console.log('success:', data);
                  
-                 navigate('/advcasedocinfo', { state: { cnr} });
+                 navigate('/advocatecasedocuments', { state: { cnr} });
                 
               } else {
                           setError('User not found. Please try again.');
@@ -65,6 +64,7 @@ const AdvCaseDocuments = () => {
           <div className="caseDoclogin">
           <button onClick={handleOpenButtonClick}>OPEN</button>
           </div>
+          {error && <p className="error-message">{error}</p>}
         </div>
       </div>
     </>

@@ -1,20 +1,41 @@
-
 import React, { useState } from 'react';
-import CaseDocinfo from './CaseDocinfo';
+import {useNavigate} from 'react-router-dom';
+
 import './CaseDocuments.css';
 
 const CaseDocuments = () => {
-  const [showOtherComponent, setShowOtherComponent] = useState(false);
-  const [cnrNumber, setCnrNumber] = useState('');
-  const [uniqueCode, setUniqueCode] = useState('');
+  const navigate = useNavigate();
+  const [cnr, setCnr] = useState('');
+  const [ error,setError] = useState('');
 
-  const handleOpenButtonClick = () => {
-    setShowOtherComponent(true);
+  const handleOpenButtonClick = async() => {
+    console.log('cnr number:', cnr);
+    try {
+      const response = await fetch('http://localhost:3001/validate-cnr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cnr }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        
+        console.log('success:', data);
+        navigate('/litigantcasedocuments', { state: { cnr} });
+        
+      } else {
+                  setError('User not found. Please try again.');
+                }
+              } catch (error) {
+                console.error('Error checking CNR:', error);
+                setError('Error checking CNR. Please try again later.');
+              }
   };
 
-  if (showOtherComponent) {
-    return <CaseDocinfo/>;
-  }
+ 
 
   return (
     <>
@@ -27,8 +48,8 @@ const CaseDocuments = () => {
             <input
               type="text"
               placeholder="Enter CNR Number"
-              value={cnrNumber}
-              onChange={(e) => setCnrNumber(e.target.value)}
+             
+              onChange={(e) => setCnr(e.target.value)}
             />
           </div>
           <div className="uniqueCode">
@@ -36,14 +57,15 @@ const CaseDocuments = () => {
             <input
               type="text"
               placeholder="Enter Unique Code"
-              value={uniqueCode}
-              onChange={(e) => setUniqueCode(e.target.value)}
+             
+              
             />
           </div>
           <br />
           <div className="caseDoclogin">
             <button onClick={handleOpenButtonClick}>OPEN</button>
           </div>
+          {error && <p className="error-message">{error}</p>}
         </div>
       </div>
     </>

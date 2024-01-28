@@ -6,7 +6,6 @@ import AdvocateForm from './Components/AdvocateForm';
 import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
 import CaseFiling from './Components/CaseFiling';
-import LegalCaseForm from './Components/LegalCaseForm';
 import Casetracking from './Components/Litigant/Casetracking';
 import Litigantaccount from './Components/Litigant/Litigantaccount';
 import LitigantForm from './Components/LitigantForm';
@@ -44,7 +43,6 @@ function App() {
         <Route path="/passwordreset2" element={<PasswordReset2/>}/>
         <Route path="/passwordreset3" element={<PasswordReset3/>}/>
         <Route path="/casefiling" element={<CaseFiling/>}/>
-        <Route path="/caselegalform" element={<LegalCaseForm/>}/>
        
         
        

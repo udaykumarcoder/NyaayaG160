@@ -1,38 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import "./Uploaddocs.css";
+import React, { useEffect, useState } from 'react';
 import Filetable from './Filetable';
+import "./Uploaddocs.css";
 
 const Uploaddocs = () => {
   const [formVisible, setFormVisible] = useState(false);
   const [files, setFiles] = useState([]);
+  const [cnr, setCnr] = useState(''); 
 
   useEffect(() => {
+  const fetchFiles = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/files?cnr=${cnr}`);
+      const filesData = await response.json();
+      setFiles(filesData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    const fetchFiles = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/files');
-        const filesData = await response.json();
-        setFiles(filesData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchFiles();
-  }, []);
+  fetchFiles();
+}, [cnr]);
 
   const toggleForm = () => {
     setFormVisible(!formVisible);
   };
 
+  
   const submitForm = async () => {
-    
     const fileName = document.getElementById("fileName").value;
+    const cnrValue = document.getElementById("cnr").value;
     const fileUpload = document.getElementById("fileUpload");
+  
+    // Update the cnr state with the entered CNR value
+    setCnr(cnrValue);
   
     if (fileName && fileUpload.files.length > 0) {
       const formData = new FormData();
       formData.append('fileName', fileName);
+      formData.append('cnr', cnrValue);
   
       for (let i = 0; i < fileUpload.files.length; i++) {
         formData.append('fileUpload', fileUpload.files[i]);
@@ -45,8 +50,7 @@ const Uploaddocs = () => {
         });
   
         if (response.ok) {
-          
-          const filesResponse = await fetch('http://localhost:3001/files');
+          const filesResponse = await fetch(`http://localhost:3001/files?cnr=${cnrValue}`);
           const filesData = await filesResponse.json();
           setFiles(filesData);
         } else {
@@ -57,13 +61,13 @@ const Uploaddocs = () => {
         alert('Upload failed');
       }
   
-  
       document.getElementById("fileName").value = "";
       fileUpload.value = "";
     } else {
       alert("Please provide a file name and choose at least one file.");
     }
   };
+  
   const viewFile = async(filename) => {
     try {
       const response = await fetch(`http://localhost:3001/files/${encodeURIComponent(filename)}`);
@@ -113,7 +117,7 @@ const Uploaddocs = () => {
             <tbody>
               <tr>
                 <td>
-                <label className="data" htmlFor="fileName"><b>CNR Number:&nbsp;&nbsp;</b></label>
+                <label className="data" htmlFor="cnr"><b>CNR Number:&nbsp;&nbsp;</b></label>
                   <input type="number" id="cnr" name="cnr" required/>
                   <label className="data" htmlFor="fileName"><b>File Name:&nbsp;&nbsp;</b></label>
                   <input type="text" id="fileName" name="fileName" required/>

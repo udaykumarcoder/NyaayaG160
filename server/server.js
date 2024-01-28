@@ -419,7 +419,7 @@ app.post('/api/checkCNR', async (req, res) => {
 
 //// to upload docs
 
-const db= mongoose.connection;
+// const db= mongoose.connection;
 
 
 const storage = multer.memoryStorage();
@@ -428,15 +428,17 @@ const upload = multer({ storage: storage });
 
 app.post('/upload', upload.array('fileUpload'), async (req, res) => {
   try {
-    const cnr= req.body.cnr;
+   
     const currentDate = new Date().toLocaleDateString();
     const fileName = req.body.fileName;
+    const cnr = req.body.cnr;
 
     
     for (let i = 0; i < req.files.length; i++) {
       const file = new File({
         date: currentDate,
         name: fileName,
+        cnr: cnr,
         filename: req.files[i].originalname,
         content: req.files[i].buffer.toString("base64"),
         fileType: req.files[i].mimetype.split('/')[0],
@@ -455,7 +457,10 @@ app.post('/upload', upload.array('fileUpload'), async (req, res) => {
 
 app.get('/files', async (req, res) => {
   try {
-    const files = await File.find();
+    const cnr = req.query.cnr;
+    console.log('Received CNR:', cnr);
+    const files = await File.find({ cnr: cnr });
+    
     res.json(files);
   } catch (error) {
     console.error(error);
@@ -466,6 +471,7 @@ app.get('/files', async (req, res) => {
 app.get('/files/:filename', async (req, res) => {
   try {
     const filename = req.params.filename;
+    
     const file = await File.findOne({ filename });
 
     if (file && file.content) {
@@ -478,6 +484,26 @@ app.get('/files/:filename', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+//
+app.post('/validate-cnr', async (req, res) => {
+  console.log(req.body);
+  
+  try {
+    const { cnr} = req.body;
+    const user = await File.findOne({ cnr });
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+    
+    res.json({ status: 'ok', user });
+
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+  
+});
+
 
 /// Advocate password reset
 

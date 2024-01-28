@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AdministratorForm from './Components/AdministratorForm';
 import AdministratorLogin from './Components/AdministratorLogin';
 import Administratoraccount from './Components/Adminstratoraccount';
+import AdvCaseDocinfo from './Components/AdvCaseDocinfo';
 import AdvocateForm from './Components/AdvocateForm';
 import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
@@ -43,6 +44,7 @@ function App() {
         <Route path="/passwordreset2" element={<PasswordReset2/>}/>
         <Route path="/passwordreset3" element={<PasswordReset3/>}/>
         <Route path="/casefiling" element={<CaseFiling/>}/>
+        <Route path ="/advcasedocinfo" element={<AdvCaseDocinfo/>}/>
        
         
        

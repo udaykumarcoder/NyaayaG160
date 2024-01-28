@@ -1,17 +1,43 @@
+// import React, { useState } from 'react';
 import React, { useState } from 'react';
-import AdvCaseDocinfo from './AdvCaseDocinfo';
+import { useNavigate } from 'react-router-dom';
 
 const AdvCaseDocuments = () => {
-    const [showOtherComponent, setShowOtherComponent] = useState(false);
-  // const [cnrNumber, setCnrNumber] = useState('');
-  // const [uniqueCode, setUniqueCode] = useState('');
-    const handleOpenButtonClick = () => {
-        setShowOtherComponent(true);
-      };
+    //const [showOtherComponent, setShowOtherComponent] = useState(false);
+    const navigate = useNavigate();
+    const [cnr, setCnr] = useState('');
+    const [error, setError] = useState('');
     
-      if (showOtherComponent) {
-        return <AdvCaseDocinfo/>;
-      }
+    const handleOpenButtonClick = async () => {
+
+      console.log('cnr number:', cnr);
+            try {
+              const response = await fetch('http://localhost:3001/validate-cnr', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ cnr }),
+              });
+        
+              const data = await response.json();
+        
+              if (response.ok) {
+                
+                console.log('success:', data);
+                 
+                 navigate('/advcasedocinfo', { state: { cnr} });
+                
+              } else {
+                          setError('User not found. Please try again.');
+                        }
+                      } catch (error) {
+                        console.error('Error checking CNR:', error);
+                        setError('Error checking CNR. Please try again later.');
+                      }
+                    };
+      
+    
   return (
     <>
       <div className="caseDocbox">
@@ -21,10 +47,11 @@ const AdvCaseDocuments = () => {
           <div className="cnrInput">
             <h5>CNR Number:</h5>
             <input
-              type="text"
-              placeholder="Enter CNR Number"
-             
-            />
+            type="text"
+            placeholder="Enter CNR"
+            value={cnr}
+            onChange={(e) => setCnr(e.target.value)}
+          />
           </div>
           <div className="uniqueCode">
             <h5>Unique Code:</h5>
@@ -36,7 +63,7 @@ const AdvCaseDocuments = () => {
           </div>
           <br />
           <div className="caseDoclogin">
-            <button onClick={handleOpenButtonClick}>OPEN</button>
+          <button onClick={handleOpenButtonClick}>OPEN</button>
           </div>
         </div>
       </div>

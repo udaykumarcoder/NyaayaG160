@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Filetable from './Filetable';
 import "./Litigant/CaseDocinfo.css";
 const AdvCaseDocinfo = () => {
+    const location = useLocation();
+    const cnrdata = location?.state?.cnr || '';
     const [files, setFiles] = useState([]);
     useEffect(() => {
-        const fetchFiles = async () => {
+      const fetchFiles = async () => {
           try {
-            const response = await fetch('http://localhost:3001/files');
-            const filesData = await response.json();
-            setFiles(filesData);
+              const response = await fetch(`http://localhost:3001/files?cnr=${cnrdata}`);
+              const filesData = await response.json();
+              setFiles(filesData);
           } catch (error) {
-            console.error(error);
-           
+              console.error(error);
           }
-        };
-        fetchFiles();
-  }, []);
+      };
+      fetchFiles();
+  }, [cnrdata]);
+  
   const viewFile = async(filename) => {
     try {
       const response = await fetch(`http://localhost:3001/files/${encodeURIComponent(filename)}`);
@@ -58,6 +61,11 @@ return (
     <div className='doctable'>
         <Filetable files={files} onViewFile={viewFile} />
       </div>
+      <Link to ="/advocateaccount">
+      <button>
+        back
+      </button>
+      </Link>
       </section>
   );
 };

@@ -6,7 +6,9 @@ const fileSchema = new mongoose.Schema({
   name: String,
   filename: String,
   content: String,
-  fileType: String, // 'text', 'image', or 'video'
+  fileType: String, 
+  cnr: Number,
+
 });
 
 const File = mongoose.model('File', fileSchema);

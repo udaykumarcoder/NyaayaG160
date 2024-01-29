@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import './Faq.css';
 
 const Faq = () => {
@@ -50,15 +50,14 @@ const Faq = () => {
         you might have upfront.
         </details>
         <br/>
-        <hr className='hr'/>
+        {/* <hr className='hr'/>
         <details className='labels'>
         <summary className='Font2'>Case Appeal</summary>
         Let us answer some of the <br/>
         most common questions <br/>
         you might have upfront.
         </details>
-        <br/>
-        <hr className='hr'/>
+        <br/> */}
 
       </div>
       </div>

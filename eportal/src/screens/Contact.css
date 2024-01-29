@@ -1,12 +1,22 @@
 .contact {
-  height: 320px;
-  width: 100vw;
   background-color: #0c1707;
   color: #e8dfc5;
-  box-sizing: border-box;
 }
+.contactContainer{
+  display: flex;
+  justify-content: space-between;
+
+}
+.contactLeft{
+  padding: 1rem;
+}
+
+.contactCopyright{
+  text-align: center;
+}
+
 /* CSS for 17-inch Laptop */
-@media screen and (min-width: 1367px) {
+/* @media screen and (min-width: 1367px) {
  
 
   .content1 {
@@ -15,15 +25,10 @@
     font-size: 1.3rem;
   }
 
-  
-
-  
-
-
-}
+} */
 
 /* CSS for 14-inch Laptop */
-@media screen and (max-width: 1366px) {
+/* @media screen and (max-width: 1366px) {
  
 
   .content1 {
@@ -31,4 +36,4 @@
     padding-left: 50px;
     font-size: 1.1rem;
   }
-}
+} */

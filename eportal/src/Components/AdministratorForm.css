@@ -77,11 +77,20 @@
 }
 
 /* CSS for 14-inch Laptop */
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 769px) and (max-width: 1366px) {
     .adminRightbox {
         width: 45rem;
     }
     .adminLeftbox{
         width: 22rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .adminRightbox {
+        width: 4rem;
+    }
+    .adminLeftbox{
+        width: 1rem;
     }
 }

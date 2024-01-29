@@ -1,5 +1,5 @@
 /* CSS for 17-inch Laptop */
-@media screen and (min-width: 769px) and (min-width: 1367px) {
+@media screen and  (min-width: 1367px) {
     .fcontainer {
         background-color: #e8dfc5;
         height: 800px;
@@ -49,7 +49,6 @@
     }
 
     .bigbox {
-        margin-left: 29rem;
         overflow: auto;
         max-height: 480px;
         position: absolute;
@@ -71,10 +70,11 @@
         font-size: 2rem;
         font-family: 'Audiowide', sans-serif;
     }
-
-    .bigbox {
-        margin-top: 13rem;
+    .summarypara{
+        width: 30vw;
+        text-wrap: wrap;
     }
+    
 }
 
 /* CSS for 14-inch Laptop */
@@ -115,6 +115,7 @@
 
     .hr {
         height: 3px;
+        width: 50vw;
         flex-wrap: wrap;
         color: solid black;
         background-color: black;
@@ -122,13 +123,11 @@
     }
 
     .bigbox {
-        margin-left: 24rem;
         overflow: auto;
-        max-height: 480px;
+        max-height: 500px;
         position: absolute;
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
-        margin-top: 12rem;
 
     }
 
@@ -144,6 +143,10 @@
     .Font2 {
         font-size: 2rem;
         font-family: 'Audiowide', sans-serif;
+    }
+    .summarypara{
+        width: 40vw;
+        text-wrap: wrap;
     }
 
     

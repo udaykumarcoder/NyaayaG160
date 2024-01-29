@@ -504,6 +504,15 @@ app.post('/validate-cnr', async (req, res) => {
   
 });
 
+app.get('/api/lawyers', async (req, res) => {
+  try {
+    const User = await UserData.find();
+    res.json(User);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 /// Advocate password reset
 

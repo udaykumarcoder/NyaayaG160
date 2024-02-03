@@ -74,7 +74,7 @@ const Litigantsidebar = ({ switchComponent }) => {
         <li><h3 onClick={() => switchComponent(1)}>📍&nbsp; Case Tracking</h3></li>  
         <li><h3 onClick={()=>switchComponent(2)}>📃&nbsp;Case Documents</h3></li>
         
-        <li><h3 onClick={()=>switchComponent(4)}>📃&nbsp;Choose a lawyer</h3></li>
+        <li><h3 onClick={()=>switchComponent(3)}>📃&nbsp;Lawyer Profile</h3></li>
 
           
         </ul>

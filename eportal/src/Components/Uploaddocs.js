@@ -5,6 +5,7 @@ import "./Uploaddocs.css";
 const Uploaddocs = () => {
   const [formVisible, setFormVisible] = useState(false);
   const [files, setFiles] = useState([]);
+  const [selectedFileType, setSelectedFileType] = useState("");
   const [cnr, setCnr] = useState(''); 
 
   useEffect(() => {
@@ -24,7 +25,9 @@ const Uploaddocs = () => {
   const toggleForm = () => {
     setFormVisible(!formVisible);
   };
-
+  const handleFileTypeChange = (event) => {
+    setSelectedFileType(event.target.value);
+  };
   
   const submitForm = async () => {
     const fileName = document.getElementById("fileName").value;
@@ -38,6 +41,7 @@ const Uploaddocs = () => {
       const formData = new FormData();
       formData.append('fileName', fileName);
       formData.append('cnr', cnrValue);
+      formData.append('fileType', selectedFileType);
   
       for (let i = 0; i < fileUpload.files.length; i++) {
         formData.append('fileUpload', fileUpload.files[i]);
@@ -68,27 +72,88 @@ const Uploaddocs = () => {
     }
   };
   
-  const viewFile = async(filename) => {
+  const viewFile = async (filename) => {
     try {
       const response = await fetch(`http://localhost:3001/files/${encodeURIComponent(filename)}`);
       if (response.ok) {
         const fileContentBase64 = await response.text();
-        
-        // Decode Base64 content
-        const decodedContent = atob(fileContentBase64);
-        console.log('Decoded Content:', decodedContent);
-        const newTab = window.open();
-        newTab.document.write(`
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>${filename}</title>
-          </head>
-          <body>
-            <pre>${decodedContent}</pre>
-          </body>
-        </html>
-      `);
+  
+        // Determine the file type based on filename extension
+        const fileType = filename.split('.').pop().toLowerCase();
+  
+        if (fileType === 'jpg' || fileType === 'jpeg' || fileType === 'png' || fileType === 'gif') {
+          // Display the image using a data URL
+          const imageSrc = `data:image/${fileType};base64,${fileContentBase64}`;
+  
+          // Open a new window and display the image
+          const newTab = window.open();
+          newTab.document.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>${filename}</title>
+              </head>
+              <body>
+                <img src="${imageSrc}" alt="${filename}" />
+              </body>
+            </html>
+          `);
+        } else if (fileType === 'mp4' || fileType === 'webm' || fileType === 'ogg') {
+          // Display the video using a data URL
+          const videoSrc = `data:video/${fileType};base64,${fileContentBase64}`;
+  
+          // Open a new window and display the video
+          const newTab = window.open();
+          newTab.document.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>${filename}</title>
+              </head>
+              <body>
+                <video width="1500" height="700" controls>
+                  <source src="${videoSrc}" type="video/${fileType}">
+                  Your browser does not support the video tag.
+                </video>
+              </body>
+            </html>
+          `);
+        } else if (fileType === 'pdf') {
+          // Display the PDF using <embed> element
+          const pdfSrc = `data:application/pdf;base64,${fileContentBase64}`;
+  
+          // Open a new window and display the PDF
+          const newTab = window.open();
+          newTab.document.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>${filename}</title>
+              </head>
+              <body>
+                <embed src="${pdfSrc}" type="application/pdf" width="100%" height="700px">
+              </body>
+            </html>
+          `);
+        } else if (fileType === 'txt') {
+    
+          const decodedContent = atob(fileContentBase64);
+          const newTab = window.open();
+          newTab.document.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>${filename}</title>
+              </head>
+              <body>
+                <pre>${decodedContent}</pre>
+              </body>
+            </html>
+          `);
+        } else {
+          console.error('Unsupported file type:', fileType);
+          alert('Unsupported file type');
+        }
       } else {
         console.error('Error fetching file content:', response.status);
         alert('Error fetching file content');
@@ -99,6 +164,7 @@ const Uploaddocs = () => {
     }
   };
 
+  const fileType = ["Select","text", "pdf", "image"," video"];
   return (
     <section>
       <div>
@@ -122,8 +188,16 @@ const Uploaddocs = () => {
                   <label className="data" htmlFor="fileName"><b>File Name:&nbsp;&nbsp;</b></label>
                   <input type="text" id="fileName" name="fileName" required/>
                   <br/>
+                  <label className="data" htmlFor="fileType"><b>File Type:&nbsp;&nbsp;</b></label>
+                  <select id="fileType" name="fileType" required value={selectedFileType}  onChange={handleFileTypeChange}>
+                      {fileType.map((type, index) => (
+                      <option key={index} value={type}>
+                      {type}
+                      </option>))}
+                  </select>
+
                   <label  className="data" htmlFor="fileUpload"><b>Choose File:&nbsp;&nbsp;</b></label>
-                  <input  type="file" id="fileUpload" name="fileUpload" accept=".txt, .pdf, .doc , image/, video/ "/>
+                  <input  type="file" id="fileUpload" name="fileUpload" accept=".txt, .pdf, image/*, video/*, .jpg, .jpeg, .png, .gif "/>
                   <button className='uploadbtn' type="button" onClick={submitForm}>Submit</button>
                   <br/>
                   <br/>

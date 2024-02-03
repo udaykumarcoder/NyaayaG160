@@ -73,13 +73,13 @@ if (isBarNumberExists) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnupersonals162@gmail.com', 
-        pass: 'anga bway cibv frvy', 
+        user: 'nyaaya160@gmail.com', 
+        pass: 'olhf wjag bphj zucq', 
       },
     });
 
     const mailOptions = {
-      from: 'vinnupersonals162@gmail.com',
+      from: 'nyaaya160@gmail.com',
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -158,16 +158,17 @@ app.post('/signup/litigant', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnupersonals162@gmail.com', 
-        pass: 'anga bway cibv frvy', 
+        user: 'nyaaya160@gmail.com', 
+        pass: 'olhf wjag bphj zucq', 
       },
     });
 
     const mailOptions = {
-      from: 'vinnupersonals162@gmail.com',
+      from: 'nyaaya160@gmail.com',
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
+      
       html:req.body.name,
       
     };
@@ -242,13 +243,13 @@ app.post('/signup/administrator', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnupersonals162@gmail.com', 
-        pass: 'anga bway cibv frvy', 
+        user: 'nyaaya160@gmail.com', 
+        pass: 'olhf wjag bphj zucq', 
       },
     });
 
     const mailOptions = {
-      from: 'vinnupersonals162@gmail.com',
+      from: 'nyaaya160@gmail.com',
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -467,7 +468,7 @@ app.get('/files', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
+// accessibg  case documents
 app.get('/files/:filename', async (req, res) => {
   try {
     const filename = req.params.filename;
@@ -484,7 +485,7 @@ app.get('/files/:filename', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-//
+// validating cnr number 
 app.post('/validate-cnr', async (req, res) => {
   console.log(req.body);
   
@@ -503,7 +504,7 @@ app.post('/validate-cnr', async (req, res) => {
   }
   
 });
-
+/// lawyer profiles 
 app.get('/api/lawyers', async (req, res) => {
   try {
     const User = await UserData.find();
@@ -620,14 +621,14 @@ app.post('/send-otp', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vinnupersonals162@gmail.com', 
-      pass: 'anga bway cibv frvy', 
+      user: 'nyaaya160@gmail.com', 
+      pass: 'olhf wjag bphj zucq', 
     },
   });
   
 
   const mailOptions = {
-    from: 'vinnupersonals162@gmail.com',
+    from: 'nyaaya160@gmail.com',
     to: email,
     subject: 'OTP Verification',
     text: `Your OTP for verification is: ${otp}`,
@@ -725,7 +726,10 @@ app.post('/api/casefiling', async (req, res) => {
     disputeTaluka: req.body.disputeTaluka,
     disputeVillage: req.body.disputeVillage,
     act: req.body.act,
-    section: req.body.section
+    section: req.body.section,
+    CnrNumber: req.body.CnrNumber,
+    uniqueCode: req.body.uniqueCode
+
     }
     
     );
@@ -737,13 +741,47 @@ app.post('/api/casefiling', async (req, res) => {
   }
 });
 
+app.post('/submit-form', (req, res) => {
+  const formData = req.body;
 
+  // Process the form data for email submission
+  sendEmail(formData);
 
+  // Respond to the client
+  res.status(200).json({ message: 'Email sent successfully' });
+});
 
+function sendEmail(formData) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'nyaaya160@gmail.com', 
+      pass: 'olhf wjag bphj zucq', 
+    },
+  });
 
+  const mailOptions = {
+    from: 'nyaaya160@gmail.com',
+   
+    to:formData.email,
+    subject: 'New Form Submission',
+   
+    attachments: [
+      {
+        filename: 'form_data.txt',
+        content: JSON.stringify(formData, null, 2),
+      },
+    ],
+  };
 
-
-
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+}
 
 
 

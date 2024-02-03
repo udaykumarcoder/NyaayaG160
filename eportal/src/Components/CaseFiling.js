@@ -64,26 +64,60 @@ const Casefiling = () => {
     disputeTaluka: '',
     disputeVillage: '',
     act: '',
-    section: ''
+    section: '',
+    CnrNumber: '',
+    uniqueCode: ''
+
   });
   const navigate=useNavigate();
   const handleTabChange = (tabNumber) => {
-    if (activeTab === 6 && tabNumber !== 6) {
-      return;
-    }
+    // if (activeTab === 6 && tabNumber !== 6) {
+    //   return;
+    // }
   
     
-    if (tabNumber !== 6) {
+    // if (tabNumber !== 6) {
       setActiveTab(tabNumber);
-    }
+    //}
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(formData)
+  
+    
+  //   try {
+  //     const response = await fetch('http://localhost:3001/api/casefiling', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  
+  //     if (response.ok) {
+       
+  //       alert('Your case has been filed successfully');
+  //       // navigate('/caselegalform')
+  //       navigate('/caselegalform', { state: { formData } });
+       
+  //       //  setActiveTab(6);
+       
+        
+  //     } else {
+       
+  //       alert('Failed to file the case. Please try again.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error submitting the form:', error);
+  //   }
+  // };
+    
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-  
-    
+       console.log(formData)
     try {
-      const response = await fetch('http://localhost:3001/api/casefiling', {
+      // Make a POST request to the backend server for case filing
+      const caseFilingResponse = await fetch('http://localhost:3001/api/casefiling', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,22 +125,32 @@ const Casefiling = () => {
         body: JSON.stringify(formData),
       });
   
-      if (response.ok) {
-       
-        alert('Your case has been filed successfully');
-        navigate('/caselegalform')
-       
-        //  setActiveTab(6);
-       
-        
-      } else {
-       
-        alert('Failed to file the case. Please try again.');
-      }
+      // Process the case filing response as needed
+      const caseFilingData = await caseFilingResponse.json();
+      console.log('Case Filing Response:', caseFilingData);
+  
+      // Make a POST request to the backend server for email submission
+      const emailResponse = await fetch('http://localhost:3001/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      // Process the email response as needed
+      const emailData = await emailResponse.json();
+      console.log('Email Response:', emailData);
+  
+      // Optionally, you can handle success or navigate to another page
+      navigate('/caselegalform', { state: { formData } })
     } catch (error) {
-      console.error('Error submitting the form:', error);
+      console.error('Error submitting form:', error);
+      // Handle error
     }
   };
+  
+
   const handleChange = (field, value) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -120,6 +164,7 @@ const Casefiling = () => {
     setActiveTab(nextTab);
     
   };
+  const generateCNR = () => Math.floor(100000 + Math.random() * 900000);
 
 
   const tabNames = [
@@ -128,7 +173,8 @@ const Casefiling = () => {
     'Legal Heir Details',
     'Fact Details',
     'Case Details',
-    'Summary'
+    'Submit'
+    
   ];
 
 
@@ -652,26 +698,39 @@ onChange={(e) => handleChange('section',e.target.value)}
 </form>
 
 
+    </div>
+  );
+  case 6:
+        return (
+          <div>
+            <form style={{ paddingLeft: "400px" }} className='caseform'>
+              <h4>CNR Number:</h4>
+              {/* <button  onClick={generateCNR}>
+        generate
+      </button> */}
+              <input
+                type="text"
+                id="cnrNumber"
+                name="cnrNumber"
+                value={formData.CnrNumber}
+                onChange={(e) => handleChange('CnrNumber', e.target.value)}
+              />
+              <h4>Unique Code:</h4>
+              <input
+                type="text"
+                id="uniqueCode"
+                name="uniqueCode"
+                value={formData.uniqueCode}
+                onChange={(e) => handleChange('uniqueCode', e.target.value)}
+              />
+            </form>
+
       <button className="nexttabbtn" onClick={handleSubmit}>
         Submit
       </button>
-    </div>
-  );
-      case 6:
-        return (
-          <div>
-            <form  style={{paddingTop:"50px" ,paddingLeft:"400px"}}className='caseform'>
-<h4>Establishment:</h4>
-<h4>Case Type:</h4>
-<h4> Accused Name:</h4>
-<h4>Contact:</h4>
-<h4>Residence:</h4>
-<h4>Legal Heir:</h4>
-<h4>Case details:</h4>
-
-</form>
           </div>
         );
+      
       default:
         return null;
     }
@@ -710,7 +769,6 @@ onChange={(e) => handleChange('section',e.target.value)}
   };
 
 export default Casefiling;
-
 
 
 

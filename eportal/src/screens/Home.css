@@ -1,7 +1,7 @@
 .HOME {
-  background-image: url(../Assets/test.jpg);
+  background-image: url(../Assets/home.jpg);
   border-style: solid;
-  border-color: #38303b;
+
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0px;
@@ -32,7 +32,7 @@
  @media screen and (min-width: 1367px) {
   .HOME {
     height: 43rem;
-    border-width: 30px;
+  
   }
   #nyaya {
     margin-top: 100px;
@@ -67,10 +67,10 @@
 
 /* CSS for 14-inch Laptop */
  @media screen and (max-width: 1366px) {
-  .HOME {
+  /* .HOME {
     
     border-width: 30px;
-  }
+  } */
   #first button {
     margin-right: 3rem;
     width: 7rem;

@@ -424,7 +424,9 @@ app.post('/api/checkCNR', async (req, res) => {
 
 
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage,limits: {
+  fileSize: 5 * 1024 * 1024, 
+}, });
 
 
 app.post('/upload', upload.array('fileUpload'), async (req, res) => {

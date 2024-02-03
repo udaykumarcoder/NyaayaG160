@@ -55,12 +55,11 @@ const Updatedetails = () => {
     <section>
       <div>
         <h2 className='title'>Update Case Details</h2>
+        <p style={{color:"red" , marginTop:"-50px", marginLeft:"600px"}}> Note:Click on below update button to update details regarding case tracking.</p>
         <br/>
         <button className='updatebtn' onClick={toggleForm}>Update</button>
-
-
         <br/>
-        
+        <br/>
       </div>
       <div>
         <form id="updateDetailsForm" style={{display:"none"}} action="/update" method="post">

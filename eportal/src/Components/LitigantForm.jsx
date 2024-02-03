@@ -149,7 +149,7 @@ const LitigantForm = () => {
           <form onSubmit={handleform}>
           <Navbar4/>
           <div className="phoneNote">
-            <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
+            <p>Note: For any future use, please utilize only the registered mobile number.</p>
           </div>
           <div className="step">
             <div className="litigantLeftbox">

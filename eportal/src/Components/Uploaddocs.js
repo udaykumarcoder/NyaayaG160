@@ -36,13 +36,18 @@ const Uploaddocs = () => {
   
     // Update the cnr state with the entered CNR value
     setCnr(cnrValue);
-  
+   
     if (fileName && fileUpload.files.length > 0) {
+      const fileSizeLimit = 5* 1024 * 1024;
+      if (fileUpload.files[0].size > fileSizeLimit) {
+        alert('File size exceeds the limit (5 MB). Please choose a smaller file.');
+        return;}
+      
       const formData = new FormData();
       formData.append('fileName', fileName);
       formData.append('cnr', cnrValue);
       formData.append('fileType', selectedFileType);
-  
+      //formData.append('fileUpload', fileUpload.files[0]);
       for (let i = 0; i < fileUpload.files.length; i++) {
         formData.append('fileUpload', fileUpload.files[i]);
       }
@@ -58,11 +63,11 @@ const Uploaddocs = () => {
           const filesData = await filesResponse.json();
           setFiles(filesData);
         } else {
-          alert('Upload failed');
+          alert('Upload failed .Please enter all the fields.');
         }
       } catch (error) {
         console.error(error);
-        alert('Upload failed');
+        alert('Upload failed ');
       }
   
       document.getElementById("fileName").value = "";
@@ -99,10 +104,10 @@ const Uploaddocs = () => {
             </html>
           `);
         } else if (fileType === 'mp4' || fileType === 'webm' || fileType === 'ogg') {
-          // Display the video using a data URL
+          
           const videoSrc = `data:video/${fileType};base64,${fileContentBase64}`;
   
-          // Open a new window and display the video
+          
           const newTab = window.open();
           newTab.document.write(`
             <!DOCTYPE html>
@@ -119,10 +124,10 @@ const Uploaddocs = () => {
             </html>
           `);
         } else if (fileType === 'pdf') {
-          // Display the PDF using <embed> element
+         
           const pdfSrc = `data:application/pdf;base64,${fileContentBase64}`;
   
-          // Open a new window and display the PDF
+   
           const newTab = window.open();
           newTab.document.write(`
             <!DOCTYPE html>
@@ -135,6 +140,33 @@ const Uploaddocs = () => {
               </body>
             </html>
           `);
+
+        } 
+        else if (fileType === 'mp3') {
+          
+          const audioSrc = `data:audio/mpeg;base64,${fileContentBase64}`;
+  
+          const newTab = window.open();
+          newTab.document.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>${filename}</title>
+                <style>
+          body {
+            display: flex;align-items: center;justify-content: center;height: 100vh;
+          }
+        </style>
+              </head>
+              <body>
+                <audio controls>
+                  <source src="${audioSrc}" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+              </body>
+            </html>
+          `);
+  
         } else if (fileType === 'txt') {
     
           const decodedContent = atob(fileContentBase64);
@@ -163,13 +195,14 @@ const Uploaddocs = () => {
       alert('Error fetching file content');
     }
   };
-
-  const fileType = ["Select","text", "pdf", "image"," video"];
+  const fileType = ["Select","text", "pdf", "image"," video","audio"];
   return (
     <section>
       <div>
         <h2 className='title'>Upload Case Documents</h2>
+        <p style={{color:"red" , marginTop:"-50px", marginLeft:"750px"}}> Note:Click on below upload button to upload files</p>
         <br />
+       
         <button className='uploadbtn' onClick={toggleForm}>Upload</button>
         <br />
         <br />
@@ -197,7 +230,8 @@ const Uploaddocs = () => {
                   </select>
 
                   <label  className="data" htmlFor="fileUpload"><b>Choose File:&nbsp;&nbsp;</b></label>
-                  <input  type="file" id="fileUpload" name="fileUpload" accept=".txt, .pdf, image/*, video/*, .jpg, .jpeg, .png, .gif "/>
+                  <input  type="file" id="fileUpload" name="fileUpload" accept=".txt, .pdf, image/*, video/*, .jpg, .jpeg, .png, .gif,.mp3 "/>
+                  <p style={{marginLeft:"19rem",marginTop:"10px"}}><b>File size should be less than 5 MB.</b></p>
                   <button className='uploadbtn' type="button" onClick={submitForm}>Submit</button>
                   <br/>
                   <br/>

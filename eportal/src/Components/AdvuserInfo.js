@@ -48,13 +48,14 @@ return (
     {error && <p>{error}</p>}
     {userData && (
       <>
-        <div className="whiteBox">
-          <div className="profile">
+        {/* <div className="whiteBox"> */}
           
-          </div>
-        </div>
+          {/* </div> */}
 
         <div className='Lprofile'>
+                    <div className="profile">
+                    </div>
+
           <div className='litigantName'>
             <h4>{userData.name}</h4>
             <p>Advocate</p>

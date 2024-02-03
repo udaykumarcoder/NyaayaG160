@@ -15,7 +15,7 @@ const AdministratorForm= () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
-    state: 'Select State/Union Territory',
+    // state: 'Select State/Union Territory',
     gender: 'default',
     dob: '',
     phone: '',
@@ -23,6 +23,9 @@ const AdministratorForm= () => {
     password: '',
     confirmPassword: '',
     otp: '',
+    courtname:' ',
+    employeeid:' ',
+
   });
 
   const navigate=useNavigate();
@@ -182,19 +185,22 @@ const renderStep = () => {
                  </div>
                </div>
  
-               <div className="form-group row">
+               {/* <div className="form-group row">
                  <label htmlFor="courtname" className="col-sm-3 col-form-label">Court Name:</label>
                  <div className="inputs col-sm-7" >
-                <input type="text" class="form-control" placeholder='Court Name' onChange={(e) => handleInputChange('courtname', e.target.value)} required />
+                <input type="text" class="form-control" placeholder='Court Name' value={formData.courtname} onChange={(e) => handleInputChange('courtname', e.target.value)} required />
                  </div>
-               </div>
+               </div> */}
                <div className="form-group row">
                  <label htmlFor="employeeid" className="col-sm-3 col-form-label">Employee ID:</label>
                  <div className="inputs col-sm-7" >
-                <input type="text" class="form-control" placeholder='Employee ID ' onChange={(e) => handleInputChange('employeeid', e.target.value)} required />
+                <input type="text" class="form-control" placeholder='employee' value={formData.employeeid} onChange={(e) => handleInputChange('employeeid', e.target.value)} required />
                  </div>
+                 {/* <div className="employee_ver col-sm-2 inputs  ">
+                  <button>Verify</button>
+                 </div> */}
                  </div>
-               <div className="form-group row">
+               {/* <div className="form-group row">
                  <label htmlFor="gender" className="col-sm-3 col-form-label">Gender:</label>
                  <div className="inputs col-sm-7">
                    <select name="gender" id="gender" style={{ height: '35px', width: '100%' }}  value={formData.gender} onChange={(e) => handleInputChange('gender', e.target.value)}>
@@ -205,14 +211,14 @@ const renderStep = () => {
                    </select>
  
                  </div>
-               </div>
-               <div class="form-group row">
+               </div> */}
+               {/* <div class="form-group row">
                  <label for="name" class="col-sm-3 col-form-label">DOB:</label>
                  
                  <input type="date"  id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft:'10px',backgroundColor:'grey'}} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)} required/>
                  <br></br>
                  
-               </div>
+               </div> */}
              </form>
              <div>
                <button  type="submit" className='saveNext' onClick={handleNext}>Save and Next</button>

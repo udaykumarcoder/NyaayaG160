@@ -30,6 +30,10 @@
     border: 2px solid black;
     
 }
+.employee_ver button{
+    background-color: grey;
+
+}
 .bar{
     font-size: 2rem;
     margin-bottom: 3rem;

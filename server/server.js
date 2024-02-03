@@ -229,7 +229,10 @@ app.post('/signup/administrator', async (req, res) => {
 
     await UserData3.create({
     name: req.body.name, 
-    state:req.body.state,
+    //state:req.body.state,
+    courtname:req.body.courtname,
+    employeeid:req.body.employeeid,
+
     gender: req.body.gender,
     dob: req.body.dob,
     phone: req.body.phone,

@@ -9,7 +9,7 @@ const Casetracking = () => {
       <div className="caseTracking">
           <div className="caseBox">
                 <div className="ctHeadline">
-            <p>🛤️CASE TRACKING</p>
+            <p>CASE TRACKING</p>
             <div className="caseStatus">
               <CSTcomponent/>
             </div>

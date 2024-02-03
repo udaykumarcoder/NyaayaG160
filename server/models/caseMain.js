@@ -40,8 +40,8 @@ const caseSchema = new mongoose.Schema({
 
     heirType: { type: String, enum: ['Plaintiff', 'Defendent'], required: true },
     heirName: { type: String, required: true },
-    name2: { type: String, },
-    relation2: { type: String, },
+    name2: { type: String,required: true  },
+    relation2: { type: String,required: true  },
     heirDob: { type: String, required: true },
     heirAge: { type: Number, required: true },
 
@@ -76,9 +76,12 @@ const caseSchema = new mongoose.Schema({
     disputeVillage: { type: String, required: true },
 
     act: { type: String, required: true },
-    section: { type: String, required: true }
+    section: { type: String, required: true },
+    CnrNumber: {type: String, required: true},
+    uniqueCode: {type: String, required: true},
 
-}, { collection: 'Case File2' });
+
+}, { collection: 'Case Filing' });
 
 const Case = mongoose.model('Case', caseSchema);
 

@@ -1,62 +1,71 @@
 .chooselawyer {
-  margin-top: 15px;
-  margin-left: 6px;
+  /* margin-top: 15px; */
+  /* margin-left: 6px; */
   padding: 34px;
   background-color:  #E8DFC5;
   width: 100%;
 }
 
-
+.lawyerCard {
+  border: 1px solid #ccc;
+  /* background-color: #C1B192; */
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; 
+  align-items: center;
+  width: 100%;
+}
 
 .lawyer-portfolio {
   display: flex;
+  justify-content: right;
   flex-wrap: wrap;
   background-color: #E8DFC5;
 
 }
-.lawyerCard {
-  border: 1px solid #ccc;
-  background-color: #C1B192;
-  padding: 10px;
-  margin: 10px;
-  display: flex;
-  flex-direction: column; /* Stack the items vertically on small screens */
-  width: 100%;
-}
+
 #searchbar{
   margin: 10px;
   width: 100%;
-  border: black;
+  border: 1px solid black;
   background-color: white;
 }
+
+
+.lawyerFilter{
+  margin: 10px;
+}
+.lawyerFilter button{
+  border: black;
+  color: white;
+  background-color: #0c1707;
+  opacity: 50%;
+  border-radius: 5px;
+  font-family: 'Outfit', sans-serif;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
 .cardName{
   font-family: 'Outfit', sans-serif;
-  font-size: 28px;
+  font-size: 3rem;
 }
-.cardSpecialization{
-    font-size: 25px;
-}
-.lawyerCard .image-container {
+
+.cardInline{
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
 }
-.lawyerCard .image-container p {
-  align-self: center;
-  
-}
+
+
 .lawyerCard img {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
-  overflow: hidden;
-  margin-left: 34px;
-  margin-right: 34px;
+  
 }
 
 .lawyerCard .content {
-  margin-left: 20px;
   font-family: 'Outfit', sans-serif;
 
 }
@@ -65,16 +74,17 @@
   margin-top: 10px;
 }
 
+.lawyerRatings{
+  width: 100px;
+  margin-left: -10px;
+}
+.cardInline p{
+  font-size: 1.7rem;
+}
 
-
-/* Add these styles for larger screens */
-@media (min-width: 768px) {
-  .lawyerCard {
-    flex-direction: row; /* Align items horizontally on larger screens */
-    align-items: center; /* Center items vertically */
-  }
-  
-  .lawyerCard .image-container {
-    margin-left: auto; /* Move image container to the right */
-  }
+.image-container{
+  margin-left: -100px;
+}
+.content{
+  margin-left: -10px;
 }

@@ -11,9 +11,9 @@ const Contact = () => {
       <div className="contact" id='contacts'>
         <div className="contactContainer">
         <div className="contactLeft">
-          <p>Contact</p>
+          <h3>Contact us at:</h3>
           <div className="contactContent">
-            <p>✉️ help.nyaaya@gmail.com</p>
+            <p>✉️ nyaaya160@gmail.com</p>
             <p>🏠 Neil Gogte Institute of Technology,Uppal, <br />Kachawanisingaram Village,Hyderabad,Telangana,500039</p>
           </div>
         </div>

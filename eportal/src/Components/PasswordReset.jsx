@@ -1,7 +1,7 @@
 // Advocate password reset
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import "./PasswordReset.css";
 
 const PasswordReset = () => {
   const [email, setEmail] = useState('');
@@ -41,11 +41,13 @@ const PasswordReset = () => {
   };
 
   return (
+    <div className="centered-container">
     <div>
+    <center>
       <h1>Password Reset</h1>
       <form onSubmit={handlePasswordReset}>
-        <label>Email:</label>
-        <input
+        <label className='elements'>Email:</label>
+        <input style={{marginLeft:"30px"}}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -53,8 +55,8 @@ const PasswordReset = () => {
         />
         <br />
 
-        <label>Date of Birth:</label>
-        <input
+        <label className='elements' style={{marginLeft:"-100px"}}>Date of Birth:</label>
+        <input style={{marginLeft:"30px"}}
           type="date"
           value={dob}
           onChange={(e) => setDob(e.target.value)}
@@ -62,19 +64,18 @@ const PasswordReset = () => {
         />
         <br />
 
-        <label>Contact:</label>
-        <input
+        <label className='elements' style={{marginLeft:"-10px"}}>Contact:</label>
+        <input  style={{marginLeft:"25px"}}
             type="text"
             name="phone"
-            placeholder="Enter phone number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             />
 
         <br />
 
-        <label>New Password:</label>
-        <input
+        <label className='elements'  style={{marginLeft:"-50px"}}>New Password:</label>
+        <input style={{marginLeft:"20px",marginBottom:"30px"}}
           type="password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
@@ -83,7 +84,7 @@ const PasswordReset = () => {
         <br />
 
         <button type="submit">Reset Password</button>
-      </form>
+      </form></center></div>
     </div>
   );
 };

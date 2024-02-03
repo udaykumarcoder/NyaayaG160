@@ -20,7 +20,7 @@ const About = () => {
           </div>
           <div className="vision" >
             <h2 className='abtheadings'>VISION</h2>
-            <p className='abtboxcontent'>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
+            <p className='abtboxcontent'>"Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management."</p>
           </div>
         </div>
         <div className="abtMaincontainer">
@@ -36,7 +36,7 @@ const About = () => {
           </div>
           <div className="vision ">
             <h2 className='abtheadings'>MISSION</h2>
-            <p className='abtboxcontent'>Nyaaya envisions a future where case management is synonymous with efficiency, transparency, and positive outcomes. This suggests a commitment to ongoing improvement and innovation in the field of legal case management.</p>
+            <p className='abtboxcontent'>"We aim to revolutionize the Indian judicial system by establishing an online portal for efficient case management. Our mission is to enable seamless online case submission, facilitate digital judgment uploads, document storage. Additionally, users can explore lawyer profiles, empowering them to make informed choices when selecting legal representation. "</p>
           </div>
         </div>
 

@@ -1,27 +1,21 @@
-.sidebar {
-  margin-top: 15px;
-  padding-top: 34px;
-  background-color: #0c1707;
-  height: 55rem;
-  border-radius: 5px;
-
-
-}
-
 .Litigantprofile {
   height: 300px;
   width: 350px;
   
 }
+
 .profileImg{
-  /* background-color: white; */
   background-image: url(../../Assets/Profile.jpg);
   background-size: cover;
   border-radius: 50%;
   height: 150px;
-  width: 150px;
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 100px;
-  margin-left: 55px;
+  margin-left: 1rem;
   
 }
 .lsidebarName{
@@ -33,11 +27,20 @@
 }
 
 
-dl, ol, ul {
+/* dl, ol, ul {
   margin-top: -253px;
   margin-bottom: 1rem;
-}
+} */
+.sidebar {
+  margin-top: 15px;
+  padding-top: 34px;
+  background-color: #0c1707;
+  height: 55rem;
+  width: 25vw;
+  border-radius: 5px;
 
+
+}
 .sidebar ul {
   list-style: none;
   margin-left: 10px;

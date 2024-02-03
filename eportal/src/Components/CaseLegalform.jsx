@@ -120,23 +120,24 @@ const CaseLegalForm = () => {
 
   return (
     <div className="case-legal-form">
-      <h1>Case Legal Form</h1>
-
-      <div className="section">
+      <h1 id='csHeading' >Case Legal Form</h1>
+<div className="cl-section-container">
+      <div className="cl-section">
         <h2>Location Information</h2>
         <p>State: {formData.state}</p>
         <p>District: {formData.district}</p>
         <p>Establishment: {formData.establishment}</p>
       </div>
 
-      <div className="section">
+      <div className="cl-section">
         <h2>Case Type Information</h2>
         <p>Case Type: {formData.caseType}</p>
         <p>Relief Sought: {formData.reliefSought}</p>
         <p>Appellant/Respondent: {formData.appellantRespondant}</p>
         <p>Mobile Number: {formData.mobileNo}</p>
       </div>
-
+      </div>
+      <div className="cl-section-container">
       <div className="section">
         <h2>Litigant Information</h2>
         <p>Litigant Type: {formData.litigantType}</p>
@@ -158,7 +159,8 @@ const CaseLegalForm = () => {
         <p>Address: {formData.address}</p>
         <p>Pincode: {formData.pincode}</p>
       </div>
-
+      </div>
+      
       <div className="section">
         <h2>Legal Heir Information</h2>
         <p>Party Name: {formData.partyName}</p>
@@ -196,6 +198,7 @@ const CaseLegalForm = () => {
         {/* Add more Case Details fields as needed */}
       </div>
 
+ 
     </div>
   );
 };

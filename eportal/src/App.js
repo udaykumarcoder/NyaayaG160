@@ -20,7 +20,7 @@ import Contact from './screens/Contact';
 import Home from './screens/Home';
 import Signup from './screens/Signup';
 import CaseDocinfo from './Components/Litigant/CaseDocinfo';
-
+import RequestForm from './Components/Litigant/RequestForm';
 function App() {
   return (
     <Router>
@@ -46,7 +46,7 @@ function App() {
         <Route path="/casefiling" element={<CaseFiling/>}/>
         <Route path ="/advocatecasedocuments" element={<AdvCaseDocinfo/>}/>
         <Route path ="/litigantcasedocuments" element={<CaseDocinfo/>}/>
-        
+        <Route path="/requestform" element={<RequestForm/>}/>
        
       </Routes>
     </Router>

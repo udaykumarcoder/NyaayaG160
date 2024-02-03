@@ -27,7 +27,7 @@ const CaseDocuments = () => {
         navigate('/litigantcasedocuments', { state: { cnr} });
         
       } else {
-                  setError('User not found. Please try again.');
+                  setError('Please enter the valid CNR number.');
                 }
               } catch (error) {
                 console.error('Error checking CNR:', error);
@@ -65,8 +65,9 @@ const CaseDocuments = () => {
           <div className="caseDoclogin">
             <button onClick={handleOpenButtonClick}>OPEN</button>
           </div>
-          {error && <p className="error-message">{error}</p>}
+         
         </div>
+        {error &&<center> <p style={{color:"red", marginTop:"20px"}} className="error-message">{error}</p></center>}
       </div>
     </>
   );

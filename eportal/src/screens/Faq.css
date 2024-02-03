@@ -1,9 +1,8 @@
 /* CSS for 17-inch Laptop */
-@media screen and (min-width: 1367px) {
+@media screen and  (min-width: 1367px) {
     .fcontainer {
         background-color: #e8dfc5;
         height: 800px;
-        width: 100vw;
         padding: 10px;
         padding-left: 60px;
 
@@ -11,6 +10,7 @@
 
     .fmainblock {
         display: flex;
+        justify-content: space-around;
     }
 
     .fheading {
@@ -37,7 +37,6 @@
         padding: 50px;
         font-size: 10px;
         padding-left: 10px;
-        /* margin-left: -50px; */
     }
 
 
@@ -50,7 +49,6 @@
     }
 
     .bigbox {
-        margin-left: 45rem;
         overflow: auto;
         max-height: 480px;
         position: absolute;
@@ -72,23 +70,24 @@
         font-size: 2rem;
         font-family: 'Audiowide', sans-serif;
     }
-
-    .bigbox {
-        margin-top: 13rem;
+    .summarypara{
+        width: 30vw;
+        text-wrap: wrap;
     }
+    
 }
 
 /* CSS for 14-inch Laptop */
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 769px) and (max-width: 1366px) {
     .fcontainer {
         background-color: #e8dfc5;
         height: 800px;
-        width: 100vw;
 
     }
 
     .fmainblock {
         display: flex;
+        justify-content: space-around;
     }
 
     .fheading {
@@ -104,34 +103,32 @@
     .fpara {
         margin-top: 60px;
         padding: 50px;
-        font-size: 25px;
+        font-size: 2rem;
     }
 
     .fblock2 {
-        word-spacing: 13px;
+        word-spacing: 0.3rem;
         font-family: 'Audiowide', sans-serif;
-        margin-top: -12px;
-        padding: 50px;
-        font-size: 20px;
-        padding-left: 10px;
+        margin-top: 1rem;
     }
 
 
     .hr {
         height: 3px;
-        width: 32rem;
+        width: 50vw;
+        flex-wrap: wrap;
         color: solid black;
         background-color: black;
         border: none;
     }
 
     .bigbox {
-        margin-left: 34rem;
         overflow: auto;
-        max-height: 480px;
+        max-height: 500px;
         position: absolute;
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
+
     }
 
     .bigbox::-webkit-scrollbar {
@@ -144,11 +141,62 @@
     }
 
     .Font2 {
+        font-size: 2rem;
+        font-family: 'Audiowide', sans-serif;
+    }
+    .summarypara{
+        width: 40vw;
+        text-wrap: wrap;
+    }
+
+    
+}
+
+/* phone  */
+@media screen and (max-width: 768px) {
+    .fcontainer {
+        background-color: #e8dfc5;
+
+    }
+    .fpara {
+        padding: 1rem;
+    }
+    
+    .fheading {
+        font-size: 30px;
+        font-family: 'Audiowide', sans-serif;
+    }
+    .fblock2 {
+        word-spacing: 0.3rem;
+        font-family: 'Audiowide', sans-serif;
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+    
+    .hr {
+        height: 3px;
+        flex-wrap: wrap;
+        color: solid black;
+        background-color: black;
+        border: none;
+    }
+    
+    .bigbox {
+        overflow: auto;
+        padding: 1rem;
+        max-height: 480px;
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+    }
+    
+    .bigbox::-webkit-scrollbar {
+        width: 0;
+    }
+    .Font2 {
         font-size: 1.5rem;
         font-family: 'Audiowide', sans-serif;
     }
 
-    .bigbox {
-        margin-top: 15rem;
-    }
 }
+
+

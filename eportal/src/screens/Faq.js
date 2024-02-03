@@ -1,73 +1,77 @@
-import React from 'react';
+import React from 'react'
 import './Faq.css';
 
 const Faq = () => {
   return (
     <>
-    <div className="fcontainer" id='faq'>
-      <div className="fmainblock">
-      <div className="fblock1">
-      <div className="fheading">
-      <h3> ➤FAQ'S</h3>
-      </div>
-      <div className="fpara">
-        <p>How does it work and where to start? We've collected answers to most of the
-        basic questions<br/> in order to 
-        be as open and transparent 
-        as possible.</p>
-      </div>
-      </div>
-      <div className="fblock2">
-        <h1>Let us answer some of the most  common questions 
-        you might have upfront.</h1>
+      <div className="fcontainer" id='faq'>
+        <div className="fmainblock">
+          <div className="fblock1">
+            <div className="fheading">
+              <h3> ➤FAQ'S</h3>
+            </div>
+            <div className="fpara">
+              <p>How does it work and where to start? We've collected answers to most of the
+                basic questions<br /> in order to
+                be as open and transparent
+                as possible.</p>
+            </div>
+          </div>
+          <div className="fblock2">
+            <h1>Let us answer some of the most  common questions
+              you might have upfront.</h1>
+
+         
+          <div className='bigbox'>
+            <br />
+            <hr className='hr' />
+            <details className='labels'>
+              <summary className='Font2'>Advocate registration</summary>
+              <p className='summarypara'>
+              1. Can I manage multiple cases simultaneously? <br />
+              A: Yes, multiple cases can be managed simultaneously using CNR number of a particular case.<br /><br />
+              2. What credentials are required for advocate verification?<br />
+              A: Bar registration number is required for advocate verification<br /><br />
+              3. How do I file a new case through the portal?<br />
+              A: Case filing form is available on Nyaaya to file a new case.<br /><br />
+              </p>
+            </details>
+            <br />
+            <hr className='hr' />
+            <details className='labels'>
+              <summary className='Font2'>Litigant registration</summary>
+              <p className='summarypara'>
+              1. How can I find experienced and assured advocates?<br />
+              A: You can choose your advocate from the advocate profiles available on Nyaaya whose profiles are verified .<br /><br />
+              2. Can I track the status of my case online?<br />
+              A: Yes, Nyaaya provides a case tracking feature to track the status of your case<br /><br />
+              3. How can I view or request copies of filed documents or court orders?<br />
+              A: Case documents submitted in the court can be viewed using the case documents feature available on Nyaaya<br /><br />
+              </p>
+            </details>
+            <br />
+            <hr className='hr' />
+            <details className='labels'>
+              <summary className='Font2'>Case Filing</summary>
+              <p className='summarypara'>
+              1. How do I start a new case filing on the portal as a litigant? <br />
+              A: You can choose your advocate from the advocate profiles and send your case details to the advocate. If the advocate accepts your case then the advocate can file your case on Nyaaya.<br /><br />
+              2. What type of cases can be filed using Nyaaya?<br />
+              A: You can file Criminal and Civil cases using Nyaaya<br /><br />
+              </p>
+            </details>
+            <br />
+            <hr className='hr' />
+            </div>
+
+          </div>
+        </div>
+
+
 
       </div>
-      <div className='bigbox'>
-      <br/>
-        <hr className='hr'/>
-        <details className='labels'>
-        <summary className='Font2'>Advocate registration</summary>
-        Let us answer some of the <br/>
-        most common questions <br/>
-        you might have upfront.
-        </details>
-        <br/>
-        <hr className='hr'/>
-        <details className='labels'>
-        <summary className='Font2'>Litigant registration</summary>
-        1.I am an Advocate,how should I register myself on Nyaaya? <br/>
-        To register on eFiling, fill up the online registration form. Click on the ‘New userRegister here’ link in the log-in screen to access the registration form.<br/>
-        Facility for verification by Bar Council is also provided in the form. If there is no change in data fetched from Bar Council records, verification process is completed instantly.<br/>
-        If there is some change in the data fetched from the Bar Council records, such as mobile number, or if the data is not available with Bar Counciluser can register by entering the new mobile number.<br/>
-        In such cases, registration can be completed, however the verification will be done later. You may have to wait for accessing the services till re-verification from Bar Council is complete.
-        </details>
-        <br/>
-        <hr className='hr'/>
-        <details className='labels'>
-        <summary className='Font2'>Case Filing</summary>
-        Let us answer some of the <br/>
-        most common questions <br/>
-        you might have upfront.
-        </details>
-        <br/>
-        <hr className='hr'/>
-        <details className='labels'>
-        <summary className='Font2'>Case Appeal</summary>
-        Let us answer some of the <br/>
-        most common questions <br/>
-        you might have upfront.
-        </details>
-        <br/>
-        <hr className='hr'/>
-
-      </div>
-      </div>
-      
-      
-
-    </div>
     </>
   )
 }
 
-export default Faq
+export default Faq

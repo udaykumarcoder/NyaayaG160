@@ -788,37 +788,7 @@ app.post('/submit-form', (req, res) => {
   res.status(200).json({ message: 'Email sent successfully' });
 });
 
-// function sendEmail(formData) {
-//   const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//       user: 'nyaaya160@gmail.com', 
-//       pass: 'olhf wjag bphj zucq', 
-//     },
-//   });
 
-//   const mailOptions = {
-//     from: 'nyaaya160@gmail.com',
-   
-//     to:formData.email,
-//     subject: 'New Form Submission',
-   
-//     attachments: [
-//       {
-//         filename: 'form_data.txt',
-//         content: JSON.stringify(formData, null, 2),
-//       },
-//     ],
-//   };
-
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       console.error('Error sending email:', error);
-//     } else {
-//       console.log('Email sent: ' + info.response);
-//     }
-//   });
-// }
 function sendEmail(formData) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',

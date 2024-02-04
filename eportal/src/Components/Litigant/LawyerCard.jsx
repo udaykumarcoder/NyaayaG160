@@ -1,7 +1,14 @@
 // LawyerCard.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LawyerCard = ({ name, lawyertype, imageUrl,email,phone,experience,successrate,rating }) => {
+  const navigate=useNavigate();
+  const request = (event)=>
+  {
+    navigate('/requestform',{ state: { email } });
+   
+  } 
   return (
     <div className="lawyerCard">
       <div className="image-container">
@@ -36,7 +43,7 @@ const LawyerCard = ({ name, lawyertype, imageUrl,email,phone,experience,successr
           <p>{successrate}<br />Case Success</p>
         </div>
         <div >
-          <button>Request</button>
+          <button onClick={request}>Request</button>
         </div>
 
       </div>

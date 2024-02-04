@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
@@ -15,7 +16,7 @@ const AdministratorForm= () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
-    state: 'Select State/Union Territory',
+    // state: 'Select State/Union Territory',
     gender: 'default',
     dob: '',
     phone: '',
@@ -23,6 +24,9 @@ const AdministratorForm= () => {
     password: '',
     confirmPassword: '',
     otp: '',
+    
+    employeeid:'',
+
   });
 
   const navigate=useNavigate();
@@ -37,17 +41,58 @@ const AdministratorForm= () => {
     }
   };
 
-  const handleNext = (event) => {
+  
+  const [error, setError] = useState('');
+  const [error2, setError2] = useState('');
+  
+  
+  const clearError = () => {
+    setError('');
+  };
+  
+  const clearError2 = () => {
+    setError2('');
+  };
+  const handleNext = async (event) => {
+    event.preventDefault();
+    /// bar Registration Verfying
+    try {
+      const response = await fetch('http://localhost:3001/verifyid', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ employeeid: formData.employeeid }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok && data.status === 'ok') {
+        console.log('verified:', data);
+        clearError();
+        setError2('verified');
+        setStep(step + 1);
+      } else {
+        console.error('not verified:', data);
+        alert('Employee Id: Not verified');
+        setError('Not Verified');
+        clearError2();
+      }
+    } catch (error) {
+      console.error('Error during verification:', error);
+    }
     validatePhoneNumber();
 
-    // if (phoneNumberError) {
-    //   event.preventDefault();
-    //   return;
-    // }
+    if (phoneNumberError) {
+      event.preventDefault();
+      return;
+    }
   
-    setStep(step + 1);
+    
     event.preventDefault();
+    
   };
+   
   const handleBack = () => {
     setStep(step - 1);
   };
@@ -108,6 +153,7 @@ const AdministratorForm= () => {
           },
           body: JSON.stringify(formData),
         });
+        
   
         const data = await response.json();
         console.log('Form submitted successfully:', data);
@@ -182,19 +228,22 @@ const renderStep = () => {
                  </div>
                </div>
  
-               <div className="form-group row">
+               {/* <div className="form-group row">
                  <label htmlFor="courtname" className="col-sm-3 col-form-label">Court Name:</label>
                  <div className="inputs col-sm-7" >
-                <input type="text" class="form-control" placeholder='Court Name' onChange={(e) => handleInputChange('courtname', e.target.value)} required />
+                <input type="text" class="form-control" placeholder='Court Name' value={formData.courtname} onChange={(e) => handleInputChange('courtname', e.target.value)} required />
                  </div>
-               </div>
+               </div> */}
                <div className="form-group row">
                  <label htmlFor="employeeid" className="col-sm-3 col-form-label">Employee ID:</label>
                  <div className="inputs col-sm-7" >
-                <input type="text" class="form-control" placeholder='Employee ID ' onChange={(e) => handleInputChange('employeeid', e.target.value)} required />
+                <input type="text" class="form-control" placeholder='employee' value={formData.employeeid} onChange={(e) => handleInputChange('employeeid', e.target.value)} required />
                  </div>
+                 {/* <div className="employee_ver col-sm-2 inputs  ">
+                  <button>Verify</button>
+                 </div> */}
                  </div>
-               <div className="form-group row">
+               {/* <div className="form-group row">
                  <label htmlFor="gender" className="col-sm-3 col-form-label">Gender:</label>
                  <div className="inputs col-sm-7">
                    <select name="gender" id="gender" style={{ height: '35px', width: '100%' }}  value={formData.gender} onChange={(e) => handleInputChange('gender', e.target.value)}>
@@ -205,15 +254,17 @@ const renderStep = () => {
                    </select>
  
                  </div>
-               </div>
-               <div class="form-group row">
+               </div> */}
+               {/* <div class="form-group row">
                  <label for="name" class="col-sm-3 col-form-label">DOB:</label>
                  
                  <input type="date"  id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft:'10px',backgroundColor:'grey'}} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)} required/>
                  <br></br>
                  
-               </div>
+               </div> */}
              </form>
+             {error2 && <p style={{ color: 'green' }}>{error2}</p>}
+              {error && <p style={{ color: 'red' }}>{error}</p>}
              <div>
                <button  type="submit" className='saveNext' onClick={handleNext}>Save and Next</button>
              </div>

@@ -12,26 +12,18 @@ const UserData3=require('./models/data3');
 const File = require('./models/file');
 const Detail = require('./models/Detail'); 
 const UserDatabar = require('./models/barnumbers');
-
+const UserDataempid=require('./models/Employeeid');
 const Case= require('./models/caseMain');
+const fs = require('fs');
+const pdf = require('html-pdf');
+
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
 // for mongo Compass {offline}
-mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-  console.log('MongoDB connected');
-}).catch((err) => {
-  console.error('MongoDB connection error:', err);
-});
-
-// for mongo Atlas { AWS cloud Service}
-
-// mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+// mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // }).then(() => {
@@ -39,6 +31,18 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
 // }).catch((err) => {
 //   console.error('MongoDB connection error:', err);
 // });
+
+//for mongo Atlas { AWS cloud Service}
+
+mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  
+}).then(() => {
+  console.log('MongoDB connected');
+}).catch((err) => {
+  console.error('MongoDB connection error:', err);
+});
 
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
@@ -48,6 +52,7 @@ app.post('/signup/advocate', async (req, res) => {
     if (password !== confirmPassword) {
       return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
     }
+    
     
     
     const isBarNumberExists = await UserData.exists({ barRegistrationNumber: req.body.barRegistrationNumber });
@@ -228,11 +233,16 @@ app.post('/signup/administrator', async (req, res) => {
       return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
     }
 
+    const isEmployeeidExists = await UserData3.exists({ employeeid: req.body.employeeid });
+
+if (isEmployeeidExists) {
+  return res.status(400).json({ status: 'error', message: 'Employee ID already exists' });
+}
+
     await UserData3.create({
     name: req.body.name, 
-    state:req.body.state,
-    gender: req.body.gender,
-    dob: req.body.dob,
+    employeeid: req.body.employeeid,
+    
     phone: req.body.phone,
     email: req.body.email,
     password: req.body.password,
@@ -607,6 +617,29 @@ app.post('/verify', async (req, res) => {
   }
 });
 
+////
+app.post('/verifyid', async (req, res) => {
+  console.log(req.body);
+  
+  try {
+    const { employeeid }  = req.body; 
+    const user = await UserDataempid.findOne({ employeeId: employeeid  });
+
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+    if (employeeid !== user.employeeId) {
+      return res.status(401).json({ status: 'error', message: 'Invalid id' });
+    }
+    res.json({ status: 'ok', user });
+
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+
+
 ///// OTP ---- Code
 
 const otpStorage = {};
@@ -753,7 +786,103 @@ app.post('/submit-form', (req, res) => {
   res.status(200).json({ message: 'Email sent successfully' });
 });
 
+// function sendEmail(formData) {
+//   const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'nyaaya160@gmail.com', 
+//       pass: 'olhf wjag bphj zucq', 
+//     },
+//   });
+
+//   const mailOptions = {
+//     from: 'nyaaya160@gmail.com',
+   
+//     to:formData.email,
+//     subject: 'New Form Submission',
+   
+//     attachments: [
+//       {
+//         filename: 'form_data.txt',
+//         content: JSON.stringify(formData, null, 2),
+//       },
+//     ],
+//   };
+
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.error('Error sending email:', error);
+//     } else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
+// }
 function sendEmail(formData) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'nyaaya160@gmail.com', 
+      pass: 'olhf wjag bphj zucq', 
+    },
+  });
+
+  const htmlContent = generateHTML(formData);
+
+  // Convert HTML to PDF
+  pdf.create(htmlContent).toBuffer((err, buffer) => {
+    if (err) {
+      console.error('Error creating PDF:', err);
+      return;
+    }
+
+    const mailOptions = {
+      from: 'nyaaya160@gmail.com',
+      to: formData.email,
+      subject: 'New Form Submission',
+      attachments: [
+        {
+          filename: 'form_data.pdf',
+          content: buffer,
+        },
+      ],
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  });
+}
+
+function generateHTML(formData) {
+  // Create your HTML content with the form data
+  const htmlContent = `
+    <html>
+      <head>
+        <style>
+          /* Add your styling here */
+          body {
+            font-family: Arial, sans-serif;
+          }
+          /* Add more styles as needed */
+        </style>
+      </head>
+      <body>
+        <h1>New Form Submission</h1>
+        <p>Name: ${formData.name}</p>
+        <p>Email: ${formData.email}</p>
+        <!-- Add more fields as needed -->
+      </body>
+    </html>
+  `;
+  return htmlContent;
+}
+//////////
+app.post('/api/send-email', (req, res) => {
+  const { to, subject, html } = req.body;
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -764,27 +893,20 @@ function sendEmail(formData) {
 
   const mailOptions = {
     from: 'nyaaya160@gmail.com',
+    to,
+    subject,
+    html,
    
-    to:formData.email,
-    subject: 'New Form Submission',
-   
-    attachments: [
-      {
-        filename: 'form_data.txt',
-        content: JSON.stringify(formData, null, 2),
-      },
-    ],
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
-    } else {
-      console.log('Email sent: ' + info.response);
+      return res.status(500).send(error.toString());
     }
-  });
-}
 
+    res.status(200).send('Email sent: ' + info.response);
+  });
+});
 
 
 app.listen(PORT, () => {

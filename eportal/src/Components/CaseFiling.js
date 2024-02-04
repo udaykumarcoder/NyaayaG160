@@ -114,7 +114,7 @@ const Casefiling = () => {
     
   const handleSubmit = async (e) => {
     e.preventDefault();
-       console.log(formData)
+    console.log(formData);
     try {
       // Make a POST request to the backend server for case filing
       const caseFilingResponse = await fetch('http://localhost:3001/api/casefiling', {
@@ -125,25 +125,31 @@ const Casefiling = () => {
         body: JSON.stringify(formData),
       });
   
-      // Process the case filing response as needed
-      const caseFilingData = await caseFilingResponse.json();
-      console.log('Case Filing Response:', caseFilingData);
+      if (caseFilingResponse.ok) {
+        // Make a POST request to the backend server for email submission
+        const emailResponse = await fetch('http://localhost:3001/submit-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
   
-      // Make a POST request to the backend server for email submission
-      const emailResponse = await fetch('http://localhost:3001/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+        // Process the email response as needed
+        const emailData = await emailResponse.json();
+        console.log('Email Response:', emailData);
   
-      // Process the email response as needed
-      const emailData = await emailResponse.json();
-      console.log('Email Response:', emailData);
-  
-      // Optionally, you can handle success or navigate to another page
-      navigate('/caselegalform', { state: { formData } })
+        // Check if the email submission was successful before navigating
+        if (emailResponse.ok) {
+          // Optionally, you can handle success or navigate to another page
+          alert("submited successfully")
+          navigate('/caselegalform', { state: { formData } });
+        } else {
+          console.error('Error submitting email form:', emailData);
+        }
+      } else {
+        console.error('Error submitting case filing form:', caseFilingResponse);
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       // Handle error

@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Userinfo.css';
 
 
@@ -81,6 +81,7 @@ return (
             <p>🔑<button>Change Password</button></p>
           </div>
           <hr />
+          <div><Link to="/requestform"><button>RequestForm</button></Link></div>
         </div>
       </>
     )}

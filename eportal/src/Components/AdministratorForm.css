@@ -1,4 +1,3 @@
-
 .step{
     display: flex;
     padding: 3rem;
@@ -29,6 +28,10 @@
     border-radius: 15px;
     border: 2px solid black;
     
+}
+.employee_ver button{
+    background-color: grey;
+
 }
 .bar{
     font-size: 2rem;

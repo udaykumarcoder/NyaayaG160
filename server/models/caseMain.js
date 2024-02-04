@@ -5,6 +5,7 @@ const caseSchema = new mongoose.Schema({
     state: { type: String, required: true },
     district: { type: String, required: true },
     establishment: { type: String, required: true },
+    
 
    caseType: { type: String, enum: ['Civil', 'Criminal'], required: true },
     reliefSought: { type: String, required: true },
@@ -24,7 +25,7 @@ const caseSchema = new mongoose.Schema({
     caste: { type: String, required: true },
     differentlyAble: { type: Boolean, default: false,required: false },
 
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
     phone: { type: Number, required: true },
     occupation: { type: String, required: true },
     address: { type: String, required: true },

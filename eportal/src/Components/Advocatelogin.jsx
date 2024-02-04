@@ -1,7 +1,7 @@
 // AdvocateLogin.js
 
  import React, { useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AdvocateImage from '../Assets/Advloginimg.jpeg';
 import './LoginPage.css';
 const AdvocateLogin = () => {
@@ -178,7 +178,7 @@ const AdvocateLogin = () => {
                   <b>LOGIN</b>
                 </button>
                 <br />
-                <p>Forgot Password?</p>
+                <p  onClick={() => navigate('/passwordreset')}>Forgot Password?</p>
               </div>
             </div>
 

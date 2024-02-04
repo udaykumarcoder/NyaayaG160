@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AdminImage from '../Assets/Admin.jpg';
 import './LoginPage.css';
 
@@ -173,7 +173,7 @@ const AdministratorLogin = () => {
                   <b>LOGIN</b>
                 </button>
                 <br />
-                <p>Forgot Password?</p>
+                <p  onClick={() => navigate('/passwordreset3')}> Forgot Password?</p>
               </div>
             </div>
 

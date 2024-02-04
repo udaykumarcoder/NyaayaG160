@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
@@ -23,8 +24,8 @@ const AdministratorForm= () => {
     password: '',
     confirmPassword: '',
     otp: '',
-    courtname:' ',
-    employeeid:' ',
+    
+    employeeid:'',
 
   });
 
@@ -40,17 +41,58 @@ const AdministratorForm= () => {
     }
   };
 
-  const handleNext = (event) => {
+  
+  const [error, setError] = useState('');
+  const [error2, setError2] = useState('');
+  
+  
+  const clearError = () => {
+    setError('');
+  };
+  
+  const clearError2 = () => {
+    setError2('');
+  };
+  const handleNext = async (event) => {
+    event.preventDefault();
+    /// bar Registration Verfying
+    try {
+      const response = await fetch('http://localhost:3001/verifyid', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ employeeid: formData.employeeid }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok && data.status === 'ok') {
+        console.log('verified:', data);
+        clearError();
+        setError2('verified');
+        setStep(step + 1);
+      } else {
+        console.error('not verified:', data);
+        alert('Employee Id: Not verified');
+        setError('Not Verified');
+        clearError2();
+      }
+    } catch (error) {
+      console.error('Error during verification:', error);
+    }
     validatePhoneNumber();
 
-    // if (phoneNumberError) {
-    //   event.preventDefault();
-    //   return;
-    // }
+    if (phoneNumberError) {
+      event.preventDefault();
+      return;
+    }
   
-    setStep(step + 1);
+    
     event.preventDefault();
+    
   };
+   
   const handleBack = () => {
     setStep(step - 1);
   };
@@ -111,6 +153,7 @@ const AdministratorForm= () => {
           },
           body: JSON.stringify(formData),
         });
+        
   
         const data = await response.json();
         console.log('Form submitted successfully:', data);
@@ -220,6 +263,8 @@ const renderStep = () => {
                  
                </div> */}
              </form>
+             {error2 && <p style={{ color: 'green' }}>{error2}</p>}
+              {error && <p style={{ color: 'red' }}>{error}</p>}
              <div>
                <button  type="submit" className='saveNext' onClick={handleNext}>Save and Next</button>
              </div>

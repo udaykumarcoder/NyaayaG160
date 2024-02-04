@@ -116,7 +116,7 @@ const Casefiling = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
     try {
       // Make a POST request to the backend server for case filing
       const caseFilingResponse = await fetch('http://localhost:3001/api/casefiling', {
@@ -126,11 +126,11 @@ const Casefiling = () => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       // Process the case filing response as needed
       const caseFilingData = await caseFilingResponse.json();
       console.log('Case Filing Response:', caseFilingData);
-
+  
       // Make a POST request to the backend server for email submission
       const emailResponse = await fetch('http://localhost:3001/submit-form', {
         method: 'POST',
@@ -139,11 +139,11 @@ const Casefiling = () => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       // Process the email response as needed
       const emailData = await emailResponse.json();
       console.log('Email Response:', emailData);
-
+  
       // Optionally, you can handle success or navigate to another page
       navigate('/caselegalform', { state: { formData } })
     } catch (error) {

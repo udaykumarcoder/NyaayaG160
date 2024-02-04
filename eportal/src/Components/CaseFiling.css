@@ -106,11 +106,13 @@
   border-radius: 5px;
   background-color: rgba(12, 23, 7, 0.6); 
   color: #fff;
-  margin-left: 83rem;
+  /* margin-left: 1rem;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+  margin: 2rem;
 }
-.casefilingBack{
-  margin: 44px;
-  margin-top:  -20px; 
+
+.csButtons{
+  display: flex;
+  justify-content: space-between;
 }

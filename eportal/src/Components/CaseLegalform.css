@@ -1,14 +1,43 @@
-#csHeading{
+ .case-legal-form{
+  margin: 3rem;
+  justify-content: center;
+
+ }
+ .caseformEst {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin-left: 3rem;
+}
+.caseformCasedetails{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin-left: 3rem;
+
+}
+ .case-file{
+  background-color: #eaece1;
+ }
+ .caseHeads{
+  background-color: #8b670b;
+  width: 90vw;
+  padding-left: 1rem;
+  margin-top: 2rem;
+ }
+ #csHeading {
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Audiowide', 'Sans-serif';
+}
+
+#cfilingCNR {
   text-align: center;
 }
-.cl-section-container{
+.casefileInline,
+.col-sm-5 {
   display: flex;
-  justify-content: space-around;
-  
-}
-.cl-section{
-  background-color: yellow;
-  width: 40vw;
-
-  
+  flex-direction: row;
 }

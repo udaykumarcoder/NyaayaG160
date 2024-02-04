@@ -107,7 +107,10 @@
 // CaseLegalForm.jsx
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import './CaseLegalform.css'; // Import the CSS file for styling
+import Navbar4 from './Navbar4';
 
 const CaseLegalForm = () => {
   const location = useLocation();
@@ -117,11 +120,208 @@ const CaseLegalForm = () => {
     // Handle case where formData is not available
     return <div>No data available</div>;
   }
+  const handleprint =()=>{
+    window.print();
+  }
 
   return (
+    <>
+    <Navbar4/>
     <div className="case-legal-form">
-      <h1 id='csHeading' >Case Legal Form</h1>
-<div className="cl-section-container">
+  <div className="case-file">
+    <h1 id='csHeading' >CASE FILE</h1>
+    <h3 id='cfilingCNR'>CNR : {formData.CnrNumber}</h3>
+  
+
+  <div className="caseHeads">
+    <p><b>ESTABLISHMENT</b></p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>STATE:</b><u> {formData.state}</u></p>
+    <p><b>DISTRICT:</b> {formData.district}</p>
+    <p><b>ESTABLISHMENT:</b> {formData.establishment}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>CASE TYPE:</b> {formData.caseType}</p>
+    <p><b>RELIEF SOUGHT:</b> {formData.reliefSought}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>APPELLANT / RESPONDANT:</b> {formData.appellantRespondant}</p>
+    <p><b>MOBILE NO.:</b><u>{formData.mobileNo}</u></p>
+  </div>
+
+  <div className="caseHeads">
+    <p><b>LITIGANT DETAILS</b></p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>ACCUSED:</b> {formData.accused}</p>
+    <p><b>NAME:</b> {formData.name}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>RELATION:</b> {formData.relation}</p>
+    <p><b>AGE:</b> {formData.age}</p>
+    <p><b>DOB:</b> {formData.dob}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>GENDER:</b> {formData.gender}</p>
+    <p><b>CASTE:</b> {formData.caste}</p>
+    <p><b>Differently Able:</b> {formData.differentlyAble}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>EMAIL:</b><u> {formData.email}</u></p>
+    <p><b>MOBILE NUMBER:</b><u> {formData.phone}</u></p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>OCCUPATION:</b> {formData.occupation}</p>
+    <p><b>PIN CODE:</b> {formData.pincode}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>ADDRESS:</b> <u>{formData.address}Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, quam assumenda eligendirnatur libero veniam, placeat, iure delectus error, alias iste quidem nesciunt!</u></p>
+    <p><b>TALUKA:</b> {formData.taluka}</p>
+    <p><b>VILLAGE:</b> {formData.village}</p>
+  </div>
+  <div className="caseformEst">
+    <p><b>STATE:</b> {formData.litigantState}</p>
+    <p><b>DISTRICT:</b> {formData.litigantDistrict}</p>
+  </div>
+  <div className="caseHeads">
+    <p><b>CASE DETAILS</b></p>
+  </div>
+  <div className="caseformEst">
+    <p><b>DATE OF CAUSE OF ACTION:</b> {formData.actionDate}</p>
+  </div>
+  <div className="caseformCasedetails">
+    <p><b>CAUSE OF ACTION:  </b>{formData.disputeState}Lorem ipsum dolor sit amet ijfsodkv djfnvoid voejnlkd wefoi consectetur adipisicing elit. Nisi quo molestias quam laborum praesentium! Accusantium!</p>
+  </div>
+  <div className="caseformCasedetails">
+  <p><b>IMPORTANT INFORMATION / SUBJECT / REASON :    </b>{formData.reason}Lorem ipsum dolor sit amet ijfsodkv djfnvoid voejnlkd wefoi consectetur adipisicing elit. Nisi quo molestias quam laborum praesentium! Accusantium!</p>
+
+</div>
+<div className="caseformEst">
+    <p><b>STATE:</b> {formData.disputeState}</p>
+    <p><b>DISTRICT:</b> {formData.disputeDistrict}</p>
+  </div>
+  <div className="caseformEst">
+  <p><b>TALUKA:</b> {formData.disputeTaluka}</p>
+    <p><b>VILLAGE:</b> {formData.disputeVillage}</p>
+    </div>
+    <div className="caseformCasedetails">
+    <p><b>ACT :    </b>{formData.act}Lorem ipsum dolor sit amet ijfsodkv djfnvoid voejnlkd wefoi consectetur adipisicing elit. Nisi quo molestias quam laborum praesentium! Accusantium!</p>
+    <p><b>SECTION :    </b>{formData.act}Lorem ipsum dolor sit amet ijfsodkv djfnvoid voejnlkd wefoi consectetur adipisicing elit. Nisi quo molestias quam laborum praesentium! Accusantium!</p>
+
+</div>
+<div className="caseHeads">
+    <p><b>LEGAL HEIR</b></p>
+  </div>
+  <div className="caseformEst">
+  <p><b>PARTY NAME:</b> {formData.partyName}</p>
+    <p><b>TYPE:</b> {formData.heirType}</p>
+    </div>
+    <div className="caseformCasedetails">
+    <p><b>LEGAL HEIR NAME:</b> {formData.heirName}</p>
+  </div>
+  <div className="caseformEst">
+  <p><b>NAME:</b> {formData.partyName}</p>
+    <p><b>RELATION:</b> {formData.name2}</p>
+    </div>
+    <div className="caseformEst">
+    <p><b>AGE:</b> {formData.heirAge}</p>
+    <p><b>DOB:</b> {formData.heirDob}</p>
+    <p><b>GENDER:</b> {formData.heirGender}</p>
+
+  </div>
+  <div className="caseformEst">
+    <p><b>CASTE:</b> {formData.heirCaste}</p>
+    <p><b>DIFFERENTLY ABLED:</b> {formData.heirDifferentlyAble}</p>
+
+  </div>
+  <div className="caseformEst">
+    <p><b>EMAIL:</b> {formData.heirEmail}</p>
+    <p><b>OCCUPATION:</b> {formData.heirOccupation}</p>
+
+  </div>
+  <div className="caseformEst">
+    <p><b>MOBILE:</b> {formData.heirPhone}</p>
+    <p><b>PIN CODE:</b> {formData.heirPincode}</p>
+
+  </div>
+  <div className="caseformCasedetails">
+    <p><b>ADDRESS:</b> <u>{formData.heirAddress}Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, quam assumenda eligendirnatur libero veniam, placeat, iure delectus error, alias iste quidem nesciunt!</u></p>
+</div>
+<div className="caseformEst">
+    <p><b>STATE:</b> {formData.disputeState}</p>
+    <p><b>DISTRICT:</b> {formData.disputeDistrict}</p>
+  </div>
+  <div className="caseformEst">
+  <p><b>TALUKA:</b> {formData.disputeTaluka}</p>
+    <p><b>VILLAGE:</b> {formData.disputeVillage}</p>
+    </div>
+    <div className="caseHeads">
+    <p><b>FACT DETAILS</b></p>
+  </div>
+  <div className="caseformEst">
+  <p><b>FACT DATE:</b> {formData.factDate}</p>
+    <p><b>FACT TIME:</b> {formData.factTime}</p>
+    </div>
+    <div className="caseformCasedetails">
+    <p><b>FACT:</b> <u>{formData.fact} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, quam assumenda eligendirnatur libero veniam, placeat, iure delectus error, alias iste quidem nesciunt!</u></p>
+</div>
+
+</div>
+<div className="csButtons">
+            <Link to="/advocateaccount">
+              <button className='nexttabbtn'  >
+                back
+              </button>
+            </Link>
+            <button className="nexttabbtn" onClick={handleprint} >
+              PRINT
+            </button>
+          </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* <div className="cl-section-container">
       <div className="cl-section">
         <h2>Location Information</h2>
         <p>State: {formData.state}</p>
@@ -136,8 +336,8 @@ const CaseLegalForm = () => {
         <p>Appellant/Respondent: {formData.appellantRespondant}</p>
         <p>Mobile Number: {formData.mobileNo}</p>
       </div>
-      </div>
-      <div className="cl-section-container">
+      </div> */}
+        {/* <div className="cl-section-container">
       <div className="section">
         <h2>Litigant Information</h2>
         <p>Litigant Type: {formData.litigantType}</p>
@@ -149,9 +349,9 @@ const CaseLegalForm = () => {
         <p>Gender: {formData.gender}</p>
         <p>Caste: {formData.caste}</p>
         <p>Differently Able: {formData.differentlyAble ? 'Yes' : 'No'}</p>
-      </div>
+      </div> */}
 
-      <div className="section">
+        {/* <div className="section">
         <h2>Contact Information</h2>
         <p>Email: {formData.email}</p>
         <p>Phone: {formData.phone}</p>
@@ -159,9 +359,9 @@ const CaseLegalForm = () => {
         <p>Address: {formData.address}</p>
         <p>Pincode: {formData.pincode}</p>
       </div>
-      </div>
-      
-      <div className="section">
+      </div> */}
+
+        {/* <div className="section">
         <h2>Legal Heir Information</h2>
         <p>Party Name: {formData.partyName}</p>
         <p>Heir Type: {formData.heirType}</p>
@@ -173,16 +373,16 @@ const CaseLegalForm = () => {
         <p>Caste: {formData.heirCaste}</p>
         <p>Differently Able: {formData.heirDifferentlyAble ? 'Yes' : 'No'}</p>
         {/* Add more Legal Heir information fields as needed */}
-      </div>
+        {/* </div>  */}
+        {/* 
+      // <div className="section">
+      //   <h2>Fact Details</h2>
+      //   <p>Fact Date: {formData.factDate}</p>
+      //   <p>Fact Time: {formData.factTime}</p>
+      //   <p>Fact: {formData.fact}</p>
+      // </div> */}
 
-      <div className="section">
-        <h2>Fact Details</h2>
-        <p>Fact Date: {formData.factDate}</p>
-        <p>Fact Time: {formData.factTime}</p>
-        <p>Fact: {formData.fact}</p>
-      </div>
-
-      <div className="section">
+        {/* <div className="section">
         <h2>Case Details</h2>
         <p>Action Cause: {formData.actionCause}</p>
         <p>Reason: {formData.reason}</p>
@@ -196,10 +396,11 @@ const CaseLegalForm = () => {
         <p>CNR Number: {formData.CnrNumber}</p>
         <p>Unique Code: {formData.uniqueCode}</p>
         {/* Add more Case Details fields as needed */}
-      </div>
+        {/* </div> */}
 
- 
-    </div>
+
+      
+    </>
   );
 };
 

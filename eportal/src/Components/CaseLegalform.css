@@ -1,19 +1,14 @@
-CaseLegalForm.css
-.case-legal-form {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+#csHeading{
+  text-align: center;
+}
+.cl-section-container{
+  display: flex;
+  justify-content: space-around;
   
-  .section {
-    margin-bottom: 20px;
-  }
+}
+.cl-section{
+  background-color: yellow;
+  width: 40vw;
+
   
-  /* h1, h2 {
-    color: #333;
-  } */
-  
-  p {
-    margin: 5px 0;
-  }
-  
+}

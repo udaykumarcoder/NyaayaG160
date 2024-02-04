@@ -646,6 +646,8 @@ const otpStorage = {};
 
 //  generate a random numeric OTP
 const generateNumericOTP = () => Math.floor(100000 + Math.random() * 900000);
+console.log(generateNumericOTP)
+
 
 // to send otp to Email
 app.post('/send-otp', (req, res) => {

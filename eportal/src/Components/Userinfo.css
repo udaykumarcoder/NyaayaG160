@@ -1,33 +1,35 @@
 .userInfo{
 
     width: 100%;
-    margin-top: 0.95rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    padding-top: 4rem;
 
 }
 
-.whiteBox{
-    background-color: bisque;
-    height: 12rem;
-    width: 100%;
-}
+
 .profile{
     background-color: white;
+    background-image: url(../Assets/Profile.jpg);
+    background-size: cover;
     margin-left: 100px;
     height: 150px;
     width: 150px;
     border: 2px solid black;
     border-radius: 50%;
-    position: absolute;
-    margin-top: 9rem;
+    /* position: absolute; */
+    /* margin-top: 9rem; */
 
 }
 .Lprofile{
-    margin-left: 16rem;
+    /* margin-left: 16rem; */
     display: flex;
+    gap: 1rem;
 
 }
 .litigantName{
     font-family: 'Audiowide', sans-serif;
+    margin-top: 3rem;
 
 }
 

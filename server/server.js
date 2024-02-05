@@ -23,26 +23,27 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // for mongo Compass {offline}
-// mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// }).then(() => {
-//   console.log('MongoDB connected');
-// }).catch((err) => {
-//   console.error('MongoDB connection error:', err);
-// });
-
-//for mongo Atlas { AWS cloud Service}
-
-mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  
 }).then(() => {
   console.log('MongoDB connected');
 }).catch((err) => {
   console.error('MongoDB connection error:', err);
 });
+
+
+//for mongo Atlas { AWS cloud Service}
+
+// mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+  
+// }).then(() => {
+//   console.log('MongoDB connected');
+// }).catch((err) => {
+//   console.error('MongoDB connection error:', err);
+// });
 
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
@@ -574,10 +575,10 @@ app.post('/resetpassword-Litigant', async (req, res) => {
 ///// Adminstrator  password reset
 
 app.post('/resetpassword-Adminstrator', async (req, res) => {
-  const { email, dob, phone, newPassword } = req.body;
+  const { email, employeeid, phone, newPassword } = req.body;
   console.log('Request Body:', req.body);
   try {
-    const user = await UserData3.findOne({ email, dob, phone });
+    const user = await UserData3.findOne({ email, employeeid, phone });
     if (!user) {
       return res.status(404).json({ error: 'User not found or details are incorrect.' });
     }
@@ -787,7 +788,6 @@ app.post('/submit-form', (req, res) => {
   // Respond to the client
   res.status(200).json({ message: 'Email sent successfully' });
 });
-
 
 function sendEmail(formData) {
   const transporter = nodemailer.createTransport({

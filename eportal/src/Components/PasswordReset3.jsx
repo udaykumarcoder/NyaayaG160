@@ -6,7 +6,7 @@ import "./PasswordReset.css";
 
 const PasswordReset3 = () => {
   const [email, setEmail] = useState('');
-  const [dob, setDob] = useState('');
+  const [employeeid, setEmployeeid] = useState('');
   const [phone, setPhone] = useState('');
 
   const [newPassword, setNewPassword] = useState('');
@@ -21,7 +21,7 @@ const PasswordReset3 = () => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, dob: dob.toString(), phone, newPassword }),
+            body: JSON.stringify({ email, employeeid, phone, newPassword }),
           });
 
       const data = await response.json();
@@ -31,7 +31,7 @@ const PasswordReset3 = () => {
         console.log('Password reset successful:', data);
        
       alert('password Changed  successfully');
-      navigate("/login/litigant");
+      navigate("/login/administrator");
       
       } else {
        
@@ -58,11 +58,11 @@ const PasswordReset3 = () => {
         />
         <br />
 
-        <label className='elements' style={{marginLeft:"-100px"}}>Date of Birth:</label>
+        <label className='elements' style={{marginLeft:"-100px"}}>Employee ID:</label>
         <input style={{marginLeft:"30px"}}
-          type="date"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
+          type=""
+          value={employeeid}
+          onChange={(e) => setEmployeeid(e.target.value)}
           required
         />
         <br />

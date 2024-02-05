@@ -99,7 +99,9 @@ const Uploaddocs = () => {
                 <title>${filename}</title>
               </head>
               <body>
+              <image width="1500" height="700" controls>
                 <img src="${imageSrc}" alt="${filename}" />
+                </image>
               </body>
             </html>
           `);

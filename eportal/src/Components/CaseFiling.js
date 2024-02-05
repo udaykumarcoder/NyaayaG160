@@ -71,47 +71,48 @@ const Casefiling = () => {
   });
   const navigate=useNavigate();
   const handleTabChange = (tabNumber) => {
-    // if (activeTab === 6 && tabNumber !== 6) {
-    //   return;
-    // }
-  
-    
-    // if (tabNumber !== 6) {
+   
       setActiveTab(tabNumber);
-    //}
+    
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(formData)
+  const handleGenerateCnrNumber = () => {
+    // Function to generate a random alphanumeric code
+    const generateRandomCode = (length) => {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let randomCode = '';
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        randomCode += characters.charAt(randomIndex);
+      }
+      return randomCode;
+    };
   
-    
-  //   try {
-  //     const response = await fetch('http://localhost:3001/api/casefiling', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
+    // Set the length of the alphanumeric code
+    const codeLength = 10; // You can adjust the length
   
-  //     if (response.ok) {
-       
-  //       alert('Your case has been filed successfully');
-  //       // navigate('/caselegalform')
-  //       navigate('/caselegalform', { state: { formData } });
-       
-  //       //  setActiveTab(6);
-       
-        
-  //     } else {
-       
-  //       alert('Failed to file the case. Please try again.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting the form:', error);
-  //   }
-  // };
-    
+    // Generate and set CNR number
+    const generatedCnrNumber = 'CNR' + generateRandomCode(codeLength);
+    handleChange('CnrNumber', generatedCnrNumber);
+  };
+
+  const handleGenerateUniqueCode = () => {
+    // Check if the method is available in the current environment
+    if (window.crypto && window.crypto.getRandomValues) {
+      const array = new Uint32Array(1);
+      window.crypto.getRandomValues(array);
+      let uniqueCode = array[0].toString().replace(/\D/g, ''); // Extract only numeric characters
+      uniqueCode = uniqueCode.substring(0, 6); // Ensure the length is 6
+      // Use uniqueCode as needed
+      handleChange('uniqueCode', uniqueCode); // Update the state with the generated unique code
+    } else {
+      // Fallback to Math.random() for environments that don't support crypto.getRandomValues
+      let uniqueCodeFallback = Math.floor(Math.random() * 1000000).toString().replace(/\D/g, ''); // Extract only numeric characters
+      uniqueCodeFallback = uniqueCodeFallback.substring(0, 6); // Ensure the length is 6
+      // Use uniqueCodeFallback as needed
+      handleChange('uniqueCode', uniqueCodeFallback); // Update the state with the generated unique code
+    }
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
@@ -170,7 +171,7 @@ const Casefiling = () => {
     setActiveTab(nextTab);
     
   };
-  const generateCNR = () => Math.floor(100000 + Math.random() * 900000);
+ 
 
 
   const tabNames = [
@@ -284,7 +285,9 @@ const caste = ["Select a Caste","OBC", "OC" ,"SC","ST"];
             back
           </button>
         </Link>
+       
           </div>
+          
           
         );
       case 2:
@@ -707,35 +710,42 @@ onChange={(e) => handleChange('section',e.target.value)}
     </div>
   );
   case 6:
-        return (
-          <div>
-            <form style={{ paddingLeft: "400px" }} className='caseform'>
-              <h4>CNR Number:</h4>
-              {/* <button  onClick={generateCNR}>
-        generate
-      </button> */}
-              <input
-                type="text"
-                id="cnrNumber"
-                name="cnrNumber"
-                value={formData.CnrNumber}
-                onChange={(e) => handleChange('CnrNumber', e.target.value)}
-              />
-              <h4>Unique Code:</h4>
-              <input
-                type="text"
-                id="uniqueCode"
-                name="uniqueCode"
-                value={formData.uniqueCode}
-                onChange={(e) => handleChange('uniqueCode', e.target.value)}
-              />
-            </form>
+    return (
+      <>
+      <div>
+  <form style={{ paddingTop: '50px', paddingLeft: '400px' }} className='caseform'>
 
-      <button className="nexttabbtn" onClick={handleSubmit}>
-        Submit
+    <label>
+      Generate CNR 
+       Number:
+      <input type="text" id="" value={formData.CnrNumber}
+        onChange={(e) => handleChange('CnrNumber', e.target.value)}/>
+      <button type="button" onClick={handleGenerateCnrNumber}>
+        Generate
       </button>
-          </div>
-        );
+    </label>
+    <br/>
+    <br/>
+    <label>
+      Unique Code:
+      <input type="text" id="" value={formData.uniqueCode}
+        onChange={(e) => handleChange('uniqueCode', e.target.value)}/>
+      <button type="button" onClick={handleGenerateUniqueCode}>
+        Generate
+      </button>
+    </label>
+    
+    <button className='vinnu' type="button" onClick={handleSubmit}>
+      Submit
+    </button>
+   
+    
+  </form>
+ 
+</div>
+
+   </>
+    );
       
       default:
         return null;

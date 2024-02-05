@@ -106,13 +106,22 @@
   border-radius: 5px;
   background-color: rgba(12, 23, 7, 0.6); 
   color: #fff;
-  /* margin-left: 1rem;
-  margin-top: 20px;
-  margin-bottom: 20px; */
-  margin: 2rem;
+  margin: 2rem 2.7rem;
 }
 
 .csButtons{
   display: flex;
   justify-content: space-between;
+}
+.csButtons button{
+  width: 4rem;
+}
+
+
+
+
+@media screen and (min-width: 769px) and (max-width: 1366px) {
+  .leftside{
+    padding-left: 700px;
+  }
 }

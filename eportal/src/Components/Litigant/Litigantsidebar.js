@@ -64,10 +64,6 @@ const Litigantsidebar = ({ switchComponent }) => {
           </h3>
           <p>Litigant</p>
           </div>
-          
-          <div>
-   
-          </div>
         <ul>
           
         <li><h3 onClick={() => switchComponent(0)}>👤 &nbsp; User Info</h3></li>
@@ -78,7 +74,7 @@ const Litigantsidebar = ({ switchComponent }) => {
 
           
         </ul>
-        <button className="logout" onClick={handleLogout}><b>⇤Log Out</b></button>
+        <button className="logout"  onClick={handleLogout}><b>⇤Log Out</b></button>
        
       </div>
     )}

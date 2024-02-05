@@ -1,0 +1,29 @@
+/* 
+input[type="radio"] {
+    display: none;
+} */
+
+.tracking {
+    position: relative;
+    padding-left: 30px; 
+    margin-bottom: 15px; 
+}
+
+/* .check-mark {
+    content: '\2714'; 
+    font-size: 24px;
+    color: transparent;
+    text-shadow: 0 0 10px #00ff00; 
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    transform: translateY(-50%);
+}
+
+.track1.checked .check-mark,
+.track2.checked .check-mark,
+.track3.checked .check-mark,
+.track4.checked .check-mark {
+    color: #00ff00; 
+    text-shadow: 0 0 15px #00ff00;
+} */

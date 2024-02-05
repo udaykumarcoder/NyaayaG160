@@ -9,10 +9,11 @@
 .abtCard {
   display: flex;
   width: 40vw;
-  height: 20vh;
+  height: 30vh;
   border-radius: 1px;
   margin: 1rem;
 }
+
 
 
 .abtCard-body {
@@ -46,6 +47,7 @@
 .abtbuttons {
   display: flex;
   justify-content: flex-end;
+  padding-top: 1.3rem;
   margin-right: 1rem;
 
 }

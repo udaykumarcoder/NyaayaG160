@@ -23,26 +23,26 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // for mongo Compass {offline}
-// mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// }).then(() => {
-//   console.log('MongoDB connected');
-// }).catch((err) => {
-//   console.error('MongoDB connection error:', err);
-// });
-
-//for mongo Atlas { AWS cloud Service}
-
-mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  
 }).then(() => {
   console.log('MongoDB connected');
 }).catch((err) => {
   console.error('MongoDB connection error:', err);
 });
+
+//for mongo Atlas { AWS cloud Service}
+
+// mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+  
+// }).then(() => {
+//   console.log('MongoDB connected');
+// }).catch((err) => {
+//   console.error('MongoDB connection error:', err);
+// });
 
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
@@ -72,6 +72,10 @@ if (isBarNumberExists) {
       email: req.body.email,
       password: req.body.password,
       confirmPassword: req.body.confirmPassword,
+      profileurl: req.body.profileurl,
+      education: req.body.education,
+      nalsa: req.body.nalsa,
+
      
     });
 
@@ -846,6 +850,75 @@ function generateHTML(formData) {
         <h1>New Form Submission</h1>
         <p>Name: ${formData.name}</p>
         <p>Email: ${formData.email}</p>
+        <div class="cl-section-container">
+  <div class="cl-section">
+    <h2>Location Information</h2>
+    <p>State: ${formData.state}</p>
+    <p>District: ${formData.district}</p>
+    <p>Establishment: ${formData.establishment}</p>
+  </div>
+
+  <div class="cl-section">
+    <h2>Case Type Information</h2>
+    <p>Case Type: ${formData.caseType}</p>
+    <p>Relief Sought: ${formData.reliefSought}</p>
+    <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
+    <p>Mobile Number: ${formData.mobileNo}</p>
+  </div>
+</div>
+
+<div class="cl-section-container">
+  <div class="section">
+    <h2>Litigant Information</h2>
+    <p>Litigant Type: ${formData.litigantType}</p>
+    <p>Accused: ${formData.accused}</p>
+    <p>Name: ${formData.name2}</p>
+    <p>Relation: ${formData.relation2}</p>
+    <p>Age: ${formData.age}</p>
+    <p>Date of Birth: ${formData.dob}</p>
+    <p>Gender: ${formData.gender}</p>
+    <p>Caste: ${formData.caste}</p>
+    <p>Differently Able: ${formData.differentlyAble ? 'Yes' : 'No'}</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact Information</h2>
+    <p>Email: ${formData.email}</p>
+    <p>Phone: ${formData.phone}</p>
+    <p>Occupation: ${formData.occupation}</p>
+    <p>Address: ${formData.address}</p>
+    <p>Pincode: ${formData.pincode}</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Legal Heir Information</h2>
+  <p>Party Name: ${formData.partyName}</p>
+  <p>Heir Type: ${formData.heirType}</p>
+  <p>Heir Name: ${formData.heirName}</p>
+  <p>Relation: ${formData.relation2}</p>
+  <p>Heir Age: ${formData.heirAge}</p>
+  <p>Date of Birth: ${formData.heirDob}</p>
+  <p>Gender: ${formData.heirGender}</p>
+  <p>Caste: ${formData.heirCaste}</p>
+  <p>Differently Able: ${formData.heirDifferentlyAble ? 'Yes' : 'No'}</p>
+</div>
+
+<div class="section">
+  <h2>Case Details</h2>
+  <p>Action Cause: ${formData.actionCause}</p>
+  <p>Reason: ${formData.reason}</p>
+  <p>Action Date: ${formData.actionDate}</p>
+  <p>Dispute State: ${formData.disputeState}</p>
+  <p>Dispute District: ${formData.disputeDistrict}</p>
+  <p>Dispute Taluka: ${formData.disputeTaluka}</p>
+  <p>Dispute Village: ${formData.disputeVillage}</p>
+  <p>Act: ${formData.act}</p>
+  <p>Section: ${formData.section}</p>
+  <p>CNR Number: ${formData.CnrNumber}</p>
+  <p>Unique Code: ${formData.uniqueCode}</p>
+</div>
+
         <!-- Add more fields as needed -->
       </body>
     </html>

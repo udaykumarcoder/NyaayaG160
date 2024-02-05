@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HashLink as Link } from 'react-router-hash-link';
+// import { HashLink as Link } from 'react-router-hash-link';
 import Navbar4 from '../Components/Navbar4';
 import './AdministratorForm.css';
+import TrackBox from './TrackBox';
 
 
 const API_BASE_URL = 'http://localhost:3001'; 
@@ -191,7 +192,7 @@ const renderStep = () => {
         <form onSubmit={handleform}>
         <Navbar4/>
          <div className="step">
-           <div className="litigantLeftbox">
+           {/* <div className="litigantLeftbox">
              <div className="tracking">
                <div className='track1'>
                  <input type="radio" id='t1' />
@@ -215,7 +216,8 @@ const renderStep = () => {
                      🔙
                    </button>
                  </Link>
-           </div>
+           </div> */}
+              <TrackBox step={step} setStep={setStep} />
  
            <div className="litigantRightbox">
              <p className='bar'>PERSONAL DETAILS</p>
@@ -280,7 +282,7 @@ const renderStep = () => {
         <form onSubmit={handleform}>
         <Navbar4/>
         <div className="step">
-          <div className="litigantLeftbox">
+          {/* <div className="litigantLeftbox">
 
             <div className="tracking">
               <div className='track1'>
@@ -302,7 +304,8 @@ const renderStep = () => {
             </div>
 
 
-          </div>
+          </div> */}
+              <TrackBox step={step} setStep={setStep} />
 
           <div className="litigantRightbox">
             <p className='bar'>CONTACT DETAILS</p>
@@ -338,7 +341,7 @@ const renderStep = () => {
         <form onSubmit={handleSubmit}>
        <Navbar4/>
         <div className="step">
-          <div className="litigantLeftbox">
+          {/* <div className="litigantLeftbox">
 
             <div className="tracking">
               <div className='track1'>
@@ -360,7 +363,8 @@ const renderStep = () => {
             </div>
 
 
-          </div>
+          </div> */}
+              <TrackBox step={step} setStep={setStep} />
 
           <div className="litigantRightbox">
             <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>

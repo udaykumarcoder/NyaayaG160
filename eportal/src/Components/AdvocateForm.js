@@ -218,51 +218,12 @@ const AdvocateForm = () => {
 
             <div className="step">
 
-              {/* <div className="advocLeftbox">
-              <div>
-           
-                </div>
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' />
-                </div>
-                
-                <label htmlFor="t1">Bar Registration</label>
-                
-              </div>
-              <div className="tracking">
-                <div className='track2'>
-                  <input type="radio" id='t2' />
-                </div>
-                <label htmlFor="t2">Place Of Practice</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
-              <Link to ="/signup">
-                  <button className='back'>
-                    🔙
-                  </button>
-                </Link>
-            </div> */}
+      
               <TrackBox step={step} setStep={setStep} />
               <div className="advocRightbox">
 
 
                 <p className='bar'>BAR REGISTRATION</p>
-
-
-                <form>
-
                   <div className="form-group row">
 
 
@@ -360,7 +321,6 @@ const AdvocateForm = () => {
 
                   </div>
                   <button type="submit" className='saveNext ' onClick={handleNext}>Save and Next</button>
-                </form>
 
               </div>
 
@@ -375,38 +335,11 @@ const AdvocateForm = () => {
         return (
           <form onSubmit={handleform}>
             <div className="step">
-              {/* <div className="advocLeftbox">
-  
-                <div className="tracking">
-                  <div className='track1'>
-                    <input type="radio" id='t1' checked />
-                  </div>
-                  <label htmlFor="t1">Bar Registration</label>
-                </div>
-                <div className="tracking">
-                  <div className='track2'>
-                    <input type="radio" id='t2' />
-                  </div>
-                  <label htmlFor="t2">Profile Details</label>
-                </div>
-                <div className="tracking">
-                  <div className='track3'>
-                    <input type="radio" id='t3' />
-                  </div>
-                  <label htmlFor="t3">Contact Details</label>
-                </div>
-                <div className="tracking">
-                  <div className='track4'>
-                    <input type="radio" id='t4' />
-                  </div>
-                  <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-                </div>
-              </div> */}
+             
               <TrackBox step={step} setStep={setStep} />
 
               <div className="advocRightbox">
                 <p className='bar'>Profile Details</p>
-                <form >
 
                   <div className="form-group row">
                     <label htmlFor="lawyertype" className="col-sm-3 col-form-label">Type Of Lawyer:</label>
@@ -449,7 +382,6 @@ const AdvocateForm = () => {
                     </div>
 
                   </div>
-                </form>
                 <div className='popbuttons advbuttons'>
                   <button className='back' onClick={handleBack}>Back</button>
                   <button type="submit" className='saveNext' onClick={handleNext}>Save and Next</button>
@@ -464,39 +396,13 @@ const AdvocateForm = () => {
         return (
           <form onSubmit={handleform} >
             <div className="step">
-              {/* <div className="advocLeftbox">
-
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' checked />
-                </div>
-                <label htmlFor="t1">Bar Registration</label>
-              </div>
-              <div className="tracking">
-                <div className='track2'>
-                  <input type="radio" id='t2' checked />
-                </div>
-                <label htmlFor="t2">Place Of Practice</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
-            </div> */}
+             
               <TrackBox step={step} setStep={setStep} />
 
 
               <div className="advocRightbox">
                 <p className='bar'>CONTACT DETAILS</p>
-                <form>
+                
                   <div className="advcontactContainer">
                     <div class="form-group row">
                       <label for="name" class="col-sm-3 col-form-label">Phone:</label>
@@ -533,7 +439,6 @@ const AdvocateForm = () => {
                   </div>
                     
                   </div>
-                </form>
                 <div className='contactButtons advbuttons'>
                   <button className='back' onClick={handleBack}>Back</button>
 
@@ -549,41 +454,12 @@ const AdvocateForm = () => {
         return (
           <form onSubmit={handleSubmit}>
             <div className="step">
-              {/* <div className="advocLeftbox">
-
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' checked />
-                </div>
-                <label htmlFor="t1">Bar Registration</label>
-              </div>
-              <div className="tracking">
-                <div className='track2'>
-                  <input type="radio" id='t2' checked />
-                </div>
-                <label htmlFor="t2">Place Of Practice</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' checked />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
-
-
-            </div> */}
+              
               <TrackBox step={step} setStep={setStep} />
 
 
               <div className="advocRightbox">
                 <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
-                <form>
                   <div className="form-group row">
                     <label htmlForfor="name" className="col-sm-3 col-form-label">Password:</label>
                     <div className="inputs col-sm-7">
@@ -613,7 +489,6 @@ const AdvocateForm = () => {
                       />
                     </div>
                   </div>
-                </form>
                 <div className='advbuttons'>
                   <button className='back' onClick={handleBack}>Back</button>
                   <button type="submit" className='saveNext'>Submit</button>

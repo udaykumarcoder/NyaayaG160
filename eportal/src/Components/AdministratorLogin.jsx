@@ -173,7 +173,7 @@ const AdministratorLogin = () => {
                   <b>LOGIN</b>
                 </button>
                 <br />
-                <p  onClick={() => navigate('/passwordreset3')}> Forgot Password?</p>
+                <p  className='forgotPw' onClick={() => navigate('/passwordreset3')}> Forgot Password?</p>
               </div>
             </div>
 

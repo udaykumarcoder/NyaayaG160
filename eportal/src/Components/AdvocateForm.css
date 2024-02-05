@@ -14,16 +14,9 @@
     text-align: center;
     align-items: center;
 }
-/* 
-.tracking{
-    display: flex;
-    font-family: 'Audiowide', sans-serif;
-    padding: 3.5rem;
-    justify-content: center;
-} */
+
 .advocRightbox{
     padding: 3rem;
-    height: 40rem;
     width: 60rem;
     background-color: #eaece1;
     text-align: center;

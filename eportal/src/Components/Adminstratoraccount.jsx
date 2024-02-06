@@ -4,9 +4,9 @@ import './Litigant/Litigantaccount.css';
 import Navbar4 from './Navbar4';
 import Updatedetails from './Updatedetails';
 import Uploaddocs from './Uploaddocs';
-import UserInfo from './UserInfo';
+import AdminuserInfo from './AdminuserInfo';
 const Administratoraccount= () => {
-  const components = [UserInfo, Uploaddocs,Updatedetails];
+  const components = [AdminuserInfo, Uploaddocs,Updatedetails];
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
 
   const switchComponent = (index) => {

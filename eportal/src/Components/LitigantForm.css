@@ -1,5 +1,4 @@
-/* hey developer due css specificity the code written in administrator form will be executed
-so if u want to change any thing change there */
+
 .phoneNote{
     color: red;
     background-color: #E8DFC5;
@@ -30,12 +29,12 @@ so if u want to change any thing change there */
     background-color: #eaece1;
 }
 
-.tracking{
+/* .tracking{
     display: flex;
     font-family: 'Audiowide', sans-serif;
     padding: 3.5rem;
     justify-content: center;
-}
+} */
 .litigantRightbox{
     padding: 3rem;
     height: 40rem;

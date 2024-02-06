@@ -41,11 +41,11 @@ const Administratorsidebar = ({ switchComponent }) => {
       {error && <p>{error}</p>}
     {userData && (
     <div class="sidebar">
- <div className="Adminprofile">
+          <div className="Litigantprofile">
             <div className="profileImg">
             </div>
           </div>
-          <div className="adminsidebarName">
+          <div className="lsidebarName">
           <h3>
           {userData.name}
           </h3>

@@ -8,11 +8,14 @@ const userSchema = new mongoose.Schema({
   barRegistrationNumber: { type: String, required: true, unique: true},
   lawyertype:{ type: String, required: true },
   experience:{ type: String, required: true },
-
+  profileurl: { type: String, required: true },
+  education: { type: String, required: true },
   phone: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
+  nalsa: { type: String, required: true },
+
   
   
 }, { collection: 'Advocate' });

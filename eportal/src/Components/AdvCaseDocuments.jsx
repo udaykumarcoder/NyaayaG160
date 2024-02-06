@@ -4,19 +4,22 @@ import { useNavigate } from 'react-router-dom';
 const AdvCaseDocuments = () => {
     
     const navigate = useNavigate();
-    const [cnr, setCnr] = useState('');
+    const [CnrNumber, setCnrNumber] = useState('');
+    const [uniqueCode, setUniqueCode] = useState('');
     const [ error,setError] = useState('');
     
     const handleOpenButtonClick = async () => {
 
-      console.log('cnr number:', cnr);
+      console.log('cnr number:', CnrNumber);
+      console.log('uniquecode:', uniqueCode);
+      
             try {
-              const response = await fetch('http://localhost:3001/validate-cnr', {
+              const response = await fetch('http://localhost:3001/validate-cnr&uniquecode', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ cnr }),
+                body: JSON.stringify({ CnrNumber,uniqueCode }),
               });
         
               const data = await response.json();
@@ -25,10 +28,10 @@ const AdvCaseDocuments = () => {
                 
                 console.log('success:', data);
                  
-                 navigate('/advocatecasedocuments', { state: { cnr} });
+                 navigate('/advocatecasedocuments', { state: { CnrNumber} });
                 
               } else {
-                          setError('Please enter the valid CNR number.');
+                          setError('Please enter the valid CNR number & UniqueCode.');
                         }
                       } catch (error) {
                         console.error('Error checking CNR:', error);
@@ -48,8 +51,8 @@ const AdvCaseDocuments = () => {
             <input
             type="text"
             placeholder="Enter CNR"
-            value={cnr}
-            onChange={(e) => setCnr(e.target.value)}
+            value={CnrNumber}
+            onChange={(e) => setCnrNumber(e.target.value)}
           />
           </div>
           <div className="uniqueCode">
@@ -57,6 +60,8 @@ const AdvCaseDocuments = () => {
             <input
               type="text"
               placeholder="Enter Unique Code"
+              value={uniqueCode}
+              onChange={(e) => setUniqueCode(e.target.value)}
              
             />
           </div>

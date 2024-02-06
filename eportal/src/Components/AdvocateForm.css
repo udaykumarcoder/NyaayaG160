@@ -14,13 +14,13 @@
     text-align: center;
     align-items: center;
 }
-
+/* 
 .tracking{
     display: flex;
     font-family: 'Audiowide', sans-serif;
     padding: 3.5rem;
     justify-content: center;
-}
+} */
 .advocRightbox{
     padding: 3rem;
     height: 40rem;
@@ -59,8 +59,10 @@
     margin-right: 1.5rem;
     flex-grow: 1;
 }
+
 .inputs input{
     background-color: grey;
+
     /* dob  */
     
 }
@@ -167,7 +169,7 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
-  
+
 
 /* CSS for 17-inch Laptop */
 @media screen and (min-width: 1367px) {

@@ -1,10 +1,10 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Filetable from '../Filetable';
 import "./CaseDocinfo.css";
 const CaseDocinfo = () => {
   const location = useLocation();
-  const cnrdata = location?.state?.cnr || '';
+  const cnrdata = location?.state?.CnrNumber || '';
   const [files, setFiles] = useState([]);
     useEffect(() => {
         const fetchFiles = async () => {

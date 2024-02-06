@@ -4,7 +4,7 @@ import Filetable from './Filetable';
 import "./Litigant/CaseDocinfo.css";
 const AdvCaseDocinfo = () => {
     const location = useLocation();
-    const cnrdata = location?.state?.cnr || '';
+    const cnrdata = location?.state?.CnrNumber|| '';
     const [files, setFiles] = useState([]);
     useEffect(() => {
       const fetchFiles = async () => {

@@ -99,6 +99,7 @@ margin-right: 10px;
 /* .advloginContainer{
   display: flex;
   background-color: #0c1707;
+  height: 100vh;
 }
 
 .advloginLeft{
@@ -182,8 +183,8 @@ background-color: #F1EFEE;
 }
 .omg{
   display: flex;
-  align-items: center;
 }
+
 .omg button{
   border-radius: 5px;
   font-family: 'Audiowide', sans-serif;
@@ -191,6 +192,13 @@ background-color: #F1EFEE;
   color: #0c1707;
   cursor: pointer;
   background-color: #A9ACAA;
+}
+.m input{
+  width:10vw;
+  height: 1.8rem;
+  align-items: center;
+  margin-top: 0.1rem;
+  margin-left: 1.1rem;
 }
 .x button{
   text-align: center;

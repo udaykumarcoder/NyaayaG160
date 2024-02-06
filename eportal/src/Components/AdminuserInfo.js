@@ -1,6 +1,7 @@
 //Adminstrator user info
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import './Userinfo.css';
 
 const UserInfo = () => {
   const location = useLocation();
@@ -51,7 +52,9 @@ return (
           <div className='litigantName'>
             <h4>{userData.name}</h4>
             <p>Administrator</p>
+           
           </div>
+          
           <div className='Lbutton'>
             <button>✒Edit Profile</button>
           </div>
@@ -60,7 +63,12 @@ return (
         <div className="litigantDetails">
           <h5><b>EMAIL ID</b></h5>
           <br />
+          <div className="idsAdmin">
           <p>{userData.email || emailFromLogin}</p>
+          <div className="adminEmployeeid">
+            <h6>Employee ID: {userData.employeeid}</h6>
+          </div>
+          </div>
           <hr />
           <br />
           <h5><b>CONTACT</b></h5>

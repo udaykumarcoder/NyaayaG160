@@ -110,12 +110,18 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.casefilingBack{
-  margin: 44px;
-  margin-top:  -20px; 
+.csButtons button{
+  width: 4rem;
 }
+
 .vinnu{
+  float:right;
   margin-top: 25rem;
-  float: right;
-  margin-right: 2rem;
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 1366px) {
+  .leftside{
+    padding-left: 700px;
+  }
 }

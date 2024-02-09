@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
-import "./Advocatesidebar.css";
 import "./sidebar.css";
+import userIcon from '../Assets/loginicons/litigantuser.jpeg';
+import caseDoc from '../Assets/loginicons/Lcasedoc.jpeg';
+import casefiling from '../Assets/loginicons/casefiling.jpeg';
+
 
 const Advocatesidebar = ({switchComponent}) => {
   const location = useLocation();
@@ -75,9 +78,9 @@ const Advocatesidebar = ({switchComponent}) => {
         <ul>
           
        
-        <li><h3 onClick={() => switchComponent(0)}>👤 &nbsp; User Info</h3></li>
-        <li><h3 onClick={()=>switchComponent(1)}>📃&nbsp;Case Documents</h3></li>
-        <li><Link to="/casefiling" style={{ textDecoration:"none"}}><h3 style={{color:"white" }} > 📜Case Filing</h3></Link></li>
+        <li><h3 onClick={() => switchComponent(0)}><img className='sidebarImg' src={userIcon} alt="User Info" /> &nbsp; User Info</h3></li>
+        <li><h3 onClick={() => switchComponent(1)}><img className='sidebarImg' src={caseDoc} alt="Case Documents" />&nbsp;Case Documents</h3></li>
+        <li><Link to="/casefiling" style={{ textDecoration:"none"}}><h3 style={{color:"white" }} ><img className='sidebarImg' src={casefiling} alt="Case Filing" />&nbsp;Case Filing</h3></Link></li>
 
           
         </ul>

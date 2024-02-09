@@ -223,7 +223,7 @@ const LitigantForm = () => {
                   <div className="form-group row">
                     <label htmlFor="name" className="col-sm-3 col-form-label">DOB:</label>
 
-                    <input type="date" id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft: '10px', backgroundColor: 'grey' }} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)} required />
+                    <input type="date" id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft: '10px'}} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)} required />
                     <br></br>
 
                   </div>

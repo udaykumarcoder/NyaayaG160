@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 import './Userinfo.css';
 
 
@@ -58,7 +58,7 @@ return (
             <p>Litigant</p>
           </div>
           <div className='Lbutton'>
-            <button>✒Edit Profile</button>
+            <button className='userInfobuttons'>✒Edit Profile</button>
           </div>
         </div>
 
@@ -77,10 +77,9 @@ return (
           <br />
           <div className="Lpassword">
             <p>*********</p>
-            <p>🔑<button>Change Password</button></p>
+            <p>🔑<button className='userInfobuttons'>Change Password</button></p>
           </div>
           <hr />
-          <div><Link to="/requestform"><button>RequestForm</button></Link></div>
         </div>
       </>
     )}

@@ -1,14 +1,19 @@
 .chooselawyer {
-  /* margin-top: 15px; */
-  /* margin-left: 6px; */
+ 
   padding: 34px;
   background-color:  #E8DFC5;
   width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+
+}
+.chooselawyer::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
 }
 
 .lawyerCard {
   border: 1px solid #ccc;
-  /* background-color: #C1B192; */
   padding: 10px;
   margin: 10px;
   display: flex;

@@ -18,6 +18,8 @@ const fs = require('fs');
 const pdf = require('html-pdf');
 
 
+
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
@@ -833,96 +835,160 @@ function sendEmail(formData) {
   });
 }
 
+
 function generateHTML(formData) {
   // Create your HTML content with the form data
-  const htmlContent = `
-    <html>
-      <head>
-        <style>
-          /* Add your styling here */
-          body {
-            font-family: Arial, sans-serif;
-          }
-          /* Add more styles as needed */
-        </style>
-      </head>
-      <body>
+//   const htmlContent = 
+//   ` <html>
+//       <head>
+//         <style>
+//           /* Add your styling here */
+//           body {
+//             font-family: Arial, sans-serif;
+//           }
+//           /* Add more styles as needed */
+//         </style>
+//       </head>
+//       <body>
+//         <h1>New Form Submission</h1>
+//         <p>Name: ${formData.name}</p>
+//         <p>Email: ${formData.email}</p>
+//         <div class="cl-section-container">
+//   <div class="cl-section">
+//     <h2>Location Information</h2>
+//     <p>State: ${formData.state}</p>
+//     <p>District: ${formData.district}</p>
+//     <p>Establishment: ${formData.establishment}</p>
+//   </div>
+
+//   <div class="cl-section">
+//     <h2>Case Type Information</h2>
+//     <p>Case Type: ${formData.caseType}</p>
+//     <p>Relief Sought: ${formData.reliefSought}</p>
+//     <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
+//     <p>Mobile Number: ${formData.mobileNo}</p>
+//   </div>
+// </div>
+
+// <div class="cl-section-container">
+//   <div class="section">
+//     <h2>Litigant Information</h2>
+//     <p>Litigant Type: ${formData.litigantType}</p>
+//     <p>Accused: ${formData.accused}</p>
+//     <p>Name: ${formData.name2}</p>
+//     <p>Relation: ${formData.relation2}</p>
+//     <p>Age: ${formData.age}</p>
+//     <p>Date of Birth: ${formData.dob}</p>
+//     <p>Gender: ${formData.gender}</p>
+//     <p>Caste: ${formData.caste}</p>
+//     <p>Differently Able: ${formData.differentlyAble ? 'Yes' : 'No'}</p>
+//   </div>
+
+//   <div class="section">
+//     <h2>Contact Information</h2>
+//     <p>Email: ${formData.email}</p>
+//     <p>Phone: ${formData.phone}</p>
+//     <p>Occupation: ${formData.occupation}</p>
+//     <p>Address: ${formData.address}</p>
+//     <p>Pincode: ${formData.pincode}</p>
+//   </div>
+// </div>
+
+// <div class="section">
+//   <h2>Legal Heir Information</h2>
+//   <p>Party Name: ${formData.partyName}</p>
+//   <p>Heir Type: ${formData.heirType}</p>
+//   <p>Heir Name: ${formData.heirName}</p>
+//   <p>Relation: ${formData.relation2}</p>
+//   <p>Heir Age: ${formData.heirAge}</p>
+//   <p>Date of Birth: ${formData.heirDob}</p>
+//   <p>Gender: ${formData.heirGender}</p>
+//   <p>Caste: ${formData.heirCaste}</p>
+//   <p>Differently Able: ${formData.heirDifferentlyAble ? 'Yes' : 'No'}</p>
+// </div>
+
+// <div class="section">
+//   <h2>Case Details</h2>
+//   <p>Action Cause: ${formData.actionCause}</p>
+//   <p>Reason: ${formData.reason}</p>
+//   <p>Action Date: ${formData.actionDate}</p>
+//   <p>Dispute State: ${formData.disputeState}</p>
+//   <p>Dispute District: ${formData.disputeDistrict}</p>
+//   <p>Dispute Taluka: ${formData.disputeTaluka}</p>
+//   <p>Dispute Village: ${formData.disputeVillage}</p>
+//   <p>Act: ${formData.act}</p>
+//   <p>Section: ${formData.section}</p>
+//   <p>CNR Number: ${formData.CnrNumber}</p>
+//   <p>Unique Code: ${formData.uniqueCode}</p>
+// </div>
+// <div>
+// </div>
+
+//         <!-- Add more fields as needed -->
+//       </body>
+//     </html>`;
+const htmlContent = `
+  <html>
+    <head>
+      <style>
+        body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+        }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          color: #333;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        p {
+          color: #555;
+          line-height: 1.6;
+        }
+        .section {
+          margin-bottom: 20px;
+        }
+        .section h2 {
+          color: #007bff;
+          margin-bottom: 10px;
+        }
+        .section p {
+          margin: 5px 0;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
         <h1>New Form Submission</h1>
-        <p>Name: ${formData.name}</p>
-        <p>Email: ${formData.email}</p>
-        <div class="cl-section-container">
-  <div class="cl-section">
-    <h2>Location Information</h2>
-    <p>State: ${formData.state}</p>
-    <p>District: ${formData.district}</p>
-    <p>Establishment: ${formData.establishment}</p>
-  </div>
+        <div class="section">
+          <h2>Location Information</h2>
+          <p>State: ${formData.state}</p>
+          <p>District: ${formData.district}</p>
+          <p>Establishment: ${formData.establishment}</p>
+        </div>
+        <div class="section">
+          <h2>Case Type Information</h2>
+          <p>Case Type: ${formData.caseType}</p>
+          <p>Relief Sought: ${formData.reliefSought}</p>
+          <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
+          <p>Mobile Number: ${formData.mobileNo}</p>
+        </div>
+        <!-- Add more sections with similar styling -->
+      </div>
+    </body>
+  </html>
+`;
 
-  <div class="cl-section">
-    <h2>Case Type Information</h2>
-    <p>Case Type: ${formData.caseType}</p>
-    <p>Relief Sought: ${formData.reliefSought}</p>
-    <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
-    <p>Mobile Number: ${formData.mobileNo}</p>
-  </div>
-</div>
 
-<div class="cl-section-container">
-  <div class="section">
-    <h2>Litigant Information</h2>
-    <p>Litigant Type: ${formData.litigantType}</p>
-    <p>Accused: ${formData.accused}</p>
-    <p>Name: ${formData.name2}</p>
-    <p>Relation: ${formData.relation2}</p>
-    <p>Age: ${formData.age}</p>
-    <p>Date of Birth: ${formData.dob}</p>
-    <p>Gender: ${formData.gender}</p>
-    <p>Caste: ${formData.caste}</p>
-    <p>Differently Able: ${formData.differentlyAble ? 'Yes' : 'No'}</p>
-  </div>
-
-  <div class="section">
-    <h2>Contact Information</h2>
-    <p>Email: ${formData.email}</p>
-    <p>Phone: ${formData.phone}</p>
-    <p>Occupation: ${formData.occupation}</p>
-    <p>Address: ${formData.address}</p>
-    <p>Pincode: ${formData.pincode}</p>
-  </div>
-</div>
-
-<div class="section">
-  <h2>Legal Heir Information</h2>
-  <p>Party Name: ${formData.partyName}</p>
-  <p>Heir Type: ${formData.heirType}</p>
-  <p>Heir Name: ${formData.heirName}</p>
-  <p>Relation: ${formData.relation2}</p>
-  <p>Heir Age: ${formData.heirAge}</p>
-  <p>Date of Birth: ${formData.heirDob}</p>
-  <p>Gender: ${formData.heirGender}</p>
-  <p>Caste: ${formData.heirCaste}</p>
-  <p>Differently Able: ${formData.heirDifferentlyAble ? 'Yes' : 'No'}</p>
-</div>
-
-<div class="section">
-  <h2>Case Details</h2>
-  <p>Action Cause: ${formData.actionCause}</p>
-  <p>Reason: ${formData.reason}</p>
-  <p>Action Date: ${formData.actionDate}</p>
-  <p>Dispute State: ${formData.disputeState}</p>
-  <p>Dispute District: ${formData.disputeDistrict}</p>
-  <p>Dispute Taluka: ${formData.disputeTaluka}</p>
-  <p>Dispute Village: ${formData.disputeVillage}</p>
-  <p>Act: ${formData.act}</p>
-  <p>Section: ${formData.section}</p>
-  <p>CNR Number: ${formData.CnrNumber}</p>
-  <p>Unique Code: ${formData.uniqueCode}</p>
-</div>
-
-        <!-- Add more fields as needed -->
-      </body>
-    </html>
-  `;
   return htmlContent;
 }
 //////////

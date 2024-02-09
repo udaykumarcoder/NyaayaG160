@@ -55,8 +55,8 @@ return (
            
           </div>
           
-          <div className='Lbutton'>
-            <button>✒Edit Profile</button>
+          <div className=' Lbutton'>
+            <button className='userInfobuttons'>✒Edit Profile</button>
           </div>
         </div>
 
@@ -65,10 +65,13 @@ return (
           <br />
           <div className="idsAdmin">
           <p>{userData.email || emailFromLogin}</p>
-          <div className="adminEmployeeid">
-            <h6>Employee ID: {userData.employeeid}</h6>
+    
           </div>
-          </div>
+          <hr />
+          <br />
+          <h5><b>Employee ID: </b></h5>
+          <br />
+          <p>{userData.employeeid}</p>
           <hr />
           <br />
           <h5><b>CONTACT</b></h5>
@@ -78,9 +81,9 @@ return (
           <br />
           <h5><b>PASSWORD</b></h5>
           <br />
-          <div className="Lpassword">
+          <div className=" Lpassword">
             <p>*********</p>
-            <p>🔑<button>Change Password</button></p>
+            <p>🔑<button className='userInfobuttons' >Change Password</button></p>
           </div>
           <hr />
         </div>

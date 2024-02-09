@@ -61,7 +61,7 @@ return (
             <p>Advocate</p>
           </div>
           <div className='Lbutton'>
-            <button>✒Edit Profile</button>
+            <button className='userInfobuttons'>✒Edit Profile</button>
           </div>
         </div>
 
@@ -69,6 +69,11 @@ return (
           <h5><b>EMAIL ID</b></h5>
           <br />
           <p>{userData.email || emailFromLogin}</p>
+          <hr />
+          <br />
+          <h5><b>Linkedin</b></h5>
+          <br />
+          <p><a href={userData.profileurl} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none',color:'black',cursor: 'pointer' }}>{userData.profileurl}</a></p>
           <hr />
           <br />
           <h5><b>CONTACT</b></h5>
@@ -80,7 +85,7 @@ return (
           <br />
           <div className="Lpassword">
             <p>*******</p>
-            <p>🔑<button>Change Password</button></p>
+            <p>🔑<button className='userInfobuttons'>Change Password</button></p>
           </div>
           <hr />
         </div>

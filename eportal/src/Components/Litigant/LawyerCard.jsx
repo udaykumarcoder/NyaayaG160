@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LawyerCard = ({ name, lawyertype, imageUrl,email,phone,experience,successrate,rating }) => {
+const LawyerCard = ({ name, lawyertype, imageUrl,email,phone,experience,successrate,rating,profileurl }) => {
   const navigate=useNavigate();
   const request = (event)=>
   {
@@ -24,7 +24,7 @@ const LawyerCard = ({ name, lawyertype, imageUrl,email,phone,experience,successr
         </div>
         <p><i class="fa fa-envelope" aria-hidden="true"></i>{email}</p>
         <p><i class="fa fa-phone" aria-hidden="true"></i>{phone}</p>
-        <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>www.linkedin.com/name</p>
+        <p><i class="fa fa-linkedin-square" aria-hidden="true"></i><a href={profileurl} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none',color:'black',cursor: 'pointer' }}>{profileurl}</a></p>
         <p>Hyderabad,India</p>
       </div>
         

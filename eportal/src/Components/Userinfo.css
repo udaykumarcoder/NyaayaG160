@@ -1,4 +1,4 @@
-.userInfo{
+.userInfo {
 
     width: 100%;
     height: 90vh;
@@ -9,11 +9,20 @@
 
 }
 
-.userInfo::-webkit-scrollbar {
-    width: 0;  
-    background-color: transparent; 
+.userInfobuttons {
+    background-color: rgb(12, 23, 7, 0.5);
+    color: white;
+    border-radius: 5px;
+    border-color: black;
+
 }
-.profile{
+
+.userInfo::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+}
+
+.profile {
     background-color: white;
     background-image: url(../Assets/Profile.jpg);
     background-size: cover;
@@ -25,37 +34,39 @@
 
 
 }
-.idsAdmin{
+
+.idsAdmin {
     display: flex;
     justify-content: space-between;
 }
-.adminEmployeeid{
-    border: 2px solid black;
-    background-color: wheat;
-  
-}
-.Lprofile{
+
+
+
+.Lprofile {
     /* margin-left: 16rem; */
     display: flex;
     gap: 1rem;
 
 }
-.litigantName{
+
+.litigantName {
     font-family: 'Audiowide', sans-serif;
     margin-top: 3rem;
 
 }
 
-.Lbutton{
+.Lbutton {
     margin-left: 12rem;
     margin-right: 2rem;
     margin-top: 1.5rem;
 }
-.litigantDetails{
+
+.litigantDetails {
     padding: 3rem;
     padding-left: 7rem;
 }
-.Lpassword{
+
+.Lpassword {
     display: flex;
-    justify-content: space-between  ;
+    justify-content: space-between;
 }

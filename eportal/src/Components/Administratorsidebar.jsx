@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import "./Administratorsidebar.css";
+import userIcon from '../Assets/loginicons/litigantuser.jpeg';
+import upload from '../Assets/loginicons/upload.jpeg';
+import update from '../Assets/loginicons/update.jpeg';
+
+
 
 const Administratorsidebar = ({ switchComponent }) => {
 
@@ -39,35 +44,30 @@ const Administratorsidebar = ({ switchComponent }) => {
   return (
     <section>
       {error && <p>{error}</p>}
-    {userData && (
-    <div class="sidebar">
+      {userData && (
+        <div class="sidebar">
           <div className="Litigantprofile">
             <div className="profileImg">
             </div>
           </div>
           <div className="lsidebarName">
-          <h3>
-          {userData.name}
-          </h3>
-          <p>Administrator</p>
+            <h3>
+              {userData.name}
+            </h3>
+            <p>Administrator</p>
           </div>
           <div>
-    <ul>
-      <li
-          onClick={() => switchComponent(0)}><h3> 👤&nbsp;User Info</h3></li>
-      <li 
-          onClick={() =>switchComponent(1) }><h3> 📤 &nbsp;Upload Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;   Documents</h3></li>
-      <li  
-          onClick={() =>switchComponent(2)}><h3>🔁&nbsp; Update Case <br/> &nbsp; &nbsp;&nbsp; &nbsp;  Details</h3></li>
-           
+            <ul>
+            <li><h3 onClick={() => switchComponent(0)}><img className='sidebarImg' src={userIcon} alt="User Info" /> &nbsp; User Info</h3></li>
+            <li><h3 onClick={() => switchComponent(1)}><img className='sidebarImg' src={upload} alt="User Info" />&nbsp;Upload Case <br /> &nbsp; &nbsp;&nbsp;    Documents</h3></li>
+            <li><h3 onClick={() => switchComponent(2)}><img className='sidebarImg' src={update} alt="User Info" />&nbsp; Update Case <br /> &nbsp; &nbsp;&nbsp; &nbsp;  Details</h3></li>
 
-      
-    </ul>
-    <Link smooth to='/#home'><button class="logout"><b>⇤Log Out</b></button></Link>
-  </div>
-</div>
-    )}
-</section>
+            </ul>
+            <Link smooth to='/#home'><button class="logout"><b>⇤Log Out</b></button></Link>
+          </div>
+        </div>
+      )}
+    </section>
   )
 }
 

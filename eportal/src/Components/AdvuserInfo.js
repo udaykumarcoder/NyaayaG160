@@ -71,7 +71,11 @@ return (
           <p>Advocate</p>
           </div>
           <div className='Lbutton'>
+<<<<<<< HEAD
           <button onClick={handleEditProfile}>✒Edit Profile</button>
+=======
+            <button className='userInfobuttons'>✒Edit Profile</button>
+>>>>>>> bab6b3773f28d745371645e330d596589678047c
           </div>
         </div>
 
@@ -79,6 +83,11 @@ return (
           <h5><b>EMAIL ID</b></h5>
           <br />
           <p>{userData.email || emailFromLogin}</p>
+          <hr />
+          <br />
+          <h5><b>Linkedin</b></h5>
+          <br />
+          <p><a href={userData.profileurl} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none',color:'black',cursor: 'pointer' }}>{userData.profileurl}</a></p>
           <hr />
           <br />
           <h5><b>CONTACT</b></h5>
@@ -89,9 +98,14 @@ return (
           <h5><b>PASSWORD</b></h5>
           <br />
           <div className="Lpassword">
+<<<<<<< HEAD
             <p>**********</p>
             <p>🔑<button type="button" onClick={() => navigate('/ChangePassword1', { state: { emailFromLogin} })}>Change Password</button></p>
             
+=======
+            <p>*******</p>
+            <p>🔑<button className='userInfobuttons'>Change Password</button></p>
+>>>>>>> bab6b3773f28d745371645e330d596589678047c
           </div>
           <hr />
           </div>

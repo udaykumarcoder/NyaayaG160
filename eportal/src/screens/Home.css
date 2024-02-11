@@ -1,7 +1,6 @@
 .HOME {
   background-image: url(../Assets/home.jpg);
   border-style: solid;
-
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0px;
@@ -17,6 +16,7 @@
   margin: 50px;
 }
 
+<<<<<<< HEAD
 .buttons button {
   opacity: 0.7; /* Initial opacity */
   transition: opacity 0.3s ease; /* Smooth transition effect */
@@ -24,6 +24,11 @@
 
 .buttons button:hover {
   opacity: 1; /* Opacity on hover */
+=======
+.font button{
+  opacity: 70%;
+  border-radius: 5px;
+>>>>>>> bab6b3773f28d745371645e330d596589678047c
 }
 
 .btn-primary {
@@ -66,7 +71,7 @@
 
   
 
-  #first button {
+  .font button {
     margin-right: 3rem;
     width: 6rem;
     font-size: 1.2rem;
@@ -76,11 +81,8 @@
 
 /* CSS for 14-inch Laptop */
  @media screen and (max-width: 1366px) {
-  /* .HOME {
-    
-    border-width: 30px;
-  } */
-  #first button {
+ 
+  .font button {
     margin-right: 3rem;
     width: 7rem;
     font-size: 1rem;
@@ -91,7 +93,6 @@
 
   #nyaya {
     margin-top: 100px;
-    /* font-size: 90%; */
     font-size: 7rem;
     font-weight: 700;
 
@@ -111,3 +112,31 @@
     margin-top: 0;
   }
 } 
+/* phone */
+@media screen and (max-width: 768px) {
+  .HOME {
+    height: 60vh;
+
+  }
+  
+  #nyaya {
+    margin-top: 100px;
+    font-size: 2rem;
+    font-weight: 700;
+
+  }
+
+  .headline {
+    font-size: 2.5rem;
+    margin-top: 8rem;
+
+  }
+
+  #case {
+    font-size: 1rem;
+  }
+
+  .homeButtons {
+    font-size: 0.5rem;
+  }
+}

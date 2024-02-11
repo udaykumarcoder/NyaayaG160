@@ -104,6 +104,7 @@
     font-size: 1.65rem;
     margin-top: 7.9rem;
     margin-left: 1rem;
+    
 
 
 }
@@ -126,15 +127,7 @@
 
 
 
-.litigantloginCard p {
-    margin-top: -100px;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-family: 'Audiowide', sans-serif;
-    padding-left: 10px;
-    margin-top: 4rem;
-}
+
 
 .adminloginCard p {
     margin-top: -130px;
@@ -169,6 +162,25 @@ img {
 .card:hover {
     box-shadow: 0 8px 16px black;
 
+}
+.litigantloginCard p {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'Audiowide', sans-serif;
+    padding-left: 10px;
+}
+@media screen and (min-width: 1367px) {
+    .litigantloginCard p {
+        
+        margin-top: 7.5rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1366px) {
+    .litigantloginCard p {
+        margin-top: 2.3rem;
+    }
 }
 
 

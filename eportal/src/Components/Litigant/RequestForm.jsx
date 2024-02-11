@@ -64,7 +64,7 @@ const RequestForm = () => {
     <br />
     <label className="req" htmlFor='name'><h3>Description: &nbsp;&nbsp;</h3></label>
     <textarea className="inputs" style={{ marginTop: "20px" }} rows={2} cols={70}  value={description} onChange={(e) => setDescription(e.target.value)} />
-    <button style={{ marginLeft: "45rem", marginTop: "10px" }} onClick={handleSendMail}>Send mail</button>
+    <button id='reqFormbutton' style={{ marginLeft: "45rem", marginTop: "10px" }} onClick={handleSendMail}>Send mail</button>
     <p style={{ marginLeft: "520px", marginTop: "10px" }}>Note:By hitting send mail button a mail will be <br />  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;sent to the advocate you have chosen. </p>
   </div>
   )

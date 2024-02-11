@@ -54,15 +54,20 @@
 }
 
 .inputs input{
-    background-color: grey;
+    background-color: rgb(12, 23, 7,0.5);
 
-    /* dob  */
+
     
 }
 .inputs select{
-    background-color: grey;
-    
+    background-color: rgb(12, 23, 7,0.5);
+
 }
+#dob{
+    background-color: rgb(12, 23, 7,0.5);
+
+}
+
 .advbuttons{
     display: flex;
     flex-direction: row-reverse;

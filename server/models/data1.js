@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
   nalsa: { type: String, required: true },
-
+  propic: { type: String },
   
   
 }, { collection: 'Advocate' });
@@ -24,8 +24,6 @@ const UserData = mongoose.model('UserData', userSchema);
 
 module.exports=UserData;
 
-
-//xiKPfREnG6IPzcSE
 
 
 

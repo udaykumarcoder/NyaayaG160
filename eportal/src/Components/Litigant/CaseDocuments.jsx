@@ -7,33 +7,38 @@ const CaseDocuments = () => {
   const navigate = useNavigate();
   const [cnr, setCnr] = useState('');
   const [ error,setError] = useState('');
+  const [ uniqueCode ] = useState('');
 
-  const handleOpenButtonClick = async() => {
+
+  const handleOpenButtonClick = async () => {
+      
+    console.log('uniqueCode:', uniqueCode);
     console.log('cnr number:', cnr);
-    try {
-      const response = await fetch('http://localhost:3001/validate-cnr', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ cnr }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        
-        console.log('success:', data);
-        navigate('/litigantcasedocuments', { state: { cnr} });
-        
-      } else {
-                  setError('Please enter the valid CNR number.');
-                }
-              } catch (error) {
-                console.error('Error checking CNR:', error);
-                setError('Error checking CNR. Please try again later.');
-              }
-  };
+          try {
+            const response = await fetch('http://localhost:3001/validate-cnr', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ cnr, uniqueCode }),
+            });
+      
+            const data = await response.json();
+      
+            if (response.ok) {
+              
+              console.log('success:', data);
+               
+               navigate('/advocatecasedocuments', { state: { cnr, uniqueCode} });
+              
+            } else {
+                        setError('Please enter the valid CNR number.');
+                      }
+                    } catch (error) {
+                      console.error('Error checking CNR:', error);
+                      setError('Error checking CNR. Please try again later.');
+                    }
+                  };
 
  
 

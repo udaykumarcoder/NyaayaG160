@@ -4,37 +4,44 @@ import { useNavigate } from 'react-router-dom';
 const AdvCaseDocuments = () => {
     
     const navigate = useNavigate();
-    const [cnr, setCnr] = useState('');
+    const [cnrNumber, setCnrNumber] = useState('');
     const [ error,setError] = useState('');
-    
-    const handleOpenButtonClick = async () => {
+    const [uniqueCode, setuniqueCode] = useState('');
+    const [cnr, setCnr] = useState('');
 
-      console.log('cnr number:', cnr);
-            try {
-              const response = await fetch('http://localhost:3001/validate-cnr', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ cnr }),
-              });
-        
-              const data = await response.json();
-        
-              if (response.ok) {
-                
-                console.log('success:', data);
-                 
-                 navigate('/advocatecasedocuments', { state: { cnr} });
-                
-              } else {
-                          setError('Please enter the valid CNR number.');
-                        }
-                      } catch (error) {
-                        console.error('Error checking CNR:', error);
-                        setError('Error checking CNR. Please try again later.');
-                      }
-                    };
+    const handleOpenButtonClick = async () => {
+   
+      
+       
+        console.log('Login values:',cnrNumber, uniqueCode);
+      
+        try {
+          // Perform login without OTP verification
+          const loginResponse = await fetch(`http://localhost:3001app.post/cnrverification`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cnrNumber, uniqueCode }),
+          });
+      
+          const loginData = await loginResponse.json();
+      
+          if (loginResponse.ok) {
+            console.log('Login successful:', loginData);
+            navigate('/advocateaccount', { state: { cnrNumber } });
+          } else {
+            console.error('Login failed:', loginData);
+            alert('Login failed. Please check your credentials.');
+          }
+        } catch (loginError) {
+          console.error('Error during login:', loginError);
+          alert('An error occurred during login. Please try again.');
+        }
+      };
+      
+                   
+  
       
     
   return (

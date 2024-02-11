@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Example import statement, adjust as per your setup
 import { useLocation } from 'react-router-dom';
+import EditProfile from './EditProfile'; 
+
 import './Userinfo.css';
+
 
 
 const AdvuserInfo = () => {
@@ -8,7 +12,12 @@ const AdvuserInfo = () => {
   const emailFromLogin = location?.state?.email  || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
-
+ 
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [triggerFetch, setTriggerFetch] = useState(false);
+  const navigate=useNavigate();
+  console.log(emailFromLogin)
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -24,6 +33,7 @@ const AdvuserInfo = () => {
           const data = await response.json();
           if (data && Object.keys(data).length > 0) {
             setUserData(data);
+          
           } else {
             setError('User data not available.');
           }
@@ -41,27 +51,27 @@ const AdvuserInfo = () => {
     localStorage.setItem('loggedInUserEmail', emailFromLogin);
   }, [emailFromLogin]);
 
+  const handleEditProfile = () => {
+    // Navigate to edit profile page and pass user data as state
+    navigate('/edit-profile', { state: { emailFromLogin } });
+  };
 
+  
 
 return (
   <div className="userInfo">
     {error && <p>{error}</p>}
     {userData && (
       <>
-        {/* <div className="whiteBox"> */}
-          
-          {/* </div> */}
-
-        <div className='Lprofile'>
-                    <div className="profile">
-                    </div>
-
+      <div className='Lprofile'>
+        <div className="profile">
+          </div>
           <div className='litigantName'>
-            <h4>{userData.name}</h4>
-            <p>Advocate</p>
+          <h4>{userData.name}</h4>
+          <p>Advocate</p>
           </div>
           <div className='Lbutton'>
-            <button>✒Edit Profile</button>
+          <button onClick={handleEditProfile}>✒Edit Profile</button>
           </div>
         </div>
 
@@ -79,14 +89,16 @@ return (
           <h5><b>PASSWORD</b></h5>
           <br />
           <div className="Lpassword">
-            <p>*******</p>
-            <p>🔑<button>Change Password</button></p>
+            <p>**********</p>
+            <p>🔑<button type="button" onClick={() => navigate('/ChangePassword1', { state: { emailFromLogin} })}>Change Password</button></p>
+            
           </div>
           <hr />
-        </div>
+          </div>
+
       </>
     )}
- 
+    
   </div>
 );
 };

@@ -17,6 +17,15 @@
   margin: 50px;
 }
 
+.buttons button {
+  opacity: 0.7; /* Initial opacity */
+  transition: opacity 0.3s ease; /* Smooth transition effect */
+}
+
+.buttons button:hover {
+  opacity: 1; /* Opacity on hover */
+}
+
 .btn-primary {
   display: flex;
   align-items: center;

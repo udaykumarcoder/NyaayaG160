@@ -22,6 +22,9 @@ import About from './screens/About';
 import Contact from './screens/Contact';
 import Home from './screens/Home';
 import Signup from './screens/Signup';
+import ChangePassword1 from './Components/ChangePassword1';
+import EditProfile from './Components/EditProfile';
+import Rating from './Components/Litigant/rating';
 function App() {
   return (
     <Router>
@@ -49,7 +52,9 @@ function App() {
         <Route path ="/litigantcasedocuments" element={<CaseDocinfo/>}/>
         <Route path='/caselegalform' element={<CaseLegalform/>}/>
         <Route path="/requestform" element={<RequestForm/>}/>
-       
+        <Route path='/ChangePassword1' element={<ChangePassword1/>}/>
+        <Route path="/edit-profile" element={<EditProfile/>}/>
+        <Route path="/Rating" element={<Rating/>}/>
       </Routes>
     </Router>
   );

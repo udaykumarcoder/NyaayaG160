@@ -73,46 +73,11 @@ const Casefiling = () => {
   });
   const navigate = useNavigate();
   const handleTabChange = (tabNumber) => {
-    // if (activeTab === 6 && tabNumber !== 6) {
-    //   return;
-    // }
 
-
-    // if (tabNumber !== 6) {
     setActiveTab(tabNumber);
-    //}
+   
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(formData)
 
-
-  //   try {
-  //     const response = await fetch('http://localhost:3001/api/casefiling', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     if (response.ok) {
-
-  //       alert('Your case has been filed successfully');
-  //       // navigate('/caselegalform')
-  //       navigate('/caselegalform', { state: { formData } });
-
-  //       //  setActiveTab(6);
-
-
-  //     } else {
-
-  //       alert('Failed to file the case. Please try again.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting the form:', error);
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

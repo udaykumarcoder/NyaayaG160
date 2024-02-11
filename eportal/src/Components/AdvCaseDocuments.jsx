@@ -5,9 +5,11 @@ const AdvCaseDocuments = () => {
     
     const navigate = useNavigate();
     const [CnrNumber, setCnrNumber] = useState('');
-    const [uniqueCode, setUniqueCode] = useState('');
-    const [ error,setError] = useState('');
     
+    const [ error,setError] = useState('');
+    const [uniqueCode, setUniqueCode] = useState('');
+    const [cnr, setCnr] = useState('');
+
     const handleOpenButtonClick = async () => {
 
       console.log('cnr number:', CnrNumber);

@@ -303,10 +303,10 @@ const Casefiling = () => {
         return (
           <div>
             
-            <form style={{ height: "790px" }} className='caseform'>
+            <form  className='caseform'>
               <h6 style={{ color: "red", marginLeft: "20px", paddingTop: "20px" }}>
                 Note:This tab is compulsory.</h6>
-              <label style={{ marginLeft: "80px", paddingTop: "30px" }}>Type&nbsp; &nbsp;</label>
+              <label style={{ paddingLeft: "80px", paddingTop: "30px" }}>Type&nbsp; &nbsp;</label>
 
               <input
 
@@ -341,7 +341,7 @@ const Casefiling = () => {
                   onChange={(e) => handleChange("relation", e.target.value)}
                 /><br /><br />
                 <label className="formfields" >Date of birth&nbsp;&nbsp;</label>
-                <input type="date" id="dob" name="dob" value={formData.dob}
+                <input type="date"  name="dob" value={formData.dob}
                   onChange={(e) => handleChange("dob", e.target.value)} /><br /><br />
                 <label className="formfields" htmlFor="caste">Caste</label>
                 <select style={{ marginLeft: "59px" }}
@@ -444,7 +444,7 @@ const Casefiling = () => {
               </div>
             </form>
 
-            <button className="nexttabbtn" onClick={handleNextTab}>
+            <button  className=" caseFilingnxt nexttabbtn" onClick={handleNextTab}>
               Next ➜
             </button>
           </div>
@@ -453,7 +453,7 @@ const Casefiling = () => {
       case 3:
         return (
           <div>
-            <form style={{ height: "820px" }} className='caseform'>
+            <form  className='caseform'>
               <h6 style={{ color: "red", marginLeft: "20px", paddingTop: "20px" }}>Note:Legal heir details tab.</h6>
               <label style={{ marginLeft: "80px", paddingTop: "30px" }}>Party Name &nbsp; &nbsp;</label>
               <input type="text" id="partyname" name="partyname" value={formData.partyName}
@@ -482,7 +482,7 @@ const Casefiling = () => {
                   onChange={(e) => handleChange('relation2', e.target.value)} /><br /><br />
                 <label className="formfields" >Date of birth&nbsp;&nbsp;</label>
 
-                < input style={{ marginLeft: "60px" }} type="date" id="dob" name="heirDob" value={formData.heirDob}
+                < input style={{ marginLeft: "60px" }} type="date"  name="heirDob" value={formData.heirDob}
                   onChange={(e) => handleChange("heirDob", e.target.value)} /><br /><br />
                 <label className="formfields" htmlFor="caste">Caste</label>
                 <select style={{ marginLeft: "118px" }}
@@ -589,7 +589,7 @@ const Casefiling = () => {
                 </div>
               </div>
             </form>
-            <button className="nexttabbtn" onClick={handleNextTab}>
+            <button  className="nexttabbtn caseFilingnxt" onClick={handleNextTab}>
               Next➜
             </button>
           </div>
@@ -598,7 +598,7 @@ const Casefiling = () => {
         return (
           
           <div>
-            <form style={{ height: "790px" }} className='caseform'>
+            <form id='factDetailscf' className='caseform'>
               <h6 style={{ color: "red", marginLeft: "20px", paddingTop: "20px" }}>Note:This tab is not compulsory.</h6>
               <center><h3>Fact Details</h3></center>
               <div style={{ marginTop: "30px" }}>
@@ -629,15 +629,8 @@ const Casefiling = () => {
                 </label>
               </div>
 
-              <center><button style={{ marginTop: "20px" }}>Submit</button></center>
-
-              <div>
-                <center><button style={{ marginTop: "20px" }} >
-                  + Add new case</button></center>
-              </div>
-
             </form>
-            <button className="nexttabbtn" onClick={handleNextTab}>
+            <button  className="nexttabbtn caseFilingnxt" onClick={handleNextTab}>
               Next➜
             </button>
           </div>
@@ -645,7 +638,7 @@ const Casefiling = () => {
       case 5:
         return (
           <div>
-            <form style={{ height: "500px" }} className='caseform'>
+            <form className='caseform'>
               <div>
                 <center><h3>CASE DETAILS</h3></center>
               </div>
@@ -664,7 +657,7 @@ const Casefiling = () => {
                 <br /><br />
                 <div className='leftside'>
                   <label htmlFor="date">Date of cause of action</label>
-                  <input style={{ marginLeft: "80px" }} type="date" id="date" name="date"
+                  <input  type="date" id="date" name="date"
                     value={formData.actionDate}
                     onChange={(e) => handleChange('actionDate', e.target.value)}
                   /><br />
@@ -714,9 +707,12 @@ const Casefiling = () => {
                   value={formData.section}
                   onChange={(e) => handleChange('section', e.target.value)}
                 />
+                
               </div>
             </form>
-
+            <button  className=" caseFilingnxt nexttabbtn" onClick={handleNextTab}>
+              Next ➜
+            </button>
 
     </div>
   );

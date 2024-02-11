@@ -13,9 +13,12 @@ const File = require('./models/file');
 const Detail = require('./models/Detail'); 
 const UserDatabar = require('./models/barnumbers');
 const UserDataempid=require('./models/Employeeid');
+const rating=require('./models/rating');
 const Case= require('./models/caseMain');
 // const fs = require('fs');
 const pdf = require('html-pdf');
+
+
 
 
 app.use(cors());
@@ -32,17 +35,6 @@ mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   console.error('MongoDB connection error:', err);
 });
 
-//for mongo Atlas { AWS cloud Service}
-
-// mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-  
-// }).then(() => {
-//   console.log('MongoDB connected');
-// }).catch((err) => {
-//   console.error('MongoDB connection error:', err);
-// });
 
 //// Advocate signup
 app.post('/signup/advocate', async (req, res) => {
@@ -514,14 +506,19 @@ app.post('/validate-cnr&uniquecode', async (req, res) => {
     if (!user) {
       return res.status(404).json({ status: 'error', message: 'User not found' });
     }
-    
-    res.json({ status: 'ok', user });
 
+    if (uniqueCode !== user.uniqueCode) {
+      return res.status(401).json({ status: 'error', message: 'Invalid details' });
+    }
+
+    // Successful login
+    res.json({ status: 'ok', user });
   } catch (err) {
-    res.status(500).json({ status: 'error', error: err.message });
+    console.error('Error during login:', err);
+    res.status(500).json({ status: 'error', message: 'An error occurred during login. Please try again.' });
   }
-  
 });
+
 /// lawyer profiles 
 app.get('/api/lawyers', async (req, res) => {
   try {
@@ -866,6 +863,7 @@ function sendEmail(formData) {
   });
 }
 
+
 function generateHTML(formData) {
 //   // Create your HTML content with the form data
 //   const htmlContent = `
@@ -1050,6 +1048,87 @@ app.post('/api/send-email', (req, res) => {
     res.status(200).send('Email sent: ' + info.response);
   });
 });
+
+app.post('/ChangePassword1-Advocate', async (req, res) => {
+  const { email, password, newPassword } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+
+    const { newPassword, confirmnewPassword } = req.body;
+
+    
+    const user = await UserData.findOne({ email, password });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+    else if (newPassword !== confirmnewPassword) {
+      return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
+    }
+    user.password = newPassword;
+    user.confirmPassword=newPassword;
+    await user.save();
+    res.json({ message: 'Password change successful.' });
+  } catch (error) {
+    
+    console.error('Error during password change:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
+app.post('/api/updateProfile', async (req, res) => {
+  const { email, newname, newphone,newpropic } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+  const user = await UserData.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+    
+    user.name = newname;
+    user.phone = newphone;
+    user.propic = newpropic;
+    await user.save();
+    res.json({ message: 'Profile change successful.' });
+  } catch (error) {
+    
+    console.error('Error during Profile change:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
+
+
+app.post('/api/ratings', async (req, res) => {
+    const { email, cnrNumber, rate } = req.body;
+    console.log("hii", req.body)
+    try {
+        await rating.create({ email, cnrNumber, rate});
+        res.status(201).send('Rating submitted successfully');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Failed to submit rating');
+        console.error('Error updating rating:', error);
+       
+    }rating
+});
+app.get('/ratings/average/:email', async (req, res) => {
+  try {
+      const email = req.params.email;
+      const ratings = await rating.find({ email });
+      if (ratings.length === 0) {
+          return res.json({ averageRating: 0 });
+      }
+      const totalSum = ratings.reduce((acc, rating) => acc + rating.rate, 0);
+      const averageRating = totalSum / ratings.length;
+      res.json({ averageRating });
+  } catch (error) {
+      console.error('Error calculating average rating:', error);
+      res.status(500).json({ error: 'Failed to calculate average rating' });
+  }
+});
+
+
+
 
 
 app.listen(PORT, () => {

@@ -45,8 +45,20 @@
   cursor: pointer;
   margin-bottom: 45px;
 }
-.sidebar .logout{
+/* .sidebar .logout{
   margin-left: 10rem;
+} */
+.logout{
+  background-color: #EAECE1;
+  opacity: 80%;
+  color: black;
+  border-radius: 5px;
+  
+}
+
+.sidebarImg{
+  height: 2rem;
+  width: 2rem;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1366px) {
@@ -64,7 +76,7 @@ margin-left: 5rem;
 .sidebar ul {
   margin-left: 0rem;
 }
-.sidebar .logout{
+/* .sidebar .logout{
   margin-left: 7rem;
-}
+} */
 }

@@ -1,11 +1,47 @@
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Add this style to hide the details by default */
+.labels details {
+    display: none;
+    height: 0; /* Set initial height to 0 */
+    overflow: hidden;
+  }
+  
+  /* Show details on hover */
+  .labels:hover details {
+    display: block;
+    height: auto; /* Set height to auto when open */
+    transition: height 0.5s ease-in-out;
+  }
+  .labels summary:hover {
+    background-color: #ccc; /* Adjust background color on hover */
+    cursor: pointer;
+  }
+  .labels summary::after {
+    content: ''; /* Unicode arrow character */
+     display: inline-block;
+    margin-left: 5px;
+  } 
+
+
 /* CSS for 17-inch Laptop */
+
 @media screen and  (min-width: 1367px) {
     .fcontainer {
         background-color: #e8dfc5;
         height: 800px;
         padding: 10px;
         padding-left: 60px;
-
+        opacity: 0; 
+        animation: fadeIn 1s ease-in-out forwards;
     }
 
     .fmainblock {
@@ -70,6 +106,20 @@
         font-size: 2rem;
         font-family: 'Audiowide', sans-serif;
     }
+    .Font3 {
+        font-size: 1rem;
+        font-family: 'Audiowide', sans-serif;
+    }
+    .Font4 {
+        font-size: 1.5rem;
+        font-family: 'Outfit';
+        text-wrap: wrap;
+    }
+    .Font5 {
+        font-size: 1rem;
+        font-family: 'Outfit';
+        text-wrap: wrap;
+    }
     .summarypara{
         width: 30vw;
         text-wrap: wrap;
@@ -82,7 +132,8 @@
     .fcontainer {
         background-color: #e8dfc5;
         height: 800px;
-
+        opacity: 0; 
+        animation: fadeIn 1s ease-in-out forwards;
     }
 
     .fmainblock {
@@ -115,7 +166,7 @@
 
     .hr {
         height: 3px;
-        width: 46vw;
+        width: 50vw;
         flex-wrap: wrap;
         color: solid black;
         background-color: black;
@@ -156,7 +207,8 @@
 @media screen and (max-width: 768px) {
     .fcontainer {
         background-color: #e8dfc5;
-
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards; 
     }
     .fpara {
         padding: 1rem;
@@ -196,6 +248,7 @@
         font-size: 1.5rem;
         font-family: 'Audiowide', sans-serif;
     }
+ 
 
 }
 

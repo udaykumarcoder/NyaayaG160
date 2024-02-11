@@ -24,8 +24,8 @@ const Home = () => {
         <section>
           <div className="buttons" >
 
-          <Link to="/login" className="font" id="first"> <button >LOGIN</button> </Link>
-          <Link to="/signup" className='font' id='first'><button >SIGNUP</button>  </Link>
+          <Link to="/login" className='font' > <button >LOGIN</button> </Link>
+          <Link to="/signup" className='font' ><button >SIGNUP</button>  </Link>
           </div>
         </section>
         

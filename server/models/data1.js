@@ -26,8 +26,6 @@ const UserData = mongoose.model('UserData', userSchema);
 module.exports=UserData;
 
 
-//xiKPfREnG6IPzcSE
-
 
 
 

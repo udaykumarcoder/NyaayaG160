@@ -1,59 +1,4 @@
-/* Casefiling.css
 
-.tab-buttons {
-    display: flex;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-  
-  .tab-buttons button {
-    padding: 10px 15px;
-    margin: 0 2px;
-    border: none;
-    border-radius: 15px; 
-    cursor: pointer;
-  }
-  
-  .tab-buttons button.active {
-    background-color: grey; 
-    color: #fff; 
-  }
-  .sideheads{
-    margin-top: 30px;
-    padding-left: 40px;
-    background-color:  #66644C;
-    
-    color: #E8DFC6;
-    margin-bottom:20px ;
-    
-  }
-  .caseform{
-    margin-left: 40px;
-    margin-top: 30px;
-    width: 95%;
-    opacity: 70%;
-    background-color: #C1B192;
-    height: 500px;
-    color: black;
-  }
-  
- .formfields{
-    padding-left: 100px;
- } 
- .leftside{
-    padding-left: 1000px;
-    margin-top: -180px;
- }
-.centre{
-  padding-left: 400px;
-}
-.nexttabbtn{
-  margin-left: 83rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
-} */
-
-/* Casefiling.css */
 
 .tab-buttons {
     display: flex;
@@ -87,16 +32,20 @@
     margin-top: 10px;
     width: 95%;
     opacity: 70%;
+    padding: 1.5rem;
     background-color: #C1B192;
-    height: 500px;
+    height: auto;
     color: black;
+  }
+  #factDetailscf{
+      padding: 3rem;
   }
   
  .formfields{
     padding-left: 100px;
  } 
  .leftside{
-    padding-left: 1000px;
+    padding-left: 53rem;
     margin-top: -180px;
  }
 .centre{

@@ -1,7 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import './Faq.css';
 
 const Faq = () => {
+  useEffect(() => {
+    // Add event listeners to handle hovering effect
+    const labels = document.querySelectorAll('.labels');
+
+    labels.forEach(label => {
+      // // label.addEventListener('mouseenter', () => {
+      //   label.querySelector('details').setAttribute('open', 'true');
+      // //});
+      const detailsElement = label.querySelector('details');
+      if (detailsElement) {
+        label.addEventListener('mouseenter', () => {
+          detailsElement.setAttribute('open', 'true');
+        });
+
+        label.addEventListener('mouseleave', () => {
+          detailsElement.removeAttribute('open');
+        });
+      }
+    });
+
+    return () => {
+      // Remove event listeners on component unmount
+      labels.forEach(label => {
+        const detailsElement = label.querySelector('details');
+
+        if (detailsElement) {
+          label.removeEventListener('mouseenter', () => {
+            detailsElement.setAttribute('open', 'true');
+          });
+
+          label.removeEventListener('mouseleave', () => {
+            detailsElement.removeAttribute('open');
+          });
+        }
+      });
+    };
+  }, []);
   return (
     <>
       <div className="fcontainer" id='faq'>
@@ -27,38 +64,55 @@ const Faq = () => {
             <hr className='hr' />
             <details className='labels'>
               <summary className='Font2'>Advocate registration</summary>
-              <p className='summarypara'>
-              1. Can I manage multiple cases simultaneously? <br />
+
+              <details className='labels'>
+              <summary className='Font4'> 1. Can I manage multiple cases simultaneously? </summary>
+              <p className='Font5'>
               A: Yes, multiple cases can be managed simultaneously using CNR number of a particular case.<br /><br />
-              2. What credentials are required for advocate verification?<br />
-              A: Bar registration number is required for advocate verification<br /><br />
-              3. How do I file a new case through the portal?<br />
+             </p>
+              </details>
+              <details className='labels'>
+             <summary className='Font4'>  2. What credentials are required for advocate verification?</summary>
+              <p className='Font5'>
+              A: Bar registration number is required for advocate verification.<br /><br />
+             </p>
+             </details> 
+             <details className='labels'>
+             <summary className='Font4'>3. How do I file a new case through the portal?</summary>
+              <p className='Font5'>
               A: Case filing form is available on Nyaaya to file a new case.<br /><br />
-              </p>
+             </p>
+             </details>
+              
             </details>
-            <br />
+             <br />
             <hr className='hr' />
             <details className='labels'>
               <summary className='Font2'>Litigant registration</summary>
-              <p className='summarypara'>
-              1. How can I find experienced and assured advocates?<br />
+              <details className='labels'>
+              <summary className='Font4'>1. How can I find experienced and assured advocates?</summary>
+              <p className='Font5'>  
               A: You can choose your advocate from the advocate profiles available on Nyaaya whose profiles are verified .<br /><br />
-              2. Can I track the status of my case online?<br />
-              A: Yes, Nyaaya provides a case tracking feature to track the status of your case<br /><br />
-              3. How can I view or request copies of filed documents or court orders?<br />
-              A: Case documents submitted in the court can be viewed using the case documents feature available on Nyaaya<br /><br />
               </p>
+            </details>
+             
             </details>
             <br />
             <hr className='hr' />
             <details className='labels'>
               <summary className='Font2'>Case Filing</summary>
-              <p className='summarypara'>
-              1. How do I start a new case filing on the portal as a litigant? <br />
+              <details className='labels'>
+              <summary className='Font4'> 1. How do I start a new case filing on the portal as a litigant? </summary>
+              <p className='Font5'>
               A: You can choose your advocate from the advocate profiles and send your case details to the advocate. If the advocate accepts your case then the advocate can file your case on Nyaaya.<br /><br />
-              2. What type of cases can be filed using Nyaaya?<br />
+             </p>
+              <details className='labels'>
+              <summary className='Font4'>2. What type of cases can be filed using Nyaaya?</summary>
+              <p className='Font5'>
               A: You can file Criminal and Civil cases using Nyaaya<br /><br />
               </p>
+            </details>
+            </details>
             </details>
             <br />
             <hr className='hr' />

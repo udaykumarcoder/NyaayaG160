@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 import "./Contact.css";
 
 
@@ -13,7 +12,10 @@ const Contact = () => {
         <div className="contactLeft">
           <h3>Contact us at:</h3>
           <div className="contactContent">
-            <p>✉️ nyaaya160@gmail.com</p>
+          <address>
+              
+              <a href="mailto:nyaaya160@gmail.com">✉️ nyaaya160@gmail.com</a>
+              </address>
             <p>🏠 Neil Gogte Institute of Technology,Uppal, <br />Kachawanisingaram Village,Hyderabad,Telangana,500039</p>
           </div>
         </div>

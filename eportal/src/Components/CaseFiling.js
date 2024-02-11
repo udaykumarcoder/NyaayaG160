@@ -10,6 +10,7 @@ const Casefiling = () => {
     state: 'Select State',
     district: '',
     establishment: '',
+    establishmentemail: '',
     caseType: '',
     reliefSought: '',
     appellantRespondant: '',
@@ -133,6 +134,13 @@ const Casefiling = () => {
       console.log('Case Filing Response:', caseFilingData);
   
       // Make a POST request to the backend server for email submission
+     
+       
+      // Process the email response as needed
+      // const emailData = await emailResponse.json();
+      
+      if (caseFilingResponse.ok) {
+      // Optionally, you can handle success or navigate to another page
       const emailResponse = await fetch('http://localhost:3001/submit-form', {
         method: 'POST',
         headers: {
@@ -140,13 +148,12 @@ const Casefiling = () => {
         },
         body: JSON.stringify(formData),
       });
-  
-      // Process the email response as needed
+      alert("Case Filed Successfully")
+      navigate('/caselegalform', { state: { formData } })
       const emailData = await emailResponse.json();
       console.log('Email Response:', emailData);
-  
-      // Optionally, you can handle success or navigate to another page
-      navigate('/caselegalform', { state: { formData } })
+    }
+
     } catch (error) {
       console.error('Error submitting form:', error);
       // Handle error
@@ -227,6 +234,9 @@ const Casefiling = () => {
                 <label className="formfields" htmlFor="establishment">Establishment &nbsp; &nbsp;</label>
                 <input type="" id="" name="" value={formData.establishment}
                   onChange={(e) => handleChange('establishment', e.target.value)} />
+                  <label className="formfields" htmlFor="establishment">Establishment-email &nbsp; &nbsp;</label>
+                <input type="" id="" name="" value={formData.establishmentemail}
+                  onChange={(e) => handleChange('establishmentemail', e.target.value)} />
               </div>
               <div className='sideheads'>
                 <b>Case Types</b>

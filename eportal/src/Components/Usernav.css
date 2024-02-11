@@ -1,18 +1,41 @@
-.usernavbar {
+
+.userNavmain {
     background-color: #0c1707;
-    padding: 1rem;
+    height: 100vh;
 }
 
+
+
+
+.loginNavicon{
+    font-size: 3rem;
+    position: absolute;
+    display: none;
+}
+
+
+
+.usernavbar {
+    background-color: #0c1707;
+    
+}
+
+.loginNavLogo{
+    margin-top: -2.5rem;
+
+}
 .usernavcontainer {
     display: flex;
     justify-content: space-between;
     font-family: 'Audiowide', sans-serif;
     height: 60px;
     color: #E2DBD3;
+    width: auto;
 }
 
 .usernavbar ul {
     display: flex;
+    flex-direction: row;
     align-items: center;
     margin-right: 12px;
     margin-top: 34px;
@@ -23,6 +46,7 @@
     margin: 44px;
 
 }
+
 
 .mainTitle {
     background-color: #0c1707;
@@ -42,12 +66,14 @@
 
 .loginCards {
     display: flex;
-    background-color: #0c1707;
-    height: 100vh;
+    flex-wrap: wrap;
     flex-direction: row;
+    height: 100vh;
+    background-color: #0c1707;
+    height: auto;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: -20px;
+    margin-top: 5rem;
 
 
 }
@@ -56,8 +82,8 @@
 .litigantloginCard,
 .adminloginCard {
 
-    height: 30rem;
-    width: 21.5rem;
+    height: 70vh;
+    width: 25vw;
     border-radius: 10px;
     display: inline-block;
     margin: 10px;
@@ -68,18 +94,20 @@
 
 }
 
-.litigantloginCard  {
+.litigantloginCard {
     background-color: #CDC7BF;
     color: #0c1707;
     font-family: 'Audiowide', sans-serif;
 }
-.litigantloginCard h3{
+
+.litigantloginCard h3 {
     font-size: 1.65rem;
-    margin-top: 10rem;
+    margin-top: 7.9rem;
     margin-left: 1rem;
 
 
 }
+
 .advocateloginCard:hover,
 .litigantloginCard:hover,
 .adminloginCard:hover {
@@ -141,4 +169,50 @@ img {
 .card:hover {
     box-shadow: 0 8px 16px black;
 
+}
+
+
+/* css for phone */
+
+@media screen and (max-width: 768px) {
+
+    .loginCards {
+        flex-direction: column;
+    }
+
+    .advocateloginCard,
+    .litigantloginCard,
+    .adminloginCard {
+
+        height: 50vh;
+        width: 70vw;
+        border-radius: 10px;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px black;
+        transition: 0.5s;
+
+
+    }
+    .loginNavicon{
+        display: block;
+        cursor: pointer;
+    }
+    .loginNavlogo{
+        display: none;
+    }
+    .usernavbar ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -3rem;
+        top: 1rem;
+        background-color: black;
+        visibility: hidden;
+    }
+    .usernavbar.open  ul {
+        visibility: visible;
+    }
+    
 }

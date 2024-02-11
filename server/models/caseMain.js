@@ -5,8 +5,7 @@ const caseSchema = new mongoose.Schema({
     state: { type: String, required: true },
     district: { type: String, required: true },
     establishment: { type: String, required: true },
-    
-
+    establishmentemail: { type: String, required: true },
    caseType: { type: String, enum: ['Civil', 'Criminal'], required: true },
     reliefSought: { type: String, required: true },
 

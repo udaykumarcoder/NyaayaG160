@@ -3,15 +3,15 @@
     width: 100%;
     margin-top: 0.95rem;
 
-} */
+} 
 
-/* .whiteBox{
+.whiteBox{
     background-color: bisque;
     height: 12rem;
     width: 100%;
 } */
-/* .profile{
-    /* background-color: white; */
+ /* .profile{
+    background-color: white; */
     /* background-image: url(../../Assets/Profile.jpg);
     background-size: cover;
     margin-left: 100px;
@@ -20,9 +20,9 @@
     border: 2px solid black;
     border-radius: 50%;
     position: absolute; */
-    /* margin-top: 9rem; */
-/* } */
-/* .Lprofile{
+    /* margin-top: 9rem;
+ }  */
+ /* .Lprofile{
     margin-left: 16rem;
     display: flex;
 
@@ -30,9 +30,9 @@
 .litigantName{
     font-family: 'Audiowide', sans-serif;
 
-}
+} */
 
-.Lbutton{
+/* .Lbutton{
     margin-left: 12rem;
     margin-right: 2rem;
     margin-top: 1.5rem;

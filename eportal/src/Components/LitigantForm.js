@@ -152,40 +152,15 @@ const LitigantForm = () => {
               <p>Note: For any future use, please utilize only the registered mobile number.</p>
             </div>
             <div className="step">
-              {/* <div className="litigantLeftbox">
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' />
-                </div>
-                <label htmlFor="t1">Personal Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
-              <Link to ="/signup">
-                  <button  className='back' style={{marginLeft:"150px", marginTop:"50px"}}>
-                    🔙
-                  </button>
-                </Link>
-            </div> */}
+            
               <TrackBox step={step} setStep={setStep} />
 
               <div className="litigantRightbox">
                 <p className='bar'>PERSONAL DETAILS</p>
-                <form>
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-3 col-form-label">Name:</label>
-                    <div class="inputs col-sm-7">
-                      <input type="name" class="form-control" id="inputPassword" placeholder="Enter Your Name" value={formData.name}
+                  <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-3 col-form-label">Name:</label>
+                    <div className="inputs col-sm-7">
+                      <input type="name" className="form-control" id="inputPassword" placeholder="Enter Your Name" value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)} required />
                     </div>
                   </div>
@@ -245,14 +220,13 @@ const LitigantForm = () => {
 
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-3 col-form-label">DOB:</label>
+                  <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-3 col-form-label">DOB:</label>
 
                     <input type="date" id="dob" name="dob" className='form-control' style={{ width: '56%', marginLeft: '10px', backgroundColor: 'grey' }} value={formData.dob} onChange={(e) => handleInputChange('dob', e.target.value)} required />
                     <br></br>
 
                   </div>
-                </form>
                 <div>
                   <button type="submit" className='saveNext' onClick={handleNext}>Save and Next</button>
                 </div>
@@ -270,42 +244,19 @@ const LitigantForm = () => {
               <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
             </div>
             <div className="step">
-              {/* <div className="litigantLeftbox">
-
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' checked />
-                </div>
-                <label htmlFor="t1">Personal Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
- 
-
-            </div> */}
+              
               <TrackBox step={step} setStep={setStep} />
 
 
               <div className="litigantRightbox">
                 <p className='bar'>CONTACT DETAILS</p>
-                <form>
                   <div className="contactContainer">
-                    <div class="form-group row">
-                      <label for="name" class="col-sm-3 col-form-label">Phone:</label>
-                      <div class="inputs col-sm-7">
+                    <div className="form-group row">
+                      <label htmlFor="name" className="col-sm-3 col-form-label">Phone:</label>
+                      <div className="inputs col-sm-7">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="inputPassword"
                           placeholder="Enter Your Phone Number"
                           value={formData.phone}
@@ -317,14 +268,13 @@ const LitigantForm = () => {
                       </div>
                     </div>
 
-                    <div class="form-group row">
-                      <label for="name" class="col-sm-3 col-form-label">Email ID:</label>
-                      <div class="inputs col-sm-7">
-                        <input type="email" class="form-control" id="inputPassword" placeholder="Enter Your Email ID" value={formData.email} onChange={(e) => handleInputChange('email', e.target.value)} required />
+                    <div className="form-group row">
+                      <label htmlFor="name" className="col-sm-3 col-form-label">Email ID:</label>
+                      <div className="inputs col-sm-7">
+                        <input type="email" className="form-control" id="inputPassword" placeholder="Enter Your Email ID" value={formData.email} onChange={(e) => handleInputChange('email', e.target.value)} required />
                       </div>
                     </div>
                   </div>
-                </form>
                 <div className='advbuttons'>
                   <button className='back' onClick={handleBack}>Back</button>
                   <button type="submit" className='saveNext' onClick={handleNext}>Save and Next</button>
@@ -342,50 +292,27 @@ const LitigantForm = () => {
               <p>For Litigant: Your registration mobile number should be same as used in case, to access your case data.</p>
             </div>
             <div className="step">
-              {/* <div className="litigantLeftbox">
-
-              <div className="tracking">
-                <div className='track1'>
-                  <input type="radio" id='t1' checked />
-                </div>
-                <label htmlFor="t1">Personal Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track3'>
-                  <input type="radio" id='t3' checked />
-                </div>
-                <label htmlFor="t3">Contact Details</label>
-              </div>
-              <div className="tracking">
-                <div className='track4'>
-                  <input type="radio" id='t4' />
-                </div>
-                <label htmlFor="t4">Create Password <br /> & OTP Verification</label>
-              </div>
-
               
-            </div> */}
               <TrackBox step={step} setStep={setStep} />
 
 
               <div className="litigantRightbox">
                 <p className='bar'>CREATE PASSWORD <br />& OTP VERIFICATION</p>
-                <form>
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-3 col-form-label">Password:</label>
-                    <div class="inputs col-sm-7">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Enter Your Password" value={formData.password}
+                  <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-3 col-form-label">Password:</label>
+                    <div className="inputs col-sm-7">
+                      <input type="password" className="form-control" id="inputPassword" placeholder="Enter Your Password" value={formData.password}
                         onChange={(e) => handleInputChange('password', e.target.value)} required />
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-3 col-form-label">Confirm Password:</label>
-                    <div class="inputs col-sm-7">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Re-Enter Password" value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)} required />
+                  <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-3 col-form-label">Confirm Password:</label>
+                    <div className="inputs col-sm-7">
+                      <input type="password" className="form-control" id="inputPassword" placeholder="Re-Enter Password" value={formData.confirmPassword} onChange={(e) => handleInputChange('confirmPassword', e.target.value)} required />
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-7 col-form-label">OTP Authentication:</label>
+                  <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-7 col-form-label">OTP Authentication:</label>
                     <div className="otpInput inputs col-sm-12">
 
                       <button onClick={handleSendOTP}>Send OTP</button>
@@ -400,7 +327,6 @@ const LitigantForm = () => {
                       />
                     </div>
                   </div>
-                </form>
                 <div className='advbuttons'>
                   <button className='back' onClick={handleBack}>Back</button>
                   <button type="submit" className='saveNext' >Save and Submit</button>

@@ -11,6 +11,8 @@ const Usernav = ({ advocatePath, litigantPath, adminPath,buttonLabel }) => {
  
   return (
     <>
+      <div className="userNavmain">
+
         <LoginNavbar/>
         <div className='mainTitle'>{buttonLabel}</div>
         <div className="loginCards">
@@ -38,7 +40,7 @@ const Usernav = ({ advocatePath, litigantPath, adminPath,buttonLabel }) => {
         </Link>
       </div>
 
-
+</div>
 
     </>
   )

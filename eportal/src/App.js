@@ -8,6 +8,7 @@ import Advocateaccount from './Components/Advocateaccount';
 import AdvocateLogin from './Components/Advocatelogin';
 import CaseFiling from './Components/CaseFiling';
 import CaseLegalform from './Components/CaseLegalform';
+import PasswordChange1 from './Components/ChangePassword1';
 import CaseDocinfo from './Components/Litigant/CaseDocinfo';
 import Casetracking from './Components/Litigant/Casetracking';
 import Litigantaccount from './Components/Litigant/Litigantaccount';
@@ -49,6 +50,7 @@ function App() {
         <Route path ="/litigantcasedocuments" element={<CaseDocinfo/>}/>
         <Route path='/caselegalform' element={<CaseLegalform/>}/>
         <Route path="/requestform" element={<RequestForm/>}/>
+        <Route path="/ChangePassword1" element={<PasswordChange1/>}/>
        
       </Routes>
     </Router>

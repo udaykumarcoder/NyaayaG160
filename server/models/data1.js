@@ -1,3 +1,4 @@
+const { link } = require('fs');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -14,7 +15,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
-  nalsa: { type: String, required: true },
+  nalsa: { type: Boolean, default: false,required: false },
 
   
   

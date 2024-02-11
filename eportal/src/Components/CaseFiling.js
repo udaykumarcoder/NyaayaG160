@@ -714,46 +714,46 @@ const Casefiling = () => {
               Next ➜
             </button>
 
-    </div>
-  );
-  case 6:
-    return (
-      <>
-      <div>
-  <form style={{ paddingTop: '50px', paddingLeft: '400px' }} className='caseform'>
+          </div>
+        );
+      case 6:
+        return (
+          <div className='cFilecont' >
+            <form  className='caseform'>
+              {/* <button  onClick={generateCNR}>
+        generate
+      </button> */}
+      <div className="cfSubmit">
+        <div>
+      <label className='cfinline' >CNR Number:</label>
+              <input
+                type="text"
+                id="cnrNumber"
+                name="cnrNumber"
+                value={formData.CnrNumber}
+                onChange={(e) => handleChange('CnrNumber', e.target.value)}
+              />
+              </div>
+           
+              <div>
+              <label className='cfinline'>Unique Code:</label>
+              <input
+                type="text"
+                id="uniqueCode"
+                name="uniqueCode"
+                value={formData.uniqueCode}
+                onChange={(e) => handleChange('uniqueCode', e.target.value)}
+              />
+              </div>
+              </div>
 
-    <label>
-      Generate CNR 
-       Number:
-      <input type="text" id="" value={formData.CnrNumber}
-        onChange={(e) => handleChange('CnrNumber', e.target.value)}/>
-      <button type="button" onClick={handleGenerateCnrNumber}>
-        Generate
-      </button>
-    </label>
-    <br/>
-    <br/>
-    <label>
-      Unique Code:
-      <input type="text" id="" value={formData.uniqueCode}
-        onChange={(e) => handleChange('uniqueCode', e.target.value)}/>
-      <button type="button" onClick={handleGenerateUniqueCode}>
-        Generate
-      </button>
-    </label>
-    
-    <button className='vinnu' type="button" onClick={handleSubmit}>
-      Submit
-    </button>
-   
-    
-  </form>
- 
-</div>
+              <center><button style={{ marginTop: "20px" }}>Submit</button></center>
 
-   </>
-    );
-      
+            </form>
+
+          </div>
+        );
+
       default:
         return null;
     }

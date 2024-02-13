@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdvocateForm.css';
-import Navbar4 from './Navbar4';
-import TrackBox from './TrackBox';
+import Navbar4 from '../../Components/Navbar4';
+import TrackBox from '../../Components/TrackBox';
 
 const API_BASE_URL = 'http://localhost:3001';
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/advocate`;
@@ -27,8 +27,8 @@ const AdvocateForm = () => {
     otp: '',
     lawyertype: '',
     experience: '',
-    profileurl: '',
-    nalsa: '',
+    profileurl: 'https://',
+    nalsa: 'default',
     education: '',
   });
   const [barnumber, setBarnumber] = useState('');
@@ -428,25 +428,26 @@ const AdvocateForm = () => {
                       <input type="email" className="form-control" id="inputPassword" placeholder="Enter Your Email ID" value={formData.email} onChange={(e) => handleInputChange('email', e.target.value)} required />
                     </div>
                   </div>
+
               
                     <div className="form-group row">
-                    <label htmlFor="lawyertype" className="col-sm-3 col-form-label">NALSA:&nbsp; &nbsp;</label>
+                    <label htmlFor="nalsa" className="col-sm-3 col-form-label">National Legal Services Authority (NALSA):&nbsp; &nbsp;</label>
                     <div className="inputs col-sm-7">
-                      {/* <select id='nalsa' className="custom-select" style={{ height: '35px', width: '100%', textAlign: 'left' }} value={formData.nalsa} onChange={(e) => handleInputChange('nalsa', e.target.value)}> */}
-                        {/* <option value="select">select</option>
+                      <select id='nalsa' name="nalsa" className="custom-select" style={{ height: '35px', width: '100%', textAlign: 'left' }} value={formData.nalsa} onChange={(e) => handleInputChange('nalsa', e.target.value)}>
+                        <option value="">select</option>
                         <option value="yes">YES</option>
-                        <option value="no">NO</option> */}
+                        <option value="no">NO</option>
                          {/* <label htmlFor="da">Differently abled&nbsp; &nbsp;</label> */}
-                                  <input
+                                  {/* <input
                               type="checkbox"
                               id="nalsa"
                               name="da"
                               style={{ transform: 'scale(1.5)' }}
                               checked={formData.nalsa}
                               onChange={(e) => handleInputChange('nalsa', e.target.checked)}
-                            />
+                            /> */}
                         
-                      {/* </select> */}
+                      </select>
                       
                     </div>
                   </div>

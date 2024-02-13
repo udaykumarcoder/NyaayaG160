@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdvocateImage from '../Assets/Advloginimg.jpeg';
+import AdminImage from '../../Assets/Admin.jpg';
 import './LoginPage.css';
 
-const LitigantLogin = () => {
+const AdministratorLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +14,7 @@ const LitigantLogin = () => {
       event.preventDefault();
     
       try {
-        // sending otp
+        // sending  OTP 
         const otpResponse = await fetch(`http://localhost:3001/send-otp`, {
           method: 'POST',
           headers: {
@@ -43,13 +43,13 @@ const LitigantLogin = () => {
       console.log('Login values:', email, password, otp);
     
       try {
-        // Verify OTP
+        // Verifying OTP
         const otpVerificationResponse = await fetch(`http://localhost:3001/verify-otp`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), // Parse OTP as an integer
+          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), //converting otp into integer
         });
     
         const otpVerificationData = await otpVerificationResponse.json();
@@ -57,7 +57,7 @@ const LitigantLogin = () => {
         if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
           
           try {
-            const loginResponse = await fetch(`http://localhost:3001/login/litigant`, {
+            const loginResponse = await fetch(`http://localhost:3001/login/administrator`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const LitigantLogin = () => {
     
             if (loginResponse.ok) {
               console.log('Login successful:', loginData);
-              navigate('/litigantaccount', { state: { email } });
+              navigate('/adminstratoraccount', { state: { email } });
             } else {
               console.error('Login failed:', loginData);
               alert('Login failed. Please check your credentials.');
@@ -87,15 +87,12 @@ const LitigantLogin = () => {
         alert('An error occurred. Please try again.');
       }
     };
- 
-
-    
-  return (
   
+  return (
     <>
     <div className="advloginContainer">
         <div className="advloginLeft">
-          <img src={AdvocateImage} alt="advocatelogo" />
+          <img src={AdminImage} alt="advocatelogo" />
           <p>"EMPOWER YOUR VOICE, FILE FOR <br /> JUSTICE -YOUR STORY, YOUR <br /> RIGHT, YOUR VICTORY."</p>
           <br />
           <div className="advbuttonsLogin">
@@ -108,7 +105,7 @@ const LitigantLogin = () => {
               <h6 className='dontText'>Don't have an Account?</h6>
 
             <button onClick={() => {
-              navigate('/signup/litigant')
+              navigate('/signup/administrator')
             }} className='img loginSignup'>Sign Up</button>
         </div>
 
@@ -130,7 +127,7 @@ const LitigantLogin = () => {
                   className="o"
                   type="email"
                   name="Email"
-                  placeholder=" Enter Email "
+                  placeholder="  Enter Email   "
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -176,7 +173,7 @@ const LitigantLogin = () => {
                   <b>LOGIN</b>
                 </button>
                 <br />
-                <p onClick={() => navigate('/passwordreset2')}> Forgot Password?</p>
+                <p  className='forgotPw' onClick={() => navigate('/passwordreset3')}> Forgot Password?</p>
               </div>
             </div>
 
@@ -184,7 +181,8 @@ const LitigantLogin = () => {
         </form>
       </div>
     </>
+   
   )
 }
 
-export default LitigantLogin
+export default AdministratorLogin

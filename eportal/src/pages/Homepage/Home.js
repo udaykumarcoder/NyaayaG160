@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../Components/Navbar';
+import Navbar from './Navbar';
 import About from './About';
 import Contact from './Contact';
 import Faq from './Faq';

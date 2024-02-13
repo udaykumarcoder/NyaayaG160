@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { HashLink as Link } from 'react-router-hash-link';
-import Navbar4 from './Navbar4';
+import Navbar4 from '../../Components/Navbar4';
 
 import './LitigantForm.css';
-import TrackBox from './TrackBox';
+import TrackBox from '../../Components/TrackBox';
 
 const API_BASE_URL = 'http://localhost:3001';
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/litigant`;

@@ -28,7 +28,7 @@
  */
  /* Update your existing styles for .HOME */
  .HOME {
-  background-image: url(../Assets/home.jpg                                                                                                                                                                                                                                     );
+  background-image: url(../../Assets/home.jpg);
   border-style: solid;
   background-size: cover;
   background-repeat: no-repeat;

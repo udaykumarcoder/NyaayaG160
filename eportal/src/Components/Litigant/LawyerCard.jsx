@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, profileurl, education }) => {
+const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, profileurl, education,nalsa}) => {
   const navigate = useNavigate();
   const [averageRating, setAverageRating] = useState(null);
   console.log(averageRating)
@@ -57,7 +57,9 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
             </div>
             <p><i class="fa fa-envelope" aria-hidden="true"></i>{email}</p>
             <p><i class="fa fa-phone" aria-hidden="true"></i>{phone}</p>
-            <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>www.linkedin.com/name</p>
+            <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>{profileurl}</p>
+            {nalsa === "yes" && <p>Free Lawyer</p>}
+
           </div>
       </div>
 

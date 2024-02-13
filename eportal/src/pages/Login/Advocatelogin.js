@@ -2,7 +2,7 @@
 
  import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdvocateImage from '../Assets/Advloginimg.jpeg';
+import AdvocateImage from '../../Assets/Advloginimg.jpeg'
 import './LoginPage.css';
 const AdvocateLogin = () => {
 

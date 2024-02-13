@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdminImage from '../Assets/Admin.jpg';
+import LitigantImage from '../../Assets/litigantpic.jpeg';
 import './LoginPage.css';
 
-const AdministratorLogin = () => {
+const LitigantLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +14,7 @@ const AdministratorLogin = () => {
       event.preventDefault();
     
       try {
-        // sending  OTP 
+        // sending otp
         const otpResponse = await fetch(`http://localhost:3001/send-otp`, {
           method: 'POST',
           headers: {
@@ -43,13 +43,13 @@ const AdministratorLogin = () => {
       console.log('Login values:', email, password, otp);
     
       try {
-        // Verifying OTP
+        // Verify OTP
         const otpVerificationResponse = await fetch(`http://localhost:3001/verify-otp`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), //converting otp into integer
+          body: JSON.stringify({ email, otp: parseInt(otp, 10) }), // Parse OTP as an integer
         });
     
         const otpVerificationData = await otpVerificationResponse.json();
@@ -57,7 +57,7 @@ const AdministratorLogin = () => {
         if (otpVerificationResponse.ok && otpVerificationData.status === 'ok') {
           
           try {
-            const loginResponse = await fetch(`http://localhost:3001/login/administrator`, {
+            const loginResponse = await fetch(`http://localhost:3001/login/litigant`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const AdministratorLogin = () => {
     
             if (loginResponse.ok) {
               console.log('Login successful:', loginData);
-              navigate('/adminstratoraccount', { state: { email } });
+              navigate('/litigantaccount', { state: { email } });
             } else {
               console.error('Login failed:', loginData);
               alert('Login failed. Please check your credentials.');
@@ -87,12 +87,15 @@ const AdministratorLogin = () => {
         alert('An error occurred. Please try again.');
       }
     };
-  
+ 
+
+    
   return (
+  
     <>
     <div className="advloginContainer">
-        <div className="advloginLeft">
-          <img src={AdminImage} alt="advocatelogo" />
+        <div className="advloginLeft" id='lit'>
+          <img id='litimage' src={LitigantImage} alt="litigantlogo" />
           <p>"EMPOWER YOUR VOICE, FILE FOR <br /> JUSTICE -YOUR STORY, YOUR <br /> RIGHT, YOUR VICTORY."</p>
           <br />
           <div className="advbuttonsLogin">
@@ -105,7 +108,7 @@ const AdministratorLogin = () => {
               <h6 className='dontText'>Don't have an Account?</h6>
 
             <button onClick={() => {
-              navigate('/signup/administrator')
+              navigate('/signup/litigant')
             }} className='img loginSignup'>Sign Up</button>
         </div>
 
@@ -127,7 +130,7 @@ const AdministratorLogin = () => {
                   className="o"
                   type="email"
                   name="Email"
-                  placeholder="  Enter Email   "
+                  placeholder=" Enter Email "
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -173,7 +176,7 @@ const AdministratorLogin = () => {
                   <b>LOGIN</b>
                 </button>
                 <br />
-                <p  className='forgotPw' onClick={() => navigate('/passwordreset3')}> Forgot Password?</p>
+                <p onClick={() => navigate('/passwordreset2')}> Forgot Password?</p>
               </div>
             </div>
 
@@ -181,8 +184,7 @@ const AdministratorLogin = () => {
         </form>
       </div>
     </>
-   
   )
 }
 
-export default AdministratorLogin
+export default LitigantLogin

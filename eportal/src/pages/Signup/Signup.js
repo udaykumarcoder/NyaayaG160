@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import Usernav from '../../Components/Usernav'
+import Usernav from '../../Components/Navigatingcards/Usernav'
 
 const Signup = () => {
   return (

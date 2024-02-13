@@ -1,7 +1,7 @@
 // import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import admin from '../Assets/Admin.jpg';
-import AdvocateImage from '../Assets/advocate.jpg';
+import admin from '../../Assets/Admin.jpg';
+import AdvocateImage from '../../Assets/advocate.jpg';
 import LoginNavbar from './LoginNavbar';
 
 import './Usernav.css';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdvocateForm.css';
 import Navbar4 from '../../Components/Navbar4';
-import TrackBox from '../../Components/TrackBox';
+import TrackBox from '../../Components/Signupcomponents/TrackBox';
 
 const API_BASE_URL = 'http://localhost:3001';
 const SUBMIT_FORM_URL = `${API_BASE_URL}/signup/advocate`;

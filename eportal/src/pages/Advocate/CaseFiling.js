@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar4 from './Navbar4';
+import Navbar4 from '../../Components/Navbar4';
 
 import { Link, useNavigate } from 'react-router-dom';
 import './CaseFiling.css';

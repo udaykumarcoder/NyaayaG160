@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Filetable from './Filetable';
+import Filetable from '../../Components/Filetable';
 import "./Uploaddocs.css";
 
 const Uploaddocs = () => {

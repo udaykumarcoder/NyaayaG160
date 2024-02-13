@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import Navbar4 from './Navbar4';
+import Navbar4 from '../../Components/Navbar4';
 import Advocatesidebar from './Advocatesidebar';
 import AdvuserInfo from './AdvuserInfo';
 import AdvCaseDocuments from './AdvCaseDocuments';

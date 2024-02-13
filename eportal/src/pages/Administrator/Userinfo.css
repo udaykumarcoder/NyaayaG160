@@ -24,7 +24,7 @@
 
 .profile {
     background-color: white;
-    background-image: url(../Assets/Profile.jpg);
+    background-image: url(../../Assets/Profile.jpg);
     background-size: cover;
     margin-left: 100px;
     height: 10rem;

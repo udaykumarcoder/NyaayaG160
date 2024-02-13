@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Filetable from '../Filetable';
+import Filetable from '../../Components/Filetable';
 import "./CaseDocinfo.css";
 const CaseDocinfo = () => {
   const location = useLocation();

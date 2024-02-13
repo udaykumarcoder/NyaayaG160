@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Administratorsidebar from './Administratorsidebar';
-import './Litigant/Litigantaccount.css';
-import Navbar4 from './Navbar4';
+// import './Litigant/Litigantaccount.css';
+import Navbar4 from '../../Components/Navbar4';
 import Updatedetails from './Updatedetails';
 import Uploaddocs from './Uploaddocs';
 import AdminuserInfo from './AdminuserInfo';

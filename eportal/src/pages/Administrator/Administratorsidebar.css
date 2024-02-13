@@ -1,51 +1,4 @@
-/* .Adminprofile {
-    height: 300px;
-    width: 350px;
-    
-  }
-  .profileImg{
-    background-image: url(../Assets/Profile.jpg);
-    background-size: cover;
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-    padding: 100px;
-    margin-left: 55px;
-    
-  }
-  .adminsidebarName{
-    font-family: 'Audiowide', sans-serif;
-    color: white;
-    margin-left: 50px;
-    margin-bottom: 50px;
-    margin-top: -53px;
-  }
 
-  .sidebar{
-    margin-top: 15px;
-    background-color: #0c1707;
-    height: 627px;
-    width: 350px;
-  
-  }
-  .sidebar ul{
-    list-style: none;
-    padding-top: 250px;
-    margin-left:10px;
-  color: #EAECE1;
-  
-   
-  }
-  .sidebar li{
-    cursor: pointer;
-    margin-bottom: 45px;
-  }
-  .logout{
-    margin-left: 100px;
-  }
-  ul li :active{
-    background-color: white;
-  } */
   .sidebar {
     padding-top: 1rem;
     background-color: #0c1707;
@@ -65,7 +18,7 @@
   }
   
   .profileImg{
-    background-image: url(../Assets/Profile.jpg);
+    background-image: url(../../Assets/Profile.jpg);
     background-size: cover;
     border-radius: 50%;
     height: 11rem;

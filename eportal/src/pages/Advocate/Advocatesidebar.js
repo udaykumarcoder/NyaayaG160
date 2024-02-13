@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
-import "./sidebar.css";
-import userIcon from '../Assets/loginicons/litigantuser.jpeg';
-import caseDoc from '../Assets/loginicons/Lcasedoc.jpeg';
-import casefiling from '../Assets/loginicons/casefiling.jpeg';
+import userIcon from '../../Assets/loginicons/litigantuser.jpeg';
+import caseDoc from '../../Assets/loginicons/Lcasedoc.jpeg';
+import casefiling from '../../Assets/loginicons/casefiling.jpeg';
 
 
 const Advocatesidebar = ({switchComponent}) => {

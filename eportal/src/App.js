@@ -14,19 +14,22 @@ import AdvocateLogin from './pages/Login/Advocatelogin';
 import LitigantLogin from './pages/Login/LitigantLogin';
 import AdministratorLogin from './pages/Login/AdministratorLogin';
 
+import Advocateaccount from './pages/Advocate/Advocateaccount';
+import Litigantaccount from './pages/Litigant/Litigantaccount';
 
 
-import Administratoraccount from './Components/Adminstratoraccount';
-import AdvCaseDocinfo from './Components/AdvCaseDocinfo';
-import Advocateaccount from './Components/Advocateaccount';
-import CaseFiling from './Components/CaseFiling';
+
+
+
+
+import Administratoraccount from './pages/Administrator/Adminstratoraccount';
+import AdvCaseDocinfo from './pages/Advocate/AdvCaseDocinfo';
+import CaseFiling from './pages/Advocate/CaseFiling';
 import CaseLegalform from './Components/CaseLegalform';
-
 import ChangePassword1 from './Components/ChangePassword1';
 import EditProfile from './Components/EditProfile';
-import CaseDocinfo from './Components/Litigant/CaseDocinfo';
-import Casetracking from './Components/Litigant/Casetracking';
-import Litigantaccount from './Components/Litigant/Litigantaccount';
+import CaseDocinfo from './pages/Litigant/CaseDocinfo';
+import Casetracking from './pages/Litigant/Casetracking';
 import RequestForm from './Components/Litigant/RequestForm';
 import Rating from './Components/Litigant/rating';
 import PasswordReset from './Components/PasswordReset';
@@ -51,12 +54,13 @@ function App() {
         <Route path="/login/litigant" element={<LitigantLogin/>}/>
         <Route path="/login/administrator" element={<AdministratorLogin/>}/> 
 
-
-
  
-        <Route path="/Advocateaccount" element={<Advocateaccount/>}/>
-        <Route path="/Litigantaccount" element={<Litigantaccount/>}/>
-        <Route path="/Adminstratoraccount" element={<Administratoraccount/>}/>
+      <Route path="/Advocateaccount" element={<Advocateaccount/>}/>
+      <Route path="/Adminstratoraccount" element={<Administratoraccount/>}/>
+      <Route path="/litigantaccount" element={<Litigantaccount/>}/>
+
+
+    
         <Route path="/casetracking" element={<Casetracking/>}/>
         <Route path="/passwordreset" element={<PasswordReset/>}/>
         <Route path="/passwordreset2" element={<PasswordReset2/>}/>

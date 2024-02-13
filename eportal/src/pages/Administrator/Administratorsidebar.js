@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import "./Administratorsidebar.css";
-import userIcon from '../Assets/loginicons/litigantuser.jpeg';
-import upload from '../Assets/loginicons/upload.jpeg';
-import update from '../Assets/loginicons/update.jpeg';
+import userIcon from '../../Assets/loginicons/litigantuser.jpeg';
+import upload from '../../Assets/loginicons/upload.jpeg';
+import update from '../../Assets/loginicons/update.jpeg';
 
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Filetable from './Filetable';
-import "./Litigant/CaseDocinfo.css";
+import Filetable from '../../Components/Filetable';
+// import "./Litigant/CaseDocinfo.css";
 const AdvCaseDocinfo = () => {
     const location = useLocation();
     const cnrdata = location?.state?.CnrNumber|| '';

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; // Example import statement, adjust as per your setup
 
-import './Userinfo.css';
+// import './Userinfo.css';
 
 
 

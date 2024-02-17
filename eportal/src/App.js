@@ -25,9 +25,11 @@ import Litigantaccount from './pages/Litigant/Litigantaccount';
 import Administratoraccount from './pages/Administrator/Adminstratoraccount';
 import AdvCaseDocinfo from './pages/Advocate/AdvCaseDocinfo';
 import CaseFiling from './pages/Advocate/CaseFiling';
+
 import CaseLegalform from './Components/CaseLegalform';
 import ChangePassword1 from './Components/ChangePassword1';
-import EditProfile from './Components/EditProfile';
+
+import EditProfile from './pages/Litigant/EditProfile';
 import CaseDocinfo from './pages/Litigant/CaseDocinfo';
 import Casetracking from './pages/Litigant/Casetracking';
 import RequestForm from './Components/Litigant/RequestForm';
@@ -35,6 +37,7 @@ import Rating from './Components/Litigant/rating';
 import PasswordReset from './Components/PasswordReset';
 import PasswordReset2 from './Components/PasswordReset2';
 import PasswordReset3 from './Components/PasswordReset3';
+import EditProfile2 from './pages/Advocate/EditProfile2';
 
 
 function App() {
@@ -72,6 +75,7 @@ function App() {
         <Route path="/requestform" element={<RequestForm/>}/>
         <Route path='/ChangePassword1' element={<ChangePassword1/>}/>
         <Route path="/edit-profile" element={<EditProfile/>}/>
+        <Route path="/edit-profile" element={<EditProfile2/>}/>
         <Route path="/Rating" element={<Rating/>}/>
       </Routes>
     </Router>

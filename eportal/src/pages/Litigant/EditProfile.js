@@ -8,9 +8,9 @@ const EditProfile = () => {
   const emailFrominfo = location?.state?.emailFromLogin ||  '';
   const [newphone, setNewphone] = useState('');
   const [newname, setNewname] = useState('');
-  const [newpropic, setNewpropic] = useState('');
+  
   const [Error, setError ] = useState('');
-  const [triggerFetch, setTriggerFetch] = useState(false);
+
   console.log("hii", emailFrominfo);
   const imageUrl = `http://localhost:3001/images/DSC0598.JPG`;
 
@@ -25,7 +25,7 @@ const EditProfile = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ newname, email:emailFrominfo , newphone , newpropic }),
+        body: JSON.stringify({ newname, email:emailFrominfo , newphone }),
       });
       if (!response.ok) {
         throw new Error('Failed to update profile');
@@ -48,9 +48,8 @@ const EditProfile = () => {
         <label>newphone:</label>
         <input type="text" value={newphone} onChange={(e) => setNewphone(e.target.value)} />
        
-        {/* Provide option to upload new profile picture */}
-        <label><b>Profile Picture</b></label>
-        <input type="file" accept="image/*" onChange={(e) => setNewpropic(e.target.files[0])} />
+       
+       
         <button type="submit">Update Profile</button>
       </form>
     </div>
@@ -59,6 +58,3 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
-
-
-            

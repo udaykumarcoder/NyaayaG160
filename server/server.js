@@ -1096,12 +1096,34 @@ app.post('/api/updateProfile', async (req, res) => {
     res.status(500).json({ error: error.message || 'Internal server error.' });
   }
 });
+app.post('/api/updateProfile2', async (req, res) => {
+  const { email, newname, newphone,newpropic } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+  const user = await UserData2.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+    
+    user.name = newname;
+    user.phone = newphone;
+    user.propic = newpropic;
+    await user.save();
+    res.json({ message: 'Profile change successful.' });
+  } catch (error) {
+    
+    console.error('Error during Profile change:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
 
 
 app.post('/api/ratings', async (req, res) => {
     const { email, cnrNumber, rate } = req.body;
     console.log("hii", req.body)
     try {
+          
         await rating.create({ email, cnrNumber, rate});
         res.status(201).send('Rating submitted successfully');
     } catch (error) {
@@ -1109,21 +1131,23 @@ app.post('/api/ratings', async (req, res) => {
         res.status(500).send('Failed to submit rating');
         console.error('Error updating rating:', error);
        
-    }rating
+    }
 });
 app.get('/ratings/average/:email', async (req, res) => {
   try {
-      const email = req.params.email;
-      const ratings = await rating.find({ email });
-      if (ratings.length === 0) {
-          return res.json({ averageRating: 0 });
-      }
-      const totalSum = ratings.reduce((acc, rating) => acc + rating.rate, 0);
-      const averageRating = totalSum / ratings.length;
-      res.json({ averageRating });
+    const email = req.params.email;
+    const ratings = await rating.find({ email });
+    
+    if (ratings.length === 0) {
+      return res.json({ averageRating: 0 });
+    }
+    
+    const totalSum = ratings.reduce((acc, rating) => acc + rating.rate, 0);
+    const averageRating = Math.round(totalSum / ratings.length); // Round off to 0 decimal places
+    res.json({ averageRating });
   } catch (error) {
-      console.error('Error calculating average rating:', error);
-      res.status(500).json({ error: 'Failed to calculate average rating' });
+    console.error('Error calculating average rating:', error);
+    res.status(500).json({ error: 'Failed to calculate average rating' });
   }
 });
 

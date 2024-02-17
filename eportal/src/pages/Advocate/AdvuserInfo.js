@@ -10,10 +10,7 @@ const AdvuserInfo = () => {
   const emailFromLogin = location?.state?.email  || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
- 
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [triggerFetch, setTriggerFetch] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   console.log(emailFromLogin)
   
   useEffect(() => {
@@ -92,7 +89,7 @@ return (
           <h5><b>PASSWORD</b></h5>
           <br />
           <div className="Lpassword">
-            <p>**********</p>
+            <p></p>
             <p>🔑<button type="button" onClick={() => navigate('/ChangePassword1', { state: { emailFromLogin} })}>Change Password</button></p>
             
           </div>

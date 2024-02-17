@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, profileurl, education,nalsa}) => {
+const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, profileurl, education }) => {
   const navigate = useNavigate();
   const [averageRating, setAverageRating] = useState(null);
   console.log(averageRating)
@@ -33,33 +33,28 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
     navigate('/Rating', { state: { email } });
   };
   const renderRatingStars = () => {
-    const rating = Math.round(averageRating);
+    const rating = Math.round(averageRating); // Round off the averageRating
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
         stars.push(<i key={i} className="fa fa-star" aria-hidden="true"></i>);
-      } else if (i === Math.ceil(averageRating) && !Number.isInteger(averageRating)) {
-        stars.push(<i key={i} className="fa fa-star-half-o" aria-hidden="true"></i>);
       } else {
         stars.push(<i key={i} className="fa fa-star-o" aria-hidden="true"></i>);
       }
     }
     return stars;
   };
-
   return (
     <div className="lawyerCard d-flex flex-row">
       <div className="d-flex flex-row justify-contenet-start">
           <div className="content">
             <b><h2 className='cardName'>{name} </h2></b>
             <div className="cardInline">
-              <p className='cardSpecialization'>{lawyertype},{education}</p>
+              <p className='cardSpecialization'>{lawyertype},Educational qualifications</p>
             </div>
             <p><i class="fa fa-envelope" aria-hidden="true"></i>{email}</p>
             <p><i class="fa fa-phone" aria-hidden="true"></i>{phone}</p>
-            <p><i class="fa fa-linkedin-square" aria-hidden="true"></i><a href={profileurl} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none',color:'black',cursor: 'pointer' }}>{profileurl}</a></p>
-            {nalsa === "yes" && <p>Free Lawyer</p>}
-
+            <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>www.linkedin.com/name</p>
           </div>
       </div>
 

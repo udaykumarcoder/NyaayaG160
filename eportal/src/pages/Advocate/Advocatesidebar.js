@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { HashLink as Link } from 'react-router-hash-link';
-import userIcon from '../../Assets/loginicons/litigantuser.jpeg';
 import caseDoc from '../../Assets/loginicons/Lcasedoc.jpeg';
 import casefiling from '../../Assets/loginicons/casefiling.jpeg';
+import userIcon from '../../Assets/loginicons/litigantuser.jpeg';
 
 
 const Advocatesidebar = ({switchComponent}) => {
@@ -51,7 +50,9 @@ const Advocatesidebar = ({switchComponent}) => {
     
     navigate('/login');
   };
-
+const handlecasefile=() =>{
+  navigate("/casefiling",{state:{emailFromLogin}})
+}
   return (
     <section>
       {error && <p>{error}</p>}
@@ -79,12 +80,13 @@ const Advocatesidebar = ({switchComponent}) => {
        
         <li><h3 onClick={() => switchComponent(0)}><img className='sidebarImg' src={userIcon} alt="User Info" /> &nbsp; User Info</h3></li>
         <li><h3 onClick={() => switchComponent(1)}><img className='sidebarImg' src={caseDoc} alt="Case Documents" />&nbsp;Case Documents</h3></li>
-        <li><Link to="/casefiling" style={{ textDecoration:"none"}}><h3 style={{color:"white" }} ><img className='sidebarImg' src={casefiling} alt="Case Filing" />&nbsp;Case Filing</h3></Link></li>
+        {/* <li><Link to="/casefiling" style={{ textDecoration:"none"}}><h3 style={{color:"white" }}  ><img className='sidebarImg' src={casefiling} alt="Case Filing"  onClick={handlecasefile}/>&nbsp;Case Filing</h3></Link></li> */}
+        <li><h3 style={{color:"white" }}  onClick={handlecasefile} ><img className='sidebarImg' src={casefiling} alt="Case Filing"  />&nbsp;Case Filing</h3></li>
 
           
         </ul>
         {/* <Link smooth to='/#home'><button className="logout"><b>⇤Log Out</b></button></Link> */}
-        <button className="logout" onClick={handleLogout}><b>⇤Log Out</b></button>
+        <button className="logout" onClick={handleLogout} ><b>⇤Log Out</b></button>
     
       </div>
     

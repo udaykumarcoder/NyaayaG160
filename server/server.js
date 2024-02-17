@@ -813,14 +813,33 @@ app.post('/api/casefiling', async (req, res) => {
   }
 });
 
-app.post('/submit-form', (req, res) => {
-  const formData = req.body;
+app.post('/submit-form', async(req, res) => {
+  const {formData,email} = req.body;
 
  
   sendEmail(formData);
 
  
   res.status(200).json({ message: 'Email sent successfully' });
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'nyaaya160@gmail.com', 
+      pass: 'olhf wjag bphj zucq', 
+    },
+  });
+  const mailOptions = {
+    from: 'nyaaya160@gmail.com',
+    to:[ formData.email,email],
+    subject: 'Unique Code For Accesing Case Documents',
+    html:`unique code: ${formData.uniqueCode} for CaseNumber ${formData.CnrNumber}`,
+   
+  };
+
+  
+
+  await transporter.sendMail(mailOptions);
 });
 
 function sendEmail(formData) {

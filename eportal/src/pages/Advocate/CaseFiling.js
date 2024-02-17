@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import Navbar4 from '../../Components/Navbar4';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './CaseFiling.css';
 
+
+
+
 const Casefiling = () => {
+  const location = useLocation();
+  const emailFromsidebar = location?.state?.emailFromLogin  ||  '';
+  console.log("casefile",emailFromsidebar)
+
   const [activeTab, setActiveTab] = useState(1);
   const [formData, setFormData] = useState({
     state: 'Select State',
@@ -74,12 +81,11 @@ const Casefiling = () => {
   });
   const navigate = useNavigate();
   const handleTabChange = (tabNumber) => {
-   
-      setActiveTab(tabNumber);
+   if(tabNumber!==6){
+      setActiveTab(tabNumber);}
     
   };
-  const handleGenerateCnrNumber = () => {
-    // Function to generate a random alphanumeric code
+  const savenext=()=>{
     const generateRandomCode = (length) => {
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
       let randomCode = '';
@@ -96,25 +102,29 @@ const Casefiling = () => {
     // Generate and set CNR number
     const generatedCnrNumber = 'CNR' + generateRandomCode(codeLength);
     handleChange('CnrNumber', generatedCnrNumber);
-  };
+    //
+    
+      // Check if the method is available in the current environment
+      if (window.crypto && window.crypto.getRandomValues) {
+        const array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        let uniqueCode = array[0].toString().replace(/\D/g, ''); // Extract only numeric characters
+        uniqueCode = uniqueCode.substring(0, 6); // Ensure the length is 6
+        // Use uniqueCode as needed
+        handleChange('uniqueCode', uniqueCode); // Update the state with the generated unique code
+      } else {
+        // Fallback to Math.random() for environments that don't support crypto.getRandomValues
+        let uniqueCodeFallback = Math.floor(Math.random() * 1000000).toString().replace(/\D/g, ''); // Extract only numeric characters
+        uniqueCodeFallback = uniqueCodeFallback.substring(0, 6); // Ensure the length is 6
+        // Use uniqueCodeFallback as needed
+        handleChange('uniqueCode', uniqueCodeFallback); // Update the state with the generated unique code
+      }
+    
+    setActiveTab(6);
+    console.log(generatedCnrNumber)
+   
 
-  const handleGenerateUniqueCode = () => {
-    // Check if the method is available in the current environment
-    if (window.crypto && window.crypto.getRandomValues) {
-      const array = new Uint32Array(1);
-      window.crypto.getRandomValues(array);
-      let uniqueCode = array[0].toString().replace(/\D/g, ''); // Extract only numeric characters
-      uniqueCode = uniqueCode.substring(0, 6); // Ensure the length is 6
-      // Use uniqueCode as needed
-      handleChange('uniqueCode', uniqueCode); // Update the state with the generated unique code
-    } else {
-      // Fallback to Math.random() for environments that don't support crypto.getRandomValues
-      let uniqueCodeFallback = Math.floor(Math.random() * 1000000).toString().replace(/\D/g, ''); // Extract only numeric characters
-      uniqueCodeFallback = uniqueCodeFallback.substring(0, 6); // Ensure the length is 6
-      // Use uniqueCodeFallback as needed
-      handleChange('uniqueCode', uniqueCodeFallback); // Update the state with the generated unique code
-    }
-  };
+  }
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -146,16 +156,17 @@ const Casefiling = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({formData,email:emailFromsidebar}),
       });
       alert("Case Filed Successfully")
       navigate('/caselegalform', { state: { formData } })
       const emailData = await emailResponse.json();
       console.log('Email Response:', emailData);
-    }
+    } 
 
     } catch (error) {
       console.error('Error submitting form:', error);
+      
       // Handle error
     }
   };
@@ -710,7 +721,7 @@ const Casefiling = () => {
                 
               </div>
             </form>
-            <button  className=" caseFilingnxt nexttabbtn" onClick={handleNextTab}>
+            <button  className=" caseFilingnxt nexttabbtn" onClick={savenext}>
               Next ➜
             </button>
 
@@ -723,7 +734,7 @@ const Casefiling = () => {
               {/* <button  onClick={generateCNR}>
         generate
       </button> */}
-      <div className="cfSubmit">
+      <div className="cfSubmit" id="hide">
         <div>
       <label className='cfinline' >CNR Number:</label>
               <input
@@ -747,7 +758,7 @@ const Casefiling = () => {
               </div>
               </div>
 
-              <center><button style={{ marginTop: "20px" }}>Submit</button></center>
+              <center><button style={{ marginTop: "20px" }} onClick={handleSubmit}>Submit</button></center>
 
             </form>
 

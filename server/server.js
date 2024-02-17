@@ -1160,6 +1160,22 @@ app.get('/ratings/average/:email', async (req, res) => {
     if (ratings.length === 0) {
       return res.json({ averageRating: 0 });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     
     const totalSum = ratings.reduce((acc, rating) => acc + rating.rate, 0);
     const averageRating = Math.round(totalSum / ratings.length); // Round off to 0 decimal places

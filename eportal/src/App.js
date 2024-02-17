@@ -75,7 +75,7 @@ function App() {
         <Route path="/requestform" element={<RequestForm/>}/>
         <Route path='/ChangePassword1' element={<ChangePassword1/>}/>
         <Route path="/edit-profile" element={<EditProfile/>}/>
-        <Route path="/edit-profile" element={<EditProfile2/>}/>
+        <Route path="/edit-profile2" element={<EditProfile2/>}/>
         <Route path="/Rating" element={<Rating/>}/>
       </Routes>
     </Router>

@@ -1,7 +1,6 @@
-
-
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Userinfo.css';
 
 
@@ -10,6 +9,9 @@ const UserInfo1 = () => {
   const emailFromLogin = location?.state?.email  || localStorage.getItem('loggedInUserEmail') || '';
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+  console.log(emailFromLogin)
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -42,6 +44,10 @@ const UserInfo1 = () => {
     // Storing  email in localStorage
     localStorage.setItem('loggedInUserEmail', emailFromLogin);
   }, [emailFromLogin]);
+  const handleEditProfile = () => {
+    // Navigate to edit profile page and pass user data as state
+    navigate('/edit-profile2', { state: { emailFromLogin } });
+  };
 
 return (
   <div className="userInfo">
@@ -58,7 +64,7 @@ return (
             <p>Litigant</p>
           </div>
           <div className='Lbutton'>
-            <button className='userInfobuttons'>✒Edit Profile</button>
+          <button onClick={handleEditProfile}>✒Edit Profile</button>
           </div>
         </div>
 
@@ -76,7 +82,7 @@ return (
           <h5><b>PASSWORD</b></h5>
           <br />
           <div className="Lpassword">
-            <p>*********</p>
+            <p>*</p>
             <p>🔑<button className='userInfobuttons'>Change Password</button></p>
           </div>
           <hr />
@@ -90,4 +96,3 @@ return (
 
 
 export default UserInfo1;
-

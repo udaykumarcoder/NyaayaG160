@@ -1139,51 +1139,35 @@ app.post('/api/updateProfile2', async (req, res) => {
 
 
 app.post('/api/ratings', async (req, res) => {
-    const { email, cnrNumber, rate } = req.body;
-    console.log("hii", req.body)
-    try {
-          
-        await rating.create({ email, cnrNumber, rate});
-        res.status(201).send('Rating submitted successfully');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Failed to submit rating');
-        console.error('Error updating rating:', error);
-       
-    }
+  const { email, cnrNumber, rate } = req.body;
+  console.log("hii", req.body)
+  try {
+        
+      await rating.create({ email, cnrNumber, rate});
+      res.status(201).send('Rating submitted successfully');
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Failed to submit rating');
+      console.error('Error updating rating:', error);
+     
+  }
 });
 app.get('/ratings/average/:email', async (req, res) => {
-  try {
-    const email = req.params.email;
-    const ratings = await rating.find({ email });
-    
-    if (ratings.length === 0) {
-      return res.json({ averageRating: 0 });
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    const totalSum = ratings.reduce((acc, rating) => acc + rating.rate, 0);
-    const averageRating = Math.round(totalSum / ratings.length); // Round off to 0 decimal places
-    res.json({ averageRating });
-  } catch (error) {
-    console.error('Error calculating average rating:', error);
-    res.status(500).json({ error: 'Failed to calculate average rating' });
+try {
+  const email = req.params.email;
+  const ratings = await rating.find({ email });
+  
+  if (ratings.length === 0) {
+    return res.json({ averageRating: 0 });
   }
+  
+  const totalSum = ratings.reduce((acc, rating) => acc + rating.rate, 0);
+  const averageRating = Math.round(totalSum / ratings.length); // Round off to 0 decimal places
+  res.json({ averageRating });
+} catch (error) {
+  console.error('Error calculating average rating:', error);
+  res.status(500).json({ error: 'Failed to calculate average rating' });
+}
 });
 
 

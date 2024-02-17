@@ -47,7 +47,7 @@ const LawyerPortfolio = () => {
           return averageRating === parseInt(selectedAverageRating, 10);
         }
         if (selectedFilter === 'freeService') {
-          return lawyer.isFreeService;
+          return lawyer.nalsa === "yes"; // Change to use 'nalsa' property
         }
         if (selectedFilter === 'experience' && selectedExperienceRange !== '') {
           const [min, max] = selectedExperienceRange.split('-');

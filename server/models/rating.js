@@ -5,7 +5,7 @@ const rateSchema = new mongoose.Schema({
   rate: { type: Number, required: true },
   email: { type: String, required: true},  
   
-}, { collection: 'rate' });
+}, { collection: 'rating2' });
 
 // Add the static method to calculate average rating
 rateSchema.statics.calculateAverageRating = async function(email) {

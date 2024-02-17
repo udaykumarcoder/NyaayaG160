@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -1138,20 +1139,56 @@ app.post('/api/updateProfile2', async (req, res) => {
 });
 
 
+// app.post('/api/ratings', async (req, res) => {
+//   const { email, cnrNumber, rate } = req.body;
+//   console.log("hii", req.body)
+//   try {
+        
+//       await rating.create({ email, cnrNumber, rate});
+//       res.status(201).send('Rating submitted successfully');
+//   } catch (error) {
+//       console.error(error);
+//       res.status(500).send('Failed to submit rating');
+//       console.error('Error updating rating:', error);
+     
+//   }
+// });
+
+
 app.post('/api/ratings', async (req, res) => {
   const { email, cnrNumber, rate } = req.body;
   console.log("hii", req.body)
+
   try {
-        
-      await rating.create({ email, cnrNumber, rate});
-      res.status(201).send('Rating submitted successfully');
-  } catch (error) {
+      // Check if CNR number exists before submitting the rating
+      const {CnrNumber } = req.body;
+      const { email, cnrNumber, rate } = req.body;
+      const user = await Case.findOne({ cnrNumber: CnrNumber });
+      const cnrrenter = await rating.exists({ cnrNumber: req.body.cnrNumber });
+      
+      if (!user) {
+          return res.status(404).json({ status: 'error', message: 'User not found' });
+      }
+      if (cnrNumber !== user.CnrNumber) {
+        return res.status(401).json({ status: 'error', message: 'Invalid id' });
+      }
+      
+
+      if (cnrrenter) {
+        return res.status(400).json({ status: 'error', message: 'CNR already Rated' });
+      }
+     
+      console.log("user")
+      // CNR number exists, proceed to submit the rating
+      await rating.create({ email, cnrNumber, rate });
+      res.status(201).send('Rating submitted successfully');}
+       catch (error) {
       console.error(error);
       res.status(500).send('Failed to submit rating');
       console.error('Error updating rating:', error);
-     
   }
 });
+
 app.get('/ratings/average/:email', async (req, res) => {
 try {
   const email = req.params.email;

@@ -1,11 +1,11 @@
-//Advocate Change Password 
+//Litigant Change Password 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 import "./PasswordReset.css";
 
-const ChangePassword1 = () => {
+const ChangePassword2 = () => {
     const [password, setPassword] = useState('');
     const location=useLocation();
     const emailFrominfo = location?.state?.emailFromLogin ||  '';
@@ -96,4 +96,4 @@ const ChangePassword1 = () => {
     );
   };
   
-export default ChangePassword1;
+export default ChangePassword2;

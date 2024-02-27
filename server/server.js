@@ -315,6 +315,11 @@ app.post('/details', async (req, res) => {
   try {
     const { cnr,title, date, description } = req.body;
 
+    const caseExists = await Case.findOne({ CnrNumber: cnr });
+    if (!caseExists) {
+      return res.status(400).json({ error: 'Invalid CNR' });
+    }
+
     if (!cnr || !title || !date || !description) {
       return res.status(400).json({ error: 'Please provide all details.' });
     }
@@ -437,12 +442,19 @@ const upload = multer({ storage: storage,limits: {
 
 
 app.post('/upload', upload.array('fileUpload'), async (req, res) => {
+
+
+  
   try {
    
     const currentDate = new Date().toLocaleDateString();
     const fileName = req.body.fileName;
     const cnr = req.body.cnr;
-
+     
+    const cnrExists = await Case.findOne({ CnrNumber: cnr });
+    if (!cnrExists) {
+      return res.status(400).json({ error: 'Invalid CNR' });
+    }
     
     for (let i = 0; i < req.files.length; i++) {
       const file = new File({
@@ -1095,6 +1107,34 @@ app.post('/ChangePassword1-Advocate', async (req, res) => {
     res.status(500).json({ error: error.message || 'Internal server error.' });
   }
 });
+app.post('/ChangePassword2-Litigant', async (req, res) => {
+  const { email, password, newPassword } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+
+    const { newPassword, confirmnewPassword } = req.body;
+
+    
+    const user = await UserData2.findOne({ email, password });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found or details are incorrect.' });
+    }
+    else if (newPassword !== confirmnewPassword) {
+      return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match' });
+    }
+    user.password = newPassword;
+    user.confirmPassword=newPassword;
+    await user.save();
+    res.json({ message: 'Password change successful.' });
+  } catch (error) {
+    
+    console.error('Error during password change:', error);
+    res.status(500).json({ error: error.message || 'Internal server error.' });
+  }
+});
+
+
 app.post('/api/updateProfile', async (req, res) => {
   const { email, newname, newphone,newpropic } = req.body;
   console.log('Request Body:', req.body);
@@ -1139,55 +1179,38 @@ app.post('/api/updateProfile2', async (req, res) => {
 });
 
 
-// app.post('/api/ratings', async (req, res) => {
-//   const { email, cnrNumber, rate } = req.body;
-//   console.log("hii", req.body)
-//   try {
-        
-//       await rating.create({ email, cnrNumber, rate});
-//       res.status(201).send('Rating submitted successfully');
-//   } catch (error) {
-//       console.error(error);
-//       res.status(500).send('Failed to submit rating');
-//       console.error('Error updating rating:', error);
-     
-//   }
-// });
-
-
 app.post('/api/ratings', async (req, res) => {
   const { email, cnrNumber, rate } = req.body;
-  console.log("hii", req.body)
 
   try {
-      // Check if CNR number exists before submitting the rating
-      const {CnrNumber } = req.body;
-      const { email, cnrNumber, rate } = req.body;
-      const user = await Case.findOne({ cnrNumber: CnrNumber });
-      const cnrrenter = await rating.exists({ cnrNumber: req.body.cnrNumber });
-      
-      if (!user) {
-          return res.status(404).json({ status: 'error', message: 'User not found' });
+      // Check if the CNR number exists
+      const existingCase = await Case.findOne({ CnrNumber: cnrNumber });
+      if (!existingCase) {
+          return res.status(404).json({ error: 'CNR number not found' });
       }
-      if (cnrNumber !== user.CnrNumber) {
-        return res.status(401).json({ status: 'error', message: 'Invalid id' });
-      }
-      
 
-      if (cnrrenter) {
-        return res.status(400).json({ status: 'error', message: 'CNR already Rated' });
+      // Check if the user has already rated this CNR number
+      const existingRating = await rating.findOne({ email, cnrNumber });
+      if (existingRating) {
+          return res.status(400).json({ error: 'Rating already submitted for this CNR number' });
       }
-     
-      console.log("user")
-      // CNR number exists, proceed to submit the rating
-      await rating.create({ email, cnrNumber, rate });
-      res.status(201).send('Rating submitted successfully');}
-       catch (error) {
-      console.error(error);
-      res.status(500).send('Failed to submit rating');
-      console.error('Error updating rating:', error);
+
+  
+      await rating.create({
+            email,
+            cnrNumber,
+            rate
+      });
+
+      res.status(201).json({ message: 'Rating submitted successfully' });
+  } catch (error) {
+      console.error('Error submitting rating:', error);
+      res.status(500).json({ error: 'Failed to submit rating' });
   }
 });
+
+
+
 
 app.get('/ratings/average/:email', async (req, res) => {
 try {

@@ -95,7 +95,7 @@ const LitigantLogin = () => {
     <>
     <div className="advloginContainer">
         <div className="advloginLeft" id='lit'>
-          <img id='litimage' src={LitigantImage} alt="litigantlogo" />
+          <img id='litimage' src={LitigantImage} alt="litigantlogo" style={{marginLeft:"25px"}}/>
           <p>"EMPOWER YOUR VOICE, FILE FOR <br /> JUSTICE -YOUR STORY, YOUR <br /> RIGHT, YOUR VICTORY."</p>
           <br />
           <div className="advbuttonsLogin">

@@ -28,6 +28,7 @@ import CaseFiling from './pages/Advocate/CaseFiling';
 
 import CaseLegalform from './Components/CaseLegalform';
 import ChangePassword1 from './Components/ChangePassword1';
+import ChangePassword2 from './Components/ChangePassword2';
 
 import EditProfile from './pages/Litigant/EditProfile';
 import CaseDocinfo from './pages/Litigant/CaseDocinfo';
@@ -74,6 +75,7 @@ function App() {
         <Route path='/caselegalform' element={<CaseLegalform/>}/>
         <Route path="/requestform" element={<RequestForm/>}/>
         <Route path='/ChangePassword1' element={<ChangePassword1/>}/>
+        <Route path='/ChangePassword2' element={<ChangePassword2/>}/>
         <Route path="/edit-profile" element={<EditProfile/>}/>
         <Route path="/edit-profile2" element={<EditProfile2/>}/>
         <Route path="/Rating" element={<Rating/>}/>

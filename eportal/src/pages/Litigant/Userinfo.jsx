@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import './Userinfo.css';
+import '../../pages/Administrator/Userinfo.css';
 
 
 const UserInfo1 = () => {
@@ -64,7 +64,7 @@ return (
             <p>Litigant</p>
           </div>
           <div className='Lbutton'>
-          <button onClick={handleEditProfile}>✒Edit Profile</button>
+          <button className='userInfobuttons' onClick={handleEditProfile}>✒Edit Profile</button>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ return (
           <br />
           <div className="Lpassword">
             <p>*</p>
-            <p>🔑<button className='userInfobuttons'>Change Password</button></p>
+            <p>🔑<button className='userInfobuttons'  type="button" onClick={() => navigate('/ChangePassword2', { state: { emailFromLogin} })}>Change Password</button></p>
           </div>
           <hr />
         </div>

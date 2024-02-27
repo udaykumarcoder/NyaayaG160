@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Example import statement, adjust as per your setup
-
-// import './Userinfo.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import '../../pages/Administrator/Userinfo.css';
 
 
 
@@ -66,7 +65,7 @@ return (
           <p>Advocate</p>
           </div>
           <div className='Lbutton'>
-          <button onClick={handleEditProfile}>✒Edit Profile</button>
+          <button className='userInfobuttons' onClick={handleEditProfile}>✒Edit Profile</button>
           </div>
         </div>
 
@@ -90,7 +89,7 @@ return (
           <br />
           <div className="Lpassword">
             <p></p>
-            <p>🔑<button type="button" onClick={() => navigate('/ChangePassword1', { state: { emailFromLogin} })}>Change Password</button></p>
+            <p>🔑<button className='userInfobuttons' type="button" onClick={() => navigate('/ChangePassword1', { state: { emailFromLogin} })}>Change Password</button></p>
             
           </div>
           <hr />

@@ -11,9 +11,13 @@ const Uploaddocs = () => {
   useEffect(() => {
   const fetchFiles = async () => {
     try {
+      const cnrCheck = await fetch(`http://localhost:3001/checkCNR?cnr=${cnr}`);
+      const cnrExists = await cnrCheck.json();
+      if(cnrExists){
       const response = await fetch(`http://localhost:3001/files?cnr=${cnr}`);
       const filesData = await response.json();
       setFiles(filesData);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -63,7 +67,13 @@ const Uploaddocs = () => {
           const filesData = await filesResponse.json();
           setFiles(filesData);
         } else {
-          alert('Upload failed .Please enter all the fields.');
+          
+          const errorMessage = await response.json();
+          if (errorMessage.error === 'Invalid CNR') {
+            alert('Please enter a valid CNR.');
+          } else {
+            alert('Upload failed. Please enter all the fields.');
+          }
         }
       } catch (error) {
         console.error(error);
@@ -219,7 +229,7 @@ const Uploaddocs = () => {
               <tr>
                 <td>
                 <label className="data" htmlFor="cnr"><b>CNR Number:&nbsp;&nbsp;</b></label>
-                  <input type="number" id="cnr" name="cnr" required/>
+                  <input type="" id="cnr" name="cnr" required/>
                   <label className="data" htmlFor="fileName"><b>File Name:&nbsp;&nbsp;</b></label>
                   <input type="text" id="fileName" name="fileName" required/>
                   <br/>

@@ -7,7 +7,7 @@ const fileSchema = new mongoose.Schema({
   filename: String,
   content: String,
   fileType: String, 
-  cnr:  { type:Number,required:true},
+  cnr:  { type:String,required:true},
 
 });
 

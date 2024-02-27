@@ -129,6 +129,15 @@ const Casefiling = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    // Check if all required fields are filled
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key)) {
+        if (formData[key] === '') {
+          alert('Please fill in all fields before submitting the form.');
+          return; // Exit the function early if any field is empty
+        }
+      }
+    }
     try {
       // Make a POST request to the backend server for case filing
       const caseFilingResponse = await fetch('http://localhost:3001/api/casefiling', {
@@ -295,17 +304,16 @@ const Casefiling = () => {
 
             </form>
 
-            <div className="csButtons">
+          <div className="csButtons">
+            <Link to ="/advocateaccount">
+              <button  className='back casefilingBack' style={{marginLeft: "3rem"}}> 
+                back
+              </button>
+            </Link>
             
             <button className="nexttabbtn" onClick={handleNextTab}>
               Next➜
             </button>
-            <Link to ="/advocateaccount">
-          <button  className='back casefilingBack'  > 
-            back
-          </button>
-        </Link>
-       
           </div>
           </div>
           

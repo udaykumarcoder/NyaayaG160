@@ -58,8 +58,8 @@
 }
 
 .cardName{
-  font-family: 'Outfit', sans-serif;
-  font-size: 3rem;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 2.2rem;
 }
 
 .cardInline{
@@ -98,15 +98,22 @@
 
 
 .rating{
-  margin-top: 2.5rem;
+  margin-top: 1.8rem;
   margin-left: 20rem;
 }
 
 .content{
+  margin-top: 1rem;
   margin-left: 3rem;
 }
 
+.icon {
+  margin-right: 5px; 
+}
 
+.star{
+  font-size: 30px;
+}
 
 
 .butn{

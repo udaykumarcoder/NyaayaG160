@@ -1196,16 +1196,7 @@ const htmlContent = `
   </div>
   
   </div>
-  <div className="csButtons">
-              <Link to="/advocateaccount">
-                <button className='nexttabbtn'>
-                  Back
-                </button>
-              </Link>
-              <button className="nexttabbtn" onClick={handleprint} >
-                PRINT
-              </button>
-            </div>
+ 
   </div>
     </body>
   </html>

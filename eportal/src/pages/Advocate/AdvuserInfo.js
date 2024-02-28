@@ -88,7 +88,7 @@ return (
           <h5><b>PASSWORD</b></h5>
           <br />
           <div className="Lpassword">
-            <p></p>
+            <p>*******</p>
             <p>🔑<button className='userInfobuttons' type="button" onClick={() => navigate('/ChangePassword1', { state: { emailFromLogin} })}>Change Password</button></p>
             
           </div>

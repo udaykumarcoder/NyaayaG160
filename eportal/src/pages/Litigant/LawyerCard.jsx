@@ -57,7 +57,7 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
           <div className="content">
             <b><h2 className='cardName'>{name} </h2></b>
             <div className="cardInline">
-              <p className='cardSpecialization'>{lawyertype},Educational qualifications</p>
+              <p className='cardSpecialization'>{lawyertype},{education}</p>
             </div>
             <p><i class="fa fa-envelope icon" aria-hidden="true"></i>{email}</p>
             <p><i class="fa fa-phone icon" aria-hidden="true"></i>{phone}</p>

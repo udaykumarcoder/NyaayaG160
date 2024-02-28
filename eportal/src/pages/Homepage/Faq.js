@@ -1,44 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react'
 import './Faq.css';
 
 const Faq = () => {
-  useEffect(() => {
-    // Add event listeners to handle hovering effect
-    const labels = document.querySelectorAll('.labels');
-
-    labels.forEach(label => {
-      // // label.addEventListener('mouseenter', () => {
-      //   label.querySelector('details').setAttribute('open', 'true');
-      // //});
-      const detailsElement = label.querySelector('details');
-      if (detailsElement) {
-        label.addEventListener('mouseenter', () => {
-          detailsElement.setAttribute('open', 'true');
-        });
-
-        label.addEventListener('mouseleave', () => {
-          detailsElement.removeAttribute('open');
-        });
-      }
-    });
-
-    return () => {
-      // Remove event listeners on component unmount
-      labels.forEach(label => {
-        const detailsElement = label.querySelector('details');
-
-        if (detailsElement) {
-          label.removeEventListener('mouseenter', () => {
-            detailsElement.setAttribute('open', 'true');
-          });
-
-          label.removeEventListener('mouseleave', () => {
-            detailsElement.removeAttribute('open');
-          });
-        }
-      });
-    };
-  }, []);
   return (
     <>
       <div className="fcontainer" id='faq'>
@@ -68,19 +31,19 @@ const Faq = () => {
               <details className='labels'>
               <summary className='Font4'> 1. Can I manage multiple cases simultaneously? </summary>
               <p className='Font5'>
-              A: Yes, multiple cases can be managed simultaneously using CNR number of a particular case.<br /><br />
+              A: Yes, multiple cases can be managed simultaneously using CNR number of a particular case.
              </p>
               </details>
               <details className='labels'>
              <summary className='Font4'>  2. What credentials are required for advocate verification?</summary>
               <p className='Font5'>
-              A: Bar registration number is required for advocate verification.<br /><br />
+              A: Bar registration number is required for advocate verification
              </p>
              </details> 
              <details className='labels'>
              <summary className='Font4'>3. How do I file a new case through the portal?</summary>
               <p className='Font5'>
-              A: Case filing form is available on Nyaaya to file a new case.<br /><br />
+              A: Case filing form is available on Nyaaya to file a new case.
              </p>
              </details>
               
@@ -91,9 +54,7 @@ const Faq = () => {
               <summary className='Font2'>Litigant registration</summary>
               <details className='labels'>
               <summary className='Font4'>1. How can I find experienced and assured advocates?</summary>
-              <p className='Font5'>  
-              A: You can choose your advocate from the advocate profiles available on Nyaaya whose profiles are verified .<br /><br />
-              </p>
+              <p className='Font5'>  A: You can choose your advocate from the advocate profiles available on Nyaaya whose profiles are verified .</p>
             </details>
              
             </details>

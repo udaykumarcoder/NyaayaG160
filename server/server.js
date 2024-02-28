@@ -75,13 +75,13 @@ if (isBarNumberExists) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'nyaaya160@gmail.com', 
-        pass: 'olhf wjag bphj zucq', 
+        user: 'vinnureddy584906@gmail.com', 
+        pass: 'dklj irxa hugq jhju', 
       },
     });
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'vinnureddy584906@gmail.com',
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -160,13 +160,13 @@ app.post('/signup/litigant', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'nyaaya160@gmail.com', 
-        pass: 'olhf wjag bphj zucq', 
+        user: 'vinnureddy584906@gmail.com', 
+        pass: 'dklj irxa hugq jhju', 
       },
     });
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'vinnureddy584906@gmail.com',
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -250,13 +250,13 @@ if (isEmployeeidExists) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'nyaaya160@gmail.com', 
-        pass: 'olhf wjag bphj zucq', 
+        user: 'vinnureddy584906@gmail.com', 
+        pass: 'dklj irxa hugq jhju', 
       },
     });
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'vinnureddy584906@gmail.com',
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -705,18 +705,22 @@ app.post('/send-otp', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'nyaaya160@gmail.com', 
-      pass: 'olhf wjag bphj zucq', 
+      // user: 'vinnureddy584906@gmail.com', 
+      // pass: 'dklj irxa hugq jhju', 
+      user: "vinnureddy584906@gmail.com", 
+             pass: "dklj irxa hugq jhju", 
     },
   });
+
   
 
+ 
   const mailOptions = {
-    from: 'nyaaya160@gmail.com',
+    from: 'vinnureddy584906@gmail.com',
     to: email,
     subject: 'OTP Verification',
-    text: `Your OTP for verification is: ${otp}`,
-  };
+    text: `Your OTP for verification is: ${otp}`,
+  };
 
 ///  transporting otp to mail
 
@@ -742,7 +746,6 @@ app.post('/verify-otp', (req, res) => {
     res.status(400).json({ status: 'error', message: 'Invalid OTP' });
   }
 });
-
 
 //// case filing
 app.post('/api/casefiling', async (req, res) => {
@@ -826,33 +829,14 @@ app.post('/api/casefiling', async (req, res) => {
   }
 });
 
-app.post('/submit-form', async(req, res) => {
-  const {formData,email} = req.body;
+app.post('/submit-form', (req, res) => {
+  const formData = req.body;
 
  
   sendEmail(formData);
 
  
   res.status(200).json({ message: 'Email sent successfully' });
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'nyaaya160@gmail.com', 
-      pass: 'olhf wjag bphj zucq', 
-    },
-  });
-  const mailOptions = {
-    from: 'nyaaya160@gmail.com',
-    to:[ formData.email,email],
-    subject: 'Unique Code For Accesing Case Documents',
-    html:`unique code: ${formData.uniqueCode} for CaseNumber ${formData.CnrNumber}`,
-   
-  };
-
-  
-
-  await transporter.sendMail(mailOptions);
 });
 
 function sendEmail(formData) {
@@ -993,59 +977,236 @@ const htmlContent = `
   <html>
     <head>
       <style>
-        body {
-          font-family: 'Arial', sans-serif;
-          background-color: #f0f0f0;
-          margin: 0;
-          padding: 0;
-        }
-        .container {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-          color: #333;
-          text-align: center;
-          margin-bottom: 20px;
-        }
-        p {
-          color: #555;
-          line-height: 1.6;
-        }
-        .section {
-          margin-bottom: 20px;
-        }
-        .section h2 {
-          color: #007bff;
-          margin-bottom: 10px;
-        }
-        .section p {
-          margin: 5px 0;
-        }
+      .case-legal-form{
+        margin: 3rem;
+        justify-content: center;
+      
+       }
+      .caseformEst {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Adjusted to two columns */
+        gap: 20px;
+        padding: 20px;
+        margin-left: 3rem;
+      }
+      
+      .caseformCasedetails {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 20px;
+        padding: 20px;
+        margin-left: 3rem;
+      }
+      
+       .case-file{
+        background-color: #eaece1;
+       }
+       .caseHeads{
+        font-size: 20px;
+        background-color: #C1B192;
+        width: 90vw;
+        padding-left: 1rem;
+        margin: 1.5rem;
+        border-radius: 5px;
+       }
+       #csHeading {
+        text-align: center;
+        padding: 1rem;
+        font-family: 'Audiowide', 'Sans-serif';
+      }
+      
+      #cfilingCNR {
+        text-align: center;
+      }
+      .casefileInline,
+      .col-sm-5 {
+        display: flex;
+        flex-direction: row;
+      }
       </style>
     </head>
     <body>
-      <div class="container">
-        <h1>New Form Submission</h1>
-        <div class="section">
-          <h2>Location Information</h2>
-          <p>State: ${formData.state}</p>
-          <p>District: ${formData.district}</p>
-          <p>Establishment: ${formData.establishment}</p>
-        </div>
-        <div class="section">
-          <h2>Case Type Information</h2>
-          <p>Case Type: ${formData.caseType}</p>
-          <p>Relief Sought: ${formData.reliefSought}</p>
-          <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
-          <p>Mobile Number: ${formData.mobileNo}</p>
-        </div>
-        <!-- Add more sections with similar styling -->
+    <div className="case-legal-form">
+    <div className="case-file">
+      <h1 id='csHeading' >CASE FILE</h1>
+      <h3 id='cfilingCNR'>CNR : ${formData.CnrNumber}</h3>
+      <hr />
+    
+  
+    <div className="caseHeads">
+      <p><b>ESTABLISHMENT</b></p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>STATE:</b>${formData.state}</p>
+      <p><b>DISTRICT:</b> ${formData.district}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>ESTABLISHMENT:</b> ${formData.establishment}</p>
+      <p><b>CASE TYPE:</b> ${formData.caseType}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>RELIEF SOUGHT:</b> ${formData.reliefSought}</p>
+      <p><b>APPELLANT / RESPONDANT:</b> ${formData.appellantRespondant}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>MOBILE NO.:</b>${formData.mobileNo}</p>
+    </div>
+    <hr />
+  
+  
+    <div className="caseHeads">
+      <p><b>LITIGANT DETAILS</b></p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>ACCUSED:</b> ${formData.accused}</p>
+      <p><b>NAME:</b> ${formData.name}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>RELATION:</b> ${formData.relation}</p>
+      <p><b>AGE:</b> ${formData.age}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>DOB:</b> ${formData.dob}</p>
+      <p><b>GENDER:</b> ${formData.gender}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>CASTE:</b> ${formData.caste}</p>
+      <p><b>DIFFERENTLY ABLED:</b> ${formData.differentlyAble}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>EMAIL:</b>${formData.email}</p>
+      <p><b>MOBILE NUMBER:</b>${formData.phone}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>OCCUPATION:</b> ${formData.occupation}</p>
+      <p><b>PIN CODE:</b> ${formData.pincode}</p>
+    </div>
+  
+    <div className="caseformCasedetails">
+      <p><b>ADDRESS:</b>${formData.address}</p>
+    </div>
+  
+    <div className="caseformEst">
+      <p><b>TALUKA:</b> ${formData.taluka}</p>
+      <p><b>VILLAGE:</b> ${formData.village}</p>
+    </div>
+    <div className="caseformEst">
+      <p><b>STATE:</b> ${formData.litigantState}</p>
+      <p><b>DISTRICT:</b> ${formData.litigantDistrict}</p>
+    </div>
+    <hr />
+  
+  
+    <div className="caseHeads">
+      <p><b>CASE DETAILS</b></p>
+    </div>
+    <div className="caseformEst">
+      <p><b>DATE OF CAUSE OF ACTION:</b> ${formData.actionDate}</p>
+    </div>
+    <div className="caseformCasedetails">
+      <p><b>CAUSE OF ACTION:  </b>${formData.disputeState}</p>
+    </div>
+    <div className="caseformCasedetails">
+    <p><b>IMPORTANT INFORMATION / SUBJECT / REASON :    </b>${formData.reason}</p>
+  
+  </div>
+  <div className="caseformEst">
+      <p><b>STATE:</b> ${formData.disputeState}</p>
+      <p><b>DISTRICT:</b> ${formData.disputeDistrict}</p>
+    </div>
+    <div className="caseformEst">
+    <p><b>TALUKA:</b> ${formData.disputeTaluka}</p>
+      <p><b>VILLAGE:</b> ${formData.disputeVillage}</p>
       </div>
+      <div className="caseformEst">
+      <p><b>ACT :    </b>${formData.act}</p>
+      <p><b>SECTION :    </b>${formData.act}</p>
+      <hr />
+  
+  
+  </div>
+  <div className="caseHeads">
+      <p><b>LEGAL HEIR</b></p>
+    </div>
+    <div className="caseformEst">
+    <p><b>PARTY NAME:</b> ${formData.partyName}</p>
+      <p><b>TYPE:</b> ${formData.heirType}</p>
+      </div>
+      <div className="caseformEst">
+      <p><b>LEGAL HEIR NAME:</b> ${formData.heirName}</p>
+      <p><b>NAME:</b> ${formData.partyName}</p>
+    </div>
+    <div className="caseformEst">
+      <p><b>RELATION:</b> ${formData.name2}</p>
+      <p><b>AGE:</b> ${formData.heirAge}</p>
+      </div>
+      <div className="caseformEst">
+      <p><b>DOB:</b> ${formData.heirDob}</p>
+      <p><b>GENDER:</b> ${formData.heirGender}</p>
+  
+    </div>
+    <div className="caseformEst">
+      <p><b>CASTE:</b> ${formData.heirCaste}</p>
+      <p><b>DIFFERENTLY ABLED:</b> ${formData.heirDifferentlyAble}</p>
+  
+    </div>
+    <div className="caseformEst">
+      <p><b>EMAIL:</b> ${formData.heirEmail}</p>
+      <p><b>OCCUPATION:</b> ${formData.heirOccupation}</p>
+  
+    </div>
+    <div className="caseformEst">
+      <p><b>MOBILE:</b> ${formData.heirPhone}</p>
+      <p><b>PIN CODE:</b> ${formData.heirPincode}</p>
+  
+    </div>
+    <div className="caseformCasedetails">
+      <p><b>ADDRESS:</b>${formData.heirAddress}</p>
+  </div>
+  <div className="caseformEst">
+      <p><b>STATE:</b> ${formData.disputeState}</p>
+      <p><b>DISTRICT:</b> ${formData.disputeDistrict}</p>
+    </div>
+    <div className="caseformEst">
+    <p><b>TALUKA:</b> ${formData.disputeTaluka}</p>
+      <p><b>VILLAGE:</b> ${formData.disputeVillage}</p>
+      </div>
+      <hr />
+  
+  
+      <div className="caseHeads">
+      <p><b>FACT DETAILS</b></p>
+    </div>
+    <div className="caseformEst">
+    <p><b>FACT DATE:</b> ${formData.factDate}</p>
+      <p><b>FACT TIME:</b> ${formData.factTime}</p>
+      </div>
+      <div className="caseformCasedetails">
+      <p><b>FACT:</b>${formData.fact}</p>
+  </div>
+  
+  </div>
+  <div className="csButtons">
+              <Link to="/advocateaccount">
+                <button className='nexttabbtn'>
+                  Back
+                </button>
+              </Link>
+              <button className="nexttabbtn" onClick={handleprint} >
+                PRINT
+              </button>
+            </div>
+  </div>
     </body>
   </html>
 `;
@@ -1080,6 +1241,7 @@ app.post('/api/send-email', (req, res) => {
     res.status(200).send('Email sent: ' + info.response);
   });
 });
+
 
 app.post('/ChangePassword1-Advocate', async (req, res) => {
   const { email, password, newPassword } = req.body;

@@ -56,6 +56,14 @@ const Faq = () => {
               <summary className='Font4'>1. How can I find experienced and assured advocates?</summary>
               <p className='Font5'>  A: You can choose your advocate from the advocate profiles available on Nyaaya whose profiles are verified .</p>
             </details>
+            <details className='labels'>
+              <summary className='Font4'>2. Can I track the status of my case online?</summary>
+              <p className='Font5'>A: Yes, Nyaaya provides a case tracking feature to track the status of your case</p>
+            </details>
+            <details className='labels'>
+              <summary className='Font4'>3. How can I view or request copies of filed documents or court orders?</summary>
+              <p className='Font5'> A: Case documents submitted in the court can be viewed using the case documents feature available on Nyaaya</p>
+            </details>
              
             </details>
             <br />

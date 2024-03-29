@@ -55,9 +55,7 @@ return (
            
           </div>
           
-          <div className=' Lbutton'>
-            <button className='userInfobuttons'>✒Edit Profile</button>
-          </div>
+          
         </div>
 
         <div className="litigantDetails">

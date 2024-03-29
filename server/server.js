@@ -26,8 +26,19 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-// for mongo Compass {offline}
-mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
+// // for mongo Compass {offline}
+// mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => {
+//   console.log('MongoDB connected');
+// }).catch((err) => {
+//   console.error('MongoDB connection error:', err);
+// });
+
+// for mongo Atlas { AWS cloud Service}
+
+mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
@@ -75,13 +86,17 @@ if (isBarNumberExists) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnureddy584906@gmail.com', 
-        pass: 'dklj irxa hugq jhju', 
+        user: 'nyaaya160@gmail.com', 
+ 
+        pass: 'olhf wjag bphj zucq', 
+
+
       },
     });
 
     const mailOptions = {
-      from: 'vinnureddy584906@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -160,13 +175,17 @@ app.post('/signup/litigant', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnureddy584906@gmail.com', 
-        pass: 'dklj irxa hugq jhju', 
+        user: 'nyaaya160@gmail.com', 
+ 
+        pass: 'olhf wjag bphj zucq', 
+
+
       },
     });
 
     const mailOptions = {
-      from: 'vinnureddy584906@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -250,13 +269,17 @@ if (isEmployeeidExists) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'vinnureddy584906@gmail.com', 
-        pass: 'dklj irxa hugq jhju', 
+        user: 'nyaaya160@gmail.com', 
+ 
+        pass: 'olhf wjag bphj zucq', 
+
+
       },
     });
 
     const mailOptions = {
-      from: 'vinnureddy584906@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -705,8 +728,11 @@ app.post('/send-otp', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      // user: 'vinnureddy584906@gmail.com', 
-      // pass: 'dklj irxa hugq jhju', 
+      // user: 'nyaaya160@gmail.com', 
+ 
+      // pass: 'olhf wjag bphj zucq', 
+
+
     user: 'nyaaya160@gmail.com', 
  
             
@@ -719,7 +745,8 @@ pass: 'olhf wjag bphj zucq',
 
  
   const mailOptions = {
-    from: 'vinnureddy584906@gmail.com',
+    from: 'nyaaya160@gmail.com', 
+
     to: email,
     subject: 'OTP Verification',
     text: `Your OTP for verification is: ${otp}`,
@@ -845,12 +872,16 @@ app.post('/submit-form', async(req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vinnureddy584906@gmail.com', 
-      pass: 'dklj irxa hugq jhju', 
+      user: 'nyaaya160@gmail.com', 
+ 
+      pass: 'olhf wjag bphj zucq', 
+
+
     },
   });
   const mailOptions = {
-    from: 'vinnureddy584906@gmail.com',
+    from: 'nyaaya160@gmail.com', 
+
     to:[ formData.email,email],
     subject: 'Unique Code For Accesing Case Documents',
     html:`unique code: ${formData.uniqueCode} for CaseNumber ${formData.CnrNumber}`,
@@ -866,8 +897,11 @@ function sendEmail(formData) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vinnureddy584906@gmail.com', 
-      pass: 'dklj irxa hugq jhju', 
+      user: 'nyaaya160@gmail.com', 
+ 
+      pass: 'olhf wjag bphj zucq', 
+
+
     },
   });
 
@@ -881,7 +915,8 @@ function sendEmail(formData) {
     }
 
     const mailOptions = {
-      from: 'vinnureddy584906@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: formData.establishmentemail,
       subject: 'New Form Submission',
       attachments: [
@@ -1046,7 +1081,7 @@ function generateHTML(formData) {
     <p><b>CASE DETAILS</b></p>
   </div>
   <div className="caseformEst">
-    <p><b>DATE OF CAUSE OF ACTION:</b> ${formData.actionDate}</p>
+    <p><b>DATE OF CAUSE OF ACTION:</b> ${formData.actionCause}</p>
   </div>
   <div className="caseformCasedetails">
     <p><b>CAUSE OF ACTION:  </b>${formData.disputeState}</p>
@@ -1152,13 +1187,17 @@ app.post('/api/send-email', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vinnureddy584906@gmail.com', 
-      pass: 'dklj irxa hugq jhju', 
+      user: 'nyaaya160@gmail.com', 
+ 
+      pass: 'olhf wjag bphj zucq', 
+
+
     },
   });
 
   const mailOptions = {
-    from: 'vinnureddy584906@gmail.com',
+    from: 'nyaaya160@gmail.com', 
+
     to,
     subject,
     html,

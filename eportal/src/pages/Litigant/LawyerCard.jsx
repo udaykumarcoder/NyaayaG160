@@ -82,7 +82,8 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
             </div>
             <p><i class="fa fa-envelope icon" aria-hidden="true"></i>{email}</p>
             <p><i class="fa fa-phone icon" aria-hidden="true"></i>{phone}</p>
-            <p><i class="fa fa-linkedin-square icon" aria-hidden="true"></i>www.linkedin.com/name</p>
+            {/* <p><i class="fa fa-linkedin-square icon" aria-hidden="true"></i>{profileurl}</p> */}
+            <p><a href={profileurl} target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin-square icon" aria-hidden="true"></i>{profileurl}</a></p>
           </div>
       </div>
 

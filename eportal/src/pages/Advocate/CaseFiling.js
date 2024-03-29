@@ -409,15 +409,31 @@ const Casefiling = () => {
                     checked={formData.gender === 'Other'}
                   />
                   <label>Other</label><br /><br />
+                  
                   <label htmlFor="da">Differently abled&nbsp; &nbsp;</label>
                   <input
-                    type="checkbox"
-                    id="da"
+                  type="radio"
+                    id="yes"
                     name="da"
-                    style={{ transform: 'scale(1.5)' }}
-                    checked={formData.differentlyAble}
-                    onChange={(e) => handleChange('differentlyAble', e.target.checked)}
+                    onChange={() => handleChange('differentlyAble', 'yes')}
+                    checked={formData.differentlyAble === 'yes'}
+
+                    // type="checkbox"
+                    // id="da"
+                    // name="da"
+                    // style={{ transform: 'scale(1.5)' }}
+                    // checked={formData.differentlyAble}
+                    // onChange={(e) => handleChange('differentlyAble', e.target.checked)}
                   />
+                  <label>yes &nbsp;</label>
+                  <input
+                  type="radio"
+                    id="no"
+                    name="da"
+                    onChange={() => handleChange('differentlyAble', 'no')}
+                    checked={formData.differentlyAble === 'no'}
+                  />
+                  <label>no &nbsp;</label>
                 </div>
                 <div className='sideheads'>
                   <b>Contact Details</b>
@@ -552,7 +568,7 @@ const Casefiling = () => {
                   />
                   <label>Other</label><br /><br />
                   <label htmlFor="da">Differently abled&nbsp; &nbsp;</label>
-
+{/* 
                   <input
                     type="checkbox"
                     id="da"
@@ -560,7 +576,24 @@ const Casefiling = () => {
                     style={{ transform: 'scale(1.5)' }}
                     checked={formData.heirDifferentlyAble}
                     onChange={(e) => handleChange('heirDifferentlyAble', e.target.checked)}
+                  /> */}
+                  <input
+                  type="radio"
+                    id="yes"
+                    name="da"
+                    onChange={() => handleChange('dheirDifferentlyAble', 'yes')}
+                    checked={formData.heirDifferentlyAble === 'yes'}
+                      
+                    />
+                  <label>yes &nbsp;</label>
+                  <input
+                  type="radio"
+                    id="no"
+                    name="da"
+                    onChange={() => handleChange('heirDifferentlyAble', 'no')}
+                    checked={formData.heirDifferentlyAble === 'no'}
                   />
+                  <label>no &nbsp;</label>
                 </div>
 
                 <div className='sideheads'>

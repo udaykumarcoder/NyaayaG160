@@ -167,7 +167,7 @@ const Casefiling = () => {
         },
         body: JSON.stringify({formData,email:emailFromsidebar}),
       });
-      alert("Case Filed Successfully")
+      alert("Case Filed Successfully your Cnr Number and Unique Code requred to access the data regarding your case has been sent to your e-mail")
       navigate('/caselegalform', { state: { formData } })
       const emailData = await emailResponse.json();
       console.log('Email Response:', emailData);

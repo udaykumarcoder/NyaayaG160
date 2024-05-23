@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, profileurl, education }) => {
   const navigate = useNavigate();
   const [averageRating, setAverageRating] = useState(null);
+  const [fontSize, setFontSize] = useState(16);
   console.log(averageRating)
 
   useEffect(() => {
@@ -25,6 +26,23 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
     fetchAverageRating();
   }, [email]);
 
+  useEffect(() => {
+    
+    const calculateFontSize = () => {
+      const length = education.length;
+      const baseFontSize = 40; 
+      const maxLength = 20; 
+      const reductionFactor = 0.5; 
+
+      if (length > maxLength) {
+        const newSize = baseFontSize - (length - maxLength) * reductionFactor;
+        setFontSize(newSize < 10 ? 10 : newSize); 
+      }
+    };
+
+    calculateFontSize();
+  }, [education]);
+
   const request = (event) => {
     navigate('/requestform', { state: { email } });
   };
@@ -33,7 +51,7 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
     navigate('/Rating', { state: { email } });
   };
   const renderRatingStars = () => {
-    const rating = Math.round(averageRating); // Round off the averageRating
+    const rating = Math.round(averageRating); 
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       // if (i <= rating) {
@@ -57,11 +75,15 @@ const LawyerCard = ({ name, lawyertype, imageUrl, email, phone, experience, prof
           <div className="content">
             <b><h2 className='cardName'>{name} </h2></b>
             <div className="cardInline">
-              <p className='cardSpecialization'>{lawyertype},Educational qualifications</p>
+              <p className='cardSpecialization'>{lawyertype}</p>
+            </div>
+            <div className="cardInline">
+            <p style={{ fontSize }}>{education}</p>
             </div>
             <p><i class="fa fa-envelope icon" aria-hidden="true"></i>{email}</p>
             <p><i class="fa fa-phone icon" aria-hidden="true"></i>{phone}</p>
-            <p><i class="fa fa-linkedin-square icon" aria-hidden="true"></i>www.linkedin.com/name</p>
+            {/* <p><i class="fa fa-linkedin-square icon" aria-hidden="true"></i>{profileurl}</p> */}
+            <p><a href={profileurl} target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin-square icon" aria-hidden="true"></i>{profileurl}</a></p>
           </div>
       </div>
 

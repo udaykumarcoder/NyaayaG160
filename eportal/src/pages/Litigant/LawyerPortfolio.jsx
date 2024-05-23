@@ -131,7 +131,7 @@ const LawyerPortfolio = () => {
                 <option value="0-5">0-5 Years</option>
                 <option value="5-10">5-10 Years</option>
                 <option value="10-15">10-15 Years</option>
-                <option value="15+">15+ Years</option>
+                <option value="15-100">15+ Years</option>
               </select>
             )}
           </div>

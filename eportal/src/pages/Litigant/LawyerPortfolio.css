@@ -14,6 +14,7 @@
 
 .lawyerCard {
   /* border: 1px solid #ccc; */
+  position: relative;
   border-radius: 10px;
   background-color: #C1B192;
   padding: 10px;
@@ -97,9 +98,10 @@
 } */
 
 
-.rating{
-  margin-top: 1.8rem;
-  margin-left: 20rem;
+.rating {
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem; /* Adjust as needed */
 }
 
 .content{

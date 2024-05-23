@@ -26,8 +26,19 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-// for mongo Compass {offline}
-mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
+// // for mongo Compass {offline}
+// mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => {
+//   console.log('MongoDB connected');
+// }).catch((err) => {
+//   console.error('MongoDB connection error:', err);
+// });
+
+// for mongo Atlas { AWS cloud Service}
+
+mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
@@ -76,12 +87,16 @@ if (isBarNumberExists) {
       service: 'gmail',
       auth: {
         user: 'nyaaya160@gmail.com', 
+ 
         pass: 'olhf wjag bphj zucq', 
+
+
       },
     });
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -161,12 +176,16 @@ app.post('/signup/litigant', async (req, res) => {
       service: 'gmail',
       auth: {
         user: 'nyaaya160@gmail.com', 
+ 
         pass: 'olhf wjag bphj zucq', 
+
+
       },
     });
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -251,12 +270,16 @@ if (isEmployeeidExists) {
       service: 'gmail',
       auth: {
         user: 'nyaaya160@gmail.com', 
+ 
         pass: 'olhf wjag bphj zucq', 
+
+
       },
     });
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: req.body.email,
       subject: 'Registration Successful',
       html:'<p>Thank you for registering!</p>',
@@ -705,18 +728,29 @@ app.post('/send-otp', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'nyaaya160@gmail.com', 
-      pass: 'olhf wjag bphj zucq', 
+      // user: 'nyaaya160@gmail.com', 
+ 
+      // pass: 'olhf wjag bphj zucq', 
+
+
+    user: 'nyaaya160@gmail.com', 
+ 
+            
+pass: 'olhf wjag bphj zucq', 
+ 
     },
   });
+
   
 
+ 
   const mailOptions = {
-    from: 'nyaaya160@gmail.com',
+    from: 'nyaaya160@gmail.com', 
+
     to: email,
     subject: 'OTP Verification',
-    text: `Your OTP for verification is: ${otp}`,
-  };
+    text: `Your OTP for verification is: ${otp}`,
+  };
 
 ///  transporting otp to mail
 
@@ -744,7 +778,9 @@ app.post('/verify-otp', (req, res) => {
 });
 
 
+
 //// case filing
+
 app.post('/api/casefiling', async (req, res) => {
   console.log("hello vinnu",req.body);
   try {
@@ -828,9 +864,7 @@ app.post('/api/casefiling', async (req, res) => {
 
 app.post('/submit-form', async(req, res) => {
   const {formData,email} = req.body;
-
- 
-  sendEmail(formData);
+    sendEmail(formData);
 
  
   res.status(200).json({ message: 'Email sent successfully' });
@@ -839,11 +873,15 @@ app.post('/submit-form', async(req, res) => {
     service: 'gmail',
     auth: {
       user: 'nyaaya160@gmail.com', 
+ 
       pass: 'olhf wjag bphj zucq', 
+
+
     },
   });
   const mailOptions = {
-    from: 'nyaaya160@gmail.com',
+    from: 'nyaaya160@gmail.com', 
+
     to:[ formData.email,email],
     subject: 'Unique Code For Accesing Case Documents',
     html:`unique code: ${formData.uniqueCode} for CaseNumber ${formData.CnrNumber}`,
@@ -860,7 +898,10 @@ function sendEmail(formData) {
     service: 'gmail',
     auth: {
       user: 'nyaaya160@gmail.com', 
+ 
       pass: 'olhf wjag bphj zucq', 
+
+
     },
   });
 
@@ -874,7 +915,8 @@ function sendEmail(formData) {
     }
 
     const mailOptions = {
-      from: 'nyaaya160@gmail.com',
+      from: 'nyaaya160@gmail.com', 
+
       to: formData.establishmentemail,
       subject: 'New Form Submission',
       attachments: [
@@ -896,163 +938,249 @@ function sendEmail(formData) {
 }
 
 
+
+
 function generateHTML(formData) {
-//   // Create your HTML content with the form data
-//   const htmlContent = `
-//     <html>
-//       <head>
-//         <style>
-//           /* Add your styling here */
-//           body {
-//             font-family: Arial, sans-serif;
-//           }
-//           /* Add more styles as needed */
-//         </style>
-//       </head>
-//       <body>
 
-//         <h1>New Form Submission</h1>
-//         <div><h1>CNR Number: ${formData.CnrNumber}</h1></div>
-//         <p>Name: ${formData.name}</p>
-//         <p>Email: ${formData.email}</p>
-//         <div class="cl-section-container">
-//   <div class="cl-section">
-//     <h2>Location Information</h2>
-//     <p>State: ${formData.state}</p>
-//     <p>District: ${formData.district}</p>
-//     <p>Establishment: ${formData.establishment}</p>
-//   </div>
-
-//   <div class="cl-section">
-//     <h2>Case Type Information</h2>
-//     <p>Case Type: ${formData.caseType}</p>
-//     <p>Relief Sought: ${formData.reliefSought}</p>
-//     <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
-//     <p>Mobile Number: ${formData.mobileNo}</p>
-//   </div>
-// </div>
-
-// <div class="cl-section-container">
-//   <div class="section">
-//     <h2>Litigant Information</h2>
-//     <p>Litigant Type: ${formData.litigantType}</p>
-//     <p>Accused: ${formData.accused}</p>
-//     <p>Name: ${formData.name2}</p>
-//     <p>Relation: ${formData.relation2}</p>
-//     <p>Age: ${formData.age}</p>
-//     <p>Date of Birth: ${formData.dob}</p>
-//     <p>Gender: ${formData.gender}</p>
-//     <p>Caste: ${formData.caste}</p>
-//     <p>Differently Able: ${formData.differentlyAble ? 'Yes' : 'No'}</p>
-//   </div>
-
-//   <div class="section">
-//     <h2>Contact Information</h2>
-//     <p>Email: ${formData.email}</p>
-//     <p>Phone: ${formData.phone}</p>
-//     <p>Occupation: ${formData.occupation}</p>
-//     <p>Address: ${formData.address}</p>
-//     <p>Pincode: ${formData.pincode}</p>
-//   </div>
-// </div>
-
-// <div class="section">
-//   <h2>Legal Heir Information</h2>
-//   <p>Party Name: ${formData.partyName}</p>
-//   <p>Heir Type: ${formData.heirType}</p>
-//   <p>Heir Name: ${formData.heirName}</p>
-//   <p>Relation: ${formData.relation2}</p>
-//   <p>Heir Age: ${formData.heirAge}</p>
-//   <p>Date of Birth: ${formData.heirDob}</p>
-//   <p>Gender: ${formData.heirGender}</p>
-//   <p>Caste: ${formData.heirCaste}</p>
-//   <p>Differently Able: ${formData.heirDifferentlyAble ? 'Yes' : 'No'}</p>
-// </div>
-
-// <div class="section">
-//   <h2>Case Details</h2>
-//   <p>Action Cause: ${formData.actionCause}</p>
-//   <p>Reason: ${formData.reason}</p>
-//   <p>Action Date: ${formData.actionDate}</p>
-//   <p>Dispute State: ${formData.disputeState}</p>
-//   <p>Dispute District: ${formData.disputeDistrict}</p>
-//   <p>Dispute Taluka: ${formData.disputeTaluka}</p>
-//   <p>Dispute Village: ${formData.disputeVillage}</p>
-//   <p>Act: ${formData.act}</p>
-//   <p>Section: ${formData.section}</p>
- 
-  
-// </div>
-
-//         <!-- Add more fields as needed -->
-//       </body>
-//     </html>
-//   `;
-//   return htmlContent;
-const htmlContent = `
+  const htmlContent = `
+  <!DOCTYPE html>
   <html>
-    <head>
-      <style>
-        body {
-          font-family: 'Arial', sans-serif;
-          background-color: #f0f0f0;
-          margin: 0;
-          padding: 0;
-        }
-        .container {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-          color: #333;
-          text-align: center;
-          margin-bottom: 20px;
-        }
-        p {
-          color: #555;
-          line-height: 1.6;
-        }
-        .section {
-          margin-bottom: 20px;
-        }
-        .section h2 {
-          color: #007bff;
-          margin-bottom: 10px;
-        }
-        .section p {
-          margin: 5px 0;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>New Form Submission</h1>
-        <div class="section">
-          <h2>Location Information</h2>
-          <p>State: ${formData.state}</p>
-          <p>District: ${formData.district}</p>
-          <p>Establishment: ${formData.establishment}</p>
-        </div>
-        <div class="section">
-          <h2>Case Type Information</h2>
-          <p>Case Type: ${formData.caseType}</p>
-          <p>Relief Sought: ${formData.reliefSought}</p>
-          <p>Appellant/Respondent: ${formData.appellantRespondant}</p>
-          <p>Mobile Number: ${formData.mobileNo}</p>
-        </div>
-        <!-- Add more sections with similar styling -->
-      </div>
-    </body>
-  </html>
+  <head>
+    <style>
+    .case-legal-form{
+      margin: 3rem;
+      justify-content: center;
+    
+     }
+    .caseformEst {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Adjusted to two columns */
+      gap: 20px;
+      padding: 20px;
+      margin-left: 3rem;
+    }
+    
+    .caseformCasedetails {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); 
+      gap: 20px;
+      padding: 20px;
+      margin-left: 3rem;
+    }
+    
+     .case-file{
+      background-color: #eaece1;
+     }
+     .caseHeads{
+      font-size: 20px;
+      background-color: #C1B192;
+      width: 90vw;
+      padding-left: 1rem;
+      margin: 1.5rem;
+      border-radius: 5px;
+     }
+     #csHeading {
+      text-align: center;
+      padding: 1rem;
+      font-family: 'Audiowide', 'Sans-serif';
+    }
+    
+    #cfilingCNR {
+      text-align: center;
+    }
+    .casefileInline,
+    .col-sm-5 {
+      display: flex;
+      flex-direction: row;
+    }
+    </style>
+  </head>
+  <body>
+  <div className="case-legal-form">
+  <div className="case-file">
+    <h1 id='csHeading' >CASE FILE</h1>
+    <h3 id='cfilingCNR'>CNR : ${formData.CnrNumber}</h3>
+    <hr />
+  
+
+  <div className="caseHeads">
+    <p><b>ESTABLISHMENT</b></p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>STATE:</b>${formData.state}</p>
+    <p><b>DISTRICT:</b> ${formData.district}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>ESTABLISHMENT:</b> ${formData.establishment}</p>
+    <p><b>CASE TYPE:</b> ${formData.caseType}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>RELIEF SOUGHT:</b> ${formData.reliefSought}</p>
+    <p><b>APPELLANT / RESPONDANT:</b> ${formData.appellantRespondant}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>MOBILE NO.:</b>${formData.mobileNo}</p>
+  </div>
+  <hr />
+
+
+  <div className="caseHeads">
+    <p><b>LITIGANT DETAILS</b></p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>ACCUSED:</b> ${formData.accused}</p>
+    <p><b>NAME:</b> ${formData.name}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>RELATION:</b> ${formData.relation}</p>
+    <p><b>AGE:</b> ${formData.age}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>DOB:</b> ${formData.dob}</p>
+    <p><b>GENDER:</b> ${formData.gender}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>CASTE:</b> ${formData.caste}</p>
+    <p><b>DIFFERENTLY ABLED:</b> ${formData.differentlyAble}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>EMAIL:</b>${formData.email}</p>
+    <p><b>MOBILE NUMBER:</b>${formData.phone}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>OCCUPATION:</b> ${formData.occupation}</p>
+    <p><b>PIN CODE:</b> ${formData.pincode}</p>
+  </div>
+
+  <div className="caseformCasedetails">
+    <p><b>ADDRESS:</b>${formData.address}</p>
+  </div>
+
+  <div className="caseformEst">
+    <p><b>TALUKA:</b> ${formData.taluka}</p>
+    <p><b>VILLAGE:</b> ${formData.village}</p>
+  </div>
+  <div className="caseformEst">
+    <p><b>STATE:</b> ${formData.litigantState}</p>
+    <p><b>DISTRICT:</b> ${formData.litigantDistrict}</p>
+  </div>
+  <hr />
+
+
+  <div className="caseHeads">
+    <p><b>CASE DETAILS</b></p>
+  </div>
+  <div className="caseformEst">
+    <p><b>DATE OF CAUSE OF ACTION:</b> ${formData.actionCause}</p>
+  </div>
+  <div className="caseformCasedetails">
+    <p><b>CAUSE OF ACTION:  </b>${formData.disputeState}</p>
+  </div>
+  <div className="caseformCasedetails">
+  <p><b>IMPORTANT INFORMATION / SUBJECT / REASON :    </b>${formData.reason}</p>
+
+</div>
+<div className="caseformEst">
+    <p><b>STATE:</b> ${formData.disputeState}</p>
+    <p><b>DISTRICT:</b> ${formData.disputeDistrict}</p>
+  </div>
+  <div className="caseformEst">
+  <p><b>TALUKA:</b> ${formData.disputeTaluka}</p>
+    <p><b>VILLAGE:</b> ${formData.disputeVillage}</p>
+    </div>
+    <div className="caseformEst">
+    <p><b>ACT :    </b>${formData.act}</p>
+    <p><b>SECTION :    </b>${formData.act}</p>
+    <hr />
+
+
+</div>
+<div className="caseHeads">
+    <p><b>LEGAL HEIR</b></p>
+  </div>
+  <div className="caseformEst">
+  <p><b>PARTY NAME:</b> ${formData.partyName}</p>
+    <p><b>TYPE:</b> ${formData.heirType}</p>
+    </div>
+    <div className="caseformEst">
+    <p><b>LEGAL HEIR NAME:</b> ${formData.heirName}</p>
+    <p><b>NAME:</b> ${formData.partyName}</p>
+  </div>
+  <div className="caseformEst">
+    <p><b>RELATION:</b> ${formData.name2}</p>
+    <p><b>AGE:</b> ${formData.heirAge}</p>
+    </div>
+    <div className="caseformEst">
+    <p><b>DOB:</b> ${formData.heirDob}</p>
+    <p><b>GENDER:</b> ${formData.heirGender}</p>
+
+  </div>
+  <div className="caseformEst">
+    <p><b>CASTE:</b> ${formData.heirCaste}</p>
+    <p><b>DIFFERENTLY ABLED:</b> ${formData.heirDifferentlyAble}</p>
+
+  </div>
+  <div className="caseformEst">
+    <p><b>EMAIL:</b> ${formData.heirEmail}</p>
+    <p><b>OCCUPATION:</b> ${formData.heirOccupation}</p>
+
+  </div>
+  <div className="caseformEst">
+    <p><b>MOBILE:</b> ${formData.heirPhone}</p>
+    <p><b>PIN CODE:</b> ${formData.heirPincode}</p>
+
+  </div>
+  <div className="caseformCasedetails">
+    <p><b>ADDRESS:</b>${formData.heirAddress}</p>
+</div>
+<div className="caseformEst">
+    <p><b>STATE:</b> ${formData.disputeState}</p>
+    <p><b>DISTRICT:</b> ${formData.disputeDistrict}</p>
+  </div>
+  <div className="caseformEst">
+  <p><b>TALUKA:</b> ${formData.disputeTaluka}</p>
+    <p><b>VILLAGE:</b> ${formData.disputeVillage}</p>
+    </div>
+    <hr />
+
+
+    <div className="caseHeads">
+    <p><b>FACT DETAILS</b></p>
+  </div>
+  <div className="caseformEst">
+  <p><b>FACT DATE:</b> ${formData.factDate}</p>
+    <p><b>FACT TIME:</b> ${formData.factTime}</p>
+    </div>
+    <div className="caseformCasedetails">
+    <p><b>FACT:</b>${formData.fact}</p>
+</div>
+
+</div>
+
+</div>
+  </body>
+</html>
 `;
+  
+  
+  
+  
+    return htmlContent;
+  }
 
-
-  return htmlContent;
-}
+  
+  
+  
 //////////
 app.post('/api/send-email', (req, res) => {
   const { to, subject, html } = req.body;
@@ -1060,12 +1188,16 @@ app.post('/api/send-email', (req, res) => {
     service: 'gmail',
     auth: {
       user: 'nyaaya160@gmail.com', 
+ 
       pass: 'olhf wjag bphj zucq', 
+
+
     },
   });
 
   const mailOptions = {
-    from: 'nyaaya160@gmail.com',
+    from: 'nyaaya160@gmail.com', 
+
     to,
     subject,
     html,

@@ -27,18 +27,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // // for mongo Compass {offline}
-// mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// }).then(() => {
-//   console.log('MongoDB connected');
-// }).catch((err) => {
-//   console.error('MongoDB connection error:', err);
-// });
-
-// for mongo Atlas { AWS cloud Service}
-
-mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+mongoose.connect('mongodb://localhost:27017/Nyaaaya', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
@@ -46,6 +35,17 @@ mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mong
 }).catch((err) => {
   console.error('MongoDB connection error:', err);
 });
+
+// for mongo Atlas { AWS cloud Service}
+
+// mongoose.connect("mongodb+srv://nyaaya160:I98ky9zZvdaRmuzo@cluster0.ocnwsoc.mongodb.net/NYAAYA?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => {
+//   console.log('MongoDB connected');
+// }).catch((err) => {
+//   console.error('MongoDB connection error:', err);
+// });
 
 
 //// Advocate signup
